@@ -95,6 +95,16 @@ polegar-friendly, não some com o teclado). Busca não é uma aba: é um ícone 
 cabeçalho que abre um overlay full-screen (modelo cmd-K/Spotlight), porque busca
 é uma ação transitória, não um destino.
 
+### 3.1 Camada acima da navegação: raciocínio sempre à mão
+
+Existe uma terceira camada, além das telas e da navegação entre elas: um
+botão flutuante (FAB) fixo durante toda a leitura de um Tema, que abre o
+método de raciocínio do Guia — a pergunta **"Qual é o próximo passo?"** com
+um checklist de 5 perguntas — sem exigir que o médico navegue para outro
+lugar ou lembre do método de cor. Ver `RaciocinioFAB` em
+`03-biblioteca-componentes.md`. Esta camada não é navegação nem conteúdo de
+Tema: é a "voz" do produto, sempre acessível no momento da dúvida.
+
 ## 4. Template de página (regra fixa)
 
 Todo Tema renderiza o mesmo esqueleto, na mesma ordem, controlado por um único

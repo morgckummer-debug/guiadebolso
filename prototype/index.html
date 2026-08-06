@@ -124,7 +124,31 @@ button,input{font-family:inherit;}
 .nav-btn{display:flex;justify-content:space-between;align-items:center;background:var(--bg-base);border:1px solid var(--ink-100);border-radius:var(--radius-md);padding:12px 14px;font-size:13px;font-weight:600;color:var(--ink-700);}
 .nav-btn small{display:block;color:var(--ink-300);font-weight:500;font-size:11px;}
 
-.tabbar{position:absolute;bottom:0;left:0;right:0;height:74px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-top:1px solid var(--ink-100);display:flex;padding-bottom:16px;}
+.tabbar{position:absolute;bottom:0;left:0;right:0;height:74px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-top:1px solid var(--ink-100);display:flex;padding-bottom:16px;z-index:3;}
+
+/* ---------- RaciocinioFAB: componente global, acima da leitura ---------- */
+.raciocinio-fab{position:absolute;right:16px;bottom:106px;width:56px;height:56px;border-radius:50%;background:var(--lav-500);border:none;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-3);cursor:pointer;z-index:4;transition:transform .15s var(--ease),box-shadow .15s var(--ease);}
+.raciocinio-fab:active{transform:scale(.94);box-shadow:var(--shadow-2);}
+
+.sheet-backdrop{position:absolute;inset:0;background:rgba(28,27,31,.32);opacity:0;pointer-events:none;transition:opacity .28s var(--ease);z-index:5;}
+.sheet-backdrop.open{opacity:1;pointer-events:auto;}
+
+.raciocinio-sheet{position:absolute;left:0;right:0;bottom:0;height:58%;background:var(--bg-base);border-radius:var(--radius-xl) var(--radius-xl) 0 0;box-shadow:var(--shadow-3);transform:translateY(100%);z-index:6;display:flex;flex-direction:column;touch-action:none;}
+.raciocinio-sheet.open{transform:translateY(0);}
+.raciocinio-sheet.dragging{transition:none;}
+.raciocinio-sheet:not(.dragging){transition:transform .32s var(--ease);}
+.sheet-grabber{width:36px;height:4px;border-radius:99px;background:var(--ink-100);margin:10px auto 4px;flex-shrink:0;}
+.sheet-content{padding:8px 22px 22px;overflow-y:auto;flex:1;}
+.sheet-title{font-size:22px;line-height:28px;font-weight:700;margin-top:8px;}
+.sheet-subtitle{font-size:14px;line-height:20px;color:var(--ink-500);margin-top:6px;}
+.sheet-checklist{margin-top:18px;display:flex;flex-direction:column;gap:10px;}
+.check-row{display:flex;align-items:flex-start;gap:12px;background:var(--bg-subtle);border:1px solid var(--ink-100);border-radius:var(--radius-md);padding:13px 14px;cursor:pointer;}
+.check-mark{width:20px;height:20px;border-radius:6px;border:1.5px solid var(--ink-300);flex-shrink:0;margin-top:1px;position:relative;transition:background .15s var(--ease),border-color .15s var(--ease);}
+.check-row.checked .check-mark{background:var(--lav-500);border-color:var(--lav-500);}
+.check-row.checked .check-mark:after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}
+.check-text{font-size:14px;line-height:19px;color:var(--ink-900);font-weight:500;}
+.sheet-close-btn{margin-top:20px;width:100%;background:transparent;border:none;color:var(--ink-500);font-size:14px;font-weight:600;padding:12px;text-align:center;border-top:1px solid var(--ink-100);cursor:pointer;}
+.sheet-close-btn:active{color:var(--ink-700);}
 .tabbar-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10px;color:var(--ink-300);font-weight:600;background:none;border:none;}
 .tabbar-item.active{color:var(--lav-500);}
 .tabbar-icon{font-size:17px;}
@@ -257,8 +281,33 @@ button,input{font-family:inherit;}
   <section id="panel-tema" class="demo-panel">
     <div class="phone-row">
       <div class="phone-col">
-        <h3>Tema — trilho de âncoras + navegação sequencial</h3>
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><div class="phone-scroll" id="scroll-tema"></div>
+        <h3>Tema — trilho de âncoras + FAB de raciocínio rápido</h3>
+        <div class="phone"><div class="phone-screen" id="tema-screen"><div class="phone-notch"></div><div class="phone-scroll" id="scroll-tema"></div>
+
+          <button class="raciocinio-fab" id="raciocinio-fab" aria-label="Abrir método de raciocínio rápido">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+              <path d="M9.5 2a3.5 3.5 0 0 0-3.5 3.5c0 .3 0 .6.1.9A3 3 0 0 0 4 9.3 3 3 0 0 0 3 11.5 3 3 0 0 0 4.5 14c-.3.5-.5 1.1-.5 1.8A3.2 3.2 0 0 0 7 19a3 3 0 0 0 2.5 2 3 3 0 0 0 3-2.2V5.5A3.5 3.5 0 0 0 9.5 2Z"/>
+              <path d="M14.5 2a3.5 3.5 0 0 1 3.5 3.5c0 .3 0 .6-.1.9A3 3 0 0 1 20 9.3a3 3 0 0 1 1 2.2 3 3 0 0 1-1.5 2.5c.3.5.5 1.1.5 1.8A3.2 3.2 0 0 1 17 19a3 3 0 0 1-2.5 2 3 3 0 0 1-3-2.2V5.5A3.5 3.5 0 0 1 14.5 2Z"/>
+            </svg>
+          </button>
+
+          <div class="sheet-backdrop" id="sheet-backdrop"></div>
+          <div class="raciocinio-sheet" id="raciocinio-sheet">
+            <div class="sheet-grabber" id="sheet-grabber"></div>
+            <div class="sheet-content">
+              <h2 class="sheet-title">Qual é o próximo passo?</h2>
+              <p class="sheet-subtitle">Antes de decidir qualquer conduta, passe por estas cinco perguntas.</p>
+              <div class="sheet-checklist" id="sheet-checklist">
+                <label class="check-row"><span class="check-mark"></span><span class="check-text">O exame foi realizado no momento certo?</span></label>
+                <label class="check-row"><span class="check-mark"></span><span class="check-text">Esse achado realmente muda minha conduta?</span></label>
+                <label class="check-row"><span class="check-mark"></span><span class="check-text">Qual é o próximo passo?</span></label>
+                <label class="check-row"><span class="check-mark"></span><span class="check-text">Como vou explicar isso para a paciente?</span></label>
+                <label class="check-row"><span class="check-mark"></span><span class="check-text">Há necessidade de compartilhar o cuidado ou encaminhar para Medicina Fetal?</span></label>
+              </div>
+              <button class="sheet-close-btn" id="sheet-close-btn">Fechar e voltar ao tema</button>
+            </div>
+          </div>
+
           <div class="tabbar"><div class="tabbar-item active"><span class="tabbar-icon">⌂</span>Início</div><div class="tabbar-item"><span class="tabbar-icon">☰</span>Índice</div><div class="tabbar-item"><span class="tabbar-icon">☆</span>Favoritos</div><div class="tabbar-item"><span class="tabbar-icon">◐</span>Perfil</div></div>
         </div></div>
       </div>
@@ -379,6 +428,61 @@ temaScroll.addEventListener('scroll',()=>{
   temaScroll.querySelectorAll('.anchor-chip').forEach(c=>c.classList.toggle('current', c.dataset.target===current));
 });
 
+/* ================= RaciocinioFAB (FAB + Bottom Sheet) ================= */
+(function(){
+  const fab = document.getElementById('raciocinio-fab');
+  const sheet = document.getElementById('raciocinio-sheet');
+  const backdrop = document.getElementById('sheet-backdrop');
+  const grabber = document.getElementById('sheet-grabber');
+  const closeBtn = document.getElementById('sheet-close-btn');
+  const sheetHeight = () => sheet.getBoundingClientRect().height;
+
+  function openSheet(){
+    sheet.classList.add('open');
+    backdrop.classList.add('open');
+  }
+  function closeSheet(){
+    sheet.classList.remove('open');
+    backdrop.classList.remove('open');
+    sheet.style.transform = '';
+  }
+
+  fab.addEventListener('click', openSheet);
+  backdrop.addEventListener('click', closeSheet);
+  closeBtn.addEventListener('click', closeSheet);
+
+  // arrastar para fechar, a partir do grabber
+  let dragStartY = null;
+  grabber.addEventListener('pointerdown', (e)=>{
+    dragStartY = e.clientY;
+    sheet.classList.add('dragging');
+    grabber.setPointerCapture(e.pointerId);
+  });
+  grabber.addEventListener('pointermove', (e)=>{
+    if(dragStartY === null) return;
+    const delta = Math.max(0, e.clientY - dragStartY);
+    sheet.style.transform = `translateY(${delta}px)`;
+  });
+  function endDrag(e){
+    if(dragStartY === null) return;
+    const delta = Math.max(0, e.clientY - dragStartY);
+    sheet.classList.remove('dragging');
+    dragStartY = null;
+    if(delta > sheetHeight() * 0.28){
+      closeSheet();
+    } else {
+      sheet.style.transform = '';
+    }
+  }
+  grabber.addEventListener('pointerup', endDrag);
+  grabber.addEventListener('pointercancel', endDrag);
+
+  // checklist: marcar/desmarcar, estado local à sessão de leitura
+  document.querySelectorAll('#sheet-checklist .check-row').forEach(row=>{
+    row.addEventListener('click', ()=> row.classList.toggle('checked'));
+  });
+})();
+
 /* ================= ÍNDICE ================= */
 const modulos = [
   {icon:'👋', nome:'Primeiros passos', temas:[
@@ -448,6 +552,7 @@ ${wrapDoc('➜','Veja também','b-veja','Lista neutra de temas relacionados ao f
 <div class="block b-alerta" style="max-width:520px"><div class="block-head"><div class="chip">🚩</div><div class="eyebrow">Quando encaminhar</div></div><div class="block-body">Contextual — só aparece quando há critério objetivo de encaminhamento. Borda 2px, maior peso visual.</div></div>
 <div style="max-width:520px"><div class="chip-fact">💡 Contextual — aparece dentro do fluxo, não em posição fixa.</div></div>
 <div class="block" style="max-width:520px;box-shadow:none;border:1px dashed var(--ink-300);background:transparent"><div class="block-head"><div class="chip" style="background:var(--lav-100);color:var(--lav-700)">⌕</div><div class="eyebrow" style="color:var(--ink-500)">Trilho de âncoras</div></div><div class="block-body">Componente de navegação por chips, reaproveitado em 3 telas: pular bloco no Tema, filtrar módulo no Índice, chip de busca recente na Busca.</div></div>
+<div class="block" style="max-width:520px;border:1.5px solid var(--lav-300)"><div class="block-head"><div class="chip" style="background:var(--lav-500);color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9.5 2a3.5 3.5 0 0 0-3.5 3.5c0 .3 0 .6.1.9A3 3 0 0 0 4 9.3 3 3 0 0 0 3 11.5 3 3 0 0 0 4.5 14c-.3.5-.5 1.1-.5 1.8A3.2 3.2 0 0 0 7 19a3 3 0 0 0 2.5 2 3 3 0 0 0 3-2.2V5.5A3.5 3.5 0 0 0 9.5 2Z"/><path d="M14.5 2a3.5 3.5 0 0 1 3.5 3.5c0 .3 0 .6-.1.9A3 3 0 0 1 20 9.3a3 3 0 0 1 1 2.2 3 3 0 0 1-1.5 2.5c.3.5.5 1.1.5 1.8A3.2 3.2 0 0 1 17 19a3 3 0 0 1-2.5 2 3 3 0 0 1-3-2.2V5.5A3.5 3.5 0 0 1 14.5 2Z"/></svg></div><div class="eyebrow" style="color:var(--lav-700)">RaciocinioFAB · global</div></div><div class="block-body">Botão flutuante sempre visível durante a leitura. Abre o método de raciocínio do Guia — "Qual é o próximo passo?" — sem depender de memória. Elemento central da identidade do produto, não apenas navegação.</div></div>
 `;
 </script>
 </body>

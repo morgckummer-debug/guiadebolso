@@ -5,6 +5,77 @@ Todos os componentes de conteúdo compartilham a mesma anatomia base
 específico. Isso é o que garante "mesmo padrão visual" entre os 11 tipos
 pedidos no briefing, mesmo com propósitos diferentes.
 
+## Componente global — `RaciocinioFAB` (elemento central da identidade)
+
+Diferente de todo o resto da biblioteca, este componente **não pertence a
+uma tela** — ele vive acima da experiência de leitura inteira, como uma
+ferramenta sempre à mão. É o componente com maior peso estratégico do
+produto: não é navegação, é o método de raciocínio do próprio Guia,
+disponível no momento exato da dúvida, sem o médico precisar lembrar dele
+de memória.
+
+### Anatomia
+
+**Botão (FAB)**
+- Círculo de 56×56, fixo em `position: fixed`, `bottom` e `right` calculados
+  a partir da *safe area* do iPhone (`env(safe-area-inset-bottom)`), somados
+  à altura da tab bar (74px) + 16px de respiro — o FAB nunca sobrepõe nem
+  encosta na navegação inferior.
+- Fundo `--lav-500`, ícone outline branco (nunca emoji — ver §8 do design
+  system), `shadow-3` para parecer "pousado" acima do conteúdo.
+- Ícone: cérebro em linha (estilo Lucide/SF Symbols, `stroke-width` 2,
+  pontas arredondadas) — não usar o emoji 🧠, que destoaria do restante da
+  iconografia de interface do produto.
+- Estado de toque: `scale(.94)` + sombra reduzida para `shadow-2`.
+- Visível durante a leitura de qualquer Tema. Não aparece sobre telas de
+  lista (Índice, Busca, Perfil) — lá a ferramenta de raciocínio não é o
+  problema que o usuário está resolvendo naquele momento.
+
+**Bottom Sheet**
+- Altura de 50–60% da tela, cantos superiores em `--radius-xl` (28px),
+  fundo `--bg-base`, `shadow-3` intensificado, backdrop escurecido
+  (`rgba(28,27,31,.32)`) atrás.
+- *Grabber* (pequena barra horizontal, 36×4, `--ink-100`) centralizado no
+  topo — sinaliza arrastável mesmo sem instrução textual.
+- Título: **"Qual é o próximo passo?"** (Título 22/28·700). Esta é a
+  pergunta-âncora do produto inteiro, não um rótulo de tela — por isso o
+  título do sheet é sempre este, nunca contextualizado por Tema.
+- Subtítulo: "Antes de decidir qualquer conduta, passe por estas cinco
+  perguntas." (Body, `--ink-500`).
+- Checklist de 5 perguntas, cada uma uma linha tocável com círculo de
+  marcação (vazio → preenchido `--lav-500` com check ao tocar — o estado
+  marcado é local à sessão de leitura, não precisa persistir):
+  1. O exame foi realizado no momento certo?
+  2. Esse achado realmente muda minha conduta?
+  3. Qual é o próximo passo?
+  4. Como vou explicar isso para a paciente?
+  5. Há necessidade de compartilhar o cuidado ou encaminhar para Medicina Fetal?
+- Rodapé: botão discreto (texto, sem preenchimento) **"Fechar e voltar ao
+  tema"** — deliberadamente não é um botão de ação primária (sem `--lav-500`
+  de fundo): fechar o sheet é sempre a saída natural, nunca uma decisão que
+  precise de destaque.
+
+### Interação (deve parecer nativa do iPhone)
+
+- Abrir: sheet sobe de baixo com spring leve (`--ease-standard`,
+  ~`--dur-slow`), backdrop cresce em opacidade junto.
+- Fechar por: (a) toque no backdrop, (b) toque em "Fechar e voltar ao
+  tema", (c) arrastar o sheet para baixo a partir do grabber ou do próprio
+  conteúdo — abaixo de um limiar de distância/velocidade o sheet volta à
+  posição original (rubber-band), acima do limiar ele fecha seguindo o
+  gesto.
+- Nunca bloqueia com um modal de tela cheia — o Tema por trás continua
+  parcialmente visível (dimmed), reforçando que o usuário está "saindo por
+  um instante para pensar", não trocando de contexto.
+
+### Por que este componente é diferente de todos os outros
+
+Todo o resto da biblioteca existe para apresentar conteúdo de um Tema
+específico. O `RaciocinioFAB` existe para o momento em que o conteúdo do
+Tema **não é suficiente sozinho** — quando o médico precisa reorganizar o
+próprio raciocínio antes de agir. Por isso ele é global e não fica dentro
+do template de página: a dúvida não respeita a estrutura de um Tema.
+
 ## Anatomia base — `InfoBlock`
 
 ```
