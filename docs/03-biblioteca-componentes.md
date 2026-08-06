@@ -42,39 +42,43 @@ de memória.
   título do sheet é sempre este, nunca contextualizado por Tema.
 - Subtítulo: "Siga o fluxo abaixo antes de decidir qualquer conduta." (Body,
   `--ink-500`).
-- **Fluxograma de decisão** (não é mais uma lista/checklist — decisão de UX
-  revisada: um checklist plano não comunica que a segunda metade do
-  raciocínio depende da resposta da primeira pergunta; o fluxograma torna
-  essa dependência visível):
+- **Fluxograma de raciocínio** (não é lista/checklist nem árvore de decisão
+  com ramos — decisão de UX revisada duas vezes: primeiro trocamos o
+  checklist plano por um fluxograma com ramificação SIM/NÃO, depois
+  simplificamos para uma sequência linear só de leitura, porque quadrados
+  de marcação e botões de ramo comunicavam "lista de tarefas a cumprir", e
+  o objetivo aqui é comunicar raciocínio clínico, não um checklist disfarçado):
   ```
-  Laudo
-    ↓
-  Isso muda minha conduta?
-    ↓
-  SIM → Próximo passo      NÃO → Acompanhar
-    ↓                         ↓
-    └──────────┬──────────────┘
-               ↓
-        Como explicar?
-               ↓
-          Encaminhar?
+  📄 Recebi um laudo
+        ↓
+  📅 O exame foi realizado no momento certo?
+        ↓
+  ⚠️ Isso muda minha conduta?
+        ↓
+  💬 Como vou explicar isso para a paciente?
+        ↓
+  🤝 Preciso compartilhar o cuidado?
+        ↓
+  ✅ Voltar ao "Próximo passo" desta página
   ```
-  - **Laudo**: rótulo de contexto (pílula neutra, `--bg-sunken`), não
-    interativo — âncora visual de onde o raciocínio começa.
-  - **Isso muda minha conduta?**: nó de decisão (tint `--lav-100`, borda
-    `--lav-300`), não interativo por si — a resposta é dada tocando em um
-    dos dois ramos abaixo.
-  - **Ramos SIM/NÃO**: dois botões lado a lado, conectados ao nó de decisão
-    por linhas curvas (SVG). Tocar em um ramo o marca como selecionado
-    (`--ok-fg` para SIM, neutro para NÃO), esmaece o outro ramo e destaca a
-    linha correspondente em `--lav-500` — visualiza o caminho percorrido.
-    Tocar novamente desmarca. Mutuamente exclusivo.
-  - **Como explicar?** e **Encaminhar?**: nós finais, comuns aos dois ramos
-    (o fluxo converge de volta a uma única linha vertical). Cada um é uma
-    linha tocável com caixa de marcação, mesmo padrão de toque do
-    checklist anterior — estado local à sessão de leitura, não persiste.
-    **Encaminhar?** usa o acento de urgência (`--danger-fg`/`--danger-bg`),
-    coerente com o uso desse acento no bloco 🚩 Quando encaminhar.
+  - A pergunta sobre o **momento do exame** vem logo após o laudo,
+    propositalmente antes de qualquer pergunta que já pressuponha
+    interpretar o achado — não faz sentido decidir se algo "muda a
+    conduta" antes de validar se o exame em si foi feito na hora certa.
+  - Cada nó é apenas texto com um emoji de identidade (sem cor de fundo
+    diferenciada, sem borda de ênfase) — nenhum nó é mais ou menos
+    "importante" visualmente que outro, todos têm o mesmo peso porque
+    fazem parte da mesma linha de raciocínio.
+  - **Nenhum nó é marcável.** Não há caixa de seleção, não há estado de
+    "concluído" — o médico lê a sequência, não a preenche.
+  - **Nó final** (`✅ Voltar ao "Próximo passo" desta página`) é o único
+    elemento acionável do fluxo: um botão cheio (`--lav-500`), não um
+    texto. Ao tocar, fecha o sheet e rola a página do Tema até o bloco
+    ✅ Qual é o próximo passo? (com um pulso breve de destaque no bloco) —
+    o fluxo não responde a pergunta por dentro do sheet, ele devolve o
+    médico para a resposta que já existe no conteúdo do Tema. Reutiliza o
+    mesmo emoji ✅ do bloco de destino, de propósito, para o olho associar
+    o CTA ao lugar para onde ele leva antes mesmo de ler o texto.
 - Rodapé: botão discreto (texto, sem preenchimento) **"Fechar e voltar ao
   tema"** — deliberadamente não é um botão de ação primária (sem `--lav-500`
   de fundo): fechar o sheet é sempre a saída natural, nunca uma decisão que

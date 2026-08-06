@@ -100,8 +100,9 @@ cabeçalho que abre um overlay full-screen (modelo cmd-K/Spotlight), porque busc
 Existe uma terceira camada, além das telas e da navegação entre elas: um
 botão flutuante (FAB) fixo durante toda a leitura de um Tema, que abre o
 método de raciocínio do Guia — a pergunta **"Qual é o próximo passo?"**,
-como um fluxograma de decisão (Laudo → muda a conduta? → próximo passo ou
-acompanhar → como explicar → encaminhar) — sem exigir que o médico navegue
+como um fluxograma linear de leitura (recebi um laudo → exame no momento
+certo? → muda a conduta? → como explicar? → compartilhar o cuidado? →
+voltar ao Próximo passo da página) — sem exigir que o médico navegue
 para outro lugar ou lembre do método de cor. Ver `RaciocinioFAB` em
 `03-biblioteca-componentes.md`. Esta camada não é navegação nem conteúdo de
 Tema: é a "voz" do produto, sempre acessível no momento da dúvida.

@@ -33,7 +33,7 @@ estética.
 | **Poluição visual** | Média — overlay permanente, mitigado pelo tamanho (56px) e por sumir nas telas de lista. | Média — não sobrepõe nada, mas disputa atenção com 🎯 Essencial logo no topo. | Baixa — ícone de 32px no cabeçalho, mesmo padrão do botão de busca já usado no Índice. |
 | **Experiência no iPhone** | Alta — padrão nativo reconhecível, thumb-friendly, respeita safe-area, não conflita com a tab bar. | Média — accordion é nativo, mas não resolve o caso de uso real (dúvida no meio da consulta). | Média — abrir sheet por ícone de cabeçalho é nativo, mas só funciona bem com cabeçalho sticky. |
 | **Consistência com design premium** | Alta — já usa ícone outline (não emoji), sombra suave, acento único, seguindo a própria regra do design system (§8 Iconografia). | Alta — tom "quiet", combina com a referência Stripe Docs/Notion do design system. | Baixa — o emoji 🧠 pedido para o cabeçalho contraria a própria regra do design system: interface = ícone outline fino, emoji = só identidade de bloco de conteúdo. |
-| **Frequência de uso esperada** | Alta — desenhado como camada global para uso repetido a qualquer momento da leitura. | Baixa — a fricção de rolar para cima desestimula reabrir o checklist mais de uma vez na mesma leitura. | Média — aceitável no início da leitura, menos confiável para reconsultar no meio, sem header sticky. |
+| **Frequência de uso esperada** | Alta — desenhado como camada global para uso repetido a qualquer momento da leitura. | Baixa — a fricção de rolar para cima desestimula reabrir o fluxo de raciocínio mais de uma vez na mesma leitura. | Média — aceitável no início da leitura, menos confiável para reconsultar no meio, sem header sticky. |
 
 ## Recomendação: Opção A — Botão flutuante (FAB)
 
