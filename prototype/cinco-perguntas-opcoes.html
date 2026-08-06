@@ -39,7 +39,7 @@ button,input{font-family:inherit;}
 .demo-panel{display:none;}
 .demo-panel.active{display:block;animation:fade .25s var(--ease);}
 .phone-row{display:flex;gap:28px;flex-wrap:wrap;justify-content:center;align-items:flex-start;}
-.phone-col{display:flex;flex-direction:column;align-items:center;gap:12px;max-width:390px;}
+.phone-col{display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0;max-width:390px;}
 .phone-col h3{font-size:14px;font-weight:700;color:var(--ink-900);text-align:center;}
 .phone-col .tag-row{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;}
 .mini-tag{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:99px;background:var(--bg-sunken);color:var(--ink-500);}
@@ -152,7 +152,7 @@ button,input{font-family:inherit;}
 .raciocinio-sheet.open{transform:translateY(0);}
 .raciocinio-sheet{transition:transform .32s var(--ease);}
 .sheet-grabber{width:36px;height:4px;border-radius:99px;background:var(--ink-100);margin:10px auto 4px;flex-shrink:0;}
-.sheet-content{padding:8px 22px 22px;overflow-y:auto;flex:1;}
+.sheet-content{padding:8px 22px 22px;overflow-y:auto;flex:1;touch-action:pan-y;-webkit-overflow-scrolling:touch;}
 .sheet-title{font-size:22px;line-height:28px;font-weight:700;margin-top:8px;}
 .sheet-content .sheet-subtitle{margin-top:6px;font-size:14px;}
 .sheet-content .sheet-checklist{margin-top:18px;}
@@ -327,7 +327,9 @@ const anchors = [
   ['blk-essencial','Essencial'],['blk-erro','Erro comum'],['blk-passo','Próximo passo'],
   ['blk-explicar','Explicar'],['blk-aula','Aula'],['blk-ref','Referências'],
 ];
-const anchorRailHTML = `<div class="anchor-rail">${anchors.map(([id,label],i)=>`<button class="anchor-chip${i===0?' current':''}" data-target="${id}">${label}</button>`).join('')}</div>`;
+function anchorRailHTML(suffix){
+  return `<div class="anchor-rail">${anchors.map(([id,label],i)=>`<button class="anchor-chip${i===0?' current':''}" data-target="${id}-${suffix}">${label}</button>`).join('')}</div>`;
+}
 
 const checklistHTML = `
   <label class="check-row"><span class="check-mark"></span><span class="check-text">O exame foi realizado no momento certo?</span></label>
@@ -337,25 +339,25 @@ const checklistHTML = `
   <label class="check-row"><span class="check-mark"></span><span class="check-text">Há necessidade de compartilhar o cuidado ou encaminhar para Medicina Fetal?</span></label>
 `;
 
-function blocksHTML(){
+function blocksHTML(suffix){
   return `
-<div class="block b-essencial" id="blk-essencial"><div class="block-head"><div class="chip">🎯</div><div class="eyebrow">O Essencial</div></div>
+<div class="block b-essencial" id="blk-essencial-${suffix}"><div class="block-head"><div class="chip">🎯</div><div class="eyebrow">O Essencial</div></div>
 <div class="block-body">Use a busca ou o índice por módulo. Todo tema segue sempre a mesma ordem de blocos — em segundos você chega no essencial, no próximo passo e no que dizer à paciente.</div></div>
 
-<div class="block b-erro" id="blk-erro"><div class="block-head"><div class="chip">⚠️</div><div class="eyebrow">Erro comum</div></div>
+<div class="block b-erro" id="blk-erro-${suffix}"><div class="block-head"><div class="chip">⚠️</div><div class="eyebrow">Erro comum</div></div>
 <div class="block-body">Tentar ler o Guia como um livro, do início ao fim. Ele foi feito para consulta no momento da dúvida, não para estudo prévio.</div></div>
 
-<div class="block b-passo" id="blk-passo"><div class="block-head"><div class="chip">✅</div><div class="eyebrow">Qual é o próximo passo?</div></div>
+<div class="block b-passo" id="blk-passo-${suffix}"><div class="block-head"><div class="chip">✅</div><div class="eyebrow">Qual é o próximo passo?</div></div>
 <div class="block-body"><ol><li>Abra a busca rápida.</li><li>Digite a dúvida com suas palavras.</li><li>Toque no tema mais próximo do que procura.</li></ol></div></div>
 
-<div class="block b-explicar" id="blk-explicar"><div class="block-head"><div class="chip">💬</div><div class="eyebrow">Como explicar</div></div>
+<div class="block b-explicar" id="blk-explicar-${suffix}"><div class="block-head"><div class="chip">💬</div><div class="eyebrow">Como explicar</div></div>
 <div class="block-body">"Este aplicativo é meu guia de consulta rápida — me dá alguns segundos para eu ter certeza do que vou te explicar."</div></div>
 
-<div class="block b-aula" id="blk-aula"><div class="block-head"><div class="chip">🎥</div><div class="eyebrow">Aula Express</div></div>
+<div class="block b-aula" id="blk-aula-${suffix}"><div class="block-head"><div class="chip">🎥</div><div class="eyebrow">Aula Express</div></div>
 <div class="block-body">Como usar o Guia em 90 segundos</div>
 <div class="aula-media"><div class="aula-play">▶</div><div class="aula-meta">1:32 · protegido por login</div><button class="aula-btn">Assistir</button></div></div>
 
-<div class="block b-ref" id="blk-ref"><div class="block-head"><div class="chip">📚</div><div class="eyebrow">Referências</div></div>
+<div class="block b-ref" id="blk-ref-${suffix}"><div class="block-head"><div class="chip">📚</div><div class="eyebrow">Referências</div></div>
 <div class="block-body" style="color:var(--ink-500)">Ver referências (1) ⌄</div></div>
 
 <div class="art-footer">
@@ -376,15 +378,15 @@ function headerHTML(iconBtn){
 /* ---- Variante A: FAB (acesso fica fora do fluxo de scroll, no phone-screen) ---- */
 document.querySelector('[data-variant="a"]').innerHTML = `
 ${headerHTML()}
-${anchorRailHTML}
+${anchorRailHTML('a')}
 <h1 class="art-title">Como aproveitar este Guia no dia a dia da consulta?</h1>
-${blocksHTML()}
+${blocksHTML('a')}
 `;
 
 /* ---- Variante B: card recolhido, expande inline ---- */
 document.querySelector('[data-variant="b"]').innerHTML = `
 ${headerHTML()}
-${anchorRailHTML}
+${anchorRailHTML('b')}
 <h1 class="art-title">Como aproveitar este Guia no dia a dia da consulta?</h1>
 <div class="raciocinio-card" id="raciocinio-card">
   <div class="raciocinio-card-head" id="raciocinio-card-head">
@@ -402,7 +404,7 @@ ${anchorRailHTML}
     </div>
   </div>
 </div>
-${blocksHTML()}
+${blocksHTML('b')}
 `;
 document.getElementById('raciocinio-card-head').addEventListener('click',()=>{
   document.getElementById('raciocinio-card').classList.toggle('open');
@@ -411,9 +413,9 @@ document.getElementById('raciocinio-card-head').addEventListener('click',()=>{
 /* ---- Variante C: ícone no cabeçalho, abre sheet global do painel ---- */
 document.querySelector('[data-variant="c"]').innerHTML = `
 ${headerHTML('<button class="header-icon-btn" aria-label="Abrir método de raciocínio rápido" data-open-sheet>🧠</button>')}
-${anchorRailHTML}
+${anchorRailHTML('c')}
 <h1 class="art-title">Como aproveitar este Guia no dia a dia da consulta?</h1>
-${blocksHTML()}
+${blocksHTML('c')}
 `;
 
 /* ---- populate checklists (Opções B e C — não alteradas) ---- */
@@ -447,7 +449,7 @@ document.querySelectorAll('[data-flow-cta]').forEach(btn=>{
     const screen = btn.closest('.phone-screen');
     screen.querySelector('.sheet-backdrop').classList.remove('open');
     screen.querySelector('.raciocinio-sheet').classList.remove('open');
-    const target = screen.querySelector('#blk-passo');
+    const target = screen.querySelector('#blk-passo-a');
     if(target){
       setTimeout(()=>{
         target.scrollIntoView({behavior:'smooth', block:'start'});

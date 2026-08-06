@@ -39,7 +39,7 @@ button,input{font-family:inherit;}
 .demo-panel{display:none;}
 .demo-panel.active{display:block;animation:fade .25s var(--ease);}
 .phone-row{display:flex;gap:28px;flex-wrap:wrap;justify-content:center;}
-.phone-col{display:flex;flex-direction:column;align-items:center;gap:12px;}
+.phone-col{display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0;max-width:390px;}
 .phone-col h3{font-size:13px;font-weight:700;color:var(--ink-700);}
 @keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
 
@@ -133,12 +133,12 @@ button,input{font-family:inherit;}
 .sheet-backdrop{position:absolute;inset:0;background:rgba(28,27,31,.32);opacity:0;pointer-events:none;transition:opacity .28s var(--ease);z-index:5;}
 .sheet-backdrop.open{opacity:1;pointer-events:auto;}
 
-.raciocinio-sheet{position:absolute;left:0;right:0;bottom:0;height:58%;background:var(--bg-base);border-radius:var(--radius-xl) var(--radius-xl) 0 0;box-shadow:var(--shadow-3);transform:translateY(100%);z-index:6;display:flex;flex-direction:column;touch-action:none;}
+.raciocinio-sheet{position:absolute;left:0;right:0;bottom:0;height:58%;background:var(--bg-base);border-radius:var(--radius-xl) var(--radius-xl) 0 0;box-shadow:var(--shadow-3);transform:translateY(100%);z-index:6;display:flex;flex-direction:column;}
 .raciocinio-sheet.open{transform:translateY(0);}
 .raciocinio-sheet.dragging{transition:none;}
 .raciocinio-sheet:not(.dragging){transition:transform .32s var(--ease);}
-.sheet-grabber{width:36px;height:4px;border-radius:99px;background:var(--ink-100);margin:10px auto 4px;flex-shrink:0;}
-.sheet-content{padding:8px 22px 22px;overflow-y:auto;flex:1;}
+.sheet-grabber{width:36px;height:4px;border-radius:99px;background:var(--ink-100);margin:10px auto 4px;flex-shrink:0;touch-action:none;}
+.sheet-content{padding:8px 22px 22px;overflow-y:auto;flex:1;touch-action:pan-y;-webkit-overflow-scrolling:touch;}
 .sheet-title{font-size:22px;line-height:28px;font-weight:700;margin-top:8px;}
 .sheet-subtitle{font-size:14px;line-height:20px;color:var(--ink-500);margin-top:6px;}
 /* ---------- fluxograma de raciocínio (dentro do RaciocinioSheet) ----------
@@ -189,7 +189,7 @@ button,input{font-family:inherit;}
 .result-row mark{background:none;color:var(--lav-700);font-weight:700;}
 
 .section-label{font-size:11px;font-weight:700;color:var(--ink-300);text-transform:uppercase;letter-spacing:.06em;margin:28px 0 10px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;}
 .swatch{border-radius:14px;padding:14px;height:84px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:var(--shadow-1);font-size:11px;font-weight:700;}
 .swatch span{display:block;font-weight:500;opacity:.75;font-size:10px;}
 .card-doc{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-2);padding:24px;margin-bottom:20px;}
