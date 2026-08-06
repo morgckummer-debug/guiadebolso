@@ -40,16 +40,45 @@ de memória.
 - Título: **"Qual é o próximo passo?"** (Título 22/28·700). Esta é a
   pergunta-âncora do produto inteiro, não um rótulo de tela — por isso o
   título do sheet é sempre este, nunca contextualizado por Tema.
-- Subtítulo: "Antes de decidir qualquer conduta, passe por estas cinco
-  perguntas." (Body, `--ink-500`).
-- Checklist de 5 perguntas, cada uma uma linha tocável com círculo de
-  marcação (vazio → preenchido `--lav-500` com check ao tocar — o estado
-  marcado é local à sessão de leitura, não precisa persistir):
-  1. O exame foi realizado no momento certo?
-  2. Esse achado realmente muda minha conduta?
-  3. Qual é o próximo passo?
-  4. Como vou explicar isso para a paciente?
-  5. Há necessidade de compartilhar o cuidado ou encaminhar para Medicina Fetal?
+- Subtítulo: "Siga o fluxo abaixo antes de decidir qualquer conduta." (Body,
+  `--ink-500`).
+- **Fluxograma de raciocínio** (não é lista/checklist nem árvore de decisão
+  com ramos — decisão de UX revisada duas vezes: primeiro trocamos o
+  checklist plano por um fluxograma com ramificação SIM/NÃO, depois
+  simplificamos para uma sequência linear só de leitura, porque quadrados
+  de marcação e botões de ramo comunicavam "lista de tarefas a cumprir", e
+  o objetivo aqui é comunicar raciocínio clínico, não um checklist disfarçado):
+  ```
+  📄 Recebi um laudo
+        ↓
+  📅 O exame foi realizado no momento certo?
+        ↓
+  ⚠️ Isso muda minha conduta?
+        ↓
+  💬 Como vou explicar isso para a paciente?
+        ↓
+  🤝 Preciso compartilhar o cuidado?
+        ↓
+  ✅ Voltar ao "Próximo passo" desta página
+  ```
+  - A pergunta sobre o **momento do exame** vem logo após o laudo,
+    propositalmente antes de qualquer pergunta que já pressuponha
+    interpretar o achado — não faz sentido decidir se algo "muda a
+    conduta" antes de validar se o exame em si foi feito na hora certa.
+  - Cada nó é apenas texto com um emoji de identidade (sem cor de fundo
+    diferenciada, sem borda de ênfase) — nenhum nó é mais ou menos
+    "importante" visualmente que outro, todos têm o mesmo peso porque
+    fazem parte da mesma linha de raciocínio.
+  - **Nenhum nó é marcável.** Não há caixa de seleção, não há estado de
+    "concluído" — o médico lê a sequência, não a preenche.
+  - **Nó final** (`✅ Voltar ao "Próximo passo" desta página`) é o único
+    elemento acionável do fluxo: um botão cheio (`--lav-500`), não um
+    texto. Ao tocar, fecha o sheet e rola a página do Tema até o bloco
+    ✅ Qual é o próximo passo? (com um pulso breve de destaque no bloco) —
+    o fluxo não responde a pergunta por dentro do sheet, ele devolve o
+    médico para a resposta que já existe no conteúdo do Tema. Reutiliza o
+    mesmo emoji ✅ do bloco de destino, de propósito, para o olho associar
+    o CTA ao lugar para onde ele leva antes mesmo de ler o texto.
 - Rodapé: botão discreto (texto, sem preenchimento) **"Fechar e voltar ao
   tema"** — deliberadamente não é um botão de ação primária (sem `--lav-500`
   de fundo): fechar o sheet é sempre a saída natural, nunca uma decisão que
