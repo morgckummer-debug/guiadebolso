@@ -74,6 +74,9 @@ button,input{font-family:inherit;}
 .eyebrow{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
 .block-body{font-size:14.5px;line-height:21px;color:var(--ink-900);}
 .block-body ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;}
+.block-body ul{list-style:none;margin:8px 0;padding:0;display:flex;flex-direction:column;gap:5px;}
+.block-body ul li{padding-left:16px;position:relative;}
+.block-body ul li:before{content:"•";position:absolute;left:2px;top:0;color:var(--lav-500);font-weight:700;}
 
 .b-essencial{background:linear-gradient(180deg,#fff,var(--lav-100));border:1px solid var(--lav-300);}
 .b-essencial .chip{background:var(--lav-500);color:#fff;}
@@ -132,7 +135,7 @@ button,input{font-family:inherit;}
 .b-veja .eyebrow{color:var(--ink-700);}
 .veja-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-top:1px solid var(--ink-100);font-size:14px;font-weight:600;}
 .veja-item:first-child{border-top:none;}
-.chip-fact{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--lav-300);color:var(--lav-700);border-radius:99px;padding:8px 14px;font-size:13px;font-weight:600;margin-bottom:14px;background:#fff;}
+.chip-fact{display:flex;align-items:flex-start;gap:8px;border:1.5px solid var(--lav-300);color:var(--lav-700);border-radius:20px;padding:10px 16px;font-size:13px;line-height:19px;font-weight:600;margin-bottom:14px;background:#fff;}
 .b-alerta{background:var(--danger-bg);border:2px solid var(--danger-fg);}
 .b-alerta .chip{background:#fff;color:var(--danger-fg);}
 .b-alerta .eyebrow{color:var(--danger-fg);}
@@ -396,7 +399,7 @@ const TEMAS = [
     titulo:'Não apareceu embrião. E agora?',
     modulo:'trimestre1',
     tags:['gestação inicial','saco gestacional','embrião','prognóstico indeterminado','usg transvaginal','gestação anembrionada','viabilidade incerta'],
-    essencial:'Não ver embrião não fecha diagnóstico sozinho. Perda confirmada: SG >25mm sem embrião, SG >20mm sem vesícula vitelínica, ou embrião >7mm sem BCF. Fora isso, é "gravidez de prognóstico indeterminado" — repita o USG antes de definir conduta.',
+    essencial:'Não ver embrião não fecha diagnóstico sozinho. Perda confirmada quando:<ul><li>SG >25mm sem embrião</li><li>SG >20mm sem vesícula vitelínica</li><li>Embrião >7mm sem BCF</li></ul>Fora isso, é "gravidez de prognóstico indeterminado" — repita o USG antes de definir conduta.',
     erro:'Fechar diagnóstico de perda gestacional precoce (ou gestação anembrionada) numa única ultrassonografia, sem checar se algum critério objetivo foi atingido — risco de indicar conduta numa gravidez de prognóstico ainda indeterminado.',
     passo:{tipo:'checklist', itens:[
       'Verifique se bate algum critério de diagnóstico definitivo (lista completa abaixo) — se sim, pode fechar o diagnóstico nesta consulta.',
