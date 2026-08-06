@@ -110,6 +110,23 @@ button,input{font-family:inherit;}
 .ref-toggle{display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
 .ref-list{display:none;margin-top:10px;font-size:13px;color:var(--ink-500);padding-left:16px;}
 .ref-list.open{display:block;}
+
+/* ---------- critérios completos (referência compacta, colapsada) ----------
+   Mesmo padrão de toque do bloco Referências — usado quando um Próximo
+   passo depende de limiares numéricos que não cabem numa frase corrida
+   sem virar parede de texto. */
+.crit-toggle{display:flex;justify-content:space-between;align-items:center;cursor:pointer;margin-top:14px;padding-top:12px;border-top:1px dashed var(--ink-100);font-size:12.5px;font-weight:700;color:var(--ok-fg);}
+.crit-chevron{display:inline-block;transition:transform .2s var(--ease);}
+.crit-toggle.open .crit-chevron{transform:rotate(180deg);}
+.crit-panel{display:none;margin-top:8px;}
+.crit-panel.open{display:block;}
+.crit-group{margin-top:14px;}
+.crit-group:first-child{margin-top:0;}
+.crit-group-title{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-500);margin-bottom:4px;}
+.crit-row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:7px 0;border-top:1px solid var(--ink-100);font-size:13px;}
+.crit-row:first-of-type{border-top:none;}
+.crit-row .crit-label{color:var(--ink-700);}
+.crit-row .crit-value{color:var(--ink-900);font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;}
 .b-veja{background:transparent;box-shadow:none;border:1px solid var(--ink-100);}
 .b-veja .chip{background:var(--bg-sunken);color:var(--ink-700);}
 .b-veja .eyebrow{color:var(--ink-700);}
@@ -382,11 +399,29 @@ const TEMAS = [
     essencial:'Não ver embrião não fecha diagnóstico sozinho. Perda confirmada: SG >25mm sem embrião, SG >20mm sem vesícula vitelínica, ou embrião >7mm sem BCF. Fora isso, é "gravidez de prognóstico indeterminado" — repita o USG antes de definir conduta.',
     erro:'Fechar diagnóstico de perda gestacional precoce (ou gestação anembrionada) numa única ultrassonografia, sem checar se algum critério objetivo foi atingido — risco de indicar conduta numa gravidez de prognóstico ainda indeterminado.',
     passo:{tipo:'checklist', itens:[
-      'Confirme se algum critério fecha diagnóstico na hora: SG >25mm sem embrião, SG >20mm sem vesícula vitelínica, ou embrião >7mm sem BCF.',
-      'Se nenhum bater, mas houver embrião 5–7mm sem BCF, SG 16–24mm sem embrião, âmnio vazio ou vesícula vitelínica >7mm: é gravidez de prognóstico indeterminado — reavalie, sem fechar diagnóstico ainda.',
-      'Reavaliação: se SG sem vesícula vitelínica, repita em 7–13 dias (ainda indeterminado) ou aguarde 14 dias para fechar gestação anembrionada; se SG com vesícula vitelínica, repita em 7–10 dias (indeterminado) ou 11 dias (fecha anembrionada).',
-      'Correlacione sempre com a idade gestacional mais confiável disponível (DUM segura ou USG datador prévio) antes de definir qualquer conduta.',
+      'Verifique se bate algum critério de diagnóstico definitivo (lista completa abaixo) — se sim, pode fechar o diagnóstico nesta consulta.',
+      'Se não bater nenhum, é gravidez de prognóstico indeterminado — reavalie no prazo certo (lista completa abaixo), sem fechar diagnóstico ainda.',
+      'Sempre cruze com a idade gestacional mais confiável disponível (DUM segura ou USG datador prévio) antes de definir qualquer conduta.',
     ]},
+    criterios:[
+      {titulo:'Diagnóstico definitivo (perda confirmada)', itens:[
+        ['SG sem embrião','>25mm'],
+        ['SG sem vesícula vitelínica','>20mm'],
+        ['Embrião sem BCF','>7mm'],
+      ]},
+      {titulo:'Prognóstico indeterminado (reavaliar)', itens:[
+        ['Embrião sem BCF','5–7mm'],
+        ['SG sem embrião','16–24mm'],
+        ['Âmnio vazio','presente'],
+        ['Vesícula vitelínica','>7mm'],
+      ]},
+      {titulo:'Prazo até nova reavaliação', itens:[
+        ['SG sem VV, ainda indeterminado','7–13 dias'],
+        ['SG sem VV, fecha anembrionada','14 dias'],
+        ['SG com VV, ainda indeterminado','7–10 dias'],
+        ['SG com VV, fecha anembrionada','11 dias'],
+      ]},
+    ],
     explicar:'"Ainda é cedo para ter certeza. Vou pedir para repetirmos esse exame em alguns dias — isso não significa que algo está errado, é o tempo mínimo necessário para o embrião ficar visível com segurança."',
     pensando:'Será que eu já perdi a gestação e ninguém está me dizendo? — a espera pelo reexame gera muita ansiedade, mesmo quando é a conduta correta.',
     confianca:'Explicar o motivo técnico da espera (por que não dá para saber ainda), em vez de só dizer "vamos repetir o exame", transforma incerteza em prazo claro e critério objetivo — isso reduz a ansiedade percebida.',
@@ -490,9 +525,24 @@ function renderTemaScreen(id){
 <div class="block b-alerta" id="blk-encaminhar"><div class="block-head"><div class="chip">🚩</div><div class="eyebrow">Quando encaminhar</div></div>
 <div class="block-body">${t.encaminhar}</div></div>` : '';
 
-  const passoBody = t.passo.tipo==='checklist'
+  const passoList = t.passo.tipo==='checklist'
     ? `<ol>${t.passo.itens.map(i=>`<li>${i}</li>`).join('')}</ol>`
     : `<p>${t.passo.texto}</p>`;
+
+  const critCount = (t.criterios||[]).reduce((n,g)=>n+g.itens.length, 0);
+  const critHTML = t.criterios ? `
+<div class="crit-toggle" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
+  <span>Ver critérios completos (${critCount})</span><span class="crit-chevron">⌄</span>
+</div>
+<div class="crit-panel">
+  ${t.criterios.map(g=>`
+  <div class="crit-group">
+    <div class="crit-group-title">${g.titulo}</div>
+    ${g.itens.map(([label,valor])=>`<div class="crit-row"><span class="crit-label">${label}</span><span class="crit-value">${valor}</span></div>`).join('')}
+  </div>`).join('')}
+</div>` : '';
+
+  const passoBody = passoList + critHTML;
 
   const aulaMeta = t.aula.pendente
     ? `<div class="aula-meta">Gravação pendente</div><button class="aula-btn" disabled style="opacity:.5;cursor:default">Em breve</button>`
