@@ -98,11 +98,21 @@ cabeçalho que abre um overlay full-screen (modelo cmd-K/Spotlight), porque busc
 ## 4. Template de página (regra fixa)
 
 Todo Tema renderiza o mesmo esqueleto, na mesma ordem, controlado por um único
-componente `GuiaArticleTemplate` (ver biblioteca de componentes). Isso é o que
-garante consistência entre 3 propostas visuais diferentes (§ Propostas de
-Layout) — a ordem dos blocos nunca muda, só a pele muda.
+componente `GuiaArticleTemplate` (ver biblioteca de componentes).
+
+**Decisão de layout (validada):** entre as 3 propostas visuais avaliadas, foi
+escolhida a proposta de **Índice Fixo** — um trilho horizontal de âncoras logo
+abaixo do cabeçalho, que permite pular direto para qualquer bloco da página
+(🎯 Essencial, ⚠️ Erro comum, ✅ Próximo passo, 💬 Explicar, 🤝 Confiança,
+🎥 Aula, 📚 Referências) sem depender de rolagem. É a proposta que melhor serve
+a meta de resposta em < 10 segundos quando a dúvida do obstetra é sobre um
+bloco específico, não sobre "o essencial". O mesmo componente de trilho
+(`TrilhoDeAncoras`, ver biblioteca de componentes) é reaproveitado no Índice
+(filtro de módulo) e na Busca (chips de busca recente) — um único padrão de
+interação em vez de três desenhos diferentes.
 
 1. Cabeçalho fixo: breadcrumb do Módulo + botão voltar + progresso de leitura
+1.1. Trilho de âncoras (sticky, logo abaixo do cabeçalho)
 2. Título (pergunta) + badge de nível de urgência (se aplicável)
 3. 🎯 O Essencial
 4. ⚠️ Erro comum

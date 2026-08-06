@@ -125,22 +125,42 @@ Estado de toque (quando o card é acionável, ex. abrir referência): `scale .97
 
 ## Componentes de navegação e estrutura
 
+### `TrilhoDeAncoras` — componente de navegação adotado (ex-"Layout C")
+Trilho horizontal de chips, roláveis, fixo (`sticky`) logo abaixo do
+cabeçalho. É **um único componente reaproveitado em três contextos**, com o
+mesmo visual e a mesma mecânica de toque — isso é o que faz o padrão ser
+reconhecível em qualquer tela do app:
+
+| Contexto | O que os chips representam | Comportamento |
+|---|---|---|
+| `GuiaArticleTemplate` (Tema) | Cada bloco pulável da página (Essencial, Erro comum, Próximo passo…) | Toque rola até o bloco; o chip do bloco visível no topo fica destacado (`scroll-spy`) |
+| `IndiceModulo` (Índice) | Cada Módulo | Toque rola até a seção do Módulo na lista |
+| `BuscaRapida` (Busca) | Buscas recentes / sugeridas | Toque preenche o campo de busca com aquele termo |
+
+Regra visual única: chip inativo em `--bg-sunken` com texto `--ink-500`; chip
+ativo/atual em `--lav-500` com texto branco. Nunca mais de ~7 chips visíveis
+por vez — acima disso, prefira agrupar em vez de listar tudo.
+
 ### `GuiaArticleTemplate`
 Componente "esqueleto" que recebe os dados de um Tema e monta a sequência
-fixa de blocos automaticamente (ver `01-arquitetura-informacao.md §4`).
-Responsável por: cabeçalho com progresso de leitura, inserir blocos
-contextuais na posição certa, e renderizar rodapé de navegação.
+fixa de blocos automaticamente (ver `01-arquitetura-informacao.md §4`),
+incluindo o `TrilhoDeAncoras` logo após o cabeçalho. Responsável por:
+cabeçalho com progresso de leitura, inserir blocos contextuais na posição
+certa, e renderizar rodapé de navegação.
 
 ### `IndiceModulo`
-Lista de Módulos expansíveis → Temas. Cada linha de Tema mostra: título
-(pergunta), badge de urgência se houver, ícone de favorito. Suporta busca
-embutida no topo (filtra em tempo real, sem tela separada).
+Lista de Módulos expansíveis → Temas, com o `TrilhoDeAncoras` no topo
+filtrando/pulando para o Módulo desejado. Cada linha de Tema mostra: título
+(pergunta), ícone de favorito (preenchido a dourado quando favoritado), seta
+de navegação. Busca acessível pelo ícone no cabeçalho, não como aba própria.
 
 ### `BuscaRapida` (overlay)
 Full-screen, ativado por ícone no cabeçalho. Input grande no topo, resultados
-agrupados por Módulo, aparecem a partir de 2 caracteres digitados. Pensado
-para responder à meta de 10 segundos mesmo quando o usuário não sabe em qual
-Módulo o Tema está.
+agrupados por Módulo (tag lavanda com o nome do Módulo acima de cada
+resultado, termo buscado destacado em negrito), aparecem a partir de 2
+caracteres digitados. Estado vazio mostra o `TrilhoDeAncoras` com buscas
+recentes como chips. Pensado para responder à meta de 10 segundos mesmo
+quando o usuário não sabe em qual Módulo o Tema está.
 
 ### `NavegacaoSequencial`
 Rodapé fixo ao fim do Tema: "◀ Tema anterior" / "Voltar ao índice" / "Próximo

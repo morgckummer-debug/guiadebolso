@@ -28,17 +28,19 @@ futuro, integração com plataforma de venda/licenciamento (ex.: Kiwify).
 
 4. **Protótipo interativo (estático, sem build)** → [`prototype/index.html`](prototype/index.html)
    Abra o arquivo direto no navegador. Contém: showcase dos tokens do design
-   system, showcase dos componentes, e as **3 propostas de layout** para uma
-   mesma página, dentro de uma moldura de iPhone:
-   - **Layout A — Pilha de Cards:** cards distintos com tinta de cor por
-     tipo, ritmo vertical generoso (referência Notion).
-   - **Layout B — Fluxo Editorial:** menos "caixas", separação por borda
-     colorida e tipografia, leitura mais rápida e leve (referência Linear).
-   - **Layout C — Índice Fixo:** trilho de âncoras no topo da página que
-     permite pular direto para o bloco desejado sem rolar tudo (referência
-     Stripe Docs) — pensado especificamente para a meta de resposta em menos
-     de 10 segundos quando a dúvida não é "o essencial", e sim um bloco
-     específico (ex. só "como explicar para a paciente").
+   system, showcase dos componentes, e as 3 telas principais do app, dentro
+   de uma moldura de iPhone:
+   - **Tema** — template de página adotado (avaliamos 3 propostas de layout;
+     a de **Índice Fixo**, com um trilho de âncoras que pula direto para
+     qualquer bloco sem rolar a página, foi a escolhida — referência Stripe
+     Docs).
+   - **Índice** — mesmo componente de trilho, agora filtrando por Módulo.
+   - **Busca** — mesmo componente de trilho, agora como chips de busca
+     recente.
+
+   O trilho de âncoras (`TrilhoDeAncoras`, ver `docs/03-biblioteca-componentes.md`)
+   é um único componente reaproveitado nas 3 telas — mesmo visual, mesma
+   mecânica de toque, propósito diferente em cada contexto.
 
    O conteúdo de exemplo usado no protótipo é institucional (explica como
    usar o próprio Guia) — nenhuma linha de conteúdo clínico foi escrita
