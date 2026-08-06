@@ -30,8 +30,11 @@ futuro, integração com plataforma de venda/licenciamento (ex.: Kiwify).
    Comparação lado a lado de 3 propostas de acesso ao checklist "Qual é o
    próximo passo?" (botão flutuante, card recolhido, ícone no cabeçalho),
    contra rapidez de acesso, poluição visual, experiência no iPhone,
-   consistência premium e frequência de uso. Protótipo funcional em
-   [`prototype/cinco-perguntas-opcoes.html`](prototype/cinco-perguntas-opcoes.html).
+   consistência premium e frequência de uso. Decisão: manter o FAB
+   (`RaciocinioFAB`), já implementado em `prototype/index.html`. Protótipo
+   comparativo arquivado em
+   [`prototype/archive/cinco-perguntas-opcoes.html`](prototype/archive/cinco-perguntas-opcoes.html)
+   — mantido só como registro histórico da comparação, não é mais atualizado.
 
 5. **Protótipo interativo (estático, sem build)** → [`prototype/index.html`](prototype/index.html)
    Abra o arquivo direto no navegador. Contém: showcase dos tokens do design

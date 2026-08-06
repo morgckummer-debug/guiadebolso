@@ -6,9 +6,11 @@
 > arquitetura, sem uma comparação lado a lado registrada — este é o
 > registro dessa comparação, feita a pedido, contra duas alternativas.
 
-Protótipo interativo: [`prototype/cinco-perguntas-opcoes.html`](../prototype/cinco-perguntas-opcoes.html)
+Protótipo interativo (arquivado, só como registro — não é mais atualizado):
+[`prototype/archive/cinco-perguntas-opcoes.html`](../prototype/archive/cinco-perguntas-opcoes.html)
 (abrir direto no navegador — 3 abas, mesma tela de Tema, cada uma com o
-mecanismo de acesso funcional).
+mecanismo de acesso funcional). A implementação viva da opção escolhida
+(FAB) está em [`prototype/index.html`](../prototype/index.html).
 
 ## As três propostas avaliadas
 
