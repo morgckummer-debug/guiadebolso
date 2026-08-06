@@ -141,12 +141,38 @@ button,input{font-family:inherit;}
 .sheet-content{padding:8px 22px 22px;overflow-y:auto;flex:1;}
 .sheet-title{font-size:22px;line-height:28px;font-weight:700;margin-top:8px;}
 .sheet-subtitle{font-size:14px;line-height:20px;color:var(--ink-500);margin-top:6px;}
-.sheet-checklist{margin-top:18px;display:flex;flex-direction:column;gap:10px;}
-.check-row{display:flex;align-items:flex-start;gap:12px;background:var(--bg-subtle);border:1px solid var(--ink-100);border-radius:var(--radius-md);padding:13px 14px;cursor:pointer;}
-.check-mark{width:20px;height:20px;border-radius:6px;border:1.5px solid var(--ink-300);flex-shrink:0;margin-top:1px;position:relative;transition:background .15s var(--ease),border-color .15s var(--ease);}
-.check-row.checked .check-mark{background:var(--lav-500);border-color:var(--lav-500);}
-.check-row.checked .check-mark:after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}
-.check-text{font-size:14px;line-height:19px;color:var(--ink-900);font-weight:500;}
+/* ---------- fluxograma de decisão (dentro do RaciocinioSheet) ---------- */
+.flow{margin-top:20px;display:flex;flex-direction:column;align-items:center;}
+.flow-node{width:100%;max-width:280px;background:var(--bg-subtle);border:1px solid var(--ink-100);border-radius:var(--radius-md);padding:13px 16px;font-size:14px;font-weight:600;color:var(--ink-900);text-align:center;box-shadow:var(--shadow-1);}
+.flow-start{width:auto;border-radius:99px;padding:7px 18px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-500);background:var(--bg-sunken);box-shadow:none;}
+.flow-question{background:linear-gradient(180deg,#fff,var(--lav-100));border-color:var(--lav-300);color:var(--lav-700);}
+.flow-arrow{width:2px;height:18px;background:var(--ink-100);position:relative;flex-shrink:0;}
+.flow-arrow:after{content:"";position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--ink-300);}
+
+.flow-branch{width:100%;max-width:280px;}
+.flow-branch-lines{display:block;width:100%;height:24px;}
+.flow-branch-lines path{fill:none;stroke:var(--ink-100);stroke-width:2;transition:stroke .2s var(--ease);}
+.flow-branch-lines path.active{stroke:var(--lav-500);}
+.flow-branch-row{display:flex;gap:10px;}
+.flow-branch-opt{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:11px 8px;border-radius:var(--radius-md);border:1.5px solid var(--ink-100);background:#fff;cursor:pointer;transition:border-color .15s var(--ease),background .15s var(--ease),opacity .15s var(--ease);}
+.flow-branch-label{font-size:10px;font-weight:800;letter-spacing:.06em;color:var(--ink-300);}
+.flow-branch-outcome{font-size:12.5px;font-weight:700;color:var(--ink-700);}
+.flow-branch-opt.dim{opacity:.4;}
+.flow-branch-opt.selected[data-branch="sim"]{border-color:var(--ok-fg);background:var(--ok-bg);}
+.flow-branch-opt.selected[data-branch="sim"] .flow-branch-label,
+.flow-branch-opt.selected[data-branch="sim"] .flow-branch-outcome{color:var(--ok-fg);}
+.flow-branch-opt.selected[data-branch="nao"]{border-color:var(--ink-500);background:var(--bg-sunken);}
+.flow-branch-opt.selected[data-branch="nao"] .flow-branch-label,
+.flow-branch-opt.selected[data-branch="nao"] .flow-branch-outcome{color:var(--ink-700);}
+
+.flow-step{display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;}
+.flow-check{width:18px;height:18px;border-radius:6px;border:1.5px solid var(--ink-300);flex-shrink:0;position:relative;background:#fff;transition:background .15s var(--ease),border-color .15s var(--ease);}
+.flow-step.checked .flow-check{background:var(--lav-500);border-color:var(--lav-500);}
+.flow-step.checked .flow-check:after{content:"";position:absolute;left:5px;top:1px;width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}
+.flow-refer{border-color:var(--danger-fg);background:var(--danger-bg);color:var(--danger-fg);}
+.flow-refer .flow-check{border-color:var(--danger-fg);}
+.flow-refer.checked .flow-check{background:var(--danger-fg);border-color:var(--danger-fg);}
+
 .sheet-close-btn{margin-top:20px;width:100%;background:transparent;border:none;color:var(--ink-500);font-size:14px;font-weight:600;padding:12px;text-align:center;border-top:1px solid var(--ink-100);cursor:pointer;}
 .sheet-close-btn:active{color:var(--ink-700);}
 .tabbar-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10px;color:var(--ink-300);font-weight:600;background:none;border:none;}
@@ -296,13 +322,25 @@ button,input{font-family:inherit;}
             <div class="sheet-grabber" id="sheet-grabber"></div>
             <div class="sheet-content">
               <h2 class="sheet-title">Qual é o próximo passo?</h2>
-              <p class="sheet-subtitle">Antes de decidir qualquer conduta, passe por estas cinco perguntas.</p>
-              <div class="sheet-checklist" id="sheet-checklist">
-                <label class="check-row"><span class="check-mark"></span><span class="check-text">O exame foi realizado no momento certo?</span></label>
-                <label class="check-row"><span class="check-mark"></span><span class="check-text">Esse achado realmente muda minha conduta?</span></label>
-                <label class="check-row"><span class="check-mark"></span><span class="check-text">Qual é o próximo passo?</span></label>
-                <label class="check-row"><span class="check-mark"></span><span class="check-text">Como vou explicar isso para a paciente?</span></label>
-                <label class="check-row"><span class="check-mark"></span><span class="check-text">Há necessidade de compartilhar o cuidado ou encaminhar para Medicina Fetal?</span></label>
+              <p class="sheet-subtitle">Siga o fluxo abaixo antes de decidir qualquer conduta.</p>
+              <div class="flow" id="raciocinio-flow">
+                <div class="flow-node flow-start">Laudo</div>
+                <div class="flow-arrow"></div>
+                <div class="flow-node flow-question">Isso muda minha conduta?</div>
+                <div class="flow-branch">
+                  <svg class="flow-branch-lines" viewBox="0 0 280 24" preserveAspectRatio="none">
+                    <path data-branch-line="sim" d="M140 0 C140 12, 70 6, 70 24"/>
+                    <path data-branch-line="nao" d="M140 0 C140 12, 210 6, 210 24"/>
+                  </svg>
+                  <div class="flow-branch-row">
+                    <button class="flow-branch-opt" data-branch="sim"><span class="flow-branch-label">SIM</span><span class="flow-branch-outcome">Próximo passo</span></button>
+                    <button class="flow-branch-opt" data-branch="nao"><span class="flow-branch-label">NÃO</span><span class="flow-branch-outcome">Acompanhar</span></button>
+                  </div>
+                </div>
+                <div class="flow-arrow"></div>
+                <label class="flow-node flow-step" data-flow-step><span>Como explicar?</span><span class="flow-check"></span></label>
+                <div class="flow-arrow"></div>
+                <label class="flow-node flow-step flow-refer" data-flow-step><span>Encaminhar?</span><span class="flow-check"></span></label>
               </div>
               <button class="sheet-close-btn" id="sheet-close-btn">Fechar e voltar ao tema</button>
             </div>
@@ -477,8 +515,23 @@ temaScroll.addEventListener('scroll',()=>{
   grabber.addEventListener('pointerup', endDrag);
   grabber.addEventListener('pointercancel', endDrag);
 
-  // checklist: marcar/desmarcar, estado local à sessão de leitura
-  document.querySelectorAll('#sheet-checklist .check-row').forEach(row=>{
+  // fluxograma: seleção de ramo (SIM/NÃO) e marcação dos passos finais,
+  // estado local à sessão de leitura (não persiste)
+  const branchOpts = document.querySelectorAll('#raciocinio-flow .flow-branch-opt');
+  branchOpts.forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      const already = opt.classList.contains('selected');
+      branchOpts.forEach(o=>o.classList.remove('selected','dim'));
+      document.querySelectorAll('#raciocinio-flow [data-branch-line]').forEach(p=>p.classList.remove('active'));
+      if(!already){
+        opt.classList.add('selected');
+        branchOpts.forEach(o=>{ if(o!==opt) o.classList.add('dim'); });
+        const line = document.querySelector(`#raciocinio-flow [data-branch-line="${opt.dataset.branch}"]`);
+        if(line) line.classList.add('active');
+      }
+    });
+  });
+  document.querySelectorAll('#raciocinio-flow [data-flow-step]').forEach(row=>{
     row.addEventListener('click', ()=> row.classList.toggle('checked'));
   });
 })();

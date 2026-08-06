@@ -40,16 +40,41 @@ de memória.
 - Título: **"Qual é o próximo passo?"** (Título 22/28·700). Esta é a
   pergunta-âncora do produto inteiro, não um rótulo de tela — por isso o
   título do sheet é sempre este, nunca contextualizado por Tema.
-- Subtítulo: "Antes de decidir qualquer conduta, passe por estas cinco
-  perguntas." (Body, `--ink-500`).
-- Checklist de 5 perguntas, cada uma uma linha tocável com círculo de
-  marcação (vazio → preenchido `--lav-500` com check ao tocar — o estado
-  marcado é local à sessão de leitura, não precisa persistir):
-  1. O exame foi realizado no momento certo?
-  2. Esse achado realmente muda minha conduta?
-  3. Qual é o próximo passo?
-  4. Como vou explicar isso para a paciente?
-  5. Há necessidade de compartilhar o cuidado ou encaminhar para Medicina Fetal?
+- Subtítulo: "Siga o fluxo abaixo antes de decidir qualquer conduta." (Body,
+  `--ink-500`).
+- **Fluxograma de decisão** (não é mais uma lista/checklist — decisão de UX
+  revisada: um checklist plano não comunica que a segunda metade do
+  raciocínio depende da resposta da primeira pergunta; o fluxograma torna
+  essa dependência visível):
+  ```
+  Laudo
+    ↓
+  Isso muda minha conduta?
+    ↓
+  SIM → Próximo passo      NÃO → Acompanhar
+    ↓                         ↓
+    └──────────┬──────────────┘
+               ↓
+        Como explicar?
+               ↓
+          Encaminhar?
+  ```
+  - **Laudo**: rótulo de contexto (pílula neutra, `--bg-sunken`), não
+    interativo — âncora visual de onde o raciocínio começa.
+  - **Isso muda minha conduta?**: nó de decisão (tint `--lav-100`, borda
+    `--lav-300`), não interativo por si — a resposta é dada tocando em um
+    dos dois ramos abaixo.
+  - **Ramos SIM/NÃO**: dois botões lado a lado, conectados ao nó de decisão
+    por linhas curvas (SVG). Tocar em um ramo o marca como selecionado
+    (`--ok-fg` para SIM, neutro para NÃO), esmaece o outro ramo e destaca a
+    linha correspondente em `--lav-500` — visualiza o caminho percorrido.
+    Tocar novamente desmarca. Mutuamente exclusivo.
+  - **Como explicar?** e **Encaminhar?**: nós finais, comuns aos dois ramos
+    (o fluxo converge de volta a uma única linha vertical). Cada um é uma
+    linha tocável com caixa de marcação, mesmo padrão de toque do
+    checklist anterior — estado local à sessão de leitura, não persiste.
+    **Encaminhar?** usa o acento de urgência (`--danger-fg`/`--danger-bg`),
+    coerente com o uso desse acento no bloco 🚩 Quando encaminhar.
 - Rodapé: botão discreto (texto, sem preenchimento) **"Fechar e voltar ao
   tema"** — deliberadamente não é um botão de ação primária (sem `--lav-500`
   de fundo): fechar o sheet é sempre a saída natural, nunca uma decisão que
