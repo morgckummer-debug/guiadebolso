@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Cinco Perguntas — Comparação de Acesso (A/B/C)</title>
+<meta name="description" content="Protótipo comparativo: 3 propostas de acesso ao método das cinco perguntas (FAB, card recolhido, ícone no cabeçalho). Sem conteúdo médico." />
+<style>
+:root{
+  --bg-base:#FFFFFF; --bg-subtle:#FAFAFA; --bg-sunken:#F5F5F7;
+  --ink-900:#1C1B1F; --ink-700:#45444B; --ink-500:#6F6E76; --ink-300:#A9A8B0; --ink-100:#E7E6EA;
+  --lav-100:#F1EEFC; --lav-300:#C9C0F2; --lav-500:#8B7AE0; --lav-700:#5B4BB8;
+  --gold-100:#FBF4E6; --gold-300:#E8D9B5; --gold-500:#C6A15B; --gold-700:#9C7C3E;
+  --ok-bg:#EAF3EE; --ok-fg:#5E8A72;
+  --warn-bg:#FBF1E6; --warn-fg:#C98A46;
+  --emp-bg:#F7EAEB; --emp-fg:#B98B90;
+  --danger-bg:#FBEAE8; --danger-fg:#B85C52;
+  --radius-sm:12px; --radius-md:16px; --radius-lg:20px; --radius-xl:28px;
+  --shadow-1:0 1px 2px rgba(28,27,31,.04),0 1px 1px rgba(28,27,31,.03);
+  --shadow-2:0 6px 16px rgba(28,27,31,.07),0 2px 4px rgba(28,27,31,.04);
+  --shadow-3:0 16px 40px rgba(28,27,31,.12),0 4px 10px rgba(28,27,31,.05);
+  --ease:cubic-bezier(.22,1,.36,1);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",sans-serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--bg-subtle);color:var(--ink-900);}
+body{-webkit-font-smoothing:antialiased;}
+h1,h2,h3,p,ul{margin:0;}
+button,input{font-family:inherit;}
+
+/* ---------- shell ---------- */
+.demo-shell{max-width:1180px;margin:0 auto;padding:28px 20px 90px;}
+.demo-head{margin-bottom:20px;}
+.demo-head h1{font-size:20px;font-weight:700;}
+.demo-head p{font-size:14px;color:var(--ink-500);margin-top:6px;max-width:720px;line-height:20px;}
+.demo-tabs{display:flex;gap:6px;flex-wrap:wrap;background:var(--bg-base);padding:6px;border-radius:var(--radius-lg);box-shadow:var(--shadow-1);width:fit-content;margin-bottom:28px;}
+.demo-tab{border:none;background:transparent;padding:10px 16px;border-radius:var(--radius-md);font-size:13px;font-weight:600;color:var(--ink-500);cursor:pointer;transition:all .2s var(--ease);}
+.demo-tab.active{background:var(--lav-500);color:#fff;box-shadow:var(--shadow-1);}
+.demo-panel{display:none;}
+.demo-panel.active{display:block;animation:fade .25s var(--ease);}
+.phone-row{display:flex;gap:28px;flex-wrap:wrap;justify-content:center;align-items:flex-start;}
+.phone-col{display:flex;flex-direction:column;align-items:center;gap:12px;max-width:390px;}
+.phone-col h3{font-size:14px;font-weight:700;color:var(--ink-900);text-align:center;}
+.phone-col .tag-row{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;}
+.mini-tag{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:99px;background:var(--bg-sunken);color:var(--ink-500);}
+.mini-tag.good{background:var(--ok-bg);color:var(--ok-fg);}
+.mini-tag.warn{background:var(--warn-bg);color:var(--warn-fg);}
+@keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+
+/* ---------- phone frame ---------- */
+.phone{width:390px;max-width:100%;background:var(--bg-base);border-radius:44px;box-shadow:var(--shadow-3);padding:10px;}
+.phone-screen{background:var(--bg-base);border-radius:36px;overflow:hidden;height:780px;display:flex;flex-direction:column;position:relative;}
+.phone-notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:120px;height:26px;background:var(--ink-900);border-radius:14px;z-index:5;}
+.phone-scroll{flex:1;overflow-y:auto;padding:56px 16px 90px;}
+.phone-scroll::-webkit-scrollbar{width:0;}
+
+/* ---------- article header ---------- */
+.art-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.art-back{width:32px;height:32px;border-radius:10px;background:var(--bg-sunken);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--ink-700);flex-shrink:0;}
+.art-crumb{font-size:12px;color:var(--ink-500);font-weight:600;}
+.progress{height:3px;background:var(--ink-100);border-radius:99px;margin-top:8px;overflow:hidden;}
+.progress i{display:block;height:100%;width:38%;background:var(--lav-500);border-radius:99px;}
+.header-icon-btn{width:32px;height:32px;border-radius:10px;background:var(--lav-100);border:none;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;cursor:pointer;}
+.header-icon-btn:active{transform:scale(.94);}
+
+.art-title{font-size:21px;line-height:27px;font-weight:700;margin:12px 0 14px;}
+
+/* ---------- trilho de âncoras ---------- */
+.anchor-rail{display:flex;gap:8px;overflow-x:auto;padding:2px 0 14px;margin-bottom:4px;border-bottom:1px solid var(--ink-100);position:sticky;top:0;background:var(--bg-base);z-index:2;}
+.anchor-rail::-webkit-scrollbar{display:none;}
+.anchor-chip{flex-shrink:0;font-size:12px;font-weight:600;color:var(--ink-500);background:var(--bg-sunken);padding:7px 12px;border-radius:99px;white-space:nowrap;border:none;cursor:pointer;}
+.anchor-chip.current{background:var(--lav-500);color:#fff;}
+
+/* ---------- InfoBlock base ---------- */
+.block{border-radius:var(--radius-lg);padding:18px;margin-bottom:14px;background:linear-gradient(180deg,#fff,#fbfaff);box-shadow:var(--shadow-2);border:1px solid rgba(231,230,234,.6);scroll-margin-top:52px;}
+.block-head{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
+.chip{width:30px;height:30px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
+.block-body{font-size:14.5px;line-height:21px;color:var(--ink-900);}
+.block-body ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;}
+
+.b-essencial{background:linear-gradient(180deg,#fff,var(--lav-100));border:1px solid var(--lav-300);}
+.b-essencial .chip{background:var(--lav-500);color:#fff;}
+.b-essencial .eyebrow{color:var(--lav-700);}
+.b-erro .chip{background:var(--warn-bg);color:var(--warn-fg);border:1.5px dashed var(--warn-fg);}
+.b-erro .eyebrow{color:var(--warn-fg);}
+.b-passo .chip{background:var(--ok-bg);color:var(--ok-fg);}
+.b-passo .eyebrow{color:var(--ok-fg);}
+.b-explicar{border-left:3px solid var(--lav-500);border-radius:8px 20px 20px 8px;}
+.b-explicar .chip{background:var(--lav-100);color:var(--lav-700);}
+.b-explicar .eyebrow{color:var(--lav-700);}
+.b-explicar .block-body{font-style:italic;color:var(--ink-700);}
+.b-aula{background:var(--ink-900);color:#fff;}
+.b-aula .eyebrow{color:var(--gold-300);}
+.b-aula .chip{background:rgba(255,255,255,.12);color:#fff;}
+.aula-media{margin-top:12px;border-radius:14px;background:rgba(255,255,255,.06);padding:14px;display:flex;align-items:center;gap:12px;}
+.aula-play{width:38px;height:38px;border-radius:50%;background:var(--gold-500);color:#1c1b1f;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.aula-meta{flex:1;font-size:12.5px;color:rgba(255,255,255,.75);}
+.aula-btn{background:var(--gold-500);color:#1c1b1f;border:none;border-radius:99px;padding:8px 16px;font-size:13px;font-weight:700;}
+.b-ref{background:var(--bg-subtle);box-shadow:var(--shadow-1);border:1px solid var(--ink-100);}
+.b-ref .chip{background:var(--bg-sunken);color:var(--ink-500);}
+.b-ref .eyebrow{color:var(--ink-500);}
+
+.art-footer{display:flex;flex-direction:column;gap:8px;margin-top:8px;}
+.nav-btn{display:flex;justify-content:space-between;align-items:center;background:var(--bg-base);border:1px solid var(--ink-100);border-radius:var(--radius-md);padding:12px 14px;font-size:13px;font-weight:600;color:var(--ink-700);}
+.nav-btn small{display:block;color:var(--ink-300);font-weight:500;font-size:11px;}
+
+.tabbar{position:absolute;bottom:0;left:0;right:0;height:74px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-top:1px solid var(--ink-100);display:flex;padding-bottom:16px;z-index:3;}
+.tabbar-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10px;color:var(--ink-300);font-weight:600;background:none;border:none;}
+.tabbar-item.active{color:var(--lav-500);}
+.tabbar-icon{font-size:17px;}
+
+/* ---------- OPÇÃO A: FAB ---------- */
+.raciocinio-fab{position:absolute;right:16px;bottom:106px;width:56px;height:56px;border-radius:50%;background:var(--lav-500);border:none;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-3);cursor:pointer;z-index:4;transition:transform .15s var(--ease);}
+.raciocinio-fab:active{transform:scale(.94);}
+
+/* ---------- OPÇÃO B: card recolhido ---------- */
+.raciocinio-card{border-radius:var(--radius-lg);background:linear-gradient(180deg,#fff,var(--lav-100));border:1px solid var(--lav-300);box-shadow:var(--shadow-2);margin-bottom:16px;overflow:hidden;}
+.raciocinio-card-head{display:flex;align-items:center;gap:12px;padding:16px 18px;cursor:pointer;}
+.raciocinio-card-head .chip{background:var(--lav-500);color:#fff;}
+.raciocinio-card-title{font-size:15px;font-weight:700;color:var(--ink-900);margin-top:1px;}
+.raciocinio-card-chev{color:var(--lav-700);font-size:13px;transition:transform .2s var(--ease);flex-shrink:0;}
+.raciocinio-card.open .raciocinio-card-chev{transform:rotate(180deg);}
+.raciocinio-card-body{max-height:0;overflow:hidden;transition:max-height .3s var(--ease);}
+.raciocinio-card.open .raciocinio-card-body{max-height:600px;}
+.raciocinio-card-inner{padding:0 18px 18px;}
+
+/* ---------- shared: checklist + sheet ---------- */
+.sheet-subtitle{font-size:13.5px;line-height:19px;color:var(--ink-500);margin-bottom:12px;}
+.sheet-checklist{display:flex;flex-direction:column;gap:10px;}
+.check-row{display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,.6);border:1px solid var(--ink-100);border-radius:var(--radius-md);padding:12px 13px;cursor:pointer;}
+.check-row.checked .check-mark{background:var(--lav-500);border-color:var(--lav-500);}
+.check-row.checked .check-mark:after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}
+.check-mark{width:20px;height:20px;border-radius:6px;border:1.5px solid var(--ink-300);flex-shrink:0;margin-top:1px;position:relative;background:#fff;}
+.check-text{font-size:13.5px;line-height:18px;color:var(--ink-900);font-weight:500;}
+
+.sheet-backdrop{position:absolute;inset:0;background:rgba(28,27,31,.32);opacity:0;pointer-events:none;transition:opacity .28s var(--ease);z-index:5;}
+.sheet-backdrop.open{opacity:1;pointer-events:auto;}
+.raciocinio-sheet{position:absolute;left:0;right:0;bottom:0;height:58%;background:var(--bg-base);border-radius:var(--radius-xl) var(--radius-xl) 0 0;box-shadow:var(--shadow-3);transform:translateY(100%);z-index:6;display:flex;flex-direction:column;}
+.raciocinio-sheet.open{transform:translateY(0);}
+.raciocinio-sheet{transition:transform .32s var(--ease);}
+.sheet-grabber{width:36px;height:4px;border-radius:99px;background:var(--ink-100);margin:10px auto 4px;flex-shrink:0;}
+.sheet-content{padding:8px 22px 22px;overflow-y:auto;flex:1;}
+.sheet-title{font-size:22px;line-height:28px;font-weight:700;margin-top:8px;}
+.sheet-content .sheet-subtitle{margin-top:6px;font-size:14px;}
+.sheet-content .sheet-checklist{margin-top:18px;}
+.sheet-close-btn{margin-top:20px;width:100%;background:transparent;border:none;color:var(--ink-500);font-size:14px;font-weight:600;padding:12px;text-align:center;border-top:1px solid var(--ink-100);cursor:pointer;}
+
+/* ---------- análise ---------- */
+.card-doc{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-2);padding:24px;margin-bottom:20px;max-width:900px;}
+.card-doc h2{font-size:17px;font-weight:700;margin-bottom:4px;}
+.card-doc h3{font-size:14px;font-weight:700;margin:18px 0 8px;color:var(--lav-700);}
+.card-doc p{font-size:14px;line-height:21px;color:var(--ink-700);margin-bottom:8px;}
+.card-doc p:last-child{margin-bottom:0;}
+.verdict{background:linear-gradient(180deg,#fff,var(--lav-100));border:1.5px solid var(--lav-300);}
+.verdict .eyebrow-lg{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--lav-700);margin-bottom:6px;display:block;}
+.cmp-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px;}
+.cmp-table th,.cmp-table td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--ink-100);vertical-align:top;}
+.cmp-table th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-300);font-weight:700;}
+.cmp-table td.crit{font-weight:600;color:var(--ink-900);width:190px;}
+.score{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:99px;margin-bottom:4px;}
+.score.hi{background:var(--ok-bg);color:var(--ok-fg);}
+.score.mid{background:var(--warn-bg);color:var(--warn-fg);}
+.score.lo{background:var(--danger-bg);color:var(--danger-fg);}
+.table-wrap{overflow-x:auto;}
+</style>
+</head>
+<body>
+
+<div class="demo-shell">
+  <div class="demo-head">
+    <h1>Acesso ao método das 5 perguntas — 3 propostas</h1>
+    <p>Mesma tela de Tema, mesmo conteúdo — variando apenas <em>como</em> o obstetra chega ao checklist "Qual é o próximo passo?". Toque nas abas para comparar; dentro de cada protótipo, o mecanismo de acesso é funcional (abre/fecha de verdade).</p>
+  </div>
+
+  <div class="demo-tabs" role="tablist">
+    <button class="demo-tab active" data-target="panel-a">A · FAB flutuante</button>
+    <button class="demo-tab" data-target="panel-b">B · Card recolhido</button>
+    <button class="demo-tab" data-target="panel-c">C · Ícone no cabeçalho</button>
+    <button class="demo-tab" data-target="panel-analise">Análise e recomendação</button>
+  </div>
+
+  <section id="panel-a" class="demo-panel active">
+    <div class="phone-row">
+      <div class="phone-col">
+        <h3>Opção A — Botão flutuante (FAB)</h3>
+        <div class="tag-row"><span class="mini-tag good">sempre visível</span><span class="mini-tag good">1 toque</span><span class="mini-tag warn">sobrepõe conteúdo</span></div>
+        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><div class="phone-scroll" data-variant="a"></div>
+          <button class="raciocinio-fab" aria-label="Abrir método de raciocínio rápido" data-open-sheet>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+              <path d="M9.5 2a3.5 3.5 0 0 0-3.5 3.5c0 .3 0 .6.1.9A3 3 0 0 0 4 9.3 3 3 0 0 0 3 11.5 3 3 0 0 0 4.5 14c-.3.5-.5 1.1-.5 1.8A3.2 3.2 0 0 0 7 19a3 3 0 0 0 2.5 2 3 3 0 0 0 3-2.2V5.5A3.5 3.5 0 0 0 9.5 2Z"/>
+              <path d="M14.5 2a3.5 3.5 0 0 1 3.5 3.5c0 .3 0 .6-.1.9A3 3 0 0 1 20 9.3a3 3 0 0 1 1 2.2 3 3 0 0 1-1.5 2.5c.3.5.5 1.1.5 1.8A3.2 3.2 0 0 1 17 19a3 3 0 0 1-2.5 2 3 3 0 0 1-3-2.2V5.5A3.5 3.5 0 0 1 14.5 2Z"/>
+            </svg>
+          </button>
+          <div class="sheet-backdrop" data-close-sheet></div>
+          <div class="raciocinio-sheet">
+            <div class="sheet-grabber"></div>
+            <div class="sheet-content">
+              <h2 class="sheet-title">Qual é o próximo passo?</h2>
+              <p class="sheet-subtitle">Antes de decidir qualquer conduta, passe por estas cinco perguntas.</p>
+              <div class="sheet-checklist" data-checklist></div>
+              <button class="sheet-close-btn" data-close-sheet>Fechar e voltar ao tema</button>
+            </div>
+          </div>
+          <div class="tabbar"><div class="tabbar-item active"><span class="tabbar-icon">⌂</span>Início</div><div class="tabbar-item"><span class="tabbar-icon">☰</span>Índice</div><div class="tabbar-item"><span class="tabbar-icon">☆</span>Favoritos</div><div class="tabbar-item"><span class="tabbar-icon">◐</span>Perfil</div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="panel-b" class="demo-panel">
+    <div class="phone-row">
+      <div class="phone-col">
+        <h3>Opção B — Card recolhido abaixo do título</h3>
+        <div class="tag-row"><span class="mini-tag good">contextual, sem overlay</span><span class="mini-tag warn">some ao rolar</span><span class="mini-tag warn">exige voltar ao topo</span></div>
+        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><div class="phone-scroll" data-variant="b"></div>
+          <div class="tabbar"><div class="tabbar-item active"><span class="tabbar-icon">⌂</span>Início</div><div class="tabbar-item"><span class="tabbar-icon">☰</span>Índice</div><div class="tabbar-item"><span class="tabbar-icon">☆</span>Favoritos</div><div class="tabbar-item"><span class="tabbar-icon">◐</span>Perfil</div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="panel-c" class="demo-panel">
+    <div class="phone-row">
+      <div class="phone-col">
+        <h3>Opção C — Ícone 🧠 no cabeçalho → Bottom Sheet</h3>
+        <div class="tag-row"><span class="mini-tag good">discreto</span><span class="mini-tag warn">emoji quebra padrão de ícones</span><span class="mini-tag warn">cabeçalho não é sticky hoje</span></div>
+        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><div class="phone-scroll" data-variant="c"></div>
+          <div class="sheet-backdrop" data-close-sheet></div>
+          <div class="raciocinio-sheet">
+            <div class="sheet-grabber"></div>
+            <div class="sheet-content">
+              <h2 class="sheet-title">Qual é o próximo passo?</h2>
+              <p class="sheet-subtitle">Antes de decidir qualquer conduta, passe por estas cinco perguntas.</p>
+              <div class="sheet-checklist" data-checklist></div>
+              <button class="sheet-close-btn" data-close-sheet>Fechar e voltar ao tema</button>
+            </div>
+          </div>
+          <div class="tabbar"><div class="tabbar-item active"><span class="tabbar-icon">⌂</span>Início</div><div class="tabbar-item"><span class="tabbar-icon">☰</span>Índice</div><div class="tabbar-item"><span class="tabbar-icon">☆</span>Favoritos</div><div class="tabbar-item"><span class="tabbar-icon">◐</span>Perfil</div></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ANÁLISE ============ -->
+  <section id="panel-analise" class="demo-panel">
+    <div class="card-doc">
+      <h2>Análise crítica</h2>
+      <p>As três opções foram avaliadas contra a métrica central do produto — <strong>resposta em menos de 10 segundos, com o celular em uma mão, no meio de uma dúvida real</strong> (ver <code>docs/01-arquitetura-informacao.md §8</code>) — e contra o design system já definido para o produto.</p>
+      <div class="table-wrap">
+      <table class="cmp-table">
+        <thead><tr><th class="crit">Critério</th><th>A · FAB</th><th>B · Card recolhido</th><th>C · Ícone no cabeçalho</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="crit">Rapidez de acesso</td>
+            <td><span class="score hi">Alta</span>1 toque, em qualquer ponto do scroll — a posição nunca muda.</td>
+            <td><span class="score lo">Baixa</span>só existe no topo da página; se a dúvida surge após rolar, exige voltar ao início antes de tocar.</td>
+            <td><span class="score mid">Média</span>1 toque, mas hoje o cabeçalho <em>não</em> é sticky no protótipo (só o trilho de âncoras é) — logo o ícone some ao rolar, igual ao problema do B, a menos que o cabeçalho seja promovido a sticky.</td>
+          </tr>
+          <tr>
+            <td class="crit">Poluição visual</td>
+            <td><span class="score mid">Média</span>overlay permanente sobre o conteúdo; mitigado por ser pequeno (56px), de cor única, e por não aparecer nas telas de lista.</td>
+            <td><span class="score mid">Média</span>não sobrepõe nada, mas adiciona um bloco fixo no topo de toda página de Tema — compete por atenção com o 🎯 Essencial, que é o bloco que deveria vencer essa disputa.</td>
+            <td><span class="score hi">Baixa</span>ícone de 32px no cabeçalho, mesmo padrão do botão de busca já usado no Índice — a opção mais "limpa" das três.</td>
+          </tr>
+          <tr>
+            <td class="crit">Experiência no iPhone</td>
+            <td><span class="score hi">Alta</span>padrão nativo reconhecível (assistente/atalho flutuante), thumb-friendly, respeita safe-area e não conflita com a tab bar.</td>
+            <td><span class="score mid">Média</span>accordion é um padrão nativo comum, mas não resolve o caso de uso real do produto (dúvida no meio da consulta, não no início da leitura).</td>
+            <td><span class="score mid">Média</span>abrir sheet a partir de um ícone de cabeçalho é nativo e familiar, mas só entrega bem a experiência se o cabeçalho for sticky — sem isso, o gesto de "achar o ícone" já custa os segundos que o produto tenta economizar.</td>
+          </tr>
+          <tr>
+            <td class="crit">Consistência com design premium</td>
+            <td><span class="score hi">Alta</span>já implementado com ícone outline (não emoji), sombra suave, cor de acento única — segue a própria regra do design system (§8: interface = ícone outline, emoji = só conteúdo).</td>
+            <td><span class="score hi">Alta</span>tom "quiet", card com chevron combina com a referência Stripe Docs/Notion citada no design system.</td>
+            <td><span class="score lo">Baixa</span>o pedido explícito de usar o emoji 🧠 no cabeçalho contraria a própria regra do design system (§8 Iconografia): elementos de interface devem usar ícone outline fino, nunca emoji — emoji é reservado para identidade de blocos de conteúdo. Ao lado dos ícones outline de voltar/buscar, o emoji destoaria visualmente.</td>
+          </tr>
+          <tr>
+            <td class="crit">Frequência de uso esperada</td>
+            <td><span class="score hi">Alta</span>é justamente para uso frequente, a qualquer momento da leitura, que o componente foi desenhado como camada global (ver <code>RaciocinioFAB</code>, <code>docs/03 §Componente global</code>).</td>
+            <td><span class="score lo">Baixa</span>a fricção de precisar rolar para cima desestimula reabrir o checklist mais de uma vez durante a mesma leitura — penaliza exatamente o uso repetido que o produto quer incentivar.</td>
+            <td><span class="score mid">Média</span>aceitável para uma consulta pontual logo ao abrir o Tema; menos confiável para reconsultar o método no meio da leitura, salvo header sticky.</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="card-doc verdict">
+      <span class="eyebrow-lg">Recomendação</span>
+      <h2>Opção A — Botão flutuante (FAB)</h2>
+      <p>É a única das três que garante acesso em 1 toque <strong>independentemente do ponto de rolagem</strong> — condição que o próprio produto define como critério de sucesso: "se a resposta exigir dois toques a mais que o necessário, a tela está errada" (<code>01-arquitetura-informacao.md §8</code>). O método das 5 perguntas não é conteúdo de um Tema específico, é uma ferramenta de raciocínio que precisa estar disponível no exato momento da dúvida — que pode surgir em qualquer linha da página, não só no topo.</p>
+      <h3>Por que não B</h3>
+      <p>O card recolhido é visualmente mais "quiet", mas resolve o problema errado: ele otimiza a primeira impressão da página, não o momento real de uso. Em consulta, a dúvida raramente aparece assim que o Tema abre — normalmente surge depois de ler o Essencial ou o Próximo passo, quando o card já saiu da tela.</p>
+      <h3>Por que não C</h3>
+      <p>É a proposta mais elegante em repouso, mas depende de uma mudança de arquitetura que ainda não existe (cabeçalho sticky) para não ter o mesmo problema do B — e o emoji 🧠 pedido para o ícone contraria a regra que o próprio design system estabeleceu para diferenciar "conteúdo" de "interface". Se essa opção for revisitada no futuro, os dois ajustes (header sticky + ícone outline, não emoji) seriam pré-requisitos, não polimento opcional.</p>
+      <h3>Ressalva sobre poluição visual</h3>
+      <p>A poluição visual do FAB é real e é o único ponto onde A perde para as outras — mas é gerenciável: manter o FAB ausente nas telas de lista (Índice, Busca, Perfil), como já especificado, e testar contraste sobre o bloco 🎥 Aula Express (único card de fundo escuro) são os dois pontos a validar visualmente antes de finalizar.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+document.querySelectorAll('.demo-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.demo-tab').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.demo-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.target).classList.add('active');
+  });
+});
+
+/* ================= conteúdo compartilhado do Tema ================= */
+const anchors = [
+  ['blk-essencial','Essencial'],['blk-erro','Erro comum'],['blk-passo','Próximo passo'],
+  ['blk-explicar','Explicar'],['blk-aula','Aula'],['blk-ref','Referências'],
+];
+const anchorRailHTML = `<div class="anchor-rail">${anchors.map(([id,label],i)=>`<button class="anchor-chip${i===0?' current':''}" data-target="${id}">${label}</button>`).join('')}</div>`;
+
+const checklistHTML = `
+  <label class="check-row"><span class="check-mark"></span><span class="check-text">O exame foi realizado no momento certo?</span></label>
+  <label class="check-row"><span class="check-mark"></span><span class="check-text">Esse achado realmente muda minha conduta?</span></label>
+  <label class="check-row"><span class="check-mark"></span><span class="check-text">Qual é o próximo passo?</span></label>
+  <label class="check-row"><span class="check-mark"></span><span class="check-text">Como vou explicar isso para a paciente?</span></label>
+  <label class="check-row"><span class="check-mark"></span><span class="check-text">Há necessidade de compartilhar o cuidado ou encaminhar para Medicina Fetal?</span></label>
+`;
+
+function blocksHTML(){
+  return `
+<div class="block b-essencial" id="blk-essencial"><div class="block-head"><div class="chip">🎯</div><div class="eyebrow">O Essencial</div></div>
+<div class="block-body">Use a busca ou o índice por módulo. Todo tema segue sempre a mesma ordem de blocos — em segundos você chega no essencial, no próximo passo e no que dizer à paciente.</div></div>
+
+<div class="block b-erro" id="blk-erro"><div class="block-head"><div class="chip">⚠️</div><div class="eyebrow">Erro comum</div></div>
+<div class="block-body">Tentar ler o Guia como um livro, do início ao fim. Ele foi feito para consulta no momento da dúvida, não para estudo prévio.</div></div>
+
+<div class="block b-passo" id="blk-passo"><div class="block-head"><div class="chip">✅</div><div class="eyebrow">Qual é o próximo passo?</div></div>
+<div class="block-body"><ol><li>Abra a busca rápida.</li><li>Digite a dúvida com suas palavras.</li><li>Toque no tema mais próximo do que procura.</li></ol></div></div>
+
+<div class="block b-explicar" id="blk-explicar"><div class="block-head"><div class="chip">💬</div><div class="eyebrow">Como explicar</div></div>
+<div class="block-body">"Este aplicativo é meu guia de consulta rápida — me dá alguns segundos para eu ter certeza do que vou te explicar."</div></div>
+
+<div class="block b-aula" id="blk-aula"><div class="block-head"><div class="chip">🎥</div><div class="eyebrow">Aula Express</div></div>
+<div class="block-body">Como usar o Guia em 90 segundos</div>
+<div class="aula-media"><div class="aula-play">▶</div><div class="aula-meta">1:32 · protegido por login</div><button class="aula-btn">Assistir</button></div></div>
+
+<div class="block b-ref" id="blk-ref"><div class="block-head"><div class="chip">📚</div><div class="eyebrow">Referências</div></div>
+<div class="block-body" style="color:var(--ink-500)">Ver referências (1) ⌄</div></div>
+
+<div class="art-footer">
+<div class="nav-btn"><span>◀ Tema anterior<br><small>Primeiros acessos</small></span></div>
+<div class="nav-btn"><span>Voltar ao índice</span></div>
+</div>
+`;
+}
+
+function headerHTML(iconBtn){
+  return `<div class="art-header">
+  <div class="art-back">‹</div>
+  <div style="flex:1"><div class="art-crumb">Primeiros passos · Usando o Guia</div><div class="progress"><i></i></div></div>
+  ${iconBtn||''}
+</div>`;
+}
+
+/* ---- Variante A: FAB (acesso fica fora do fluxo de scroll, no phone-screen) ---- */
+document.querySelector('[data-variant="a"]').innerHTML = `
+${headerHTML()}
+${anchorRailHTML}
+<h1 class="art-title">Como aproveitar este Guia no dia a dia da consulta?</h1>
+${blocksHTML()}
+`;
+
+/* ---- Variante B: card recolhido, expande inline ---- */
+document.querySelector('[data-variant="b"]').innerHTML = `
+${headerHTML()}
+${anchorRailHTML}
+<h1 class="art-title">Como aproveitar este Guia no dia a dia da consulta?</h1>
+<div class="raciocinio-card" id="raciocinio-card">
+  <div class="raciocinio-card-head" id="raciocinio-card-head">
+    <div class="chip">🧠</div>
+    <div style="flex:1">
+      <div class="eyebrow" style="color:var(--lav-700)">MÉTODO DO GUIA</div>
+      <div class="raciocinio-card-title">Qual é o próximo passo?</div>
+    </div>
+    <span class="raciocinio-card-chev">⌄</span>
+  </div>
+  <div class="raciocinio-card-body">
+    <div class="raciocinio-card-inner">
+      <p class="sheet-subtitle">Antes de decidir qualquer conduta, passe por estas cinco perguntas.</p>
+      <div class="sheet-checklist">${checklistHTML}</div>
+    </div>
+  </div>
+</div>
+${blocksHTML()}
+`;
+document.getElementById('raciocinio-card-head').addEventListener('click',()=>{
+  document.getElementById('raciocinio-card').classList.toggle('open');
+});
+
+/* ---- Variante C: ícone no cabeçalho, abre sheet global do painel ---- */
+document.querySelector('[data-variant="c"]').innerHTML = `
+${headerHTML('<button class="header-icon-btn" aria-label="Abrir método de raciocínio rápido" data-open-sheet>🧠</button>')}
+${anchorRailHTML}
+<h1 class="art-title">Como aproveitar este Guia no dia a dia da consulta?</h1>
+${blocksHTML()}
+`;
+
+/* ---- populate checklists (sheets) ---- */
+document.querySelectorAll('[data-checklist]').forEach(el=> el.innerHTML = checklistHTML);
+
+/* ---- checklist toggle (any variant) ---- */
+document.querySelectorAll('.check-row').forEach(row=>{
+  row.addEventListener('click', ()=> row.classList.toggle('checked'));
+});
+
+/* ---- open/close sheets (A and C) ---- */
+document.querySelectorAll('[data-open-sheet]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const screen = btn.closest('.phone-screen');
+    screen.querySelector('.sheet-backdrop').classList.add('open');
+    screen.querySelector('.raciocinio-sheet').classList.add('open');
+  });
+});
+document.querySelectorAll('[data-close-sheet]').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    const screen = el.closest('.phone-screen');
+    screen.querySelector('.sheet-backdrop').classList.remove('open');
+    screen.querySelector('.raciocinio-sheet').classList.remove('open');
+  });
+});
+
+/* ---- anchor rail scroll (each variant independently) ---- */
+document.querySelectorAll('[data-variant]').forEach(scrollEl=>{
+  scrollEl.querySelectorAll('.anchor-chip').forEach(chip=>{
+    chip.addEventListener('click',()=>{
+      const target = scrollEl.querySelector('#'+chip.dataset.target);
+      if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+});
+</script>
+</body>
+</html>

@@ -26,7 +26,14 @@ futuro, integração com plataforma de venda/licenciamento (ex.: Kiwify).
    contextuais (💡 Você sabia?, 🚩 Quando encaminhar) + componentes de
    navegação (índice, busca, tab bar, navegação sequencial).
 
-4. **Protótipo interativo (estático, sem build)** → [`prototype/index.html`](prototype/index.html)
+4. **Acesso ao método das 5 perguntas — comparação de propostas** → [`docs/04-cinco-perguntas-acesso.md`](docs/04-cinco-perguntas-acesso.md)
+   Comparação lado a lado de 3 propostas de acesso ao checklist "Qual é o
+   próximo passo?" (botão flutuante, card recolhido, ícone no cabeçalho),
+   contra rapidez de acesso, poluição visual, experiência no iPhone,
+   consistência premium e frequência de uso. Protótipo funcional em
+   [`prototype/cinco-perguntas-opcoes.html`](prototype/cinco-perguntas-opcoes.html).
+
+5. **Protótipo interativo (estático, sem build)** → [`prototype/index.html`](prototype/index.html)
    Abra o arquivo direto no navegador. Contém: showcase dos tokens do design
    system, showcase dos componentes, e as 3 telas principais do app, dentro
    de uma moldura de iPhone:
