@@ -380,7 +380,7 @@ const TEMAS = [
     modulo:'trimestre1',
     tags:['gestação inicial','saco gestacional','embrião','prognóstico indeterminado','usg transvaginal','gestação anembrionada','viabilidade incerta'],
     essencial:'Não ver embrião não fecha diagnóstico sozinho. Perda confirmada: SG >25mm sem embrião, SG >20mm sem vesícula vitelínica, ou embrião >7mm sem BCF. Fora isso, é "gravidez de prognóstico indeterminado" — repita o USG antes de definir conduta.',
-    erro:'Fechar diagnóstico de perda gestacional (ou gestação anembrionada) numa única ultrassonografia, sem checar se algum critério objetivo foi atingido — risco de indicar conduta numa gravidez de prognóstico ainda indeterminado.',
+    erro:'Fechar diagnóstico de perda gestacional precoce (ou gestação anembrionada) numa única ultrassonografia, sem checar se algum critério objetivo foi atingido — risco de indicar conduta numa gravidez de prognóstico ainda indeterminado.',
     passo:{tipo:'checklist', itens:[
       'Confirme se algum critério fecha diagnóstico na hora: SG >25mm sem embrião, SG >20mm sem vesícula vitelínica, ou embrião >7mm sem BCF.',
       'Se nenhum bater, mas houver embrião 5–7mm sem BCF, SG 16–24mm sem embrião, âmnio vazio ou vesícula vitelínica >7mm: é gravidez de prognóstico indeterminado — reavalie, sem fechar diagnóstico ainda.',
@@ -390,8 +390,11 @@ const TEMAS = [
     explicar:'"Ainda é cedo para ter certeza. Vou pedir para repetirmos esse exame em alguns dias — isso não significa que algo está errado, é o tempo mínimo necessário para o embrião ficar visível com segurança."',
     pensando:'Será que eu já perdi a gestação e ninguém está me dizendo? — a espera pelo reexame gera muita ansiedade, mesmo quando é a conduta correta.',
     confianca:'Explicar o motivo técnico da espera (por que não dá para saber ainda), em vez de só dizer "vamos repetir o exame", transforma incerteza em prazo claro e critério objetivo — isso reduz a ansiedade percebida.',
-    aprendi:'A pressa em fechar diagnóstico de perda gestacional custa muito mais caro — para a paciente e para o médico — do que os poucos dias de espera de um reexame bem indicado.',
-    vocesabia:'"Viabilidade incerta" foi renomeada para "gravidez de prognóstico indeterminado". Não confundir com "gestação anembrionada" — essa é diagnóstico definitivo (saco que nunca teve embrião), diferente da perda de um embrião que já existia.',
+    aprendi:'A pressa em fechar diagnóstico de perda gestacional precoce custa muito mais caro — para a paciente e para o médico — do que os poucos dias de espera de um reexame bem indicado.',
+    vocesabia:[
+      '"Viabilidade incerta" foi renomeada para "gravidez de prognóstico indeterminado". Não confundir com "gestação anembrionada" — essa é diagnóstico definitivo (saco que nunca teve embrião), diferente da perda de um embrião que já existia.',
+      '"Aborto" e "abortamento" saíram dos laudos — o termo atual é "perda gestacional precoce", com 4 subtipos: determinada (morte confirmada — o cenário deste tema), em curso, incompleta e completa.',
+    ],
     encaminhar:'Sangramento importante associado, dor pélvica intensa, suspeita de gestação ectópica (saco não visualizado na cavidade com beta-hCG acima da zona discriminatória) ou paciente hemodinamicamente instável — encaminhar para avaliação de urgência, sem aguardar reavaliação eletiva.',
     aula:{titulo:'Critérios ultrassonográficos de viabilidade gestacional precoce', pendente:true},
     referencias:[
@@ -417,7 +420,7 @@ const TEMAS = [
     pensando:'Meu bebê está desnutrido? Isso é culpa minha, da minha alimentação? — associar "peso baixo" à culpa materna é uma reação comum, e quase sempre não é o caso.',
     confianca:'Deixar claro que "percentil" é uma comparação estatística, não uma nota — e que o próximo exame (Doppler) é o que realmente diferencia um bebê pequeno saudável de um que precisa de mais atenção.',
     aprendi:'O percentil isolado assusta mais do que deveria — é a trajetória de crescimento em duas ou três medidas, junto com o Doppler, que realmente direciona a conduta.',
-    vocesabia:'"PIG" (pequeno para idade gestacional) e "RCF" (restrição de crescimento fetal) não são sinônimos — todo RCF é PIG, mas nem todo PIG é RCF.',
+    vocesabia:['"PIG" (pequeno para idade gestacional) e "RCF" (restrição de crescimento fetal) não são sinônimos — todo RCF é PIG, mas nem todo PIG é RCF.'],
     encaminhar:'Percentil <3 em qualquer idade gestacional; Doppler de artéria umbilical ou relação cérebro-placentária alterados; desaceleração de crescimento entre dois exames; oligoidrâmnio associado — encaminhar para pré-natal de alto risco / medicina fetal.',
     aula:{titulo:'Como interpretar percentil de peso fetal e quando pedir Doppler', pendente:true},
     referencias:[
@@ -443,7 +446,7 @@ const TEMAS = [
     pensando:'Vou precisar de cesárea? Posso machucar o bebê se eu me movimentar? — o termo "placenta baixa" costuma ser associado, erroneamente, a repouso absoluto.',
     confianca:'Explicar o conceito de "migração placentária" com uma imagem simples — o colo se afasta da placenta conforme o útero cresce — ajuda a paciente a entender por que não há necessidade de ação imediata.',
     aprendi:'A palavra "baixa" assusta mais do que a situação clínica justifica na maioria dos casos do 2º trimestre — vale investir tempo explicando a diferença entre achado e diagnóstico definitivo.',
-    vocesabia:'Persistência conforme a idade gestacional do achado: placenta baixa às 15–19 semanas tem ~6% de chance de virar prévia (7% com cesárea prévia); às 32–35 semanas, esse número sobe para ~40%. Já placenta prévia vista no 1º trimestre persiste em 20% dos casos sem cesárea prévia — e 40% com.',
+    vocesabia:['Persistência conforme a idade gestacional do achado: placenta baixa às 15–19 semanas tem ~6% de chance de virar prévia (7% com cesárea prévia); às 32–35 semanas, esse número sobe para ~40%. Já placenta prévia vista no 1º trimestre persiste em 20% dos casos sem cesárea prévia — e 40% com.'],
     encaminhar:'Sangramento vaginal ativo em qualquer volume; placenta baixa persistente após 32 semanas associada a cesárea(s) anterior(es) — risco de acretismo; placenta prévia centro-total mantida próximo ao termo — encaminhar para avaliação de alto risco / medicina fetal.',
     aula:{titulo:'Placenta baixa no 2º trimestre: quando repetir e quando encaminhar', pendente:true},
     referencias:[
@@ -517,7 +520,7 @@ ${anchorRailHTML}
 <div class="block b-essencial" id="blk-essencial"><div class="block-head"><div class="chip">🎯</div><div class="eyebrow">O Essencial</div></div>
 <div class="block-body">${t.essencial}</div></div>
 
-${t.vocesabia ? `<div class="chip-fact">💡 ${t.vocesabia}</div>` : ''}
+${(t.vocesabia||[]).map(v=>`<div class="chip-fact">💡 ${v}</div>`).join('')}
 
 <div class="block b-erro" id="blk-erro"><div class="block-head"><div class="chip">⚠️</div><div class="eyebrow">Erro comum</div></div>
 <div class="block-body">${t.erro}</div></div>
