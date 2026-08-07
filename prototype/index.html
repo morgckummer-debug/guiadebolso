@@ -100,6 +100,7 @@ button,input{font-family:inherit;}
 .b-aprendi .chip{background:var(--lav-700);color:#fff;}
 .b-aprendi .eyebrow{color:var(--lav-700);}
 .b-aprendi .block-body{font-style:italic;color:var(--lav-700);}
+.aprendi-assinatura{font-style:italic;font-size:12px;color:var(--lav-700);opacity:.75;text-align:right;margin-top:8px;}
 .b-aula{background:var(--ink-900);color:#fff;}
 .b-aula .eyebrow{color:var(--gold-300);}
 .b-aula .chip{background:rgba(255,255,255,.12);color:#fff;}
@@ -597,7 +598,8 @@ ${encaminharHTML}
 <div class="block-body">${t.confianca}</div></div>
 
 <div class="block b-aprendi"><div class="block-head"><div class="chip">💜</div><div class="eyebrow">Com o tempo, aprendi que…</div></div>
-<div class="block-body">${t.aprendi}</div></div>
+<div class="block-body">"${t.aprendi}"</div>
+<div class="aprendi-assinatura">— Dra. Morgana Kummer</div></div>
 
 <div class="block b-aula" id="blk-aula"><div class="block-head"><div class="chip">🎥</div><div class="eyebrow">Aula Express</div></div>
 <div class="block-body">${t.aula.titulo}</div>
@@ -843,7 +845,7 @@ ${wrapDoc('✅','Próximo passo','b-passo','Pode virar checklist numerada quando
 ${wrapDoc('💬','Como explicar','b-explicar','Frase pronta, em itálico, para usar quase palavra por palavra.')}
 ${wrapDoc('❤️','Paciente pensando','b-pensando','Antecipa a preocupação não verbalizada da gestante.')}
 ${wrapDoc('🤝','Fortalece confiança','b-confianca','Único uso de dourado fora da Aula Express — sinaliza "valor".')}
-${wrapDoc('💜','Aprendi que…','b-aprendi','Aspas decorativas e itálico — tom de mentoria, não protocolo.')}
+${wrapDoc('💜','Aprendi que…','b-aprendi','Aspas decorativas e itálico — tom de mentoria, não protocolo. Assinado "— Dra. Morgana Kummer" em itálico menor, alinhado à direita.')}
 ${wrapDoc('📚','Referências','b-ref','Colapsado por padrão — não compete com a resposta rápida.')}
 ${wrapDoc('➜','Veja também','b-veja','Lista neutra de temas relacionados ao final da página.')}
 <div class="block b-alerta" style="max-width:520px"><div class="block-head"><div class="chip">🚩</div><div class="eyebrow">Quando encaminhar</div></div><div class="block-body">Contextual — só aparece quando há critério objetivo de encaminhamento. Borda 2px, maior peso visual.</div></div>

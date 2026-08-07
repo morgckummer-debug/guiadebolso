@@ -170,11 +170,18 @@ Estado de toque (quando o card é acionável, ex. abrir referência): `scale .97
   porque este bloco é sobre "valor percebido", coerente com a cor de prestígio.
 
 ### 7. 💜 Com o tempo, aprendi que…
-- **Papel:** voz de experiência/mentoria, tom pessoal.
+- **Papel:** voz de experiência/mentoria, tom pessoal — a resposta real da
+  autora (Dra. Morgana Kummer), não conteúdo genérico. É o único bloco do
+  sistema que carrega assinatura, propositalmente: é onde o "eu" da autora
+  aparece no app.
 - **Acento:** lavanda profunda (`--lav-700` texto sobre `--lav-100`).
 - **Variante:** único bloco com aspas decorativas grandes (glifo `"`) no canto
   superior esquerdo, em `--lav-300`, e corpo em itálico — diferenciação
   editorial proposital para sinalizar "isto é experiência, não protocolo".
+  O corpo também é envolvido em aspas retas (`"..."`), e abaixo dele uma
+  linha de assinatura — `— Dra. Morgana Kummer`, itálico, 12px (Footnote),
+  `--lav-700` a 75% de opacidade, alinhada à direita — atribui a fala
+  diretamente a ela.
 
 ### 8. 🎥 Aula Express
 - **Papel:** vídeo curto complementar.
