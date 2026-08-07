@@ -131,6 +131,46 @@ button,input{font-family:inherit;}
 .crit-row:first-of-type{border-top:none;}
 .crit-row .crit-label{color:var(--ink-700);}
 .crit-row .crit-value{color:var(--ink-900);font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;}
+
+/* ---------- diagramas dentro do painel de critérios (quadros/setas/ícones) ----------
+   Usado por temas conceituais densos (ex. Doppler fetal) para representar
+   cascatas de raciocínio clínico sem virar parede de texto. Reaproveita as
+   cores semânticas já existentes (lav/warn/danger) para comunicar urgência
+   crescente sem precisar de legenda. */
+.flow{display:flex;flex-direction:column;}
+.flow-step{border-radius:var(--radius-md);padding:12px 14px;display:flex;align-items:center;gap:12px;}
+.flow-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;color:#fff;}
+.flow-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+.flow-desc{font-size:12.5px;color:var(--ink-700);margin-top:2px;line-height:17px;}
+.flow-arrow{text-align:center;font-size:15px;color:var(--ink-300);padding:2px 0;}
+.flow-step.tone-lav{background:var(--lav-100);}
+.flow-step.tone-lav .flow-icon{background:var(--lav-500);}
+.flow-step.tone-lav .flow-label{color:var(--lav-700);}
+.flow-step.tone-warn{background:var(--warn-bg);}
+.flow-step.tone-warn .flow-icon{background:var(--warn-fg);}
+.flow-step.tone-warn .flow-label{color:var(--warn-fg);}
+.flow-step.tone-danger{background:var(--danger-bg);}
+.flow-step.tone-danger .flow-icon{background:var(--danger-fg);}
+.flow-step.tone-danger .flow-label{color:var(--danger-fg);}
+
+.value-cards{display:flex;gap:8px;flex-wrap:wrap;}
+.value-card{flex:1;min-width:92px;background:#fff;border:1px solid var(--ink-100);border-radius:var(--radius-md);padding:10px;text-align:center;box-shadow:var(--shadow-1);}
+.value-card-icon{font-size:17px;}
+.value-card-label{font-size:10.5px;font-weight:700;color:var(--ink-500);margin-top:3px;text-transform:uppercase;letter-spacing:.03em;}
+.value-card-range{font-size:13px;font-weight:700;color:var(--ink-900);margin-top:2px;}
+
+.redist-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.redist-box{border-radius:var(--radius-md);padding:11px;text-align:center;}
+.redist-box.less{background:var(--danger-bg);}
+.redist-box.less .redist-icon{color:var(--danger-fg);}
+.redist-box.more{background:var(--ok-bg);}
+.redist-box.more .redist-icon{color:var(--ok-fg);}
+.redist-icon{font-size:19px;}
+.redist-title{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-top:3px;}
+.redist-list{font-size:12px;color:var(--ink-700);margin-top:3px;line-height:16px;}
+.redist-arrow{text-align:center;font-size:15px;color:var(--ink-300);padding:4px 0;}
+.redist-result{text-align:center;background:var(--lav-100);border-radius:var(--radius-md);padding:9px;font-size:12.5px;font-weight:700;color:var(--lav-700);}
+
 .b-veja{background:transparent;box-shadow:none;border:1px solid var(--ink-100);}
 .b-veja .chip{background:var(--bg-sunken);color:var(--ink-700);}
 .b-veja .eyebrow{color:var(--ink-700);}
@@ -401,6 +441,7 @@ const MODULOS = [
   {id:'urinario', nome:'Trato urinário fetal', icon:'💧'},
   {id:'colo', nome:'Colo uterino', icon:'🔒'},
   {id:'marcadores', nome:'Marcadores leves de aneuploidia', icon:'✨'},
+  {id:'doppler', nome:'Doppler fetal', icon:'📡'},
 ];
 
 const TEMAS = [
@@ -690,6 +731,61 @@ const TEMAS = [
     ],
     vejaTambem:[],
   },
+  {
+    id:'doppler-introducao',
+    titulo:'Entendendo o Doppler fetal',
+    modulo:'doppler',
+    tags:['doppler fetal','artéria umbilical','artéria cerebral média','acm','relação cérebro-placentária','rcp','ducto venoso','hipóxia fetal','acidose fetal','centralização fetal','insuficiência placentária'],
+    essencial:'Hipóxia e acidose são processos diferentes: hipóxia é redução de oxigênio (dias/semanas), acidose é falência tardia da compensação fetal. O Doppler normal da artéria umbilical não exclui insuficiência placentária — nenhum vaso deve ser interpretado isoladamente.',
+    erro:'Interpretar um vaso do Doppler isoladamente, sem considerar os demais e a idade gestacional. Usar o termo "centralização" como se fosse, por si só, indicação de sofrimento fetal ou de parto — o excesso desse raciocínio já levou a interrupções desnecessárias da gestação.',
+    passo:{tipo:'checklist', itens:[
+      'Identifique qual vaso está alterado no laudo — nunca conclua a partir de um vaso isolado.',
+      'Se a artéria umbilical estiver alterada, pense em comprometimento da resistência placentária (quanto maior o IP, maior o comprometimento).',
+      'Se ACM ou RCP estiverem alteradas, pense em hipóxia (redistribuição de fluxo) — isso ainda não é acidose.',
+      'Se o ducto venoso estiver alterado, isso já é sinal de acidose — estágio mais avançado, decisão mais urgente.',
+      'Sempre correlacione o achado com a idade gestacional antes de decidir a conduta.',
+    ]},
+    aprendi:'[[ AGUARDANDO TEXTO DA AUTORA — não publicar assim ]]',
+    vocesabia:[
+      'Reserva funcional da placenta — comprometimento estimado da circulação placentária:<ul><li>Artéria umbilical normal: até ~50%</li><li>IP acima do percentil 95: ~75%</li><li>Diástole zero: ~80%</li><li>Diástole reversa: ~90%</li></ul>',
+      'O seguimento seriado da artéria umbilical reduz aproximadamente 30% das complicações perinatais.',
+    ],
+    criterios:[
+      {titulo:'Cascata do Doppler: da resistência à acidose', html:`
+<div class="flow">
+  <div class="flow-step tone-lav"><div class="flow-icon">🩸</div><div class="flow-text"><div class="flow-label">Artéria umbilical</div><div class="flow-desc">Resistência placentária — quanto maior o IP, maior a resistência. Pode estar normal mesmo com ~50% da circulação placentária comprometida.</div></div></div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step tone-warn"><div class="flow-icon">🧠</div><div class="flow-text"><div class="flow-label">ACM · RCP</div><div class="flow-desc">Hipóxia — redistribuição de fluxo. Compensado, pode durar dias ou semanas. Ainda não é acidose.</div></div></div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step tone-danger"><div class="flow-icon">⏱️</div><div class="flow-text"><div class="flow-label">Ducto venoso</div><div class="flow-desc">Acidose — falência da compensação fetal. Marcador tardio, decisão mais urgente.</div></div></div>
+</div>`},
+      {titulo:'Valores de referência', html:`
+<div class="value-cards">
+  <div class="value-card"><div class="value-card-icon">🩸</div><div class="value-card-label">Umbilical</div><div class="value-card-range">Normal &lt; P95</div></div>
+  <div class="value-card"><div class="value-card-icon">🧠</div><div class="value-card-label">ACM</div><div class="value-card-range">Normal &gt; P5</div></div>
+  <div class="value-card"><div class="value-card-icon">⚖️</div><div class="value-card-label">RCP</div><div class="value-card-range">Normal &gt; P5</div></div>
+</div>`},
+      {titulo:'Por que a ACM cai na hipóxia (redistribuição de fluxo)', html:`
+<div class="redist-grid">
+  <div class="redist-box less"><div class="redist-icon">↓</div><div class="redist-title">Menos fluxo</div><div class="redist-list">Intestino<br>Músculos<br>Rins</div></div>
+  <div class="redist-box more"><div class="redist-icon">↑</div><div class="redist-title">Mais fluxo</div><div class="redist-list">Cérebro<br>Coronárias<br>Suprarrenais</div></div>
+</div>
+<div class="redist-arrow">↓</div>
+<div class="redist-result">Resultado: o IP da ACM diminui</div>`},
+      {titulo:'Centralização fetal — o que é e o que não é', itens:[
+        ['É','Mecanismo adaptativo à hipóxia'],
+        ['Não é','Sinal isolado de sofrimento terminal'],
+        ['Não indica','Parto isoladamente'],
+        ['Hoje','Muitos serviços evitam o termo no laudo — o uso excessivo já levou a interrupções desnecessárias'],
+      ]},
+    ],
+    aula:{titulo:'Entendendo o Doppler fetal: fisiopatologia e interpretação prática', pendente:true},
+    referencias:[
+      'Nicolaides KH / Fetal Medicine Foundation (FMF) — fisiopatologia da centralização fetal e Doppler — referência específica pendente de indicação da autora.',
+      'ISUOG Practice Guidelines: use of Doppler ultrasonography in obstetrics. Ultrasound Obstet Gynecol.',
+    ],
+    vejaTambem:[],
+  },
 ];
 
 function temaById(id){ return TEMAS.find(t=>t.id===id); }
@@ -746,7 +842,7 @@ function renderTemaScreen(id){
     ? `<ol>${t.passo.itens.map(i=>`<li>${i}</li>`).join('')}</ol>`
     : `<p>${t.passo.texto}</p>`;
 
-  const critCount = (t.criterios||[]).reduce((n,g)=>n+g.itens.length, 0);
+  const critCount = (t.criterios||[]).reduce((n,g)=>n+(g.itens?g.itens.length:1), 0);
   const critHTML = t.criterios ? `
 <div class="crit-toggle" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">
   <span>Ver critérios completos (${critCount})</span><span class="crit-chevron">⌄</span>
@@ -755,7 +851,7 @@ function renderTemaScreen(id){
   ${t.criterios.map(g=>`
   <div class="crit-group">
     <div class="crit-group-title">${g.titulo}</div>
-    ${g.itens.map(([label,valor])=>`<div class="crit-row"><span class="crit-label">${label}</span><span class="crit-value">${valor}</span></div>`).join('')}
+    ${g.itens ? g.itens.map(([label,valor])=>`<div class="crit-row"><span class="crit-label">${label}</span><span class="crit-value">${valor}</span></div>`).join('') : g.html}
   </div>`).join('')}
 </div>` : '';
 
