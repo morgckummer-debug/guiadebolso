@@ -56,7 +56,12 @@ arquitetura identificadas durante a implementação.
    para o bloco 💜 "Com o tempo, aprendi que…" — o único bloco do sistema
    com assinatura, onde a experiência pessoal dela entra no app.
 
-6. **Protótipo interativo (estático, sem build)** → [`prototype/index.html`](prototype/index.html)
+6. **Pensamentos guardados** → [`docs/06-pensamentos-guardados.md`](docs/06-pensamentos-guardados.md)
+   Inbox de ideias soltas da autora — sempre que ela escrever `Pensamento:
+   …` em conversa, o texto é salvo aqui e promovido para o Tema certo
+   quando ele for criado.
+
+7. **Protótipo interativo (estático, sem build)** → [`prototype/index.html`](prototype/index.html)
    Abra o arquivo direto no navegador. Contém: showcase dos tokens do design
    system, showcase dos componentes, e as 3 telas principais do app, dentro
    de uma moldura de iPhone:
