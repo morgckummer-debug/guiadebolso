@@ -242,6 +242,16 @@ qualquer Tema.
 - **Posição:** logo após ✅ Próximo passo quando presente, para ficar próximo
   da decisão de conduta.
 
+### 📖 Contexto histórico
+- **Papel:** curiosidade/narrativa histórica mais longa que um "Você sabia?"
+  (ex. "Antes do Doppler…") — explica a evolução do raciocínio clínico, não
+  só um fato solto. Título do card é definido por Tema (não é sempre
+  "Contexto histórico" literalmente).
+- **Formato:** card de menor peso visual, borda tracejada (`--ink-300`),
+  fundo `--bg-subtle` — deliberadamente neutro, não compete com Essencial
+  nem usa dourado (já reservado para Fortalece confiança/Aula Express).
+- **Posição:** logo após os chips de 💡 Você sabia?, antes de ⚠️ Erro comum.
+
 ---
 
 ## Componentes de navegação e estrutura

@@ -95,6 +95,10 @@ button,input{font-family:inherit;}
 .b-confianca .chip{background:var(--gold-100);color:var(--gold-700);}
 .b-confianca .eyebrow{color:var(--gold-700);}
 .b-confianca{border:1px solid var(--gold-300);}
+.b-historia{background:var(--bg-subtle);border:1px dashed var(--ink-300);box-shadow:var(--shadow-1);}
+.b-historia .chip{background:var(--bg-sunken);color:var(--ink-500);}
+.b-historia .eyebrow{color:var(--ink-500);}
+.b-historia .block-body{font-size:13.5px;line-height:20px;color:var(--ink-700);}
 .b-aprendi{background:var(--lav-100);position:relative;padding-top:24px;}
 .b-aprendi:before{content:"“";position:absolute;top:-6px;left:14px;font-size:44px;color:var(--lav-300);font-family:Georgia,serif;}
 .b-aprendi .chip{background:var(--lav-700);color:#fff;}
@@ -558,7 +562,7 @@ const TEMAS = [
       'ACOG Practice Bulletin No. 231 — Placenta Accreta Spectrum. Obstet Gynecol, 2018.',
       'ISUOG Practice Guidelines: role of ultrasound in placenta previa and accreta. Ultrasound Obstet Gynecol, 2016.',
     ],
-    vejaTambem:['percentil8'],
+    vejaTambem:['percentil8','grau-placenta'],
   },
   {
     id:'arteria-umbilical-unica',
@@ -821,6 +825,48 @@ const TEMAS = [
     ],
     vejaTambem:[],
   },
+  {
+    id:'grau-placenta',
+    titulo:'Grau da placenta',
+    modulo:'placenta',
+    tags:['grau da placenta','classificação de grannum','calcificação placentária','maturação placentária','insuficiência placentária','síndrome antifosfolípide','saf'],
+    essencial:'Antes do Doppler, o grau placentário era um dos poucos métodos para estimar o envelhecimento da placenta. Hoje o Doppler fetal é muito mais preciso para avaliar a função placentária — o grau vira achado de importância limitada quando isolado.',
+    erro:'Indicar parto apenas porque o laudo descreve placenta grau III. O grau III não significa, por si só, que a placenta deixou de funcionar.',
+    passo:{tipo:'checklist', itens:[
+      'Correlacionar o grau placentário com a idade gestacional.',
+      'Avaliar crescimento fetal e líquido amniótico.',
+      'Se houver suspeita de insuficiência placentária, solicitar Doppler fetal.',
+      'Nunca tomar decisões baseado apenas no grau da placenta.',
+    ]},
+    explicar:'"A placenta pode apresentar calcificações ao longo da gestação, principalmente no final da gravidez. Hoje sabemos que isso, isoladamente, não indica sofrimento fetal. O mais importante é avaliar como a placenta está funcionando, e isso é feito pelo Doppler e pelo crescimento do bebê."',
+    pensando:'Minha placenta está velha? Meu bebê parou de receber alimento?',
+    confianca:'"Hoje conseguimos avaliar diretamente a função da placenta, e não apenas sua aparência. Isso nos permite tomar decisões muito mais seguras para você e seu bebê."',
+    aprendi:'Durante muitos anos, aprendemos a olhar para a calcificação da placenta. Hoje olho primeiro para o bebê. Se ele cresce bem e o Doppler está normal, a aparência da placenta perde grande parte da sua importância.',
+    vocesabia:['A classificação de Grannum foi criada em 1979, quando o Doppler obstétrico ainda não fazia parte da prática clínica. Na época, acreditava-se que uma placenta muito calcificada poderia indicar insuficiência placentária.'],
+    historia:{
+      titulo:'Antes do Doppler…',
+      texto:'Na década de 1980, o obstetra tinha poucas ferramentas para avaliar a função placentária. O grau placentário, o líquido amniótico e o crescimento fetal eram as principais formas de estimar se a placenta estava envelhecendo. Com o desenvolvimento do Doppler da artéria umbilical, tornou-se possível avaliar a resistência da circulação placentária em tempo real, mudando completamente a forma de acompanhar as gestações de risco.',
+    },
+    encaminhar:'O grau placentário isoladamente não é indicação de encaminhamento. Encaminhe apenas se houver:<ul><li>Restrição de crescimento fetal</li><li>Alterações no Doppler</li><li>Oligodrâmnio</li><li>Doença hipertensiva materna</li></ul>',
+    criterios:[
+      {titulo:'Classificação de Grannum', itens:[
+        ['Grau I','até 27 semanas'],
+        ['Grau II','até 32 semanas'],
+        ['Grau III','até 34 semanas'],
+      ]},
+      {titulo:'Quando suspeitar de maturação precoce', html:`
+<div class="def-row"><div class="def-term">Regra geral</div><div class="def-desc">Quanto mais precoce o grau avançado, mais grave.</div></div>
+<div class="def-row"><div class="def-term">Associação</div><div class="def-desc">CIUR (restrição de crescimento fetal).</div></div>
+<div class="def-row"><div class="def-term">Doenças autoimunes</div><div class="def-desc">Síndrome antifosfolípide (SAF) pode causar maturação placentária muito precoce.</div></div>
+<div class="def-row"><div class="def-term">Sinal de alerta</div><div class="def-desc">Grau III entre 22–30 semanas — suspeitar de causa autoimune / SAF.</div></div>`},
+    ],
+    aula:{titulo:'Grau da placenta: por que ele perdeu protagonismo para o Doppler', pendente:true},
+    referencias:[
+      'Grannum PA, Berkowitz RL, Hobbins JC. "The ultrasonic changes in the maturing placenta and their relation to fetal pulmonic maturity." Am J Obstet Gynecol, 1979.',
+      'Síndrome antifosfolípide e maturação placentária precoce — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:['placenta-baixa'],
+  },
 ];
 
 function temaById(id){ return TEMAS.find(t=>t.id===id); }
@@ -873,6 +919,10 @@ function renderTemaScreen(id){
 <div class="block b-confianca" id="blk-confianca"><div class="block-head"><div class="chip">🤝</div><div class="eyebrow">Fortalece confiança</div></div>
 <div class="block-body">${t.confianca}</div></div>` : '';
 
+  const historiaHTML = t.historia ? `
+<div class="block b-historia"><div class="block-head"><div class="chip">📖</div><div class="eyebrow">${t.historia.titulo}</div></div>
+<div class="block-body">${t.historia.texto}</div></div>` : '';
+
   const passoList = t.passo.tipo==='checklist'
     ? `<ol>${t.passo.itens.map(i=>`<li>${i}</li>`).join('')}</ol>`
     : `<p>${t.passo.texto}</p>`;
@@ -922,6 +972,7 @@ ${anchorRailHTML}
 <div class="block-body">${t.essencial}</div></div>
 
 ${(t.vocesabia||[]).map(v=>`<div class="chip-fact"><span class="chip-fact-icon">💡</span><div class="chip-fact-text">${v}</div></div>`).join('')}
+${historiaHTML}
 
 <div class="block b-erro" id="blk-erro"><div class="block-head"><div class="chip">⚠️</div><div class="eyebrow">Erro comum</div></div>
 <div class="block-body">${t.erro}</div></div>
