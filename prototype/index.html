@@ -190,44 +190,19 @@ button,input{font-family:inherit;}
 .idx-title{font-size:21px;font-weight:700;}
 .idx-search-btn{width:34px;height:34px;border-radius:11px;background:var(--bg-sunken);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--ink-700);flex-shrink:0;}
 
-/* comparação temporária de design — remover depois da decisão */
-.idx-variant-toggle{display:flex;gap:8px;margin:12px 0 6px;}
-.idx-variant-btn{flex:1;border:1px solid var(--ink-100);background:var(--bg-base);padding:9px;border-radius:var(--radius-md);font-size:12px;font-weight:700;color:var(--ink-500);cursor:pointer;}
-.idx-variant-btn.active{background:var(--lav-500);color:#fff;border-color:var(--lav-500);}
-.idx-variant-label{font-size:11px;color:var(--ink-300);text-align:center;margin-bottom:10px;}
-
-.mod-section{margin-top:22px;}
-.mod-head{display:flex;align-items:center;gap:10px;}
+.mod-section{margin-top:36px;}
+.mod-section:first-child{margin-top:18px;}
+.mod-head{display:flex;align-items:flex-end;gap:10px;padding-bottom:12px;margin-bottom:12px;border-bottom:2px solid var(--lav-100);}
 .mod-headtext{display:flex;flex-direction:column;flex:1;min-width:0;}
-.mod-icon{width:26px;height:26px;border-radius:8px;background:var(--lav-100);color:var(--lav-700);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
-.mod-eyebrow{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--lav-700);}
-.mod-name{font-size:14px;font-weight:700;color:var(--ink-900);}
-.mod-count{font-size:11px;color:var(--ink-300);font-weight:600;}
+.mod-icon{width:22px;height:22px;font-size:12px;background:transparent;color:var(--lav-500);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.mod-eyebrow{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--lav-700);margin-bottom:3px;}
+.mod-name{font-size:21px;font-weight:700;color:var(--ink-900);}
+.mod-count{font-size:11px;color:var(--ink-300);font-weight:600;flex-shrink:0;}
 .tema-row{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--ink-100);border-radius:14px;padding:13px 14px;margin-bottom:8px;box-shadow:var(--shadow-1);}
 .tema-row .q{flex:1;font-size:13.5px;font-weight:600;line-height:18px;}
 .tema-star{font-size:14px;color:var(--ink-300);}
 .tema-star.fav{color:var(--gold-500);}
 .tema-chev{color:var(--ink-300);font-size:13px;}
-
-/* Opção A — divisor forte (cabeçalho de capítulo maior, com régua) */
-.idx-variant-a .mod-section{margin-top:36px;}
-.idx-variant-a .mod-section:first-child{margin-top:18px;}
-.idx-variant-a .mod-head{align-items:flex-end;padding-bottom:12px;margin-bottom:12px;border-bottom:2px solid var(--lav-100);}
-.idx-variant-a .mod-icon{width:22px;height:22px;font-size:12px;background:transparent;color:var(--lav-500);}
-.idx-variant-a .mod-eyebrow{margin-bottom:3px;}
-.idx-variant-a .mod-name{font-size:21px;}
-.idx-variant-a .mod-count{flex-shrink:0;}
-
-/* Opção B — cartão por módulo (agrupamento tipo Notion) */
-.idx-variant-b .mod-section{background:var(--bg-base);border:1px solid var(--ink-100);border-radius:var(--radius-lg);box-shadow:var(--shadow-1);padding:14px 14px 6px;margin-top:16px;}
-.idx-variant-b .mod-section:first-child{margin-top:4px;}
-.idx-variant-b .mod-head{padding-bottom:10px;margin-bottom:2px;border-bottom:1px solid var(--ink-100);}
-.idx-variant-b .mod-icon{width:30px;height:30px;border-radius:9px;font-size:15px;}
-.idx-variant-b .mod-eyebrow{display:none;}
-.idx-variant-b .mod-name{font-size:16px;}
-.idx-variant-b .mod-count{background:var(--bg-sunken);padding:2px 8px;border-radius:99px;}
-.idx-variant-b .mod-temas .tema-row{background:transparent;border:none;box-shadow:none;border-radius:0;padding:11px 2px;margin-bottom:0;border-bottom:1px solid var(--bg-sunken);}
-.idx-variant-b .mod-temas .tema-row:last-child{border-bottom:none;margin-bottom:2px;}
 
 /* ---------- busca ---------- */
 .search-box{display:flex;align-items:center;gap:8px;background:var(--bg-sunken);border-radius:13px;padding:11px 14px;margin-bottom:4px;}
@@ -964,25 +939,15 @@ renderTemaScreen(currentTemaId);
 })();
 
 /* ================= ÍNDICE ================= */
-let idxVariant = 'a';
-
 function renderIndice(){
   const idxRailHTML = `<div class="anchor-rail">
     <button class="anchor-chip current" data-target="mod-todos">Todos</button>
     ${MODULOS.map(m=>`<button class="anchor-chip" data-target="mod-${m.id}">${m.nome}</button>`).join('')}
   </div>`;
-  const variantToggleHTML = `
-  <div class="idx-variant-toggle">
-    <button class="idx-variant-btn${idxVariant==='a'?' active':''}" data-variant="a">Opção A — Divisor forte</button>
-    <button class="idx-variant-btn${idxVariant==='b'?' active':''}" data-variant="b">Opção B — Cartão por módulo</button>
-  </div>
-  <div class="idx-variant-label">comparação temporária, pra decisão — remover depois</div>`;
   document.getElementById('scroll-indice').innerHTML = `
   <div class="idx-header"><div class="idx-title">Índice</div><div class="idx-search-btn" id="idx-search-btn">⌕</div></div>
-  ${variantToggleHTML}
   ${idxRailHTML}
   <div id="mod-todos"></div>
-  <div class="idx-variant-${idxVariant}">
   ${MODULOS.map(m=>{
     const temasDoModulo = TEMAS.filter(t=>t.modulo===m.id);
     return `
@@ -997,15 +962,8 @@ function renderIndice(){
       </div>
     </div>
   `;}).join('')}
-  </div>
   `;
   const idxScroll = document.getElementById('scroll-indice');
-  idxScroll.querySelectorAll('.idx-variant-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      idxVariant = btn.dataset.variant;
-      renderIndice();
-    });
-  });
   idxScroll.querySelectorAll('.anchor-chip').forEach(chip=>{
     chip.addEventListener('click',()=>{
       idxScroll.querySelectorAll('.anchor-chip').forEach(c=>c.classList.remove('current'));
