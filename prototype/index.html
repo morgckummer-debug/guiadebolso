@@ -108,6 +108,11 @@ button,input{font-family:inherit;}
 .b-eagora .chip{background:var(--lav-500);color:#fff;}
 .b-eagora .eyebrow{color:var(--lav-700);}
 .b-eagora .block-body li{font-weight:600;color:var(--ink-900);}
+.b-perola{background:var(--gold-100);border:2px solid var(--gold-500);}
+.b-perola .chip{background:var(--gold-500);color:#fff;}
+.b-perola .eyebrow{color:var(--gold-700);}
+.b-perola .block-body li{font-weight:600;color:var(--ink-900);}
+.b-perola .block-body ul li:before{color:var(--gold-700);}
 .aprendi-assinatura{font-style:italic;font-size:12px;color:var(--lav-700);opacity:.75;text-align:right;margin-top:8px;}
 .b-aula{background:var(--ink-900);color:#fff;}
 .b-aula .eyebrow{color:var(--gold-300);}
@@ -919,8 +924,12 @@ const TEMAS = [
     aprendi:'A melhor forma de evitar problemas no final da gestação é acertar a datação no começo. Muitos diagnósticos de restrição de crescimento, macrossomia ou gravidez prolongada desaparecem quando a idade gestacional está correta.',
     vocesabia:[
       'A idade gestacional definida pelo ultrassom do primeiro trimestre (idealmente entre 8 e 13 semanas + 6 dias) é mais precisa do que a DUM na maioria das pacientes e, depois de estabelecida, não deve ser modificada pelos ultrassons posteriores, exceto em situações especiais.',
-      'Curiosidades / pérolas:<ul><li>A maioria dos erros de crescimento fetal começa com uma datação incorreta.</li><li>Um erro de apenas 5 a 7 dias na datação pode levar a diagnósticos equivocados de restrição de crescimento, macrossomia ou pós-datismo.</li><li>O ultrassom do segundo ou terceiro trimestre é excelente para avaliar crescimento, mas muito menos preciso para datar a gestação.</li></ul>',
       'Critérios de datação gestacional pela ACOG:<ul><li>Até 13+6 sem, por CCN — discrepância US×DUM ≥5 dias até 8+6 sem, ≥7 dias de 9+0 a 13+6 sem.</li><li>14+0 a 15+6 sem, por DBP/CC/CA/CF — discrepância ≥7 dias.</li><li>16+0 a 21+6 sem, por DBP/CC/CA/CF — discrepância ≥10 dias.</li><li>22+0 a 27+6 sem, por DBP/CC/CA/CF — discrepância ≥14 dias.</li><li>28+0 sem até o termo, por DBP/CC/CA/CF — discrepância ≥21 dias.</li></ul>A data da gestação deve ser sempre baseada no USG mais precoce e de maior acurácia.',
+    ],
+    perolas:[
+      'A maioria dos erros de crescimento fetal começa com uma datação incorreta.',
+      'Um erro de apenas 5 a 7 dias na datação pode levar a diagnósticos equivocados de restrição de crescimento, macrossomia ou pós-datismo.',
+      'O ultrassom do segundo ou terceiro trimestre é excelente para avaliar crescimento, mas muito menos preciso para datar a gestação.',
     ],
     eAgora:[
       'DUM confiável + USG precoce compatível → mantenha a IG.',
@@ -976,6 +985,10 @@ function renderTemaScreen(id){
   const encaminharHTML = t.encaminhar ? `
 <div class="block b-alerta" id="blk-encaminhar"><div class="block-head"><div class="chip">🚩</div><div class="eyebrow">Quando encaminhar</div></div>
 <div class="block-body">${t.encaminhar}</div></div>` : '';
+
+  const perolasHTML = (t.perolas && t.perolas.length) ? `
+<div class="block b-perola"><div class="block-head"><div class="chip">🔑</div><div class="eyebrow">Pérola clínica</div></div>
+<div class="block-body"><ul>${t.perolas.map(p=>`<li>${p}</li>`).join('')}</ul></div></div>` : '';
 
   const pensandoHTML = t.pensando ? `
 <div class="block b-pensando"><div class="block-head"><div class="chip">❤️</div><div class="eyebrow">O que a paciente pensa</div></div>
@@ -1047,6 +1060,8 @@ ${anchorRailHTML}
 
 ${(t.vocesabia||[]).map(v=>`<div class="chip-fact"><span class="chip-fact-icon">💡</span><div class="chip-fact-text">${v}</div></div>`).join('')}
 ${historiaHTML}
+
+${perolasHTML}
 
 <div class="block b-erro" id="blk-erro"><div class="block-head"><div class="chip">⚠️</div><div class="eyebrow">Erro comum</div></div>
 <div class="block-body">${t.erro}</div></div>

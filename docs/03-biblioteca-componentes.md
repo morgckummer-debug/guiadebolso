@@ -237,8 +237,7 @@ qualquer Tema.
 ### 🚩 Quando encaminhar
 - **Papel:** critério objetivo de encaminhamento/alerta.
 - **Formato:** card com acento de urgência (`--danger`), borda mais espessa
-  (2px) — é o único bloco com peso de borda diferente, reservado para
-  informação que não pode ser perdida.
+  (2px) — reservado para informação que não pode ser perdida.
 - **Posição:** logo após ✅ Próximo passo quando presente, para ficar próximo
   da decisão de conduta.
 
@@ -251,6 +250,21 @@ qualquer Tema.
   fundo `--bg-subtle` — deliberadamente neutro, não compete com Essencial
   nem usa dourado (já reservado para Fortalece confiança/Aula Express).
 - **Posição:** logo após os chips de 💡 Você sabia?, antes de ⚠️ Erro comum.
+
+### 🔑 Pérola clínica
+- **Papel:** fato de alto impacto que o médico precisa carregar consigo —
+  diferente de 💡 Você sabia? (curiosidade/complemento de tom leve), a
+  pérola existe para ser lembrada na hora da decisão. Critério prático: se o
+  esquecimento desse fato pode levar a um erro de conduta, é pérola, não
+  curiosidade.
+- **Formato:** card cheio (`--gold-100` bg, borda 2px `--gold-500`) — junto
+  com 🚩 Quando encaminhar, um dos dois blocos com peso de borda diferenciado
+  do padrão hairline, porque ambos existem para não passar despercebidos.
+  Marcadores da lista em `--gold-700` em vez do lavanda padrão.
+- **Posição:** logo após 💡 Você sabia?, antes de ⚠️ Erro comum — cedo na
+  leitura, antes do resto do conteúdo.
+- **Sem chip no trilho de âncoras**, mesma regra de 💡 Você sabia? e 🚩 Quando
+  encaminhar (posição contextual, não pulável).
 
 ### 🧭 E agora?
 - **Papel:** resumo de decisão em formato "cenário → conduta" (ex.: "DUM

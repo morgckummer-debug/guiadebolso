@@ -53,6 +53,7 @@ Tema {
 
     // contextuais — posição livre dentro do fluxo, não fixa:
     voce_sabia: RichText[]               // 0..n, inseridos onde fizer sentido
+    perolas: RichText[]                  // 0..n, fato de alto impacto — ver docs/03
     quando_encaminhar: RichText | null    // 0..1, aparece se nivel_urgencia relevante
   }
 }
