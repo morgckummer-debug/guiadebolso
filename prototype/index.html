@@ -529,7 +529,7 @@ const TEMAS = [
       'Confirme a idade gestacional — a datação de 1º trimestre é a mais confiável disponível.',
       'Avalie Doppler de artéria umbilical e cerebral média (relação cérebro-placentária).',
       'Se Doppler normal e sem outros achados: reavalie em 2 semanas, não antes disso — e sempre repita o Doppler nessa reavaliação, não só a medida de peso.',
-      'Se Doppler alterado, percentil <3, ou queda ≥30 percentis entre dois ultrassons (sinal prático de alerta — o critério formal do consenso Delphi é cruzamento de 2 quartis): encaminhe para acompanhamento de alto risco.',
+      'Se houver algum critério de alerta (ver "Quando encaminhar" abaixo): encaminhe para acompanhamento de alto risco.',
     ]},
     explicar:'"O peso está um pouco abaixo da média, mas isso sozinho não quer dizer que há um problema. Vamos olhar o fluxo de sangue do bebê pelo Doppler e repetir a medida em algumas semanas para ver como ele está crescendo."',
     pensando:'Meu bebê está desnutrido? Isso é culpa minha, da minha alimentação? — associar "peso baixo" à culpa materna é uma reação comum, e quase sempre não é o caso.',
@@ -537,7 +537,7 @@ const TEMAS = [
     aprendi:'Um feto PIG (entre os percentis 3 e 10) não necessariamente é um feto doente. Os bebês pequenos constitucionais, filhos de pais de baixa estatura, impreterivelmente serão pequenos também. O mais importante não é analisar o ultrassom como um ponto fixo, e sim a trajetória de crescimento desse bebê.',
     vocesabia:[
       '"PIG" (pequeno para idade gestacional) e "RCF" (restrição de crescimento fetal) não são sinônimos — todo RCF é PIG, mas nem todo PIG é RCF.',
-      'Queda de 30 percentis ou mais entre dois ultrassons já é sinal prático de alerta — ex.: percentil 60 no morfológico, 45 em 28 semanas, 20 em 30 semanas. A queda entre o morfológico e a última medida (60→20) já é relevante, mesmo abaixo do critério formal do Delphi (cruzamento de 2 quartis).',
+      'Exemplo prático de queda de 30 percentis: percentil 60 no morfológico, 45 em 28 semanas, 20 em 30 semanas — a queda entre o morfológico e a última medida (60→20) já é relevante mesmo sem cruzar 2 quartis inteiros (critério formal do consenso Delphi).',
     ],
     encaminhar:'Percentil <3 em qualquer idade gestacional; Doppler de artéria umbilical ou relação cérebro-placentária alterados; queda ≥30 percentis entre dois exames; oligoidrâmnio associado — encaminhar para pré-natal de alto risco / medicina fetal.',
     aula:{titulo:'Como interpretar percentil de peso fetal e quando pedir Doppler', pendente:true},
@@ -773,7 +773,6 @@ const TEMAS = [
     ]},
     aprendi:'Aprendi com o tempo que nunca é demais pedir o estudo Doppler, principalmente a partir do 2º trimestre. Vejo muitos bebês PIG e mães com diabetes gestacional sendo acompanhados sem o Doppler. Para o ultrassonografista, é o mesmo que fazer o exame com uma venda nos olhos 🫣',
     vocesabia:[
-      'Reserva funcional da placenta — comprometimento estimado da circulação placentária:<ul><li>Artéria umbilical normal: até ~50%</li><li>IP acima do percentil 95: ~75%</li><li>Diástole zero: ~80%</li><li>Diástole reversa: ~90%</li></ul>',
       'O seguimento seriado da artéria umbilical reduz aproximadamente 30% das complicações perinatais.',
       'O feto tem baixo teor de oxigênio no sangue mesmo em condições normais — por isso suas hemácias são nucleadas, uma adaptação para sua sobrevivência.',
     ],
@@ -808,11 +807,11 @@ const TEMAS = [
 </div>`},
       {titulo:'Artéria umbilical: gravidade conforme o padrão', html:`
 <div class="flow">
-  <div class="flow-step tone-warn"><div class="flow-icon">🩸</div><div class="flow-text"><div class="flow-label">IP &gt; P95</div><div class="flow-desc">Hipóxia.</div></div></div>
+  <div class="flow-step tone-warn"><div class="flow-icon">🩸</div><div class="flow-text"><div class="flow-label">IP &gt; P95</div><div class="flow-desc">Hipóxia. Comprometimento estimado da circulação placentária: ~75%.</div></div></div>
   <div class="flow-arrow">↓</div>
-  <div class="flow-step tone-danger"><div class="flow-icon">🩸</div><div class="flow-text"><div class="flow-label">Diástole zero</div><div class="flow-desc">Acidose.</div></div></div>
+  <div class="flow-step tone-danger"><div class="flow-icon">🩸</div><div class="flow-text"><div class="flow-label">Diástole zero</div><div class="flow-desc">Acidose. Comprometimento estimado: ~80%.</div></div></div>
   <div class="flow-arrow">↓</div>
-  <div class="flow-step tone-danger"><div class="flow-icon">🚨</div><div class="flow-text"><div class="flow-label">Diástole reversa</div><div class="flow-desc">Morte iminente.</div></div></div>
+  <div class="flow-step tone-danger"><div class="flow-icon">🚨</div><div class="flow-text"><div class="flow-label">Diástole reversa</div><div class="flow-desc">Morte iminente. Comprometimento estimado: ~90%.</div></div></div>
 </div>`},
       {titulo:'Por que a ACM cai na hipóxia (redistribuição de fluxo)', html:`
 <div class="redist-grid">
@@ -851,7 +850,6 @@ const TEMAS = [
     pensando:'Minha placenta está velha? Meu bebê parou de receber alimento?',
     confianca:'"Hoje conseguimos avaliar diretamente a função da placenta, e não apenas sua aparência. Isso nos permite tomar decisões muito mais seguras para você e seu bebê."',
     aprendi:'Durante muito tempo, aprendemos a olhar para a calcificação da placenta. Hoje olhamos primeiro para o bebê. Se ele cresce bem e o Doppler está normal, a aparência da placenta perde grande parte da sua importância, mesmo se estiver muito calcificada (grau III).',
-    vocesabia:['A classificação de Grannum foi criada em 1979, quando o Doppler obstétrico ainda não fazia parte da prática clínica. Na época, acreditava-se que uma placenta muito calcificada poderia indicar insuficiência placentária.'],
     historia:{
       titulo:'Antes do Doppler…',
       texto:'Na década de 1980, o obstetra tinha poucas ferramentas para avaliar a função placentária. O grau placentário, o líquido amniótico e o crescimento fetal eram as principais formas de estimar se a placenta estava envelhecendo. Com o desenvolvimento do Doppler da artéria umbilical, tornou-se possível avaliar a resistência da circulação placentária em tempo real, mudando completamente a forma de acompanhar as gestações de risco.',
@@ -929,15 +927,6 @@ const TEMAS = [
     ],
     perolas:[
       'A maioria dos erros de crescimento fetal começa com uma datação incorreta.',
-      'Um erro de apenas 5 a 7 dias na datação pode levar a diagnósticos equivocados de restrição de crescimento, macrossomia ou pós-datismo.',
-      'O ultrassom do segundo ou terceiro trimestre é excelente para avaliar crescimento, mas muito menos preciso para datar a gestação.',
-    ],
-    eAgora:[
-      'DUM confiável + USG precoce compatível → mantenha a IG.',
-      'IG pela DUM até 8+6 semanas + diferença DUM×USG ≥5 dias → redate pelo USG.',
-      'IG pela DUM entre 9+0 e 13+6 semanas + diferença DUM×USG ≥7 dias → redate pelo USG.',
-      'Diferenças em ultrassons tardios → não altere a DPP apenas pelo crescimento fetal.',
-      'Se houver dúvida sobre qual data manter, consulte os critérios da ACOG/ISUOG para redatação.',
     ],
     aula:{titulo:'Quando devo corrigir a idade gestacional?', pendente:true},
     referencias:[
