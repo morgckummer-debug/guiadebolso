@@ -916,7 +916,8 @@ const TEMAS = [
     passo:{tipo:'checklist', itens:[
       'Confirme a idade gestacional pelo USG mais precoce e de maior acurácia — idealmente entre 8 e 13 semanas + 6 dias (CCN).',
       'Se a DUM for confiável e compatível com o USG precoce, mantenha a idade gestacional pela DUM.',
-      'Se a DUM for incerta ou incompatível, redate pela idade gestacional do USG de 1º trimestre.',
+      'Se o laudo tem IG pela DUM até 8+6 semanas e a diferença entre DUM e USG for de 5 dias ou mais, redate pelo USG.',
+      'Se o laudo tem IG pela DUM entre 9+0 e 13+6 semanas e a diferença entre DUM e USG for de 7 dias ou mais, redate pelo USG.',
       'Depois de estabelecida, não corrija a idade gestacional por ultrassons de 2º/3º trimestre — eles servem para avaliar crescimento, não para redatar.',
     ]},
     explicar:'"Cada ultrassom mede o bebê naquele momento. No início da gravidez os bebês crescem quase no mesmo ritmo, por isso conseguimos estimar a idade gestacional com mais precisão. Depois, cada bebê passa a crescer de um jeito, então pequenas diferenças de tamanho não significam que a data da gestação mudou."',
@@ -933,7 +934,8 @@ const TEMAS = [
     ],
     eAgora:[
       'DUM confiável + USG precoce compatível → mantenha a IG.',
-      'DUM incerta + USG de 1º trimestre → utilize o USG para datar.',
+      'IG pela DUM até 8+6 semanas + diferença DUM×USG ≥5 dias → redate pelo USG.',
+      'IG pela DUM entre 9+0 e 13+6 semanas + diferença DUM×USG ≥7 dias → redate pelo USG.',
       'Diferenças em ultrassons tardios → não altere a DPP apenas pelo crescimento fetal.',
       'Se houver dúvida sobre qual data manter, consulte os critérios da ACOG/ISUOG para redatação.',
     ],
