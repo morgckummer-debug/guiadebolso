@@ -132,6 +132,17 @@ Estado de toque (quando o card é acionável, ex. abrir referência): `scale .97
 
 ## Os 10 blocos fixos da sequência
 
+**Exceção:** 3 desses blocos — ❤️ O que a paciente pensa, 💬 Como explicar e
+🤝 Fortalece confiança — pressupõem um Tema no formato "achado no exame,
+reação da paciente". Temas de formato diferente (ex. conceitual/comparativo,
+como "por que escolher o morfológico do 1º trimestre em vez da TN simples")
+podem omitir esses 3 blocos quando não fazem sentido nesse tema, seguindo a
+mesma regra já usada para blocos contextuais: **omitir o bloco inteiro em
+vez de forçar conteúdo genérico**. Quando omitidos, o trilho de âncoras
+(`TrilhoDeAncoras`) também não mostra o chip correspondente. 🎯 Essencial,
+⚠️ Erro comum e ✅ Qual é o próximo passo? continuam obrigatórios em
+qualquer Tema.
+
 ### 1. 🎯 O Essencial
 - **Papel:** resposta em 1 parágrafo curto (2–4 linhas) — o único bloco que
   deve ser visível sem scroll ao abrir o Tema.
