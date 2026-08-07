@@ -499,6 +499,31 @@ const TEMAS = [
     ],
     vejaTambem:['percentil8'],
   },
+  {
+    id:'arteria-umbilical-unica',
+    titulo:'Achou artéria umbilical única. E agora?',
+    modulo:'placenta',
+    tags:['artéria umbilical única','auu','cordão umbilical','dois vasos','doppler','pig','rcf','cardiopatia fetal','ecocardiograma fetal'],
+    essencial:'A AUU pode ser identificada no morfológico do 1º trimestre. Quando é isolada, as principais preocupações são PIG/RCF (≈20%) e discreto aumento do risco de cardiopatias, sendo comum a indicação de ecocardiograma fetal.',
+    erro:'Solicitar investigação extensa apenas pela presença de AUU. O mais importante é confirmar que o ultrassom morfológico foi completo e pesquisar malformações associadas antes de definir a conduta.',
+    passo:{tipo:'checklist', itens:[
+      'Confirmar que a AUU é um achado isolado.',
+      'Revisar cuidadosamente a anatomia fetal.',
+      'Considerar ecocardiograma fetal.',
+      'Acompanhar o crescimento fetal com ultrassonografias seriadas.',
+    ]},
+    explicar:'"Em vez de três vasos, o cordão do seu bebê possui dois. Quando esse é o único achado, a maioria dos bebês nasce saudável. Vamos apenas acompanhar o crescimento e avaliar o coração com mais atenção."',
+    pensando:'Meu bebê tem um vaso a menos. Será que ele vai nascer com algum problema? Será que fiz alguma coisa errada durante a gravidez?',
+    confianca:'Deixar claro que "artéria única" é uma variação anatômica do cordão, não uma doença — e que o acompanhamento (crescimento seriado e ecocardiograma) existe justamente para dar segurança, não porque já haja um problema identificado.',
+    aprendi:'A artéria umbilical única costuma assustar muito mais a gestante do que ao médico. Quando o restante do exame está normal, a nossa principal função é acompanhar bem a gestação e evitar criar um problema maior do que realmente existe.',
+    vocesabia:['Em cerca de 70–80% dos casos, a AUU é um achado isolado. Quando não há outras malformações no ultrassom, o prognóstico costuma ser excelente.'],
+    aula:{titulo:'Artéria umbilical única: quando investigar e como acompanhar', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2022.',
+      'Achado isolado de artéria umbilical única e risco de PIG/RCF e cardiopatia congênita — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:['percentil8'],
+  },
 ];
 
 function temaById(id){ return TEMAS.find(t=>t.id===id); }
