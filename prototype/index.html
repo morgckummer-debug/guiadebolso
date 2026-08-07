@@ -396,6 +396,7 @@ const MODULOS = [
   {id:'placenta', nome:'Placenta e anexos', icon:'🔵'},
   {id:'urinario', nome:'Trato urinário fetal', icon:'💧'},
   {id:'colo', nome:'Colo uterino', icon:'🔒'},
+  {id:'marcadores', nome:'Marcadores leves de aneuploidia', icon:'✨'},
 ];
 
 const TEMAS = [
@@ -602,6 +603,31 @@ const TEMAS = [
     referencias:[
       'ISUOG Practice Guidelines: role of ultrasound in the prediction of spontaneous preterm birth. Ultrasound Obstet Gynecol, 2022.',
       'ACOG Practice Bulletin — Cervical Insufficiency — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:[],
+  },
+  {
+    id:'foco-ecogenico-intracardiaco',
+    titulo:'Foco ecogênico intracardíaco',
+    modulo:'marcadores',
+    tags:['foco ecogênico intracardíaco','golf ball','marcador de aneuploidia','marcador leve','coração fetal','eco intracardíaco'],
+    essencial:'O foco ecogênico intracardíaco (Golf Ball) é um marcador ultrassonográfico leve de aneuploidia, e não uma malformação cardíaca. Quando é um achado isolado, praticamente não modifica o risco de aneuploidia.',
+    erro:'Informar à gestante que o bebê "tem um problema no coração". O Golf Ball não é uma cardiopatia e não interfere na função cardíaca.',
+    passo:{tipo:'checklist', itens:[
+      'Verificar se o Golf Ball é um achado isolado.',
+      'Revisar o rastreamento para aneuploidias.',
+      'Na ausência de outros marcadores ou malformações, tranquilizar a gestante e manter o pré-natal habitual.',
+    ]},
+    explicar:'"Esse pontinho brilhante é apenas um marcador visto no ultrassom. Ele não altera o funcionamento do coração e, quando aparece sozinho, geralmente não aumenta o risco para o bebê."',
+    pensando:'Meu bebê tem uma doença no coração? Vai precisar de cirurgia? Esse pontinho pode prejudicar o coração dele?',
+    confianca:'"Hoje sabemos que um marcador isolado tem um significado muito diferente de vários marcadores juntos. Por isso analisamos sempre o bebê como um todo antes de tirar qualquer conclusão."',
+    aprendi:'O nome ‘Golf Ball’ chama muito mais atenção do que o próprio achado. Aprendi que alguns minutos explicando que isso não é uma doença cardíaca evitam dias de ansiedade para a família.',
+    vocesabia:['Apesar do aspecto brilhante ao ultrassom, não existe uma lesão no coração. Ao exame anatomopatológico, não há uma alteração estrutural correspondente.'],
+    encaminhar:'Encaminhar para pré-natal de alto risco / medicina fetal quando houver:<ul><li>Golf Ball associado a outros marcadores ultrassonográficos</li><li>Malformações estruturais associadas</li><li>Rastreamento positivo para aneuploidias</li><li>Dúvida na interpretação do exame</li></ul>',
+    aula:{titulo:'Foco ecogênico intracardíaco: por que não é uma cardiopatia', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan — marcadores leves de aneuploidia. Ultrasound Obstet Gynecol, 2022.',
+      'Foco ecogênico intracardíaco isolado e risco de aneuploidia — referência específica pendente de indicação da autora.',
     ],
     vejaTambem:[],
   },
