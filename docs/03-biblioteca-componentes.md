@@ -146,11 +146,11 @@ Estado de toque (quando o card é acionável, ex. abrir referência): `scale .97
 - **Variante:** ícone chip com leve contorno tracejado — comunica "cuidado"
   sem depender só da cor.
 
-### 3. ✅ Qual é o próximo passo?
-- **Papel:** ação concreta imediata.
-- **Acento:** sage (`--success`).
-- **Variante:** corpo pode renderizar como checklist numerada (1, 2, 3) em vez
-  de parágrafo — único bloco com essa flexibilidade estrutural.
+### 3. ❤️ O que a paciente provavelmente está pensando
+- **Papel:** antecipar a preocupação não verbalizada.
+- **Acento:** rosa empatia (`--empathy`).
+- **Variante:** balão com "cauda" sutil (pseudo-elemento triangular) apontando
+  para cima, reforçando "isto está na cabeça dela".
 
 ### 4. 💬 Como explicar para a paciente
 - **Papel:** frase pronta, em linguagem simples, para usar na consulta.
@@ -158,11 +158,14 @@ Estado de toque (quando o card é acionável, ex. abrir referência): `scale .97
 - **Variante:** tipografia levemente diferenciada — itálico no corpo, como
   fala direta, distinguindo de texto técnico dos outros blocos.
 
-### 5. ❤️ O que a paciente provavelmente está pensando
-- **Papel:** antecipar a preocupação não verbalizada.
-- **Acento:** rosa empatia (`--empathy`).
-- **Variante:** balão com "cauda" sutil (pseudo-elemento triangular) apontando
-  para cima, reforçando "isto está na cabeça dela".
+### 5. ✅ Qual é o próximo passo?
+- **Papel:** ação concreta imediata.
+- **Acento:** sage (`--success`).
+- **Variante:** corpo pode renderizar como checklist numerada (1, 2, 3) em vez
+  de parágrafo — único bloco com essa flexibilidade estrutural.
+- **Ordem:** vem depois de "O que a paciente pensa" e "Como explicar" —
+  primeiro acolhe a preocupação e dá a frase pronta, só depois entrega a
+  ação clínica.
 
 ### 6. 🤝 O que fortalece a confiança da paciente
 - **Papel:** atitude/gesto que aumenta confiança no profissional.
