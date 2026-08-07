@@ -165,6 +165,12 @@ button,input{font-family:inherit;}
 .value-card-icon{font-size:17px;}
 .value-card-label{font-size:10.5px;font-weight:700;color:var(--ink-500);margin-top:3px;text-transform:uppercase;letter-spacing:.03em;}
 .value-card-range{font-size:13px;font-weight:700;color:var(--ink-900);margin-top:2px;}
+.value-card.tone-ok{background:var(--ok-bg);border-color:transparent;}
+.value-card.tone-ok .value-card-label,.value-card.tone-ok .value-card-range{color:var(--ok-fg);}
+.value-card.tone-warn{background:var(--warn-bg);border-color:transparent;}
+.value-card.tone-warn .value-card-label,.value-card.tone-warn .value-card-range{color:var(--warn-fg);}
+.value-card.tone-danger{background:var(--danger-bg);border-color:transparent;}
+.value-card.tone-danger .value-card-label,.value-card.tone-danger .value-card-range{color:var(--danger-fg);}
 
 .redist-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
 .redist-box{border-radius:var(--radius-md);padding:11px;text-align:center;}
@@ -756,6 +762,7 @@ const TEMAS = [
     vocesabia:[
       'Reserva funcional da placenta — comprometimento estimado da circulação placentária:<ul><li>Artéria umbilical normal: até ~50%</li><li>IP acima do percentil 95: ~75%</li><li>Diástole zero: ~80%</li><li>Diástole reversa: ~90%</li></ul>',
       'O seguimento seriado da artéria umbilical reduz aproximadamente 30% das complicações perinatais.',
+      'O feto tem baixo teor de oxigênio no sangue mesmo em condições normais — por isso suas hemácias são nucleadas, uma adaptação para sua sobrevivência.',
     ],
     criterios:[
       {titulo:'Cascata do Doppler: da resistência à acidose', html:`
@@ -766,11 +773,33 @@ const TEMAS = [
   <div class="flow-arrow">↓</div>
   <div class="flow-step tone-danger"><div class="flow-icon">⏱️</div><div class="flow-text"><div class="flow-label">Ducto venoso</div><div class="flow-desc">Acidose — falência da compensação fetal. Marcador tardio, decisão mais urgente.</div></div></div>
 </div>`},
+      {titulo:'Da hipóxia à acidose: a cascata bioquímica', html:`
+<div class="flow">
+  <div class="flow-step tone-warn"><div class="flow-icon">🫁</div><div class="flow-text"><div class="flow-label">↓ Oxigênio</div><div class="flow-desc">Hipóxia — o feto entra em compensação.</div></div></div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step tone-danger"><div class="flow-icon">🧪</div><div class="flow-text"><div class="flow-label">pH ~7,2</div><div class="flow-desc">Acidose — falência da compensação, metabolismo anaeróbico.</div></div></div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step tone-danger"><div class="flow-icon">⚠️</div><div class="flow-text"><div class="flow-label">Morte intrauterina / perinatal</div><div class="flow-desc">Ou morbidade perinatal, quando não é fatal.</div></div></div>
+</div>`},
+      {titulo:'Valores de pH fetal', html:`
+<div class="value-cards">
+  <div class="value-card tone-ok"><div class="value-card-icon">🧪</div><div class="value-card-label">Normal</div><div class="value-card-range">7,35–7,45</div></div>
+  <div class="value-card tone-danger"><div class="value-card-icon">🧪</div><div class="value-card-label">Acidemia</div><div class="value-card-range">&lt;&nbsp;7,35</div></div>
+  <div class="value-card tone-warn"><div class="value-card-icon">🧪</div><div class="value-card-label">Alcalose</div><div class="value-card-range">&gt;&nbsp;7,45</div></div>
+</div>`},
       {titulo:'Valores de referência', html:`
 <div class="value-cards">
   <div class="value-card"><div class="value-card-icon">🩸</div><div class="value-card-label">Umbilical</div><div class="value-card-range">Normal<br>&lt;&nbsp;P95</div></div>
   <div class="value-card"><div class="value-card-icon">🧠</div><div class="value-card-label">ACM</div><div class="value-card-range">Normal<br>&gt;&nbsp;P5</div></div>
   <div class="value-card"><div class="value-card-icon">⚖️</div><div class="value-card-label">RCP</div><div class="value-card-range">Normal<br>&gt;&nbsp;P5</div></div>
+</div>`},
+      {titulo:'Artéria umbilical: gravidade conforme o padrão', html:`
+<div class="flow">
+  <div class="flow-step tone-warn"><div class="flow-icon">🩸</div><div class="flow-text"><div class="flow-label">IP &gt; P95</div><div class="flow-desc">Hipóxia.</div></div></div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step tone-danger"><div class="flow-icon">🩸</div><div class="flow-text"><div class="flow-label">Diástole zero</div><div class="flow-desc">Acidose.</div></div></div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step tone-danger"><div class="flow-icon">🚨</div><div class="flow-text"><div class="flow-label">Diástole reversa</div><div class="flow-desc">Morte iminente.</div></div></div>
 </div>`},
       {titulo:'Por que a ACM cai na hipóxia (redistribuição de fluxo)', html:`
 <div class="redist-grid">
