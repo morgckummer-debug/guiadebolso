@@ -76,7 +76,12 @@ as sugestões de arquitetura identificadas durante a implementação.
    …` em conversa, o texto é salvo aqui e promovido para o Tema certo
    quando ele for criado.
 
-7. **Protótipo interativo (estático, sem build)** → [`prototype/index.html`](prototype/index.html)
+7. **Backlog de temas** → [`docs/07-backlog-temas.md`](docs/07-backlog-temas.md)
+   Lista de achados frequentes na prática, ainda não escritos como Tema,
+   organizados por categoria (Placenta, Cordão, Líquido amniótico, Achados
+   fetais, Crescimento, Doppler) — matéria-prima para os próximos temas.
+
+8. **Protótipo interativo (estático, sem build)** → [`prototype/index.html`](prototype/index.html)
    Abra o arquivo direto no navegador. Contém: showcase dos tokens do design
    system, showcase dos componentes, e as 3 telas principais do app, dentro
    de uma moldura de iPhone:
