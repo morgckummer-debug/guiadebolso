@@ -100,6 +100,10 @@ button,input{font-family:inherit;}
 .b-aprendi .chip{background:var(--lav-700);color:#fff;}
 .b-aprendi .eyebrow{color:var(--lav-700);}
 .b-aprendi .block-body{font-style:italic;color:var(--lav-700);}
+.b-eagora{border:2px solid var(--lav-500);}
+.b-eagora .chip{background:var(--lav-500);color:#fff;}
+.b-eagora .eyebrow{color:var(--lav-700);}
+.b-eagora .block-body li{font-weight:600;color:var(--ink-900);}
 .aprendi-assinatura{font-style:italic;font-size:12px;color:var(--lav-700);opacity:.75;text-align:right;margin-top:8px;}
 .b-aula{background:var(--ink-900);color:#fff;}
 .b-aula .eyebrow{color:var(--gold-300);}
@@ -474,7 +478,7 @@ const TEMAS = [
       'ISUOG Practice Guidelines: diagnosis and management of small-for-gestational-age fetus and fetal growth restriction. Ultrasound Obstet Gynecol, 2020.',
       'Gordijn SJ et al. "Consensus definition of fetal growth restriction: a Delphi procedure." Ultrasound Obstet Gynecol, 2016.',
     ],
-    vejaTambem:['placenta-baixa'],
+    vejaTambem:['placenta-baixa','datacao-gestacao'],
   },
   {
     id:'placenta-baixa',
@@ -684,7 +688,7 @@ const TEMAS = [
       'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2023.',
       'ASPRE trial — aspirin for evidence-based preeclampsia prevention — referência específica pendente de indicação da autora.',
     ],
-    vejaTambem:[],
+    vejaTambem:['datacao-gestacao'],
   },
   {
     id:'vasa-previa',
@@ -716,6 +720,40 @@ const TEMAS = [
     ],
     vejaTambem:['placenta-baixa','arteria-umbilical-unica'],
   },
+  {
+    id:'datacao-gestacao',
+    titulo:'Datação da gestação',
+    modulo:'trimestre1',
+    tags:['datação da gestação','idade gestacional','dpp','ccn','usg datador','dum','correção da idade gestacional','biometria fetal','acog','isuog'],
+    essencial:'Ensinar como definir corretamente a idade gestacional e a DPP, qual exame utilizar em cada fase da gestação e quando a idade gestacional deve (ou não) ser corrigida.',
+    erro:'<ul><li>Corrigir a idade gestacional toda vez que um novo ultrassom mostra uma diferença de alguns dias.</li><li>Valorizar a DUM quando ela é incerta ou incompatível com um ultrassom precoce confiável.</li><li>Utilizar biometria do terceiro trimestre para redefinir a DPP.</li></ul>',
+    passo:{tipo:'checklist', itens:[
+      'Confirme a idade gestacional pelo USG mais precoce e de maior acurácia — idealmente entre 8 e 13 semanas + 6 dias (CCN).',
+      'Se a DUM for confiável e compatível com o USG precoce, mantenha a idade gestacional pela DUM.',
+      'Se a DUM for incerta ou incompatível, redate pela idade gestacional do USG de 1º trimestre.',
+      'Depois de estabelecida, não corrija a idade gestacional por ultrassons de 2º/3º trimestre — eles servem para avaliar crescimento, não para redatar.',
+    ]},
+    explicar:'"Cada ultrassom mede o bebê naquele momento. No início da gravidez os bebês crescem quase no mesmo ritmo, por isso conseguimos estimar a idade gestacional com mais precisão. Depois, cada bebê passa a crescer de um jeito, então pequenas diferenças de tamanho não significam que a data da gestação mudou."',
+    confianca:'Explique por que você está mantendo (ou corrigindo) a idade gestacional. Quando a gestante entende o motivo da decisão, ela tende a confiar mais no acompanhamento e evita comparar datas de diferentes ultrassons.',
+    aprendi:'A melhor forma de evitar problemas no final da gestação é acertar a datação no começo. Muitos diagnósticos de restrição de crescimento, macrossomia ou gravidez prolongada desaparecem quando a idade gestacional está correta.',
+    vocesabia:[
+      'A idade gestacional definida pelo ultrassom do primeiro trimestre (idealmente entre 8 e 13 semanas + 6 dias) é mais precisa do que a DUM na maioria das pacientes e, depois de estabelecida, não deve ser modificada pelos ultrassons posteriores, exceto em situações especiais.',
+      'Curiosidades / pérolas:<ul><li>A maioria dos erros de crescimento fetal começa com uma datação incorreta.</li><li>Um erro de apenas 5 a 7 dias na datação pode levar a diagnósticos equivocados de restrição de crescimento, macrossomia ou pós-datismo.</li><li>O ultrassom do segundo ou terceiro trimestre é excelente para avaliar crescimento, mas muito menos preciso para datar a gestação.</li></ul>',
+      'Critérios de datação gestacional pela ACOG:<ul><li>Até 13+6 sem, por CCN — discrepância US×DUM ≥5 dias até 8+6 sem, ≥7 dias de 9+0 a 13+6 sem.</li><li>14+0 a 15+6 sem, por DBP/CC/CA/CF — discrepância ≥7 dias.</li><li>16+0 a 21+6 sem, por DBP/CC/CA/CF — discrepância ≥10 dias.</li><li>22+0 a 27+6 sem, por DBP/CC/CA/CF — discrepância ≥14 dias.</li><li>28+0 sem até o termo, por DBP/CC/CA/CF — discrepância ≥21 dias.</li></ul>A data da gestação deve ser sempre baseada no USG mais precoce e de maior acurácia.',
+    ],
+    eAgora:[
+      'DUM confiável + USG precoce compatível → mantenha a IG.',
+      'DUM incerta + USG de 1º trimestre → utilize o USG para datar.',
+      'Diferenças em ultrassons tardios → não altere a DPP apenas pelo crescimento fetal.',
+      'Se houver dúvida sobre qual data manter, consulte os critérios da ACOG/ISUOG para redatação.',
+    ],
+    aula:{titulo:'Quando devo corrigir a idade gestacional?', pendente:true},
+    referencias:[
+      'ACOG Committee Opinion No. 700 — Methods for Estimating the Due Date. Obstet Gynecol, 2017 (reafirmado) — referência específica pendente de indicação da autora.',
+      'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan (datação gestacional). Ultrasound Obstet Gynecol, 2023.',
+    ],
+    vejaTambem:['morfologico-1trimestre','percentil8'],
+  },
 ];
 
 function temaById(id){ return TEMAS.find(t=>t.id===id); }
@@ -734,6 +772,7 @@ const TEMA_ANCHORS = [
   ['blk-confianca','Confiança'],
   ['blk-aula','Aula'],
   ['blk-ref','Referências'],
+  ['blk-eagora','E agora?'],
 ];
 
 function renderTemaScreen(id){
@@ -744,6 +783,7 @@ function renderTemaScreen(id){
   const temaAnchors = TEMA_ANCHORS.filter(([aid])=>{
     if(aid==='blk-explicar') return !!t.explicar;
     if(aid==='blk-confianca') return !!t.confianca;
+    if(aid==='blk-eagora') return !!(t.eAgora && t.eAgora.length);
     return true;
   });
   currentTemaAnchors = temaAnchors;
@@ -792,6 +832,10 @@ function renderTemaScreen(id){
     : `<div class="aula-meta">${t.aula.duracao} · protegido por login</div><button class="aula-btn">Assistir</button>`;
 
   const refsHTML = t.referencias.map((r,i)=>`${i+1}. ${r}`).join('<br>');
+
+  const eAgoraHTML = (t.eAgora && t.eAgora.length) ? `
+<div class="block b-eagora" id="blk-eagora"><div class="block-head"><div class="chip">🧭</div><div class="eyebrow">E agora?</div></div>
+<div class="block-body"><ul>${t.eAgora.map(i=>`<li>${i}</li>`).join('')}</ul></div></div>` : '';
 
   const vejaHTML = t.vejaTambem.length ? `
 <div class="block b-veja" id="blk-veja"><div class="block-head"><div class="chip">➜</div><div class="eyebrow">Veja também</div></div>
@@ -842,6 +886,7 @@ ${confiancaHTML}
 <div class="block b-ref" id="blk-ref"><div class="ref-toggle" onclick="this.parentElement.querySelector('.ref-list').classList.toggle('open')"><div class="block-head" style="margin-bottom:0"><div class="chip">📚</div><div class="eyebrow">Referências</div></div><span style="font-size:12px;color:var(--ink-500)">Ver (${t.referencias.length}) ⌄</span></div>
 <div class="ref-list">${refsHTML}</div></div>
 
+${eAgoraHTML}
 ${vejaHTML}
 ${footerHTML}
 `;
