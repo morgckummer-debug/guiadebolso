@@ -22,11 +22,16 @@ autora — mas o pacote ainda não passou por revisão clínica formal completa
 pendentes de indicação específica dela) antes de qualquer uso real em
 consulta.
 
-**4 temas completos e navegáveis de verdade** (não é mock estático):
-1. Não apareceu embrião. E agora? — módulo 1º trimestre
-2. O peso fetal veio no percentil 8. E agora? — módulo Crescimento fetal
-3. A placenta veio baixa. O que muda agora? — módulo Placenta e anexos
-4. Achou artéria umbilical única. E agora? — módulo Placenta e anexos
+**6 temas completos e navegáveis de verdade** (não é mock estático):
+1. Ausência de embrião — módulo 1º trimestre
+2. Percentil de peso baixo — módulo Crescimento fetal
+3. Placenta baixa — módulo Placenta e anexos
+4. Artéria umbilical única — módulo Placenta e anexos
+5. Dilatação das pelves renais — módulo Trato urinário fetal
+6. Megabexiga fetal — módulo Trato urinário fetal
+
+Convenção de título: nome direto do achado, sem frase/pergunta em volta
+(ex. "Placenta baixa", não "A placenta veio baixa. O que muda agora?").
 
 O conteúdo clínico desses temas mistura rascunho baseado em diretrizes
 públicas (ISUOG, ACOG) com falas e decisões clínicas escritas diretamente
