@@ -5,33 +5,36 @@ digital interativo, não um PDF/e-book/curso. O objetivo é ajudar na tomada
 de decisão rápida durante a consulta — qualquer resposta em menos de 10
 segundos.
 
-## v1.0 — primeira versão estável
+## v1.1 — versão atual estável
 
-O Sprint Zero (validação da plataforma com conteúdo real: leitura, busca,
-índice, links internos, Aula Express, navegação entre temas) foi concluído
-e testado pela autora, Dra. Morgana Kummer, na íntegra — esta versão está
-marcada com a tag git `v1.0` e **permanece congelada** a partir daqui,
-como registro estável. Novo desenvolvimento continua na branch `develop`
-(ou em cópia de trabalho), nunca diretamente sobre a tag `v1.0`. Sem
-autenticação implementada ainda.
+Versionamento: cada versão validada pela autora, Dra. Morgana Kummer, vira
+uma branch congelada (`v1.0`, `v1.1`, ...) que nunca mais é alterada — todo
+desenvolvimento novo acontece na branch `develop` até a próxima validação.
+`v1.0` foi o Sprint Zero (plataforma validada com conteúdo real: leitura,
+busca, índice, links internos, Aula Express, navegação entre temas).
+`v1.1` adiciona um 4º tema, com conteúdo clínico já escrito diretamente
+pela autora. Sem autenticação implementada ainda.
 
-**Importante:** validado nesta versão é a experiência da plataforma (UX,
-navegação, arquitetura, design system) — o conteúdo clínico dos 3 temas
-piloto segue com o status descrito abaixo (rascunho baseado em diretriz
-pública, com falas pessoais já revisadas pela autora), e ainda pendente de
-revisão clínica formal completa antes de qualquer uso real em consulta.
+**Importante:** validado é a experiência da plataforma (UX, navegação,
+arquitetura, design system) e o conteúdo dos temas escrito pela própria
+autora — mas o pacote ainda não passou por revisão clínica formal completa
+(ex. referências bibliográficas de alguns temas seguem em rascunho,
+pendentes de indicação específica dela) antes de qualquer uso real em
+consulta.
 
-**3 temas piloto completos e navegáveis de verdade** (não é mock estático):
+**4 temas completos e navegáveis de verdade** (não é mock estático):
 1. Não apareceu embrião. E agora? — módulo 1º trimestre
 2. O peso fetal veio no percentil 8. E agora? — módulo Crescimento fetal
 3. A placenta veio baixa. O que muda agora? — módulo Placenta e anexos
+4. Achou artéria umbilical única. E agora? — módulo Placenta e anexos
 
-O conteúdo clínico desses 3 temas é **rascunho**, escrito com base em
-diretrizes públicas (ISUOG, ACOG) para exercitar a plataforma — pendente de
-revisão e validação médica da autora antes de qualquer uso real em
-consulta. Ver `prototype/index.html` (aba Tema/Índice/Busca) para o
-protótipo funcional, e o final desta seção para as sugestões de
-arquitetura identificadas durante a implementação.
+O conteúdo clínico desses temas mistura rascunho baseado em diretrizes
+públicas (ISUOG, ACOG) com falas e decisões clínicas escritas diretamente
+pela autora nos blocos pessoais (💜 Aprendi que…, 🤝 Fortalece confiança,
+entre outros) — pendente de revisão e validação médica completa antes de
+qualquer uso real em consulta. Ver `prototype/index.html` (aba
+Tema/Índice/Busca) para o protótipo funcional, e o final desta seção para
+as sugestões de arquitetura identificadas durante a implementação.
 
 1. **Arquitetura da informação** → [`docs/01-arquitetura-informacao.md`](docs/01-arquitetura-informacao.md)
    Modelo de conteúdo (Tema/Módulo), mapa de navegação, template de página,
