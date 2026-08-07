@@ -500,7 +500,7 @@ const TEMAS = [
       'ACOG Practice Bulletin No. 231 — Placenta Accreta Spectrum. Obstet Gynecol, 2018.',
       'ISUOG Practice Guidelines: role of ultrasound in placenta previa and accreta. Ultrasound Obstet Gynecol, 2016.',
     ],
-    vejaTambem:['percentil8'],
+    vejaTambem:['percentil8','vasa-previa'],
   },
   {
     id:'arteria-umbilical-unica',
@@ -525,7 +525,7 @@ const TEMAS = [
       'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2022.',
       'Achado isolado de artéria umbilical única e risco de PIG/RCF e cardiopatia congênita — referência específica pendente de indicação da autora.',
     ],
-    vejaTambem:['percentil8'],
+    vejaTambem:['percentil8','vasa-previa'],
   },
   {
     id:'dilatacao-pelves-renais',
@@ -685,6 +685,35 @@ const TEMAS = [
       'ASPRE trial — aspirin for evidence-based preeclampsia prevention — referência específica pendente de indicação da autora.',
     ],
     vejaTambem:[],
+  },
+  {
+    id:'vasa-previa',
+    titulo:'Vasa prévia',
+    modulo:'placenta',
+    tags:['vasa prévia','inserção velamentosa','placenta bilobulada','placenta succenturiada','geleia de wharton','sangramento vaginal','ruptura de membranas','fertilização in vitro'],
+    essencial:'Algumas alterações da placenta e da inserção do cordão aumentam significativamente o risco de vasa prévia. Sempre que uma delas estiver descrita no laudo, considere essa possibilidade e encaminhe a gestante para avaliação especializada.',
+    erro:'Valorizar a inserção velamentosa ou uma placenta bilobulada apenas como um achado anatômico e esquecer que elas aumentam o risco de vasa prévia.',
+    passo:{tipo:'checklist', itens:[
+      'Manter o acompanhamento pré-natal normalmente até a confirmação diagnóstica.',
+      'Se houver confirmação de vasa prévia, planejar o parto antes do início do trabalho de parto.',
+      'Orientar a gestante a procurar atendimento imediatamente em caso de sangramento vaginal ou ruptura da bolsa.',
+    ]},
+    explicar:'"Encontramos uma característica da placenta que exige um acompanhamento mais cuidadoso. Na maioria das vezes a gestação evolui bem, mas precisamos confirmar se existem vasos do bebê próximos ao colo do útero, pois isso pode mudar o planejamento do parto."',
+    pensando:'Meu bebê corre risco durante o parto?',
+    confianca:'"Nem toda alteração da placenta representa um risco imediato. O mais importante é reconhecê-la a tempo para planejar a gestação e o parto da forma mais segura possível."',
+    aprendi:'Sempre que vejo uma inserção velamentosa, uma placenta bilobulada ou um lobo acessório, faço a mesma pergunta: existe uma vasa prévia? Mais um motivo para realização do ultrassom transvaginal. Esse cuidado simples pode ser a diferença entre uma emergência obstétrica e um parto planejado com segurança.',
+    vocesabia:[
+      'O diagnóstico pré-natal da vasa prévia aumenta a sobrevida fetal de aproximadamente 44% para 97%, pois permite programar o parto antes da ruptura das membranas.',
+      'Alterações associadas à vasa prévia:<ul><li><strong>Inserção velamentosa</strong> — o cordão umbilical não se insere diretamente na placenta, mas nas membranas; os vasos percorrem um trajeto sem proteção da geleia de Wharton antes de alcançar a placenta. Principal fator de risco para vasa prévia; também associada a maior risco de restrição de crescimento fetal e de lesão hipóxico-isquêmica cerebral.</li><li><strong>Placenta bilobulada</strong> — a placenta é formada por dois lobos de tamanho semelhante, unidos por vasos fetais que podem cruzar o colo uterino e originar uma vasa prévia. Também aumenta o risco de retenção de restos placentários e hemorragia pós-parto.</li><li><strong>Placenta succenturiada</strong> — existe um lobo placentário acessório separado da placenta principal; os vasos que unem o lobo acessório à placenta principal também podem passar sobre o colo uterino.</li></ul>',
+      'Outros fatores de risco: placenta prévia ou de inserção baixa; fertilização in vitro.',
+    ],
+    encaminhar:'Encaminhar para pré-natal de alto risco / medicina fetal quando houver:<ul><li>Inserção velamentosa</li><li>Suspeita ou confirmação de vasa prévia</li><li>Placenta bilobulada ou succenturiada com suspeita de vasos fetais próximos ao colo</li><li>Dúvida diagnóstica no laudo ultrassonográfico</li></ul>',
+    aula:{titulo:'Vasa prévia: quando suspeitar e como planejar o parto', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines (updated): diagnosis and management of vasa previa. Ultrasound Obstet Gynecol, 2024.',
+      'Vasa prévia: sobrevida fetal com diagnóstico pré-natal versus diagnóstico intraparto — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:['placenta-baixa','arteria-umbilical-unica'],
   },
 ];
 
