@@ -13,4 +13,10 @@ Formato de cada entrada: data, texto literal, status (`novo` / `usado em:
 
 ## Entradas
 
-_Nenhum pensamento registrado ainda._
+- **2026-08-07** — "Em algum momento na configuração do app, vou querer
+  colocar imagens de ultrassom para o médico começar a querer olhar as
+  imagens no laudo! A maioria não olha pq não sabe." — status: `novo`,
+  ideia de produto/conteúdo (não é fala pessoal pra um `aprendi:` de tema
+  específico — é sobre incluir imagens de ultrassom anotadas/exemplo em
+  algum ponto do app, possivelmente ligado à Aula Express, pra ensinar o
+  médico a olhar o laudo com mais atenção).
