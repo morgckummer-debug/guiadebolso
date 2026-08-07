@@ -132,6 +132,13 @@ button,input{font-family:inherit;}
 .crit-row .crit-label{color:var(--ink-700);}
 .crit-row .crit-value{color:var(--ink-900);font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums;}
 
+/* variante de crit-row para valores que são frase (não número curto) — sem
+   nowrap, texto quebra normalmente em vez de vazar da borda do bloco. */
+.def-row{padding:8px 0;border-top:1px solid var(--ink-100);}
+.def-row:first-child{border-top:none;}
+.def-term{font-size:10.5px;font-weight:700;color:var(--lav-700);text-transform:uppercase;letter-spacing:.03em;}
+.def-desc{font-size:13px;color:var(--ink-900);margin-top:2px;line-height:18px;}
+
 /* ---------- diagramas dentro do painel de critérios (quadros/setas/ícones) ----------
    Usado por temas conceituais densos (ex. Doppler fetal) para representar
    cascatas de raciocínio clínico sem virar parede de texto. Reaproveita as
@@ -772,12 +779,11 @@ const TEMAS = [
 </div>
 <div class="redist-arrow">↓</div>
 <div class="redist-result">Resultado: o IP da ACM diminui</div>`},
-      {titulo:'Centralização fetal — o que é e o que não é', itens:[
-        ['É','Mecanismo adaptativo à hipóxia'],
-        ['Não é','Sinal isolado de sofrimento terminal'],
-        ['Não indica','Parto isoladamente'],
-        ['Hoje','Muitos serviços evitam o termo no laudo — o uso excessivo já levou a interrupções desnecessárias'],
-      ]},
+      {titulo:'Centralização fetal — o que é e o que não é', html:`
+<div class="def-row"><div class="def-term">É</div><div class="def-desc">Mecanismo adaptativo à hipóxia.</div></div>
+<div class="def-row"><div class="def-term">Não é</div><div class="def-desc">Sinal isolado de sofrimento terminal.</div></div>
+<div class="def-row"><div class="def-term">Não indica</div><div class="def-desc">Parto isoladamente.</div></div>
+<div class="def-row"><div class="def-term">Hoje</div><div class="def-desc">Muitos serviços evitam o termo no laudo — o uso excessivo já levou a interrupções desnecessárias.</div></div>`},
     ],
     aula:{titulo:'Entendendo o Doppler fetal: fisiopatologia e interpretação prática', pendente:true},
     referencias:[
