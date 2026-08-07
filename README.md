@@ -51,7 +51,12 @@ arquitetura identificadas durante a implementação.
    [`prototype/archive/cinco-perguntas-opcoes.html`](prototype/archive/cinco-perguntas-opcoes.html)
    — mantido só como registro histórico da comparação, não é mais atualizado.
 
-5. **Protótipo interativo (estático, sem build)** → [`prototype/index.html`](prototype/index.html)
+5. **Banco de perguntas pessoais** → [`docs/05-banco-perguntas-pessoais.md`](docs/05-banco-perguntas-pessoais.md)
+   Perguntas-gatilho usadas para coletar, tema a tema, a fala real da autora
+   para o bloco 💜 "Com o tempo, aprendi que…" — o único bloco do sistema
+   com assinatura, onde a experiência pessoal dela entra no app.
+
+6. **Protótipo interativo (estático, sem build)** → [`prototype/index.html`](prototype/index.html)
    Abra o arquivo direto no navegador. Contém: showcase dos tokens do design
    system, showcase dos componentes, e as 3 telas principais do app, dentro
    de uma moldura de iPhone:
