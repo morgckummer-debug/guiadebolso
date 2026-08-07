@@ -661,6 +661,31 @@ const TEMAS = [
     ],
     vejaTambem:['foco-ecogenico-intracardiaco'],
   },
+  {
+    id:'morfologico-1trimestre',
+    titulo:'Morfológico do 1º trimestre',
+    modulo:'trimestre1',
+    tags:['morfológico do 1º trimestre','translucência nucal','tn simples','ducto venoso','doppler tricúspide','rastreamento de pré-eclâmpsia','aspirina','doppler artérias uterinas'],
+    essencial:'O morfológico do 1º trimestre vai muito além da translucência nucal: soma avaliação de ducto venoso, Doppler da tricúspide, anatomia fetal completa e rastreamento de pré-eclâmpsia — que define quem se beneficia da aspirina preventiva.',
+    erro:'Dizer que o morfológico do 1º trimestre é apenas uma "translucência nucal mais cara". Na realidade, ele responde perguntas completamente diferentes e pode identificar gestantes que se beneficiam da prevenção da pré-eclâmpsia.',
+    passo:{tipo:'checklist', itens:[
+      'Explicar a diferença entre TN simples e morfológico do 1º trimestre antes da paciente escolher o exame.',
+      'Realizar o rastreamento de pré-eclâmpsia (história obstétrica, doenças crônicas e autoimunes, IMC, pressão arterial média, Doppler das artérias uterinas) quando o morfológico for feito.',
+      'Calcular o risco e, se indicado, iniciar aspirina no momento certo — o benefício depende do início precoce.',
+      'Se a paciente quiser migrar para o morfológico do 1º trimestre, mesmo já tendo agendado a TN simples, não recusar — respeitar a escolha pelo exame mais completo.',
+    ]},
+    aprendi:'Sempre escuto que o morfológico do 1º trimestre é uma ‘moda’. Mas a pré-eclâmpsia continua sendo uma das principais causas de morte materna. Se hoje conseguimos identificar precocemente quem tem maior risco e iniciar medidas preventivas, por que abrir mão dessa oportunidade?',
+    vocesabia:[
+      'O que a TN simples avalia:<ul><li>CCN</li><li>Frequência cardíaca fetal</li><li>Translucência nucal</li><li>Pesquisa do osso nasal</li></ul>',
+      'O morfológico do 1º trimestre acrescenta:<ul><li>Ducto venoso</li><li>Doppler da valva tricúspide</li><li>Anatomia fetal completa (cérebro, face, coluna, diafragma, coração, estômago, rins, bexiga, parede abdominal, membros, cordão, placenta)</li><li>Rastreamento de pré-eclâmpsia (história obstétrica, doenças crônicas e autoimunes, IMC, pressão arterial média, Doppler das artérias uterinas)</li></ul>',
+    ],
+    aula:{titulo:'Morfológico do 1º trimestre: o que ele responde que a TN simples não responde', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2023.',
+      'ASPRE trial — aspirin for evidence-based preeclampsia prevention — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:[],
+  },
 ];
 
 function temaById(id){ return TEMAS.find(t=>t.id===id); }
@@ -669,6 +694,7 @@ function stripAccents(s){ return s.normalize('NFD').replace(/[̀-ͯ]/g,''); }
 function norm(s){ return stripAccents(s.toLowerCase()); }
 
 let currentTemaId = TEMAS[0].id;
+let currentTemaAnchors = null;
 
 const TEMA_ANCHORS = [
   ['blk-essencial','Essencial'],
@@ -685,13 +711,32 @@ function renderTemaScreen(id){
   const modulo = moduloById(t.modulo);
   currentTemaId = id;
 
+  const temaAnchors = TEMA_ANCHORS.filter(([aid])=>{
+    if(aid==='blk-explicar') return !!t.explicar;
+    if(aid==='blk-confianca') return !!t.confianca;
+    return true;
+  });
+  currentTemaAnchors = temaAnchors;
+
   const anchorRailHTML = `<div class="anchor-rail" id="anchor-rail">${
-    TEMA_ANCHORS.map(([aid,label],i)=>`<button class="anchor-chip${i===0?' current':''}" data-target="${aid}">${label}</button>`).join('')
+    temaAnchors.map(([aid,label],i)=>`<button class="anchor-chip${i===0?' current':''}" data-target="${aid}">${label}</button>`).join('')
   }</div>`;
 
   const encaminharHTML = t.encaminhar ? `
 <div class="block b-alerta" id="blk-encaminhar"><div class="block-head"><div class="chip">🚩</div><div class="eyebrow">Quando encaminhar</div></div>
 <div class="block-body">${t.encaminhar}</div></div>` : '';
+
+  const pensandoHTML = t.pensando ? `
+<div class="block b-pensando"><div class="block-head"><div class="chip">❤️</div><div class="eyebrow">O que a paciente pensa</div></div>
+<div class="block-body">${t.pensando}</div></div>` : '';
+
+  const explicarHTML = t.explicar ? `
+<div class="block b-explicar" id="blk-explicar"><div class="block-head"><div class="chip">💬</div><div class="eyebrow">Como explicar</div></div>
+<div class="block-body">${t.explicar}</div></div>` : '';
+
+  const confiancaHTML = t.confianca ? `
+<div class="block b-confianca" id="blk-confianca"><div class="block-head"><div class="chip">🤝</div><div class="eyebrow">Fortalece confiança</div></div>
+<div class="block-body">${t.confianca}</div></div>` : '';
 
   const passoList = t.passo.tipo==='checklist'
     ? `<ol>${t.passo.itens.map(i=>`<li>${i}</li>`).join('')}</ol>`
@@ -746,18 +791,15 @@ ${(t.vocesabia||[]).map(v=>`<div class="chip-fact"><span class="chip-fact-icon">
 <div class="block b-erro" id="blk-erro"><div class="block-head"><div class="chip">⚠️</div><div class="eyebrow">Erro comum</div></div>
 <div class="block-body">${t.erro}</div></div>
 
-<div class="block b-pensando"><div class="block-head"><div class="chip">❤️</div><div class="eyebrow">O que a paciente pensa</div></div>
-<div class="block-body">${t.pensando}</div></div>
+${pensandoHTML}
 
-<div class="block b-explicar" id="blk-explicar"><div class="block-head"><div class="chip">💬</div><div class="eyebrow">Como explicar</div></div>
-<div class="block-body">${t.explicar}</div></div>
+${explicarHTML}
 
 <div class="block b-passo" id="blk-passo"><div class="block-head"><div class="chip">✅</div><div class="eyebrow">Qual é o próximo passo?</div></div>
 <div class="block-body">${passoBody}</div></div>
 ${encaminharHTML}
 
-<div class="block b-confianca" id="blk-confianca"><div class="block-head"><div class="chip">🤝</div><div class="eyebrow">Fortalece confiança</div></div>
-<div class="block-body">${t.confianca}</div></div>
+${confiancaHTML}
 
 <div class="block b-aprendi"><div class="block-head"><div class="chip">💜</div><div class="eyebrow">Com o tempo, aprendi que…</div></div>
 <div class="block-body">"${t.aprendi}"</div>
@@ -797,8 +839,9 @@ function bindTemaScreenInteractions(){
   // scroll-spy + progresso de leitura
   temaScroll.onscroll = ()=>{
     const top = temaScroll.getBoundingClientRect().top + 56;
-    let current = TEMA_ANCHORS[0][0];
-    for(const [aid] of TEMA_ANCHORS){
+    const anchors = currentTemaAnchors || TEMA_ANCHORS;
+    let current = anchors[0][0];
+    for(const [aid] of anchors){
       const el = document.getElementById(aid);
       if(el && el.getBoundingClientRect().top - top < 40) current = aid;
     }
