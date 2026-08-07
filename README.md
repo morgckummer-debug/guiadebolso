@@ -5,15 +5,17 @@ digital interativo, não um PDF/e-book/curso. O objetivo é ajudar na tomada
 de decisão rápida durante a consulta — qualquer resposta em menos de 10
 segundos.
 
-## v1.1 — versão atual estável
+## v1.2 — versão atual estável
 
 Versionamento: cada versão validada pela autora, Dra. Morgana Kummer, vira
-uma branch congelada (`v1.0`, `v1.1`, ...) que nunca mais é alterada — todo
-desenvolvimento novo acontece na branch `develop` até a próxima validação.
-`v1.0` foi o Sprint Zero (plataforma validada com conteúdo real: leitura,
-busca, índice, links internos, Aula Express, navegação entre temas).
-`v1.1` adiciona um 4º tema, com conteúdo clínico já escrito diretamente
-pela autora. Sem autenticação implementada ainda.
+uma branch congelada (`v1.0`, `v1.1`, `v1.2`, ...) que nunca mais é
+alterada — todo desenvolvimento novo acontece na branch `develop` até a
+próxima validação. `v1.0` foi o Sprint Zero (plataforma validada com
+conteúdo real: leitura, busca, índice, links internos, Aula Express,
+navegação entre temas). `v1.1` adicionou um 4º tema. `v1.2` expande para
+14 temas — incluindo um novo módulo (Doppler fetal) — e três blocos de
+conteúdo novos: 🔑 Pérola clínica, 📖 Contexto histórico e 🧭 E agora?.
+Sem autenticação implementada ainda.
 
 **Importante:** validado é a experiência da plataforma (UX, navegação,
 arquitetura, design system) e o conteúdo dos temas escrito pela própria
