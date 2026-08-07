@@ -395,6 +395,7 @@ const MODULOS = [
   {id:'crescimento', nome:'Crescimento fetal', icon:'📏'},
   {id:'placenta', nome:'Placenta e anexos', icon:'🔵'},
   {id:'urinario', nome:'Trato urinário fetal', icon:'💧'},
+  {id:'colo', nome:'Colo uterino', icon:'🔒'},
 ];
 
 const TEMAS = [
@@ -577,6 +578,32 @@ const TEMAS = [
       'Megabexiga fetal no 1º trimestre: prognóstico, investigação genética e conduta — referência específica pendente de indicação da autora.',
     ],
     vejaTambem:['dilatacao-pelves-renais'],
+  },
+  {
+    id:'colo-curto',
+    titulo:'Colo curto',
+    modulo:'colo',
+    tags:['colo curto','insuficiência istmocervical','comprimento cervical','cerclagem','progesterona vaginal','parto prematuro','afunilamento cervical'],
+    essencial:'A insuficiência istmocervical pode causar perdas fetais antes do ultrassom morfológico. Ainda não existe um valor de corte bem estabelecido para o colo no 1º trimestre, mas medidas próximas de 30 mm merecem atenção, principalmente quando há afunilamento do orifício interno.',
+    erro:'Acreditar que um toque vaginal normal exclui insuficiência istmocervical. O toque avalia principalmente o orifício cervical externo. O orifício interno, onde a doença começa, só pode ser avaliado pelo ultrassom transvaginal. Um toque normal NÃO exclui insuficiência istmocervical.',
+    passo:{tipo:'checklist', itens:[
+      'Iniciar progesterona vaginal. Em caso de colos muito curtos, encaminhar para o pré-natal de alto risco ou maternidade.',
+      'Reavaliar o comprimento do colo conforme a idade gestacional.',
+      'Investigar antecedente de perdas no 2º trimestre ou parto prematuro.',
+      'Orientar sinais de alerta e manter seguimento rigoroso.',
+    ]},
+    explicar:'"O colo do útero funciona como uma ‘porta’ que deve permanecer fechada durante a gestação. Em algumas mulheres ele começa a abrir por dentro antes de causar qualquer sintoma. Por isso o ultrassom é tão importante. Assim podemos te dar progesterona para evitar a prematuridade extrema."',
+    pensando:'Se eu não sinto dor e está tudo bem, por que meu colo está abrindo? Meu bebê pode nascer a qualquer momento?',
+    confianca:'"Seu exame mostrou uma alteração que conseguimos identificar antes de ela causar sintomas. Isso nos permite agir mais cedo e aumentar as chances de a gestação evoluir bem."',
+    aprendi:'Algumas perdas gestacionais poderiam ser evitadas se olhássemos o colo do útero antes que ele começasse a abrir… O ultrassom não substitui o exame clínico, mas consegue mostrar exatamente a parte do colo que o dedo nunca alcança.',
+    vocesabia:['Muitas mulheres com insuficiência istmocervical são primigestas. O primeiro sinal pode ser justamente uma perda gestacional no 2º trimestre.'],
+    encaminhar:'Encaminhar para pré-natal de alto risco / medicina fetal quando houver:<ul><li>Colo &lt;25 mm antes de 24 semanas</li><li>Suspeita de insuficiência istmocervical</li><li>Abertura do orifício interno ao ultrassom</li><li>História de perda fetal tardia ou parto prematuro espontâneo</li><li>Dúvida sobre indicação de cerclagem</li></ul>',
+    aula:{titulo:'Colo curto: quando indicar progesterona e quando pensar em cerclagem', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: role of ultrasound in the prediction of spontaneous preterm birth. Ultrasound Obstet Gynecol, 2022.',
+      'ACOG Practice Bulletin — Cervical Insufficiency — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:[],
   },
 ];
 
