@@ -36,7 +36,7 @@ a voz dela, só ajustar pontuação/clareza se necessário.
 
 ## Status de preenchimento (3 temas piloto)
 
-- ✅ 1º trimestre — não apareceu embrião: **pendente**, autora vai escrever.
+- ✅ 1º trimestre — não apareceu embrião: preenchido com resposta literal da autora.
 - ✅ Peso fetal no percentil 8: preenchido com resposta literal da autora.
 - ✅ Placenta baixa: autora confirmou manter o rascunho existente como
   fala própria.
