@@ -48,6 +48,7 @@ Tema {
     aprendi_que: RichText
     aula_express: { video_id, duracao, thumbnail } | null
     referencias: Referencia[]
+    e_agora: RichText[] | null           // 0..n, cenário → conduta, ver §4
     veja_tambem: TemaRef[]
 
     // contextuais — posição livre dentro do fluxo, não fixa:
@@ -135,8 +136,9 @@ interação em vez de três desenhos diferentes.
 9. 💜 Com o tempo, aprendi que…
 10. 🎥 Aula Express
 11. 📚 Referências (colapsado por padrão — não compete por atenção com o essencial)
-12. ➜ Veja também
-13. Rodapé de navegação: Tema anterior / Tema seguinte / Voltar ao índice
+12. 🧭 E agora? (contextual — cenário → conduta, resumo de decisão para o final da leitura; ver §2.1 e `docs/03`)
+13. ➜ Veja também
+14. Rodapé de navegação: Tema anterior / Tema seguinte / Voltar ao índice
 
 ## 5. Modelo de acesso (arquitetura, sem UI de autenticação nesta etapa)
 

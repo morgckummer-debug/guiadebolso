@@ -252,6 +252,25 @@ qualquer Tema.
   nem usa dourado (já reservado para Fortalece confiança/Aula Express).
 - **Posição:** logo após os chips de 💡 Você sabia?, antes de ⚠️ Erro comum.
 
+### 🧭 E agora?
+- **Papel:** resumo de decisão em formato "cenário → conduta" (ex.: "DUM
+  confiável + USG precoce compatível → mantenha a IG."), para a dúvida
+  específica que motiva o médico a abrir o Tema no meio da consulta. Não
+  substitui ✅ Qual é o próximo passo? (ação concreta do caso típico) — é o
+  desempate para os casos-limite/variações que o Essencial não cobre.
+- **Formato:** card com borda dupla lavanda (`--lav-500`, 2px), ícone chip
+  preenchido a lavanda — peso visual comparável a 🚩 Quando encaminhar, mas
+  sem a conotação de urgência. Corpo em lista (não numerada, já que os itens
+  são condições alternativas, não passos sequenciais).
+- **Posição:** último bloco de conteúdo da página, depois de 📚 Referências e
+  antes de ➜ Veja também — deliberadamente o resumo com que o médico sai da
+  leitura.
+- **Status:** proposto pela autora para se tornar padrão em **todos** os
+  Temas do guia (não só nos que têm formato "achado → decisão"). Implementado
+  como bloco contextual (aparece só quando o Tema tem conteúdo para ele)
+  porque ainda não foi retroaplicado aos Temas existentes — pendente de a
+  autora escrever o "E agora?" de cada um.
+
 ---
 
 ## Componentes de navegação e estrutura
