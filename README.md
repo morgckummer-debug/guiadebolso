@@ -5,14 +5,21 @@ digital interativo, não um PDF/e-book/curso. O objetivo é ajudar na tomada
 de decisão rápida durante a consulta — qualquer resposta em menos de 10
 segundos.
 
-## Etapa 2 (atual): Sprint Zero — validação com conteúdo real
+## v1.0 — primeira versão estável
 
-Arquitetura, Design System e componentes (Etapa 1) considerados maduros o
-suficiente para testar a plataforma inteira com conteúdo real, mas **a
-arquitetura ainda não está congelada** — este Sprint Zero existe para
-validar a experiência (leitura, busca, índice, links internos, Aula
-Express, navegação entre temas) antes da v1.0. Sem autenticação
-implementada ainda.
+O Sprint Zero (validação da plataforma com conteúdo real: leitura, busca,
+índice, links internos, Aula Express, navegação entre temas) foi concluído
+e testado pela autora, Dra. Morgana Kummer, na íntegra — esta versão está
+marcada com a tag git `v1.0` e **permanece congelada** a partir daqui,
+como registro estável. Novo desenvolvimento continua na branch `develop`
+(ou em cópia de trabalho), nunca diretamente sobre a tag `v1.0`. Sem
+autenticação implementada ainda.
+
+**Importante:** validado nesta versão é a experiência da plataforma (UX,
+navegação, arquitetura, design system) — o conteúdo clínico dos 3 temas
+piloto segue com o status descrito abaixo (rascunho baseado em diretriz
+pública, com falas pessoais já revisadas pela autora), e ainda pendente de
+revisão clínica formal completa antes de qualquer uso real em consulta.
 
 **3 temas piloto completos e navegáveis de verdade** (não é mock estático):
 1. Não apareceu embrião. E agora? — módulo 1º trimestre
