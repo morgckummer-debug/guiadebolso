@@ -20,3 +20,14 @@ Formato de cada entrada: data, texto literal, status (`novo` / `usado em:
   específico — é sobre incluir imagens de ultrassom anotadas/exemplo em
   algum ponto do app, possivelmente ligado à Aula Express, pra ensinar o
   médico a olhar o laudo com mais atenção).
+
+- **2026-08-08** — "Os vasos estudados no Doppler NUNCA devem ser
+  analisados isoladamente. Um bebê com desenvolvimento e peso normal com
+  uma ACM de baixa resistência não significa sofrimento fetal. Se o
+  médico repetisse o exame em 15 minutos, estaria dentro do normal." —
+  status: `novo`, fala pessoal candidata ao bloco 💜 "Aprendi que…" do
+  tema "Entendendo o Doppler fetal" (`doppler-introducao`) — esse tema já
+  tem em `erro:` o alerta de não interpretar um vaso isoladamente; este
+  pensamento aprofunda o porquê (variabilidade normal de curto prazo do
+  IP da ACM) com a voz pessoal da autora, ainda sem ter sido promovido
+  para o campo `aprendi:`.
