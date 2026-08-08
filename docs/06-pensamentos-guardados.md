@@ -41,3 +41,13 @@ Formato de cada entrada: data, texto literal, status (`novo` / `usado em:
   número em si; ou (2) ideia de produto mais ampla — orientação sobre
   como escolher um bom serviço de ultrassonografia — que não é "achado no
   exame" e pode não caber no formato padrão de Tema.
+
+- **2026-08-08** — "Um IP normal da ACM pode indicar anemia grave e não
+  ser descrito no laudo, o que mudaria completamente a conduta médica."
+  — status: `novo`, alerta forte candidato ao tema "Anemia fetal"
+  (`psv-acm`) — reforça, com um caso concreto e mais grave, a distinção
+  que o `erro:` daquele tema já faz entre IP da ACM (hipóxia) e PSV da
+  ACM (anemia): aqui o ponto é que um laudo pode trazer só o IP normal e
+  nem citar a PSV, dando falsa sensação de normalidade quando a anemia
+  pode estar grave. Candidato a enriquecer `erro:` ou virar um futuro
+  bloco 🔑 Pérola clínica nesse tema, ainda sem ter sido promovido.
