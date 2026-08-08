@@ -49,6 +49,8 @@ marcar como concluído aqui.
 - [ ] PIG × RCF — *confusão que a autora considera enorme; já existe o
       tema "Feto PIG" tocando nisso (módulo Crescimento
       fetal), mas pode valer um tema dedicado só à diferenciação PIG × RCF.*
+- [x] RCF precoce × RCF tardia — tema "RCF precoce × RCF tardia" (módulo
+      Crescimento fetal)
 - [ ] Macrossomia
 - [ ] Peso fetal no P10
 - [ ] Circunferência abdominal isoladamente baixa

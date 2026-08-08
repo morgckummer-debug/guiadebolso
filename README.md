@@ -27,7 +27,7 @@ autora — mas o pacote ainda não passou por revisão clínica formal completa
 pendentes de indicação específica dela) antes de qualquer uso real em
 consulta.
 
-**15 temas completos e navegáveis de verdade** (não é mock estático):
+**16 temas completos e navegáveis de verdade** (não é mock estático):
 1. Ausência de embrião — módulo 1º trimestre
 2. Feto PIG — módulo Crescimento fetal
 3. Placenta baixa — módulo Placenta e anexos
@@ -43,6 +43,7 @@ consulta.
 13. Vasa prévia — módulo Placenta e anexos
 14. Datação da gestação — módulo 1º trimestre
 15. Anemia fetal — módulo Doppler fetal
+16. RCF precoce × RCF tardia — módulo Crescimento fetal
 
 Convenção de título: nome direto do achado, sem frase/pergunta em volta
 (ex. "Placenta baixa", não "A placenta veio baixa. O que muda agora?").

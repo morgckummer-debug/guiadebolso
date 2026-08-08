@@ -545,7 +545,7 @@ const TEMAS = [
       'ISUOG Practice Guidelines: diagnosis and management of small-for-gestational-age fetus and fetal growth restriction. Ultrasound Obstet Gynecol, 2020.',
       'Gordijn SJ et al. "Consensus definition of fetal growth restriction: a Delphi procedure." Ultrasound Obstet Gynecol, 2016.',
     ],
-    vejaTambem:['placenta-baixa','datacao-gestacao'],
+    vejaTambem:['placenta-baixa','datacao-gestacao','rcf-precoce-tardia'],
   },
   {
     id:'placenta-baixa',
@@ -831,7 +831,7 @@ const TEMAS = [
       'Nicolaides KH / Fetal Medicine Foundation (FMF) — fisiopatologia da centralização fetal e Doppler — referência específica pendente de indicação da autora.',
       'ISUOG Practice Guidelines: use of Doppler ultrasonography in obstetrics. Ultrasound Obstet Gynecol.',
     ],
-    vejaTambem:['psv-acm'],
+    vejaTambem:['psv-acm','rcf-precoce-tardia'],
   },
   {
     id:'grau-placenta',
@@ -962,6 +962,44 @@ const TEMAS = [
       'Society for Maternal-Fetal Medicine (SMFM). Clinical Guideline #8: The Fetus at Risk for Anemia — Diagnosis and Management. Am J Obstet Gynecol, 2015;212(6):697-710.',
     ],
     vejaTambem:['doppler-introducao'],
+  },
+  {
+    id:'rcf-precoce-tardia',
+    titulo:'RCF precoce × RCF tardia',
+    modulo:'crescimento',
+    tags:['rcf precoce','rcf tardia','restrição de crescimento fetal','insuficiência placentária','doppler das artérias uterinas','relação cérebro-placentária','rcp','ducto venoso','hipóxia fetal','placentação'],
+    essencial:'RCF precoce (antes de 32 semanas) e RCF tardia (a partir de 32 semanas) não são a mesma doença: fisiopatologia, Doppler e tolerância à hipóxia diferentes. A tardia é mais frequente (~70%) e pode ser mais silenciosa e perigosa mesmo com Doppler pouco alterado.',
+    erro:'Interpretar a gravidade do Doppler como "quanto mais alterado, mais perto da morte", sem considerar o tipo de RCF. Na RCF precoce, Doppler bastante alterado pode conviver com feto ainda compensado; na tardia, Doppler umbilical normal pode conviver com feto de menor tolerância à hipóxia. Doppler das artérias uterinas normal não exclui RCF tardia.',
+    passo:{tipo:'checklist', itens:[
+      'Classifique pelo ponto de corte de 32 semanas: RCF precoce (antes) × RCF tardia (a partir de).',
+      'Na RCF precoce: acompanhe Doppler das artérias uterinas (mais informativo entre 20 e 24 semanas), artéria umbilical, redistribuição fetal (ACM/RCP) e ducto venoso em casos graves — a sequência costuma ser progressiva.',
+      'Na RCF tardia: não espere a artéria umbilical alterar — avalie principalmente a ACM e a relação cérebro-placentária (RCP), já que o Doppler umbilical e o das uterinas costumam permanecer normais.',
+      'Não classifique a gravidade só pelo grau de alteração do Doppler — considere primeiro qual tipo de RCF está sendo acompanhado.',
+    ]},
+    explicar:'"A placenta do seu bebê não está oferecendo oxigênio e nutrientes tão bem quanto deveria. Dependendo de quando isso aparece na gestação, o jeito de acompanhar muda — por isso vamos repetir alguns exames específicos para saber a melhor forma de cuidar do crescimento dele."',
+    pensando:'Meu bebê está sofrendo? Isso significa que ele vai precisar nascer antes da hora?',
+    confianca:'"O acompanhamento muda conforme o momento em que essa alteração apareceu na gestação — por isso pedimos exames diferentes em cada caso. Isso não é indecisão, é ajuste fino para cuidar do jeito certo do seu bebê."',
+    aprendi:'Na RCF precoce, a placenta costuma falar alto. Na RCF tardia, ela pode sussurrar — e o feto pode ter menos tempo para avisar que está sofrendo. Por isso não devemos esperar que a artéria umbilical fique alterada para reconhecer uma RCF tardia.',
+    vocesabia:[
+      'A RCF tardia é bem mais frequente que a precoce — cerca de 70% dos casos contra 30%.',
+      'O Doppler das artérias uterinas não é um bom teste isolado para rastrear toda RCF, mas melhora a identificação dos casos de RCF precoce, especialmente quando avaliado entre 20 e 24 semanas.',
+    ],
+    perolas:[
+      'Doppler uterino normal não exclui RCF tardia — e é justamente por isso que ela costuma ser mais difícil de reconhecer.',
+    ],
+    eAgora:[
+      'RCF precoce + Doppler bastante alterado + feto ainda compensado → não indica necessariamente proximidade de sofrimento grave — fetos com RCF precoce toleram mais tempo compensados.',
+      'RCF tardia + Doppler umbilical normal + RCP reduzida → sinal de alerta mesmo com o Doppler "normal" — a RCF tardia tem menor tolerância à hipóxia.',
+      'Doppler das artérias uterinas normal, isoladamente, não descarta RCF tardia — reavalie ACM e RCP antes de tranquilizar.',
+    ],
+    encaminhar:'Encaminhar para Medicina Fetal diante de qualquer RCF confirmada — a estratégia de vigilância muda conforme o tipo (precoce × tardia), e a evolução (sobretudo alteração do ducto venoso na RCF precoce, ou RCP reduzida mesmo com umbilical normal na RCF tardia) deve ser acompanhada por quem tem experiência nesse seguimento.',
+    aula:{titulo:'RCF precoce × RCF tardia: por que a conduta é diferente', pendente:true},
+    referencias:[
+      'Figueras F, Gratacós E. "Update on the Diagnosis and Classification of Fetal Growth Restriction and Proposal of a Stage-Based Management Protocol." Fetal Diagn Ther, 2014;36(2):86-98.',
+      'Gordijn SJ, Beune IM, Thilaganathan B, et al. "Consensus definition of fetal growth restriction: a Delphi procedure." Ultrasound Obstet Gynecol, 2016;48(3):333-339.',
+      'Lees CC, Stampalija T, Baschat A, et al. "ISUOG Practice Guidelines: diagnosis and management of small-for-gestational-age fetus and fetal growth restriction." Ultrasound Obstet Gynecol, 2020;56(2):298-312.',
+    ],
+    vejaTambem:['percentil8','doppler-introducao'],
   },
 ];
 
