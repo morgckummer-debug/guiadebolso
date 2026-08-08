@@ -13,7 +13,7 @@ alterada — todo desenvolvimento novo acontece na branch `develop` até a
 próxima validação. `v1.0` foi o Sprint Zero (plataforma validada com
 conteúdo real: leitura, busca, índice, links internos, Aula Express,
 navegação entre temas). `v1.1` adicionou um 4º tema. `v1.2` expande para
-15 temas — incluindo um novo módulo (Doppler fetal) — e três blocos de
+21 temas — incluindo um novo módulo (Doppler fetal) — e três blocos de
 conteúdo novos: 🔑 Pérola clínica, 📖 Contexto histórico e 🧭 E agora?.
 Sem autenticação implementada ainda.
 
@@ -24,22 +24,33 @@ autora — mas o pacote ainda não passou por revisão clínica formal completa
 pendentes de indicação específica dela) antes de qualquer uso real em
 consulta.
 
-**15 temas completos e navegáveis de verdade** (não é mock estático):
-1. Ausência de embrião — módulo 1º trimestre
-2. Percentil de peso baixo — módulo Crescimento fetal
-3. Placenta baixa — módulo Placenta e anexos
-4. Artéria umbilical única — módulo Marcadores leves de aneuploidia
-5. Dilatação das pelves renais — módulo Trato urinário fetal
-6. Megabexiga fetal — módulo Trato urinário fetal
-7. Colo curto — módulo Colo uterino
-8. Foco ecogênico intracardíaco — módulo Marcadores leves de aneuploidia
-9. Intestino hiperecogênico — módulo Marcadores leves de aneuploidia
-10. Morfológico do 1º trimestre — módulo 1º trimestre
-11. Entendendo o Doppler fetal — módulo Doppler fetal
-12. Grau da placenta — módulo Placenta e anexos
-13. Vasa prévia — módulo Placenta e anexos
-14. Datação da gestação — módulo 1º trimestre
-15. Circunferência abdominal > P90 — módulo Crescimento fetal
+**21 temas completos e navegáveis de verdade** (não é mock estático):
+1. Ultrassom obstétrico inicial — módulo Exames da gestação
+   (capítulo 1 do livro, página 1/7 — abre a leitura antes dos achados clínicos)
+2. Ultrassom de translucência nucal — módulo Exames da gestação (capítulo 1, página 2/7)
+3. Morfológico do 1º trimestre: o que ele acrescenta — módulo Exames da gestação
+   (capítulo 1, página 3/7 — absorveu o tema avulso "Morfológico do 1º
+   trimestre" do módulo 1º trimestre, considerado redundante depois que
+   este capítulo ficou mais completo; nada do conteúdo antigo foi
+   perdido, só migrado pra cá)
+4. Morfológico do 2º trimestre — módulo Exames da gestação (capítulo 1, página 4/7)
+5. Ecocardiografia fetal — módulo Exames da gestação (capítulo 1, página 5/7)
+6. Morfológico do 3º trimestre — módulo Exames da gestação (capítulo 1, página 6/7)
+7. Doppler obstétrico: quando pedir — módulo Exames da gestação (capítulo 1, página 7/7)
+8. Ausência de embrião — módulo 1º trimestre
+9. Percentil de peso baixo — módulo Crescimento fetal
+10. Placenta baixa — módulo Placenta e anexos
+11. Artéria umbilical única — módulo Marcadores leves de aneuploidia
+12. Dilatação das pelves renais — módulo Trato urinário fetal
+13. Megabexiga fetal — módulo Trato urinário fetal
+14. Colo curto — módulo Colo uterino
+15. Foco ecogênico intracardíaco — módulo Marcadores leves de aneuploidia
+16. Intestino hiperecogênico — módulo Marcadores leves de aneuploidia
+17. Entendendo o Doppler fetal — módulo Doppler fetal
+18. Grau da placenta — módulo Placenta e anexos
+19. Vasa prévia — módulo Placenta e anexos
+20. Datação da gestação — módulo 1º trimestre
+21. Circunferência abdominal > P90 — módulo Crescimento fetal
 
 Convenção de título: nome direto do achado, sem frase/pergunta em volta
 (ex. "Placenta baixa", não "A placenta veio baixa. O que muda agora?").
@@ -133,7 +144,23 @@ popular os 3 temas piloto:
   é "dentro do módulo" — com 1 tema por módulo (situação real agora, e
   provável em vários módulos no início do conteúdo), não há vizinho.
   Implementei omitir os botões de anterior/próximo quando não há tema
-  irmão no módulo, mantendo só "Voltar ao índice".
+  irmão no módulo, mantendo só "Voltar ao índice". Com a chegada do
+  módulo "Exames da gestação" (7 temas em sequência, pensado para ser
+  "folheado" como um capítulo), a implementação original só mostrava um
+  botão fixo ("Tema anterior", sempre o primeiro irmão do módulo,
+  independente da posição atual) — corrigi para navegação sequencial de
+  verdade (anterior/próximo com base na posição real dentro do array do
+  módulo, cada um omitido só na ponta correspondente da sequência).
+- **💜 "Aprendi que…" tornou-se opcional**: o schema documentado em
+  `docs/01` trata `aprendi_que` como bloco fixo. Ao escrever os 7 temas
+  do capítulo "Exames da gestação", nem toda página tinha uma fala
+  pessoal da autora de fato ditada para aquele conteúdo específico — e
+  esse bloco carrega assinatura ("— Dra. Morgana Kummer"), então
+  preencher com texto sintetizado seria atribuir fala que não foi dita.
+  Tornei o bloco condicional (só renderiza se `aprendi` existir),
+  mesmo padrão já usado para 🤝 Confiança, 💬 Explicar e ❤️ O que a
+  paciente pensa — nenhum tema existente foi afetado, todos já tinham
+  o campo preenchido.
 - **🚩 Quando encaminhar sem chip no trilho de âncoras**: mantive fora do
   trilho de 7 chips (regra de "nunca mais que ~7") — ele aparece
   imediatamente após "Próximo passo", que já tem chip próprio.

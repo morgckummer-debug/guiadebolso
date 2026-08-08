@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Guia Digital do Obstetra — v1.2 (15 temas)</title>
-<meta name="description" content="Protótipo estático: design system, biblioteca de componentes e 15 temas clínicos completos para validar leitura, busca, índice e navegação. Conteúdo clínico é rascunho, pendente de revisão médica." />
+<title>Guia Digital do Obstetra — v1.2 (21 temas)</title>
+<meta name="description" content="Protótipo estático: design system, biblioteca de componentes e 21 temas clínicos completos para validar leitura, busca, índice e navegação. Conteúdo clínico é rascunho, pendente de revisão médica." />
 <style>
 :root{
   --bg-base:#FFFFFF; --bg-subtle:#FAFAFA; --bg-sunken:#F5F5F7;
@@ -85,6 +85,11 @@ button,input{font-family:inherit;}
 .b-erro .eyebrow{color:var(--warn-fg);}
 .b-passo .chip{background:var(--ok-bg);color:var(--ok-fg);}
 .b-passo .eyebrow{color:var(--ok-fg);}
+.b-avalia .chip{background:var(--ok-bg);color:var(--ok-fg);}
+.b-avalia .eyebrow{color:var(--ok-fg);}
+.b-naoavalia{background:var(--bg-subtle);border:1px dashed var(--ink-300);box-shadow:var(--shadow-1);}
+.b-naoavalia .chip{background:var(--bg-sunken);color:var(--ink-500);}
+.b-naoavalia .eyebrow{color:var(--ink-500);}
 .b-explicar{border-left:3px solid var(--lav-500);border-radius:8px 20px 20px 8px;}
 .b-explicar .chip{background:var(--lav-100);color:var(--lav-700);}
 .b-explicar .eyebrow{color:var(--lav-700);}
@@ -461,6 +466,7 @@ document.querySelectorAll('.demo-tab').forEach(btn=>{
    ACOG), escrito para validar a plataforma, não para uso em consulta sem
    revisão e validação médica da autora. */
 const MODULOS = [
+  {id:'exames', nome:'Exames da gestação', icon:'🩻'},
   {id:'trimestre1', nome:'1º trimestre', icon:'🌱'},
   {id:'crescimento', nome:'Crescimento fetal', icon:'📏'},
   {id:'placenta', nome:'Placenta e anexos', icon:'🔵'},
@@ -471,6 +477,169 @@ const MODULOS = [
 ];
 
 const TEMAS = [
+  {
+    id:'usg-inicial',
+    titulo:'Ultrassom obstétrico inicial',
+    modulo:'exames',
+    tags:['ultrassom inicial','datação','ccn','vitalidade','gestação múltipla','corionicidade','amnionicidade','mapa de exames da gestação'],
+    essencial:'O obstetra precisa saber o que cada exame procura — e principalmente o que ele pode deixar de avaliar. O ultrassom obstétrico inicial é o primeiro: idealmente realizado entre 7 e 10 semanas.',
+    avalia:[
+      'Confirma a localização da gestação (intrauterina).',
+      'Avalia a vitalidade embrionária/fetal.',
+      'Determina o número de embriões.',
+      'Avalia a idade gestacional — o CCN, quando visível, é o parâmetro mais preciso para estabelecer ou confirmar a idade gestacional.',
+      'Em gestações múltiplas, define corionicidade e amnionicidade — só é confiável se avaliado no 1º trimestre.',
+    ],
+    naoAvalia:[
+      'Anatomia fetal detalhada — isso é papel do morfológico do 1º ou 2º trimestre.',
+      'Risco de aneuploidia — isso entra a partir da TN/morfológico do 1º trimestre, feito depois, entre 12 e 13+6 semanas.',
+    ],
+    perolas:[
+      'Quanto mais cedo a gestação é corretamente datada, menos problemas teremos para interpretar crescimento e desenvolvimento mais tarde.',
+      'Muitos obstetras aprendem que o ultrassom inicial pode ser feito a partir de 6 semanas. Nessa idade, porém, há cerca de 50% de chance de o embrião ainda não ser detectável — o que gera ansiedade desnecessária na gestante. Esperar até 7-10 semanas reduz esse risco.',
+    ],
+    aula:{titulo:'Ultrassom obstétrico inicial: o que confirmar antes de seguir com o pré-natal', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2023.',
+    ],
+    vejaTambem:['datacao-gestacao'],
+  },
+  {
+    id:'usg-tn',
+    titulo:'Ultrassom de translucência nucal',
+    modulo:'exames',
+    tags:['translucência nucal','tn simples','osso nasal','morfológico do 1º trimestre','mapa de exames da gestação'],
+    essencial:'O exame de translucência nucal (TN) é realizado entre 12 e 13+6 semanas.',
+    avalia:[
+      'CCN.',
+      'Translucência nucal.',
+      'Frequência cardíaca fetal.',
+      'Pesquisa do osso nasal, quando realizada.',
+    ],
+    naoAvalia:[
+      'Anatomia fetal completa — a TN simples é um marcador de risco, não uma avaliação anatômica.',
+      'Rastreamento de pré-eclâmpsia — isso só entra no morfológico do 1º trimestre completo, não na TN isolada.',
+      'A presença ou ausência do osso nasal não entra no cálculo de risco de síndrome de Down — é um marcador adicional, não parte do algoritmo.',
+    ],
+    vocesabia:['O cálculo de risco combinado depende do modelo utilizado e pode incluir idade materna, CCN, TN e marcadores bioquímicos, entre outros. A ISUOG reconhece o osso nasal, o ducto venoso e a regurgitação tricúspide como marcadores adicionais no 1º trimestre.'],
+    aula:{titulo:'Translucência nucal: o que o exame simples avalia (e o que fica de fora)', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2023.',
+    ],
+    vejaTambem:['usg-morfologico-1tri'],
+  },
+  {
+    id:'usg-morfologico-1tri',
+    titulo:'Morfológico do 1º trimestre: o que ele acrescenta',
+    modulo:'exames',
+    tags:['morfológico do 1º trimestre','ducto venoso','doppler tricúspide','rastreamento de pré-eclâmpsia','fetal medicine foundation','mapa de exames da gestação'],
+    essencial:'O morfológico do 1º trimestre é realizado na mesma janela da TN (12 a 13+6 semanas), mas vai muito além: soma avaliação de ducto venoso, Doppler da tricúspide, anatomia fetal completa e rastreamento de pré-eclâmpsia — que define quem se beneficia da aspirina preventiva.',
+    avalia:[
+      'Tudo o que a TN simples avalia (CCN, translucência nucal, frequência cardíaca, osso nasal).',
+      'Anatomia fetal completa: cérebro, face, coluna, diafragma, tórax, coração, estômago, abdome, rins, bexiga, parede abdominal, membros, cordão e placenta.',
+      'Doppler do ducto venoso e da válvula tricúspide — marcadores que podem aumentar a capacidade de identificar fetos com maior risco de aneuploidia e/ou cardiopatia.',
+      'Rastreamento de pré-eclâmpsia pelo algoritmo da Fetal Medicine Foundation — história obstétrica, doenças crônicas e autoimunes, IMC, pressão arterial média e Doppler das artérias uterinas.',
+    ],
+    naoAvalia:['Avaliação detalhada das válvulas cardíacas — isso é papel da ecocardiografia fetal, exame à parte.'],
+    perolas:['Se você não faz o rastreamento de pré-eclâmpsia no primeiro trimestre, pode perder a oportunidade de identificar precocemente uma gestante que se beneficiaria de prevenção. A aspirina, quando indicada, deve ser iniciada idealmente antes de 16 semanas.'],
+    aprendi:'Sempre escuto que o morfológico do 1º trimestre é uma ‘moda’. Mas a pré-eclâmpsia continua sendo uma das principais causas de morte materna. Se hoje conseguimos identificar precocemente quem tem maior risco e iniciar medidas preventivas, por que abrir mão dessa oportunidade?',
+    aula:{titulo:'Morfológico do 1º trimestre: o que ele responde que a TN simples não responde', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2023.',
+      'Rolnik DL et al. "ASPRE trial: performance of first-trimester screening for preterm pre-eclampsia." Ultrasound Obstet Gynecol, 2017.',
+      'Fetal Medicine Foundation — algoritmo de rastreamento combinado de pré-eclâmpsia do 1º trimestre — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:['usg-tn'],
+  },
+  {
+    id:'usg-morfologico-2tri',
+    titulo:'Morfológico do 2º trimestre',
+    modulo:'exames',
+    tags:['morfológico do 2º trimestre','avaliação anatômica','acog','mapa de exames da gestação'],
+    essencial:'O morfológico do 2º trimestre é o grande exame anatômico da gestação — idealmente realizado entre 22 e 24 semanas, podendo ser feito, sem prejuízo, até 26 semanas.',
+    avalia:[
+      'Sistema nervoso central.',
+      'Face.',
+      'Coluna.',
+      'Tórax.',
+      'Coração.',
+      'Abdome.',
+      'Rins e bexiga.',
+      'Membros.',
+      'Placenta.',
+      'Cordão.',
+      'Líquido amniótico.',
+      'Crescimento fetal.',
+    ],
+    naoAvalia:['Avaliação cardíaca detalhada das válvulas e dos fluxos — a avaliação cardíaca do morfológico é um rastreamento; ver o tema "Ecocardiografia fetal" para a avaliação especializada.'],
+    vocesabia:['A ACOG recomenda que todas as gestantes tenham acesso à ultrassonografia de 2º trimestre para avaliação de defeitos estruturais.'],
+    aula:{titulo:'Morfológico do 2º trimestre: o roteiro completo da avaliação anatômica', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2022.',
+      'ACOG Practice Bulletin — Ultrasound in Pregnancy — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:['usg-ecocardiografia'],
+  },
+  {
+    id:'usg-ecocardiografia',
+    titulo:'Ecocardiografia fetal',
+    modulo:'exames',
+    tags:['ecocardiografia fetal','cardiopatia congênita','válvulas cardíacas','mapa de exames da gestação'],
+    essencial:'A ecocardiografia fetal deveria ser rotina para todas as gestantes. As cardiopatias congênitas são as malformações mais comuns da gestação, afetando aproximadamente 1% dos nascimentos — inclusive em gestações de baixo risco — bem mais frequentes que a síndrome de Down (aproximadamente 1 a cada 800–1.000 nascidos vivos, dependendo da população).',
+    avalia:[
+      'Análise detalhada da anatomia cardíaca.',
+      'Fluxos cardíacos.',
+      'Estruturas e válvulas do coração — com profundidade que o morfológico de rotina não tem.',
+    ],
+    naoAvalia:['Não substitui o morfológico — avalia só o coração, não o restante da anatomia fetal.'],
+    vocesabia:['Para comparação: cardiopatia congênita ≈1% dos nascimentos × síndrome de Down ≈1 a cada 800–1.000 nascidos vivos, dependendo da população — a cardiopatia é bem mais frequente, mas recebe proporcionalmente menos rastreamento dedicado.'],
+    aula:{titulo:'Ecocardiografia fetal: por que deveria ser oferecida a toda gestante', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: performance of fetal cardiac scan and fetal echocardiography — referência específica pendente de indicação da autora.',
+      'Incidência de cardiopatia congênita (≈1%) comparada à síndrome de Down (≈1:800–1.000) — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:['usg-morfologico-2tri','arteria-umbilical-unica','foco-ecogenico-intracardiaco'],
+  },
+  {
+    id:'usg-morfologico-3tri',
+    titulo:'Morfológico do 3º trimestre',
+    modulo:'exames',
+    tags:['morfológico do 3º trimestre','pré-natal tardio','acompanhamento de malformação','mapa de exames da gestação'],
+    essencial:'O morfológico do 3º trimestre é realizado entre 32 e 36 semanas e fica reservado para situações selecionadas — não é exame de rotina para toda gestante.',
+    avalia:[
+      'Complementa a avaliação anatômica quando algo ficou pendente nos exames anteriores.',
+      'Acompanha malformações já identificadas.',
+      'Investiga suspeita de alterações que podem se manifestar (ou ser melhor avaliadas) mais tarde na gestação.',
+      'Indicado também quando o pré-natal foi iniciado tardiamente.',
+    ],
+    naoAvalia:['Não é uma repetição de rotina do morfológico do 2º trimestre — só é indicado com um motivo específico.'],
+    aula:{titulo:'Morfológico do 3º trimestre: quando (e por que) pedir', pendente:true},
+    referencias:[
+      'Indicações e momento do morfológico do 3º trimestre — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:[],
+  },
+  {
+    id:'usg-doppler',
+    titulo:'Doppler obstétrico: quando pedir',
+    modulo:'exames',
+    tags:['doppler obstétrico','diabetes gestacional','ciur','pig','anemia fetal','mapa de exames da gestação'],
+    essencial:'O Doppler obstétrico entra quando precisamos entender como estão funcionando as circulações materna, placentária e fetal.',
+    avalia:[
+      'Artérias uterinas.',
+      'Artéria umbilical.',
+      'Artéria cerebral média.',
+      'Relação cérebro-placentária.',
+      'Ducto venoso.',
+      'PSV da ACM, quando há risco de anemia fetal.',
+    ],
+    vocesabia:['Deveria ser pedido de rotina para gestantes diabéticas e diante de suspeita de restrição de crescimento fetal (CIUR) ou feto PIG. Para interpretar cada resultado, ver o tema "Entendendo o Doppler fetal".'],
+    aula:{titulo:'Doppler obstétrico: quando pedir e o que cada vaso avalia', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: use of Doppler ultrasonography in obstetrics — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:['doppler-introducao'],
+  },
   {
     id:'sem-embriao',
     titulo:'Ausência de embrião',
@@ -596,7 +765,7 @@ const TEMAS = [
       'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2022.',
       'Achado isolado de artéria umbilical única e risco de PIG/RCF e cardiopatia congênita — referência específica pendente de indicação da autora.',
     ],
-    vejaTambem:['percentil8','vasa-previa'],
+    vejaTambem:['percentil8','vasa-previa','usg-ecocardiografia'],
   },
   {
     id:'dilatacao-pelves-renais',
@@ -703,7 +872,7 @@ const TEMAS = [
       'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan — marcadores leves de aneuploidia. Ultrasound Obstet Gynecol, 2022.',
       'Foco ecogênico intracardíaco isolado e risco de aneuploidia — referência específica pendente de indicação da autora.',
     ],
-    vejaTambem:['intestino-hiperecogenico'],
+    vejaTambem:['intestino-hiperecogenico','usg-ecocardiografia'],
   },
   {
     id:'intestino-hiperecogenico',
@@ -731,31 +900,6 @@ const TEMAS = [
       'Intestino hiperecogênico fetal: associações clínicas e conduta — referência específica pendente de indicação da autora.',
     ],
     vejaTambem:['foco-ecogenico-intracardiaco'],
-  },
-  {
-    id:'morfologico-1trimestre',
-    titulo:'Morfológico do 1º trimestre',
-    modulo:'trimestre1',
-    tags:['morfológico do 1º trimestre','translucência nucal','tn simples','ducto venoso','doppler tricúspide','rastreamento de pré-eclâmpsia','aspirina','doppler artérias uterinas'],
-    essencial:'O morfológico do 1º trimestre vai muito além da translucência nucal: soma avaliação de ducto venoso, Doppler da tricúspide, anatomia fetal completa e rastreamento de pré-eclâmpsia — que define quem se beneficia da aspirina preventiva.',
-    erro:'Dizer que o morfológico do 1º trimestre é apenas uma "translucência nucal mais cara". Na realidade, ele responde perguntas completamente diferentes e pode identificar gestantes que se beneficiam da prevenção da pré-eclâmpsia.',
-    passo:{tipo:'checklist', itens:[
-      'Explicar a diferença entre TN simples e morfológico do 1º trimestre antes da paciente escolher o exame.',
-      'Realizar o rastreamento de pré-eclâmpsia (história obstétrica, doenças crônicas e autoimunes, IMC, pressão arterial média, Doppler das artérias uterinas) quando o morfológico for feito.',
-      'Calcular o risco e, se indicado, iniciar aspirina no momento certo — o benefício depende do início precoce.',
-      'Se a paciente quiser migrar para o morfológico do 1º trimestre, mesmo já tendo agendado a TN simples, não recusar — respeitar a escolha pelo exame mais completo.',
-    ]},
-    aprendi:'Sempre escuto que o morfológico do 1º trimestre é uma ‘moda’. Mas a pré-eclâmpsia continua sendo uma das principais causas de morte materna. Se hoje conseguimos identificar precocemente quem tem maior risco e iniciar medidas preventivas, por que abrir mão dessa oportunidade?',
-    vocesabia:[
-      'O que a TN simples avalia:<ul><li>CCN</li><li>Frequência cardíaca fetal</li><li>Translucência nucal</li><li>Pesquisa do osso nasal</li></ul>',
-      'O morfológico do 1º trimestre acrescenta:<ul><li>Ducto venoso</li><li>Doppler da valva tricúspide</li><li>Anatomia fetal completa (cérebro, face, coluna, diafragma, coração, estômago, rins, bexiga, parede abdominal, membros, cordão, placenta)</li><li>Rastreamento de pré-eclâmpsia (história obstétrica, doenças crônicas e autoimunes, IMC, pressão arterial média, Doppler das artérias uterinas)</li></ul>',
-    ],
-    aula:{titulo:'Morfológico do 1º trimestre: o que ele responde que a TN simples não responde', pendente:true},
-    referencias:[
-      'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2023.',
-      'ASPRE trial — aspirin for evidence-based preeclampsia prevention — referência específica pendente de indicação da autora.',
-    ],
-    vejaTambem:['datacao-gestacao'],
   },
   {
     id:'doppler-introducao',
@@ -832,7 +976,7 @@ const TEMAS = [
       'Nicolaides KH / Fetal Medicine Foundation (FMF) — fisiopatologia da centralização fetal e Doppler — referência específica pendente de indicação da autora.',
       'ISUOG Practice Guidelines: use of Doppler ultrasonography in obstetrics. Ultrasound Obstet Gynecol.',
     ],
-    vejaTambem:[],
+    vejaTambem:['usg-doppler'],
   },
   {
     id:'grau-placenta',
@@ -937,7 +1081,7 @@ const TEMAS = [
       'ACOG Committee Opinion No. 700 — Methods for Estimating the Due Date. Obstet Gynecol, 2017 (reafirmado) — referência específica pendente de indicação da autora.',
       'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan (datação gestacional). Ultrasound Obstet Gynecol, 2023.',
     ],
-    vejaTambem:['morfologico-1trimestre','percentil8'],
+    vejaTambem:['usg-morfologico-1tri','percentil8'],
   },
   {
     id:'circunferencia-abdominal-p90',
@@ -985,6 +1129,8 @@ let currentTemaAnchors = null;
 
 const TEMA_ANCHORS = [
   ['blk-essencial','Essencial'],
+  ['blk-avalia','O que avalia'],
+  ['blk-naoavalia','O que fica de fora'],
   ['blk-erro','Erro comum'],
   ['blk-explicar','Explicar'],
   ['blk-passo','Próximo passo'],
@@ -1000,7 +1146,11 @@ function renderTemaScreen(id){
   currentTemaId = id;
 
   const temaAnchors = TEMA_ANCHORS.filter(([aid])=>{
+    if(aid==='blk-avalia') return !!(t.avalia && t.avalia.length);
+    if(aid==='blk-naoavalia') return !!(t.naoAvalia && t.naoAvalia.length);
+    if(aid==='blk-erro') return !!t.erro;
     if(aid==='blk-explicar') return !!t.explicar;
+    if(aid==='blk-passo') return !!t.passo;
     if(aid==='blk-confianca') return !!t.confianca;
     if(aid==='blk-eagora') return !!(t.eAgora && t.eAgora.length);
     return true;
@@ -1031,13 +1181,30 @@ function renderTemaScreen(id){
 <div class="block b-confianca" id="blk-confianca"><div class="block-head"><div class="chip">🤝</div><div class="eyebrow">Fortalece confiança</div></div>
 <div class="block-body">${t.confianca}</div></div>` : '';
 
+  const aprendiHTML = t.aprendi ? `
+<div class="block b-aprendi"><div class="block-head"><div class="chip">💜</div><div class="eyebrow">Com o tempo, aprendi que…</div></div>
+<div class="block-body">"${t.aprendi}"</div>
+<div class="aprendi-assinatura">— Dra. Morgana Kummer</div></div>` : '';
+
+  const avaliaHTML = (t.avalia && t.avalia.length) ? `
+<div class="block b-avalia" id="blk-avalia"><div class="block-head"><div class="chip">🔍</div><div class="eyebrow">O que avalia</div></div>
+<div class="block-body"><ul>${t.avalia.map(i=>`<li>${i}</li>`).join('')}</ul></div></div>` : '';
+
+  const naoAvaliaHTML = (t.naoAvalia && t.naoAvalia.length) ? `
+<div class="block b-naoavalia" id="blk-naoavalia"><div class="block-head"><div class="chip">🚫</div><div class="eyebrow">O que fica de fora</div></div>
+<div class="block-body"><ul>${t.naoAvalia.map(i=>`<li>${i}</li>`).join('')}</ul></div></div>` : '';
+
+  const erroHTML = t.erro ? `
+<div class="block b-erro" id="blk-erro"><div class="block-head"><div class="chip">⚠️</div><div class="eyebrow">Erro comum</div></div>
+<div class="block-body">${t.erro}</div></div>` : '';
+
   const historiaHTML = t.historia ? `
 <div class="block b-historia"><div class="block-head"><div class="chip">📖</div><div class="eyebrow">${t.historia.titulo}</div></div>
 <div class="block-body">${t.historia.texto}</div></div>` : '';
 
-  const passoList = t.passo.tipo==='checklist'
+  const passoList = t.passo ? (t.passo.tipo==='checklist'
     ? `<ol>${t.passo.itens.map(i=>`<li>${i}</li>`).join('')}</ol>`
-    : `<p>${t.passo.texto}</p>`;
+    : `<p>${t.passo.texto}</p>`) : '';
 
   const critCount = (t.criterios||[]).reduce((n,g)=>n+(g.itens?g.itens.length:1), 0);
   const critHTML = t.criterios ? `
@@ -1053,6 +1220,9 @@ function renderTemaScreen(id){
 </div>` : '';
 
   const passoBody = passoList + critHTML;
+  const passoHTML = t.passo ? `
+<div class="block b-passo" id="blk-passo"><div class="block-head"><div class="chip">✅</div><div class="eyebrow">Qual é o próximo passo?</div></div>
+<div class="block-body">${passoBody}</div></div>` : '';
 
   const aulaMeta = t.aula.pendente
     ? `<div class="aula-meta">Gravação pendente</div><button class="aula-btn" disabled style="opacity:.5;cursor:default">Em breve</button>`
@@ -1069,10 +1239,14 @@ function renderTemaScreen(id){
 ${t.vejaTambem.map(vid=>`<div class="veja-item" data-goto="${vid}" style="cursor:pointer">${temaById(vid).titulo} <span>›</span></div>`).join('')}
 </div>` : '';
 
-  const siblings = TEMAS.filter(x=>x.modulo===t.modulo && x.id!==t.id);
+  const modTemas = TEMAS.filter(x=>x.modulo===t.modulo);
+  const modIdx = modTemas.findIndex(x=>x.id===t.id);
+  const temaAnterior = modIdx > 0 ? modTemas[modIdx-1] : null;
+  const temaProximo = modIdx < modTemas.length-1 ? modTemas[modIdx+1] : null;
   const footerHTML = `
 <div class="art-footer">
-${siblings.length ? `<div class="nav-btn" data-goto="${siblings[0].id}" style="cursor:pointer"><span>◀ Tema anterior<br><small>${siblings[0].titulo}</small></span></div>` : ''}
+${temaAnterior ? `<div class="nav-btn" data-goto="${temaAnterior.id}" style="cursor:pointer"><span>◀ Tema anterior<br><small>${temaAnterior.titulo}</small></span></div>` : ''}
+${temaProximo ? `<div class="nav-btn" data-goto="${temaProximo.id}" style="cursor:pointer"><span>Próximo tema ▶<br><small>${temaProximo.titulo}</small></span></div>` : ''}
 <div class="nav-btn" id="btn-voltar-indice" style="cursor:pointer"><span>Voltar ao índice</span></div>
 </div>`;
 
@@ -1087,27 +1261,26 @@ ${anchorRailHTML}
 <div class="block b-essencial" id="blk-essencial"><div class="block-head"><div class="chip">🎯</div><div class="eyebrow">O Essencial</div></div>
 <div class="block-body">${t.essencial}</div></div>
 
+${avaliaHTML}
+${naoAvaliaHTML}
+
 ${(t.vocesabia||[]).map(v=>`<div class="chip-fact"><span class="chip-fact-icon">💡</span><div class="chip-fact-text">${v}</div></div>`).join('')}
 ${historiaHTML}
 
 ${perolasHTML}
 
-<div class="block b-erro" id="blk-erro"><div class="block-head"><div class="chip">⚠️</div><div class="eyebrow">Erro comum</div></div>
-<div class="block-body">${t.erro}</div></div>
+${erroHTML}
 
 ${pensandoHTML}
 
 ${explicarHTML}
 
-<div class="block b-passo" id="blk-passo"><div class="block-head"><div class="chip">✅</div><div class="eyebrow">Qual é o próximo passo?</div></div>
-<div class="block-body">${passoBody}</div></div>
+${passoHTML}
 ${encaminharHTML}
 
 ${confiancaHTML}
 
-<div class="block b-aprendi"><div class="block-head"><div class="chip">💜</div><div class="eyebrow">Com o tempo, aprendi que…</div></div>
-<div class="block-body">"${t.aprendi}"</div>
-<div class="aprendi-assinatura">— Dra. Morgana Kummer</div></div>
+${aprendiHTML}
 
 <div class="block b-aula" id="blk-aula"><div class="block-head"><div class="chip">🎥</div><div class="eyebrow">Aula Express</div></div>
 <div class="block-body">${t.aula.titulo}</div>
