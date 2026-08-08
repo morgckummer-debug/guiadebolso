@@ -38,13 +38,11 @@ não remover nem reescrever como frase independente.
 
 - **2026-08-08** — "Saber qual serviço de ultrassonografia indicar,
   também faz parte de um bom pré-natal. Exames muito rápidos não mostram
-  percentil confiável 🫣." — status: `novo`, ideia de conteúdo com dois
-  candidatos possíveis, ainda não decidido: (1) fala pessoal pro bloco 💜
-  "Aprendi que…" do tema "Feto PIG" (`percentil8`), reforçando por que a
-  confiabilidade do percentil depende da qualidade do exame, não só do
-  número em si; ou (2) ideia de produto mais ampla — orientação sobre
-  como escolher um bom serviço de ultrassonografia — que não é "achado no
-  exame" e pode não caber no formato padrão de Tema.
+  percentil confiável 🫣." — status: `usado em: percentil8` — mesclado ao
+  `aprendi:` já existente do tema "Feto PIG" (mantido o texto original,
+  sem apagar). A ideia mais ampla de orientar sobre como escolher um bom
+  serviço de ultrassonografia (fora do formato de Tema) segue em aberto,
+  não promovida.
 
 - **2026-08-08** — "Um IP normal da ACM pode indicar anemia grave e não
   ser descrito no laudo, o que mudaria completamente a conduta médica."
