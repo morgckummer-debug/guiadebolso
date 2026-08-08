@@ -13,7 +13,7 @@ alterada — todo desenvolvimento novo acontece na branch `develop` até a
 próxima validação. `v1.0` foi o Sprint Zero (plataforma validada com
 conteúdo real: leitura, busca, índice, links internos, Aula Express,
 navegação entre temas). `v1.1` adicionou um 4º tema. `v1.2` expande para
-15 temas — incluindo um novo módulo (Doppler fetal) — e três blocos de
+16 temas — incluindo um novo módulo (Doppler fetal) — e três blocos de
 conteúdo novos: 🔑 Pérola clínica, 📖 Contexto histórico e 🧭 E agora?.
 Sem autenticação implementada ainda.
 
@@ -24,7 +24,7 @@ autora — mas o pacote ainda não passou por revisão clínica formal completa
 pendentes de indicação específica dela) antes de qualquer uso real em
 consulta.
 
-**15 temas completos e navegáveis de verdade** (não é mock estático):
+**16 temas completos e navegáveis de verdade** (não é mock estático):
 1. Ausência de embrião — módulo 1º trimestre
 2. Percentil de peso baixo — módulo Crescimento fetal
 3. Placenta baixa — módulo Placenta e anexos
@@ -40,6 +40,7 @@ consulta.
 13. Vasa prévia — módulo Placenta e anexos
 14. Datação da gestação — módulo 1º trimestre
 15. Circunferência abdominal > P90 — módulo Crescimento fetal
+16. Principais ultrassons da gestação — módulo Exames da gestação
 
 Convenção de título: nome direto do achado, sem frase/pergunta em volta
 (ex. "Placenta baixa", não "A placenta veio baixa. O que muda agora?").

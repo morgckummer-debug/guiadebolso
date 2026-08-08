@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Guia Digital do Obstetra — v1.2 (15 temas)</title>
-<meta name="description" content="Protótipo estático: design system, biblioteca de componentes e 15 temas clínicos completos para validar leitura, busca, índice e navegação. Conteúdo clínico é rascunho, pendente de revisão médica." />
+<title>Guia Digital do Obstetra — v1.2 (16 temas)</title>
+<meta name="description" content="Protótipo estático: design system, biblioteca de componentes e 16 temas clínicos completos para validar leitura, busca, índice e navegação. Conteúdo clínico é rascunho, pendente de revisão médica." />
 <style>
 :root{
   --bg-base:#FFFFFF; --bg-subtle:#FAFAFA; --bg-sunken:#F5F5F7;
@@ -468,6 +468,7 @@ const MODULOS = [
   {id:'colo', nome:'Colo uterino', icon:'🔒'},
   {id:'marcadores', nome:'Marcadores leves de aneuploidia', icon:'✨'},
   {id:'doppler', nome:'Doppler fetal', icon:'📡'},
+  {id:'exames', nome:'Exames da gestação', icon:'🩻'},
 ];
 
 const TEMAS = [
@@ -755,7 +756,7 @@ const TEMAS = [
       'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2023.',
       'ASPRE trial — aspirin for evidence-based preeclampsia prevention — referência específica pendente de indicação da autora.',
     ],
-    vejaTambem:['datacao-gestacao'],
+    vejaTambem:['datacao-gestacao','principais-ultrassons-gestacao'],
   },
   {
     id:'doppler-introducao',
@@ -972,6 +973,42 @@ const TEMAS = [
       'Associação entre glicemia pós-prandial e macrossomia fetal, independente de outros marcadores glicêmicos — referência específica pendente de indicação da autora.',
     ],
     vejaTambem:['percentil8'],
+  },
+  {
+    id:'principais-ultrassons-gestacao',
+    titulo:'Principais ultrassons da gestação',
+    modulo:'exames',
+    tags:['translucência nucal','tn simples','morfológico do 1º trimestre','ecocardiograma fetal','morfológico do 3º trimestre','rastreamento de pré-eclâmpsia','aspirina','osso nasal','cardiopatia congênita','mapa de exames'],
+    essencial:'Os ultrassons da gestação não são intercambiáveis — cada um responde a uma pergunta diferente. TN simples e morfológico do 1º trimestre não são o mesmo exame; o morfológico de rotina não avalia o coração fetal com a profundidade de um ecocardiograma; e o morfológico do 3º trimestre não é exame de rotina para toda gestante.',
+    erro:'Tratar a TN "simples" como se fosse equivalente ao morfológico do 1º trimestre. Quando o exame se resume à TN isolada, perde-se a grande oportunidade de rastrear as gestantes que vão precisar usar aspirina — o rastreamento de pré-eclâmpsia (Doppler das artérias uterinas, pressão arterial média, história obstétrica) só entra no morfológico do 1º trimestre completo, não na TN sozinha. Ver o tema "Morfológico do 1º trimestre" para o detalhamento dessa diferença.',
+    passo:{tipo:'checklist', itens:[
+      'Confirme se o exame solicitado foi TN isolada ou morfológico do 1º trimestre completo — a diferença muda a conduta sobre rastreamento de pré-eclâmpsia e aspirina.',
+      'Considere o ecocardiograma fetal para todas as gestantes, não só para as de alto risco — a avaliação detalhada das válvulas não faz parte do morfológico de rotina.',
+      'Reserve o morfológico do 3º trimestre para indicações específicas (acompanhamento de malformação já identificada, pré-natal tardio) — não é exame de rotina para toda gestante.',
+      'Ao explicar cada exame para a paciente, deixe claro que eles se complementam — não substituem um ao outro.',
+    ]},
+    explicar:'"Cada ultrassom da gestação olha para uma coisa diferente. O do começo da gestação avalia um grupo de marcadores; o morfológico olha a formação do corpo do bebê; e o ecocardiograma olha o coração com muito mais detalhe. Por isso, às vezes pedimos mais de um tipo de exame — não porque algo esteja errado, mas porque cada um enxerga uma parte diferente."',
+    pensando:'"Eu já fiz o ultrassom, por que preciso de outro? Alguma coisa apareceu errada?" — a gestante costuma achar que os ultrassons são intercambiáveis, e pedir um exame adicional pode soar como sinal de alarme, quando na verdade é rastreio de rotina bem indicado.',
+    confianca:'Explicar que cada exame tem um objetivo diferente — não é "mais do mesmo", é uma peça diferente do quebra-cabeça — ajuda a gestante a entender por que às vezes pedimos mais de um ultrassom em fases próximas, sem gerar a sensação de que algo deu errado no anterior.',
+    aprendi:'Aprendi que a maior perda, na maioria das vezes, não é técnica — é de oportunidade. Uma TN "rápida", sem o rastreamento de pré-eclâmpsia, deixa passar a chance de indicar aspirina para quem precisa, e essa decisão só existe na janela do 1º trimestre — não dá para recuperar depois.',
+    vocesabia:[
+      'A presença ou ausência do osso nasal é um marcador ecográfico pesquisado no 1º trimestre, mas não entra na fórmula do cálculo de risco combinado — é informação complementar, não parte do algoritmo de risco.',
+      'A cardiopatia congênita é a malformação mais comum da gestação (≈1:100 nascidos vivos) — bem mais frequente que a síndrome de Down (≈1:1000). Mesmo assim, a avaliação detalhada das válvulas cardíacas não faz parte do morfológico de rotina, o que reforça o valor do ecocardiograma fetal como exame à parte.',
+      'O morfológico do 3º trimestre não é rotina para toda gestante — na prática, fica restrito a situações específicas, como acompanhamento de malformações já identificadas ou gestantes que iniciam o pré-natal tardiamente.',
+    ],
+    perolas:[
+      'TN isolada não é morfológico do 1º trimestre — essa diferença pode custar a janela de indicar aspirina para pré-eclâmpsia.',
+      'Cardiopatia congênita (≈1:100) é mais comum que síndrome de Down (≈1:1000), mas a avaliação das válvulas não está no morfológico de rotina — por isso o ecocardiograma fetal merece ser considerado para todas as gestantes, não só as de alto risco.',
+    ],
+    encaminhar:'Considerar ecocardiograma fetal especializado (Medicina Fetal) diante de fatores de risco para cardiopatia — diabetes materna, história familiar de cardiopatia congênita, translucência nucal aumentada, malformação extracardíaca associada, uso de medicações teratogênicas — mesmo quando a rotina do serviço não inclui ecocardiograma para todas as gestantes.',
+    aula:{titulo:'Principais ultrassons da gestação: o que cada exame realmente avalia', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2023.',
+      'Rolnik DL et al. "ASPRE trial: performance of first-trimester screening for preterm pre-eclampsia." Ultrasound Obstet Gynecol, 2017 (rastreio combinado do 1º trimestre e indicação de aspirina).',
+      'ISUOG Practice Guidelines: performance of fetal cardiac scan and fetal echocardiography — referência específica pendente de indicação da autora.',
+      'Incidência de cardiopatia congênita (≈1:100) comparada à síndrome de Down (≈1:1000) — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:['morfologico-1trimestre','datacao-gestacao'],
   },
 ];
 
