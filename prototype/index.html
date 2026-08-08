@@ -461,6 +461,7 @@ document.querySelectorAll('.demo-tab').forEach(btn=>{
    ACOG), escrito para validar a plataforma, não para uso em consulta sem
    revisão e validação médica da autora. */
 const MODULOS = [
+  {id:'exames', nome:'Exames da gestação', icon:'🩻'},
   {id:'trimestre1', nome:'1º trimestre', icon:'🌱'},
   {id:'crescimento', nome:'Crescimento fetal', icon:'📏'},
   {id:'placenta', nome:'Placenta e anexos', icon:'🔵'},
@@ -468,10 +469,37 @@ const MODULOS = [
   {id:'colo', nome:'Colo uterino', icon:'🔒'},
   {id:'marcadores', nome:'Marcadores leves de aneuploidia', icon:'✨'},
   {id:'doppler', nome:'Doppler fetal', icon:'📡'},
-  {id:'exames', nome:'Exames da gestação', icon:'🩻'},
 ];
 
 const TEMAS = [
+  {
+    id:'principais-ultrassons-gestacao',
+    titulo:'Principais ultrassons na gestação',
+    modulo:'exames',
+    tags:['translucência nucal','tn simples','morfológico do 1º trimestre','morfológico do 2º trimestre','rastreamento de pré-eclâmpsia','aspirina','osso nasal','mapa de exames da gestação'],
+    essencial:'Existem diferentes ultrassons na gestação, cada um com um objetivo. TN, morfológicos, crescimento, Doppler e ecocardiografia não são exames equivalentes. O obstetra precisa saber o que cada um avalia e, principalmente, o que pode deixar de ser avaliado.',
+    erro:'Pedir apenas a TN e considerar que o morfológico do 1º trimestre é desnecessário ou "a mesma coisa". Ao fazer apenas a TN, pode-se perder a oportunidade de identificar precocemente malformações e, principalmente, gestantes com maior risco de pré-eclâmpsia que poderiam se beneficiar de prevenção com aspirina, quando indicada.',
+    passo:{tipo:'checklist', itens:[
+      'Orientar a gestante sobre a diferença entre TN e morfológico do 1º trimestre.',
+      'Se ela fez apenas a TN, verificar se ainda está dentro da janela para completar a avaliação morfológica.',
+      'No segundo trimestre, garantir a realização do morfológico de 2º trimestre.',
+      'O acompanhamento posterior deve ser definido conforme o risco materno e fetal.',
+    ]},
+    explicar:'"A translucência é apenas uma parte da avaliação. O morfológico do primeiro trimestre aproveita essa mesma fase da gestação para olhar a formação do bebê com muito mais detalhes e também avaliar alguns riscos importantes para a mãe, como o de pré-eclâmpsia."',
+    pensando:'"Se eu fiz a translucência nucal, preciso mesmo fazer outro exame no primeiro trimestre?"',
+    confianca:'"Nem todo ultrassom tem a mesma finalidade. Quando eu sei exatamente o que cada exame procura, consigo oferecer à gestante um acompanhamento muito mais seguro, sem pedir exames simplesmente por rotina."',
+    aprendi:'"Aprendi que não adianta fazer muitos ultrassons se não sabemos o que estamos procurando. Cada exame tem seu momento e sua pergunta. O segredo é não perder a oportunidade certa."',
+    vocesabia:[
+      'TN não é morfológico do 1º trimestre. A TN simples avalia principalmente CCN, translucência nucal, frequência cardíaca e, quando realizado, osso nasal. O morfológico do 1º trimestre vai muito além: avalia anatomia fetal, marcadores adicionais e permite o rastreamento de pré-eclâmpsia. Importante: na TN simples, a presença ou ausência do osso nasal não entra no cálculo do risco de síndrome de Down.',
+    ],
+    encaminhar:'Encaminhar para avaliação especializada quando houver:<ul><li>Alteração na TN ou outros marcadores</li><li>Suspeita de malformação</li><li>Alteração cardíaca</li><li>Risco aumentado de aneuploidia</li><li>Alteração importante no rastreamento de pré-eclâmpsia</li><li>Qualquer achado que exija investigação fetal especializada</li></ul>',
+    aula:{titulo:'Principais ultrassons na gestação: o que cada exame realmente avalia', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2023.',
+      'Rolnik DL et al. "ASPRE trial: performance of first-trimester screening for preterm pre-eclampsia." Ultrasound Obstet Gynecol, 2017 (rastreio combinado do 1º trimestre e indicação de aspirina).',
+    ],
+    vejaTambem:['morfologico-1trimestre','datacao-gestacao'],
+  },
   {
     id:'sem-embriao',
     titulo:'Ausência de embrião',
@@ -973,40 +1001,6 @@ const TEMAS = [
       'Associação entre glicemia pós-prandial e macrossomia fetal, independente de outros marcadores glicêmicos — referência específica pendente de indicação da autora.',
     ],
     vejaTambem:['percentil8'],
-  },
-  {
-    id:'principais-ultrassons-gestacao',
-    titulo:'Principais ultrassons da gestação',
-    modulo:'exames',
-    tags:['translucência nucal','tn simples','morfológico do 1º trimestre','ecocardiograma fetal','morfológico do 3º trimestre','rastreamento de pré-eclâmpsia','aspirina','osso nasal','cardiopatia congênita','mapa de exames'],
-    essencial:'Os ultrassons da gestação não são intercambiáveis — cada um responde a uma pergunta diferente. TN simples e morfológico do 1º trimestre não são o mesmo exame; o morfológico de rotina não avalia o coração fetal com a profundidade de um ecocardiograma; e o morfológico do 3º trimestre não é exame de rotina para toda gestante.',
-    erro:'Tratar a TN "simples" como se fosse equivalente ao morfológico do 1º trimestre. Quando o exame se resume à TN isolada, perde-se a grande oportunidade de rastrear as gestantes que vão precisar usar aspirina — o rastreamento de pré-eclâmpsia (Doppler das artérias uterinas, pressão arterial média, história obstétrica) só entra no morfológico do 1º trimestre completo, não na TN sozinha. Ver o tema "Morfológico do 1º trimestre" para o detalhamento dessa diferença.',
-    passo:{tipo:'checklist', itens:[
-      'Confirme se o exame solicitado foi TN isolada ou morfológico do 1º trimestre completo — a diferença muda a conduta sobre rastreamento de pré-eclâmpsia e aspirina.',
-      'Considere o ecocardiograma fetal para todas as gestantes, não só para as de alto risco — a avaliação detalhada das válvulas não faz parte do morfológico de rotina.',
-      'Reserve o morfológico do 3º trimestre para indicações específicas (acompanhamento de malformação já identificada, pré-natal tardio) — não é exame de rotina para toda gestante.',
-      'Ao explicar cada exame para a paciente, deixe claro que eles se complementam — não substituem um ao outro.',
-    ]},
-    explicar:'"Existem alguns tipos de ultrassom ao longo da gravidez, e cada um tem um objetivo específico. Vou te explicar qual estamos pedindo agora e por quê — assim você não estranha se, mais pra frente, eu pedir outro tipo diferente."',
-    pensando:'"Eu já fiz o ultrassom, por que preciso de outro? Alguma coisa apareceu errada?" — a gestante costuma achar que os ultrassons são intercambiáveis, e pedir um exame adicional pode soar como sinal de alarme, quando na verdade é rastreio de rotina bem indicado.',
-    confianca:'Explicar que cada exame tem um objetivo diferente — não é "mais do mesmo", é uma peça diferente do quebra-cabeça — ajuda a gestante a entender por que às vezes pedimos mais de um ultrassom em fases próximas, sem gerar a sensação de que algo deu errado no anterior.',
-    aprendi:'Aprendi que a maior confusão não é achar um exame "melhor" que o outro — é achar que um substitui o outro. Cada ultrassom da gestação fecha uma pergunta específica; quando misturo as expectativas sobre o que cada um responde, alguma pergunta importante fica sem resposta.',
-    vocesabia:[
-      'A presença ou ausência do osso nasal é um marcador ecográfico pesquisado no 1º trimestre, mas não entra na fórmula do cálculo de risco combinado — é informação complementar, não parte do algoritmo de risco.',
-      'A cardiopatia congênita é a malformação mais comum da gestação (≈1:100 nascidos vivos) — bem mais frequente que a síndrome de Down (≈1:1000).',
-    ],
-    perolas:[
-      'Pense nos exames como perguntas diferentes, não como versões do mesmo ultrassom: TN/morfológico do 1º tri pergunta "este bebê tem risco cromossômico, e a mãe tem risco de pré-eclâmpsia?"; o ecocardiograma pergunta "o coração está formado corretamente?"; o morfológico do 3º tri só entra quando já há algo específico para acompanhar.',
-    ],
-    encaminhar:'Considerar ecocardiograma fetal especializado (Medicina Fetal) diante de fatores de risco para cardiopatia — diabetes materna, história familiar de cardiopatia congênita, translucência nucal aumentada, malformação extracardíaca associada, uso de medicações teratogênicas — mesmo quando a rotina do serviço não inclui ecocardiograma para todas as gestantes.',
-    aula:{titulo:'Principais ultrassons da gestação: o que cada exame realmente avalia', pendente:true},
-    referencias:[
-      'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2023.',
-      'Rolnik DL et al. "ASPRE trial: performance of first-trimester screening for preterm pre-eclampsia." Ultrasound Obstet Gynecol, 2017 (rastreio combinado do 1º trimestre e indicação de aspirina).',
-      'ISUOG Practice Guidelines: performance of fetal cardiac scan and fetal echocardiography — referência específica pendente de indicação da autora.',
-      'Incidência de cardiopatia congênita (≈1:100) comparada à síndrome de Down (≈1:1000) — referência específica pendente de indicação da autora.',
-    ],
-    vejaTambem:['morfologico-1trimestre','datacao-gestacao'],
   },
 ];
 

@@ -25,22 +25,23 @@ pendentes de indicação específica dela) antes de qualquer uso real em
 consulta.
 
 **16 temas completos e navegáveis de verdade** (não é mock estático):
-1. Ausência de embrião — módulo 1º trimestre
-2. Percentil de peso baixo — módulo Crescimento fetal
-3. Placenta baixa — módulo Placenta e anexos
-4. Artéria umbilical única — módulo Marcadores leves de aneuploidia
-5. Dilatação das pelves renais — módulo Trato urinário fetal
-6. Megabexiga fetal — módulo Trato urinário fetal
-7. Colo curto — módulo Colo uterino
-8. Foco ecogênico intracardíaco — módulo Marcadores leves de aneuploidia
-9. Intestino hiperecogênico — módulo Marcadores leves de aneuploidia
-10. Morfológico do 1º trimestre — módulo 1º trimestre
-11. Entendendo o Doppler fetal — módulo Doppler fetal
-12. Grau da placenta — módulo Placenta e anexos
-13. Vasa prévia — módulo Placenta e anexos
-14. Datação da gestação — módulo 1º trimestre
-15. Circunferência abdominal > P90 — módulo Crescimento fetal
-16. Principais ultrassons da gestação — módulo Exames da gestação
+1. Principais ultrassons na gestação — módulo Exames da gestação
+   (capítulo 1 do livro — abre a leitura antes dos achados clínicos)
+2. Ausência de embrião — módulo 1º trimestre
+3. Percentil de peso baixo — módulo Crescimento fetal
+4. Placenta baixa — módulo Placenta e anexos
+5. Artéria umbilical única — módulo Marcadores leves de aneuploidia
+6. Dilatação das pelves renais — módulo Trato urinário fetal
+7. Megabexiga fetal — módulo Trato urinário fetal
+8. Colo curto — módulo Colo uterino
+9. Foco ecogênico intracardíaco — módulo Marcadores leves de aneuploidia
+10. Intestino hiperecogênico — módulo Marcadores leves de aneuploidia
+11. Morfológico do 1º trimestre — módulo 1º trimestre
+12. Entendendo o Doppler fetal — módulo Doppler fetal
+13. Grau da placenta — módulo Placenta e anexos
+14. Vasa prévia — módulo Placenta e anexos
+15. Datação da gestação — módulo 1º trimestre
+16. Circunferência abdominal > P90 — módulo Crescimento fetal
 
 Convenção de título: nome direto do achado, sem frase/pergunta em volta
 (ex. "Placenta baixa", não "A placenta veio baixa. O que muda agora?").
