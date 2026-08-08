@@ -11,6 +11,13 @@ original.
 Formato de cada entrada: data, texto literal, status (`novo` / `usado em:
 <tema>`).
 
+**Convenção a partir de 2026-08-08:** a autora passa a escrever cada
+`Pensamento:` já começando com "…", para continuar direto a frase do
+rótulo do bloco 💜 "Com o tempo, aprendi que…". Ou seja, o texto do
+pensamento é a continuação literal dessa frase, não uma frase nova. Ao
+promover para o campo `aprendi:` de um Tema, o "…" inicial é mantido —
+não remover nem reescrever como frase independente.
+
 ## Entradas
 
 - **2026-08-07** — "Em algum momento na configuração do app, vou querer
