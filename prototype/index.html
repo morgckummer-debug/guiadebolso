@@ -545,7 +545,7 @@ const TEMAS = [
       'ISUOG Practice Guidelines: diagnosis and management of small-for-gestational-age fetus and fetal growth restriction. Ultrasound Obstet Gynecol, 2020.',
       'Gordijn SJ et al. "Consensus definition of fetal growth restriction: a Delphi procedure." Ultrasound Obstet Gynecol, 2016.',
     ],
-    vejaTambem:['placenta-baixa','datacao-gestacao'],
+    vejaTambem:['placenta-baixa','datacao-gestacao','circunferencia-abdominal-p90'],
   },
   {
     id:'placenta-baixa',
@@ -945,6 +945,40 @@ const TEMAS = [
       'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan (datação gestacional). Ultrasound Obstet Gynecol, 2023.',
     ],
     vejaTambem:['morfologico-1trimestre','percentil8'],
+  },
+  {
+    id:'circunferencia-abdominal-p90',
+    titulo:'Circunferência abdominal > P90',
+    modulo:'crescimento',
+    tags:['circunferência abdominal','ca >p90','diabetes gestacional','macrossomia','crescimento fetal excessivo','biometria fetal','hiperinsulinemia fetal','glicemia pós-prandial'],
+    essencial:'Uma CA fetal >P90 indica crescimento abdominal acima do esperado. Em gestantes com diabetes, pode ser um sinal de maior exposição fetal à glicose e maior risco de crescimento excessivo, mesmo quando o peso fetal estimado ainda não está acima do P90.',
+    erro:'Ver CA >P90 e concluir automaticamente "é macrossomia". Não é. A CA é apenas uma das medidas biométricas e deve ser interpretada junto com o peso fetal estimado, a idade gestacional e o contexto materno — não isoladamente.',
+    passo:{tipo:'checklist', itens:[
+      'Revise o controle glicêmico, principalmente as glicemias pós-prandiais.',
+      'Correlacione a CA com o peso fetal estimado e as demais medidas biométricas.',
+      'Avalie a evolução do crescimento nos exames seguintes, quando indicado.',
+      'Se houver crescimento fetal excessivo ou diabetes mal controlado, ajuste o acompanhamento obstétrico.',
+    ]},
+    explicar:'"A barriguinha do bebê está maior do que a média para essa idade gestacional. Isso pode acontecer por vários motivos. Como você tem diabetes, vamos conferir se a glicose está bem controlada e acompanhar o crescimento com atenção."',
+    pensando:'Meu bebê está ficando grande porque minha glicose está alta? Fiz alguma coisa errada?',
+    confianca:'"Uma medida maior da barriga não significa, sozinha, que exista um problema. Vamos olhar o crescimento como um todo e, se houver diabetes, conferir se a glicose está realmente bem controlada."',
+    aprendi:'Aprendi a não olhar apenas para o peso fetal. Às vezes, a distribuição do crescimento conta uma história que o peso sozinho não consegue mostrar.',
+    vocesabia:[
+      'A CA pode se alterar antes do peso fetal estimado. Em fetos de mães com diabetes, o excesso de glicose pode levar à hiperinsulinemia fetal e maior depósito de gordura, especialmente no abdome. Estudos mostram que CA ≥P90 é útil na previsão de macrossomia.',
+      'A HbA1c pode ajudar na avaliação do controle glicêmico, mas não substitui as glicemias capilares/monitorização da glicose — os picos pós-prandiais têm relação importante com o crescimento excessivo e podem não ser bem representados pela HbA1c. Há estudos mostrando associação entre glicemia pós-prandial e macrossomia mesmo quando outros marcadores glicêmicos não diferiam.',
+    ],
+    perolas:[
+      'CA >P90 ≠ macrossomia. Em uma gestante com diabetes, porém, CA aumentada deve fazer você olhar com atenção para o controle glicêmico.',
+      'Ler a biometria como um padrão de crescimento, não ficar refém de um único número — a ISUOG considera CA e peso estimado parâmetros centrais para avaliação do tamanho fetal.',
+    ],
+    encaminhar:'CA >P90 isoladamente não é indicação de encaminhamento para Medicina Fetal. Considerar avaliação especializada quando houver, por exemplo:<ul><li>Crescimento fetal excessivo importante</li><li>Suspeita de macrossomia</li><li>Diabetes de difícil controle</li><li>Discrepância biométrica importante</li><li>Outras alterações fetais ou obstétricas associadas</li></ul>',
+    aula:{titulo:'Circunferência abdominal aumentada: o que muda na gestante com diabetes', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan — biometria fetal e circunferência abdominal. Ultrasound Obstet Gynecol, 2022.',
+      'Associação entre CA fetal ≥P90, hiperinsulinemia fetal e predição de macrossomia em gestantes com diabetes — referência específica pendente de indicação da autora.',
+      'Associação entre glicemia pós-prandial e macrossomia fetal, independente de outros marcadores glicêmicos — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:['percentil8'],
   },
 ];
 
