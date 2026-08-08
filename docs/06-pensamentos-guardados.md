@@ -31,3 +31,13 @@ Formato de cada entrada: data, texto literal, status (`novo` / `usado em:
   pensamento aprofunda o porquê (variabilidade normal de curto prazo do
   IP da ACM) com a voz pessoal da autora, ainda sem ter sido promovido
   para o campo `aprendi:`.
+
+- **2026-08-08** — "Saber qual serviço de ultrassonografia indicar,
+  também faz parte de um bom pré-natal. Exames muito rápidos não mostram
+  percentil confiável 🫣." — status: `novo`, ideia de conteúdo com dois
+  candidatos possíveis, ainda não decidido: (1) fala pessoal pro bloco 💜
+  "Aprendi que…" do tema "Feto PIG" (`percentil8`), reforçando por que a
+  confiabilidade do percentil depende da qualidade do exame, não só do
+  número em si; ou (2) ideia de produto mais ampla — orientação sobre
+  como escolher um bom serviço de ultrassonografia — que não é "achado no
+  exame" e pode não caber no formato padrão de Tema.
