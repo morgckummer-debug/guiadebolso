@@ -42,7 +42,7 @@ consulta.
 12. Grau da placenta — módulo Placenta e anexos
 13. Vasa prévia — módulo Placenta e anexos
 14. Datação da gestação — módulo 1º trimestre
-15. PSV da ACM — módulo Doppler fetal
+15. Ultrassom pode predizer anemia fetal? — módulo Doppler fetal
 
 Convenção de título: nome direto do achado, sem frase/pergunta em volta
 (ex. "Placenta baixa", não "A placenta veio baixa. O que muda agora?").
