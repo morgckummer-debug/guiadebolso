@@ -25,12 +25,9 @@ Formato de cada entrada: data, texto literal, status (`novo` / `usado em:
   analisados isoladamente. Um bebê com desenvolvimento e peso normal com
   uma ACM de baixa resistência não significa sofrimento fetal. Se o
   médico repetisse o exame em 15 minutos, estaria dentro do normal." —
-  status: `novo`, fala pessoal candidata ao bloco 💜 "Aprendi que…" do
-  tema "Entendendo o Doppler fetal" (`doppler-introducao`) — esse tema já
-  tem em `erro:` o alerta de não interpretar um vaso isoladamente; este
-  pensamento aprofunda o porquê (variabilidade normal de curto prazo do
-  IP da ACM) com a voz pessoal da autora, ainda sem ter sido promovido
-  para o campo `aprendi:`.
+  status: `usado em: doppler-introducao` — mesclado ao `aprendi:` já
+  existente do tema "Entendendo o Doppler fetal" (mantido o texto
+  original, sem apagar).
 
 - **2026-08-08** — "Saber qual serviço de ultrassonografia indicar,
   também faz parte de um bom pré-natal. Exames muito rápidos não mostram
@@ -44,10 +41,5 @@ Formato de cada entrada: data, texto literal, status (`novo` / `usado em:
 
 - **2026-08-08** — "Um IP normal da ACM pode indicar anemia grave e não
   ser descrito no laudo, o que mudaria completamente a conduta médica."
-  — status: `novo`, alerta forte candidato ao tema "Anemia fetal"
-  (`psv-acm`) — reforça, com um caso concreto e mais grave, a distinção
-  que o `erro:` daquele tema já faz entre IP da ACM (hipóxia) e PSV da
-  ACM (anemia): aqui o ponto é que um laudo pode trazer só o IP normal e
-  nem citar a PSV, dando falsa sensação de normalidade quando a anemia
-  pode estar grave. Candidato a enriquecer `erro:` ou virar um futuro
-  bloco 🔑 Pérola clínica nesse tema, ainda sem ter sido promovido.
+  — status: `usado em: psv-acm` — mesclado ao `aprendi:` já existente do
+  tema "Anemia fetal" (mantido o texto original, sem apagar).
