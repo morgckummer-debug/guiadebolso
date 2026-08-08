@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Guia Digital do Obstetra — v1.2 (22 temas)</title>
-<meta name="description" content="Protótipo estático: design system, biblioteca de componentes e 22 temas clínicos completos para validar leitura, busca, índice e navegação. Conteúdo clínico é rascunho, pendente de revisão médica." />
+<title>Guia Digital do Obstetra — v1.2 (21 temas)</title>
+<meta name="description" content="Protótipo estático: design system, biblioteca de componentes e 21 temas clínicos completos para validar leitura, busca, índice e navegação. Conteúdo clínico é rascunho, pendente de revisão médica." />
 <style>
 :root{
   --bg-base:#FFFFFF; --bg-subtle:#FAFAFA; --bg-sunken:#F5F5F7;
@@ -526,28 +526,30 @@ const TEMAS = [
     referencias:[
       'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2023.',
     ],
-    vejaTambem:['usg-morfologico-1tri','morfologico-1trimestre'],
+    vejaTambem:['usg-morfologico-1tri'],
   },
   {
     id:'usg-morfologico-1tri',
     titulo:'Morfológico do 1º trimestre: o que ele acrescenta',
     modulo:'exames',
     tags:['morfológico do 1º trimestre','ducto venoso','doppler tricúspide','rastreamento de pré-eclâmpsia','fetal medicine foundation','mapa de exames da gestação'],
-    essencial:'O morfológico do 1º trimestre é realizado na mesma janela da TN (12 a 13+6 semanas), mas vai além. Ver o tema "Morfológico do 1º trimestre" para o detalhamento completo de cada parte.',
+    essencial:'O morfológico do 1º trimestre é realizado na mesma janela da TN (12 a 13+6 semanas), mas vai muito além: soma avaliação de ducto venoso, Doppler da tricúspide, anatomia fetal completa e rastreamento de pré-eclâmpsia — que define quem se beneficia da aspirina preventiva.',
     avalia:[
       'Tudo o que a TN simples avalia (CCN, translucência nucal, frequência cardíaca, osso nasal).',
-      'Anatomia fetal sistemática: cérebro, face, coluna, tórax, abdome, estômago, bexiga, rins, membros, parede abdominal e coração.',
+      'Anatomia fetal completa: cérebro, face, coluna, diafragma, tórax, coração, estômago, abdome, rins, bexiga, parede abdominal, membros, cordão e placenta.',
       'Doppler do ducto venoso e da válvula tricúspide — marcadores que podem aumentar a capacidade de identificar fetos com maior risco de aneuploidia e/ou cardiopatia.',
-      'Rastreamento de pré-eclâmpsia pelo algoritmo da Fetal Medicine Foundation — características maternas, história obstétrica, doenças maternas, IMC, pressão arterial média e Doppler das artérias uterinas.',
+      'Rastreamento de pré-eclâmpsia pelo algoritmo da Fetal Medicine Foundation — história obstétrica, doenças crônicas e autoimunes, IMC, pressão arterial média e Doppler das artérias uterinas.',
     ],
     naoAvalia:['Avaliação detalhada das válvulas cardíacas — isso é papel da ecocardiografia fetal, exame à parte.'],
     perolas:['Se você não faz o rastreamento de pré-eclâmpsia no primeiro trimestre, pode perder a oportunidade de identificar precocemente uma gestante que se beneficiaria de prevenção. A aspirina, quando indicada, deve ser iniciada idealmente antes de 16 semanas.'],
-    aula:{titulo:'Morfológico do 1º trimestre: o que ele acrescenta além da TN', pendente:true},
+    aprendi:'Sempre escuto que o morfológico do 1º trimestre é uma ‘moda’. Mas a pré-eclâmpsia continua sendo uma das principais causas de morte materna. Se hoje conseguimos identificar precocemente quem tem maior risco e iniciar medidas preventivas, por que abrir mão dessa oportunidade?',
+    aula:{titulo:'Morfológico do 1º trimestre: o que ele responde que a TN simples não responde', pendente:true},
     referencias:[
+      'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2023.',
       'Rolnik DL et al. "ASPRE trial: performance of first-trimester screening for preterm pre-eclampsia." Ultrasound Obstet Gynecol, 2017.',
       'Fetal Medicine Foundation — algoritmo de rastreamento combinado de pré-eclâmpsia do 1º trimestre — referência específica pendente de indicação da autora.',
     ],
-    vejaTambem:['morfologico-1trimestre','usg-tn'],
+    vejaTambem:['usg-tn'],
   },
   {
     id:'usg-morfologico-2tri',
@@ -900,31 +902,6 @@ const TEMAS = [
     vejaTambem:['foco-ecogenico-intracardiaco'],
   },
   {
-    id:'morfologico-1trimestre',
-    titulo:'Morfológico do 1º trimestre',
-    modulo:'trimestre1',
-    tags:['morfológico do 1º trimestre','translucência nucal','tn simples','ducto venoso','doppler tricúspide','rastreamento de pré-eclâmpsia','aspirina','doppler artérias uterinas'],
-    essencial:'O morfológico do 1º trimestre vai muito além da translucência nucal: soma avaliação de ducto venoso, Doppler da tricúspide, anatomia fetal completa e rastreamento de pré-eclâmpsia — que define quem se beneficia da aspirina preventiva.',
-    erro:'Dizer que o morfológico do 1º trimestre é apenas uma "translucência nucal mais cara". Na realidade, ele responde perguntas completamente diferentes e pode identificar gestantes que se beneficiam da prevenção da pré-eclâmpsia.',
-    passo:{tipo:'checklist', itens:[
-      'Explicar a diferença entre TN simples e morfológico do 1º trimestre antes da paciente escolher o exame.',
-      'Realizar o rastreamento de pré-eclâmpsia (história obstétrica, doenças crônicas e autoimunes, IMC, pressão arterial média, Doppler das artérias uterinas) quando o morfológico for feito.',
-      'Calcular o risco e, se indicado, iniciar aspirina no momento certo — o benefício depende do início precoce.',
-      'Se a paciente quiser migrar para o morfológico do 1º trimestre, mesmo já tendo agendado a TN simples, não recusar — respeitar a escolha pelo exame mais completo.',
-    ]},
-    aprendi:'Sempre escuto que o morfológico do 1º trimestre é uma ‘moda’. Mas a pré-eclâmpsia continua sendo uma das principais causas de morte materna. Se hoje conseguimos identificar precocemente quem tem maior risco e iniciar medidas preventivas, por que abrir mão dessa oportunidade?',
-    vocesabia:[
-      'O que a TN simples avalia:<ul><li>CCN</li><li>Frequência cardíaca fetal</li><li>Translucência nucal</li><li>Pesquisa do osso nasal</li></ul>',
-      'O morfológico do 1º trimestre acrescenta:<ul><li>Ducto venoso</li><li>Doppler da valva tricúspide</li><li>Anatomia fetal completa (cérebro, face, coluna, diafragma, coração, estômago, rins, bexiga, parede abdominal, membros, cordão, placenta)</li><li>Rastreamento de pré-eclâmpsia (história obstétrica, doenças crônicas e autoimunes, IMC, pressão arterial média, Doppler das artérias uterinas)</li></ul>',
-    ],
-    aula:{titulo:'Morfológico do 1º trimestre: o que ele responde que a TN simples não responde', pendente:true},
-    referencias:[
-      'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2023.',
-      'ASPRE trial — aspirin for evidence-based preeclampsia prevention — referência específica pendente de indicação da autora.',
-    ],
-    vejaTambem:['datacao-gestacao','usg-tn','usg-morfologico-1tri'],
-  },
-  {
     id:'doppler-introducao',
     titulo:'Entendendo o Doppler fetal',
     modulo:'doppler',
@@ -1104,7 +1081,7 @@ const TEMAS = [
       'ACOG Committee Opinion No. 700 — Methods for Estimating the Due Date. Obstet Gynecol, 2017 (reafirmado) — referência específica pendente de indicação da autora.',
       'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan (datação gestacional). Ultrasound Obstet Gynecol, 2023.',
     ],
-    vejaTambem:['morfologico-1trimestre','percentil8'],
+    vejaTambem:['usg-morfologico-1tri','percentil8'],
   },
   {
     id:'circunferencia-abdominal-p90',

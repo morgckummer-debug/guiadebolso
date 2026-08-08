@@ -13,7 +13,7 @@ alterada — todo desenvolvimento novo acontece na branch `develop` até a
 próxima validação. `v1.0` foi o Sprint Zero (plataforma validada com
 conteúdo real: leitura, busca, índice, links internos, Aula Express,
 navegação entre temas). `v1.1` adicionou um 4º tema. `v1.2` expande para
-22 temas — incluindo um novo módulo (Doppler fetal) — e três blocos de
+21 temas — incluindo um novo módulo (Doppler fetal) — e três blocos de
 conteúdo novos: 🔑 Pérola clínica, 📖 Contexto histórico e 🧭 E agora?.
 Sem autenticação implementada ainda.
 
@@ -24,11 +24,15 @@ autora — mas o pacote ainda não passou por revisão clínica formal completa
 pendentes de indicação específica dela) antes de qualquer uso real em
 consulta.
 
-**22 temas completos e navegáveis de verdade** (não é mock estático):
+**21 temas completos e navegáveis de verdade** (não é mock estático):
 1. Ultrassom obstétrico inicial — módulo Exames da gestação
    (capítulo 1 do livro, página 1/7 — abre a leitura antes dos achados clínicos)
 2. Ultrassom de translucência nucal — módulo Exames da gestação (capítulo 1, página 2/7)
-3. Morfológico do 1º trimestre: o que ele acrescenta — módulo Exames da gestação (capítulo 1, página 3/7)
+3. Morfológico do 1º trimestre: o que ele acrescenta — módulo Exames da gestação
+   (capítulo 1, página 3/7 — absorveu o tema avulso "Morfológico do 1º
+   trimestre" do módulo 1º trimestre, considerado redundante depois que
+   este capítulo ficou mais completo; nada do conteúdo antigo foi
+   perdido, só migrado pra cá)
 4. Morfológico do 2º trimestre — módulo Exames da gestação (capítulo 1, página 4/7)
 5. Ecocardiografia fetal — módulo Exames da gestação (capítulo 1, página 5/7)
 6. Morfológico do 3º trimestre — módulo Exames da gestação (capítulo 1, página 6/7)
@@ -42,12 +46,11 @@ consulta.
 14. Colo curto — módulo Colo uterino
 15. Foco ecogênico intracardíaco — módulo Marcadores leves de aneuploidia
 16. Intestino hiperecogênico — módulo Marcadores leves de aneuploidia
-17. Morfológico do 1º trimestre — módulo 1º trimestre
-18. Entendendo o Doppler fetal — módulo Doppler fetal
-19. Grau da placenta — módulo Placenta e anexos
-20. Vasa prévia — módulo Placenta e anexos
-21. Datação da gestação — módulo 1º trimestre
-22. Circunferência abdominal > P90 — módulo Crescimento fetal
+17. Entendendo o Doppler fetal — módulo Doppler fetal
+18. Grau da placenta — módulo Placenta e anexos
+19. Vasa prévia — módulo Placenta e anexos
+20. Datação da gestação — módulo 1º trimestre
+21. Circunferência abdominal > P90 — módulo Crescimento fetal
 
 Convenção de título: nome direto do achado, sem frase/pergunta em volta
 (ex. "Placenta baixa", não "A placenta veio baixa. O que muda agora?").
