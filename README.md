@@ -92,7 +92,14 @@ as sugestões de arquitetura identificadas durante a implementação.
    organizados por categoria (Placenta, Cordão, Líquido amniótico, Achados
    fetais, Crescimento, Doppler) — matéria-prima para os próximos temas.
 
-8. **Protótipo interativo (estático, sem build)** → [`prototype/index.html`](prototype/index.html)
+8. **Marketing e personas (pós-lançamento)** → [`docs/08-marketing-personas.md`](docs/08-marketing-personas.md)
+   Anotações de planejamento para depois da conclusão deste projeto: canal de
+   venda (Kiwify) e as 3 personas identificadas até agora — obstetra
+   recém-formado(a) abrindo consultório (autora como preceptora
+   pós-residência), obstetra com alguns anos de consultório buscando
+   atualização, e clínico geral que faz ultrassom na rede pública.
+
+9. **Protótipo interativo (estático, sem build)** → [`prototype/index.html`](prototype/index.html)
    Abra o arquivo direto no navegador. Contém: showcase dos tokens do design
    system, showcase dos componentes, e as 3 telas principais do app, dentro
    de uma moldura de iPhone:
