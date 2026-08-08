@@ -22,7 +22,7 @@ marcar como concluído aqui.
 ## Cordão
 - [ ] Inserção marginal
 - [ ] Inserção velamentosa
-- [ ] Vasa prévia
+- [x] Vasa prévia — tema "Vasa prévia" (módulo Placenta e anexos)
 - [ ] Cisto de cordão
 - [ ] Nó verdadeiro × falso nó
 
@@ -47,8 +47,10 @@ marcar como concluído aqui.
 
 ## Crescimento
 - [ ] PIG × RCF — *confusão que a autora considera enorme; já existe o
-      tema "Percentil de peso baixo" tocando nisso (módulo Crescimento
+      tema "Feto PIG" tocando nisso (módulo Crescimento
       fetal), mas pode valer um tema dedicado só à diferenciação PIG × RCF.*
+- [x] RCF precoce × RCF tardia — tema "RCF precoce × RCF tardia" (módulo
+      Crescimento fetal)
 - [ ] Macrossomia
 - [ ] Peso fetal no P10
 - [ ] Circunferência abdominal isoladamente baixa
