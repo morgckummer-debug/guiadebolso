@@ -47,7 +47,7 @@ marcar como concluído aqui.
 
 ## Crescimento
 - [ ] PIG × RCF — *confusão que a autora considera enorme; já existe o
-      tema "Percentil de peso baixo" tocando nisso (módulo Crescimento
+      tema "Feto PIG" tocando nisso (módulo Crescimento
       fetal), mas pode valer um tema dedicado só à diferenciação PIG × RCF.*
 - [ ] Macrossomia
 - [ ] Peso fetal no P10
