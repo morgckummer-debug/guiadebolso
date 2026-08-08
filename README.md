@@ -10,7 +10,10 @@ segundos.
 Versionamento: cada versão validada pela autora, Dra. Morgana Kummer, vira
 uma branch congelada (`v1.0`, `v1.1`, `v1.2`, ...) que nunca mais é
 alterada — todo desenvolvimento novo acontece na branch `develop` até a
-próxima validação. `v1.0` foi o Sprint Zero (plataforma validada com
+próxima validação. **`main` espelha a última versão congelada (hoje,
+`v1.2`) — qualquer branch de trabalho nova (sessão, feature, PR) deve
+nascer a partir de `develop`, nunca de `main`, para não perder edições já
+feitas lá.** `v1.0` foi o Sprint Zero (plataforma validada com
 conteúdo real: leitura, busca, índice, links internos, Aula Express,
 navegação entre temas). `v1.1` adicionou um 4º tema. `v1.2` expande para
 14 temas — incluindo um novo módulo (Doppler fetal) — e três blocos de
