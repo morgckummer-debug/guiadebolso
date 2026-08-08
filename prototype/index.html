@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Guia Digital do Obstetra — v1.2 (16 temas)</title>
-<meta name="description" content="Protótipo estático: design system, biblioteca de componentes e 16 temas clínicos completos para validar leitura, busca, índice e navegação. Conteúdo clínico é rascunho, pendente de revisão médica." />
+<title>Guia Digital do Obstetra — v1.2 (22 temas)</title>
+<meta name="description" content="Protótipo estático: design system, biblioteca de componentes e 22 temas clínicos completos para validar leitura, busca, índice e navegação. Conteúdo clínico é rascunho, pendente de revisão médica." />
 <style>
 :root{
   --bg-base:#FFFFFF; --bg-subtle:#FAFAFA; --bg-sunken:#F5F5F7;
@@ -473,37 +473,149 @@ const MODULOS = [
 
 const TEMAS = [
   {
-    id:'principais-ultrassons-gestacao',
-    titulo:'Principais ultrassons na gestação',
+    id:'usg-inicial',
+    titulo:'Ultrassom obstétrico inicial',
     modulo:'exames',
-    tags:['translucência nucal','tn simples','morfológico do 1º trimestre','morfológico do 2º trimestre','morfológico do 3º trimestre','ecocardiograma fetal','cardiopatia congênita','rastreamento de pré-eclâmpsia','aspirina','osso nasal','mapa de exames da gestação'],
-    essencial:'Existem diferentes ultrassons ao longo da gestação, com objetivos diferentes em cada trimestre — não são exames equivalentes, nem substitutos um do outro:<ul><li><strong>1º trimestre:</strong> TN simples × morfológico do 1º trimestre, que também rastreia pré-eclâmpsia.</li><li><strong>2º trimestre:</strong> morfológico de rotina × ecocardiograma fetal, que avalia as válvulas com mais detalhe.</li><li><strong>3º trimestre:</strong> morfológico restrito a indicações específicas, não é rotina para toda gestante.</li></ul>',
-    erro:'<ul><li>Pedir apenas a TN e considerar que o morfológico do 1º trimestre é desnecessário ou "a mesma coisa". Ao fazer apenas a TN, pode-se perder a oportunidade de identificar precocemente malformações e, principalmente, gestantes com maior risco de pré-eclâmpsia que poderiam se beneficiar de prevenção com aspirina, quando indicada.</li><li>Achar que o morfológico de rotina do 2º trimestre "já avaliou o coração". A avaliação detalhada das válvulas cardíacas não faz parte do morfológico de rotina — por isso o ecocardiograma fetal é um exame à parte.</li></ul>',
+    tags:['ultrassom inicial','datação','ccn','vitalidade','gestação múltipla','corionicidade','amnionicidade','mapa de exames da gestação'],
+    essencial:'O obstetra precisa saber o que cada exame procura — e principalmente o que ele pode deixar de avaliar. O ultrassom obstétrico inicial é o primeiro: realizado entre 7 e 10 semanas, confirma a localização da gestação, avalia vitalidade, determina o número de embriões, avalia a idade gestacional e, em gestações múltiplas, define corionicidade e amnionicidade.',
+    erro:'Não valorizar o CCN do ultrassom inicial como a referência de idade gestacional, e datar a gestação por exames mais tardios (menos precisos) quando o inicial já está disponível.',
     passo:{tipo:'checklist', itens:[
-      'Orientar a gestante sobre a diferença entre TN e morfológico do 1º trimestre.',
-      'Se ela fez apenas a TN, verificar se ainda está dentro da janela para completar a avaliação morfológica.',
-      'No segundo trimestre, garantir a realização do morfológico de 2º trimestre e considerar o ecocardiograma fetal para todas as gestantes, não só as de alto risco.',
-      'Reservar o morfológico do 3º trimestre para indicações específicas (acompanhamento de malformação já identificada, pré-natal tardio) — não é exame de rotina para toda gestante.',
-      'O acompanhamento posterior deve ser definido conforme o risco materno e fetal.',
+      'Confirmar a localização da gestação (intrauterina) e a vitalidade embrionária/fetal.',
+      'Determinar o número de embriões e, se gestação múltipla, definir corionicidade e amnionicidade — só é confiável se avaliado no 1º trimestre.',
+      'Registrar o CCN como referência de idade gestacional — ver o tema "Datação da gestação" para os critérios de quando corrigir ou manter a data.',
+    ]},
+    vocesabia:['Quando realizado no primeiro trimestre, o CCN é o parâmetro mais preciso para estabelecer ou confirmar a idade gestacional.'],
+    perolas:['Quanto mais cedo a gestação é corretamente datada, menos problemas teremos para interpretar crescimento e desenvolvimento mais tarde.'],
+    aula:{titulo:'Ultrassom obstétrico inicial: o que confirmar antes de seguir com o pré-natal', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2023.',
+    ],
+    vejaTambem:['datacao-gestacao'],
+  },
+  {
+    id:'usg-tn',
+    titulo:'Ultrassom de translucência nucal',
+    modulo:'exames',
+    tags:['translucência nucal','tn simples','osso nasal','morfológico do 1º trimestre','rastreamento de pré-eclâmpsia','mapa de exames da gestação'],
+    essencial:'O exame de TN é realizado entre 12 e 13+6 semanas. No exame simples, o foco está principalmente em CCN, translucência nucal, frequência cardíaca e, quando pesquisado, osso nasal — mas a presença ou ausência do osso nasal não entra no cálculo de risco de síndrome de Down.',
+    erro:'Tratar a TN como se fosse a mesma coisa que o morfológico do 1º trimestre. A TN é um marcador de risco, não uma avaliação anatômica completa — e existe uma oportunidade que pode ser perdida quando fazemos apenas o exame simples: o rastreamento combinado de pré-eclâmpsia.',
+    passo:{tipo:'checklist', itens:[
+      'Explicar à gestante que a TN simples e o morfológico do 1º trimestre são exames diferentes, com objetivos diferentes.',
+      'Verificar se ainda há janela (até 13+6 semanas) para complementar com o morfológico do 1º trimestre, se a paciente já fez só a TN.',
+      'Se o morfológico completo for realizado, garantir que o rastreamento combinado de pré-eclâmpsia (fatores maternos, PAM, Doppler das artérias uterinas) seja incluído.',
     ]},
     explicar:'"A translucência é apenas uma parte da avaliação. O morfológico do primeiro trimestre aproveita essa mesma fase da gestação para olhar a formação do bebê com muito mais detalhes e também avaliar alguns riscos importantes para a mãe, como o de pré-eclâmpsia."',
     pensando:'"Se eu fiz a translucência nucal, preciso mesmo fazer outro exame no primeiro trimestre?"',
     confianca:'"Nem todo ultrassom tem a mesma finalidade. Quando eu sei exatamente o que cada exame procura, consigo oferecer à gestante um acompanhamento muito mais seguro, sem pedir exames simplesmente por rotina."',
-    aprendi:'"Aprendi que não adianta fazer muitos ultrassons se não sabemos o que estamos procurando. Cada exame tem seu momento e sua pergunta. O segredo é não perder a oportunidade certa."',
-    vocesabia:[
-      '<strong>1º trimestre — TN × morfológico:</strong> a TN simples avalia principalmente CCN, translucência nucal, frequência cardíaca e, quando realizado, osso nasal — mas a presença ou ausência do osso nasal não entra no cálculo do risco de síndrome de Down. O morfológico do 1º trimestre vai muito além: avalia anatomia fetal, marcadores adicionais e permite o rastreamento de pré-eclâmpsia.',
-      '<strong>2º trimestre — ecocardiograma fetal:</strong> a cardiopatia congênita é a malformação mais comum da gestação (≈1:100 nascidos vivos) — bem mais frequente que a síndrome de Down (≈1:1000). Mesmo assim, a avaliação detalhada das válvulas cardíacas não faz parte do morfológico de rotina, o que reforça o valor do ecocardiograma fetal como exame à parte, oferecido a toda gestante — não só às de alto risco.',
-      '<strong>3º trimestre — morfológico restrito:</strong> não é exame de rotina para toda gestante. Na prática, fica restrito a situações específicas, como acompanhamento de malformações já identificadas ou gestantes que iniciam o pré-natal tardiamente.',
-    ],
-    encaminhar:'Encaminhar para avaliação especializada quando houver:<ul><li>Alteração na TN ou outros marcadores</li><li>Suspeita de malformação</li><li>Alteração cardíaca</li><li>Risco aumentado de aneuploidia</li><li>Alteração importante no rastreamento de pré-eclâmpsia</li><li>Qualquer achado que exija investigação fetal especializada</li></ul>',
-    aula:{titulo:'Principais ultrassons na gestação: TN, morfológicos e ecocardiograma, trimestre a trimestre', pendente:true},
+    vocesabia:['O cálculo de risco combinado depende do modelo utilizado e pode incluir idade materna, CCN, TN e marcadores bioquímicos, entre outros. A ISUOG reconhece o osso nasal, o ducto venoso e a regurgitação tricúspide como marcadores adicionais no 1º trimestre.'],
+    aula:{titulo:'Translucência nucal: o que o exame simples avalia (e o que fica de fora)', pendente:true},
     referencias:[
       'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2023.',
-      'Rolnik DL et al. "ASPRE trial: performance of first-trimester screening for preterm pre-eclampsia." Ultrasound Obstet Gynecol, 2017 (rastreio combinado do 1º trimestre e indicação de aspirina).',
-      'ISUOG Practice Guidelines: performance of fetal cardiac scan and fetal echocardiography — referência específica pendente de indicação da autora.',
-      'Incidência de cardiopatia congênita (≈1:100) comparada à síndrome de Down (≈1:1000) — referência específica pendente de indicação da autora.',
     ],
-    vejaTambem:['morfologico-1trimestre','datacao-gestacao'],
+    vejaTambem:['usg-morfologico-1tri','morfologico-1trimestre'],
+  },
+  {
+    id:'usg-morfologico-1tri',
+    titulo:'Morfológico do 1º trimestre: o que ele acrescenta',
+    modulo:'exames',
+    tags:['morfológico do 1º trimestre','ducto venoso','doppler tricúspide','rastreamento de pré-eclâmpsia','fetal medicine foundation','aspirina','mapa de exames da gestação'],
+    essencial:'Além da biometria e da TN, o morfológico do 1º trimestre pode incluir avaliação sistemática da anatomia fetal, Doppler do ducto venoso e da válvula tricúspide, e o rastreamento de pré-eclâmpsia pelo algoritmo da Fetal Medicine Foundation. Ver o tema "Morfológico do 1º trimestre" para o detalhamento completo de cada parte.',
+    erro:'Achar que o morfológico do 1º trimestre é só "biometria e TN mais caras". A anatomia fetal, o Doppler do ducto venoso/tricúspide e o rastreamento de pré-eclâmpsia são partes do exame que ficam de fora quando ele é reduzido à TN.',
+    passo:{tipo:'checklist', itens:[
+      'Confirmar se a paciente já fez o rastreamento de pré-eclâmpsia (PAM, Doppler das artérias uterinas, história obstétrica) — não presumir que "já foi feito" só porque ela fez algum ultrassom no 1º trimestre.',
+      'Se indicado, iniciar aspirina preventiva o quanto antes — idealmente antes de 16 semanas.',
+      'Para o passo a passo completo de cada parte do exame, ver o tema "Morfológico do 1º trimestre".',
+    ]},
+    vocesabia:[
+      'Anatomia avaliada: cérebro, face, coluna, tórax, abdome, estômago, bexiga, rins, membros, parede abdominal e coração.',
+      'Doppler do ducto venoso e da válvula tricúspide: marcadores que podem aumentar a capacidade de identificar fetos com maior risco de aneuploidia e/ou cardiopatia.',
+      'Rastreamento de pré-eclâmpsia (algoritmo da Fetal Medicine Foundation): considera características maternas, história obstétrica, doenças maternas, IMC, pressão arterial média e Doppler das artérias uterinas.',
+    ],
+    perolas:['Se você não faz o rastreamento de pré-eclâmpsia no primeiro trimestre, pode perder a oportunidade de identificar precocemente uma gestante que se beneficiaria de prevenção. A aspirina, quando indicada, deve ser iniciada idealmente antes de 16 semanas.'],
+    aula:{titulo:'Morfológico do 1º trimestre: o que ele acrescenta além da TN', pendente:true},
+    referencias:[
+      'Rolnik DL et al. "ASPRE trial: performance of first-trimester screening for preterm pre-eclampsia." Ultrasound Obstet Gynecol, 2017.',
+      'Fetal Medicine Foundation — algoritmo de rastreamento combinado de pré-eclâmpsia do 1º trimestre — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:['morfologico-1trimestre','usg-tn'],
+  },
+  {
+    id:'usg-morfologico-2tri',
+    titulo:'Morfológico do 2º trimestre',
+    modulo:'exames',
+    tags:['morfológico do 2º trimestre','avaliação anatômica','acog','mapa de exames da gestação'],
+    essencial:'O morfológico do 2º trimestre é o grande exame anatômico da gestação — idealmente realizado entre 22 e 24 semanas, podendo ser feito, sem prejuízo, até 26 semanas. Avalia detalhadamente sistema nervoso central, face, coluna, tórax, coração, abdome, rins e bexiga, membros, placenta, cordão, líquido amniótico e crescimento fetal.',
+    erro:'Achar que o morfológico do 2º trimestre substitui a ecocardiografia fetal. A avaliação cardíaca feita aqui é um rastreamento — não tem a profundidade de uma avaliação especializada das válvulas e dos fluxos.',
+    passo:{tipo:'checklist', itens:[
+      'Garantir que toda gestante tenha acesso ao morfológico do 2º trimestre, entre 22 e 24 semanas (até 26 semanas, sem prejuízo).',
+      'Revisar sistematicamente cada estrutura avaliada — não só "olhar o bebê", mas percorrer a lista completa (SNC, face, coluna, tórax, coração, abdome, rins, bexiga, membros, placenta, cordão, líquido amniótico, crescimento).',
+      'Se houver fator de risco para cardiopatia, considerar ecocardiografia fetal além do morfológico de rotina.',
+    ]},
+    vocesabia:['A ACOG recomenda que todas as gestantes tenham acesso à ultrassonografia de 2º trimestre para avaliação de defeitos estruturais.'],
+    aula:{titulo:'Morfológico do 2º trimestre: o roteiro completo da avaliação anatômica', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2022.',
+      'ACOG Practice Bulletin — Ultrasound in Pregnancy — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:['usg-ecocardiografia'],
+  },
+  {
+    id:'usg-ecocardiografia',
+    titulo:'Ecocardiografia fetal',
+    modulo:'exames',
+    tags:['ecocardiografia fetal','cardiopatia congênita','válvulas cardíacas','mapa de exames da gestação'],
+    essencial:'A ecocardiografia fetal deveria ser rotina para todas as gestantes. As cardiopatias congênitas são as malformações mais comuns da gestação, afetando aproximadamente 1% dos nascimentos — inclusive em gestações de baixo risco — bem mais frequentes que a síndrome de Down (aproximadamente 1 a cada 800–1.000 nascidos vivos, dependendo da população).',
+    erro:'Achar que a avaliação cardíaca do morfológico já é suficiente. A avaliação cardíaca do morfológico é um rastreamento; a ecocardiografia fetal é uma avaliação especializada, com análise detalhada da anatomia, dos fluxos e das estruturas cardíacas.',
+    passo:{tipo:'checklist', itens:[
+      'Oferecer a ecocardiografia fetal a toda gestante, não só às de alto risco — a maioria das cardiopatias ocorre em gestações de baixo risco.',
+      'Não considerar o morfológico de rotina como substituto da avaliação cardíaca especializada.',
+      'Encaminhar para ecocardiografia fetal diante de qualquer fator de risco adicional para cardiopatia.',
+    ]},
+    vocesabia:['Para comparação: cardiopatia congênita ≈1% dos nascimentos × síndrome de Down ≈1 a cada 800–1.000 nascidos vivos, dependendo da população — a cardiopatia é bem mais frequente, mas recebe proporcionalmente menos rastreamento dedicado.'],
+    aula:{titulo:'Ecocardiografia fetal: por que deveria ser oferecida a toda gestante', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: performance of fetal cardiac scan and fetal echocardiography — referência específica pendente de indicação da autora.',
+      'Incidência de cardiopatia congênita (≈1%) comparada à síndrome de Down (≈1:800–1.000) — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:['usg-morfologico-2tri','arteria-umbilical-unica','foco-ecogenico-intracardiaco'],
+  },
+  {
+    id:'usg-morfologico-3tri',
+    titulo:'Morfológico do 3º trimestre',
+    modulo:'exames',
+    tags:['morfológico do 3º trimestre','pré-natal tardio','acompanhamento de malformação','mapa de exames da gestação'],
+    essencial:'O morfológico do 3º trimestre é realizado entre 32 e 36 semanas e fica reservado para situações selecionadas — não é exame de rotina para toda gestante.',
+    erro:'Solicitar o morfológico do 3º trimestre como exame de rotina para toda gestante, sem uma indicação específica — ele é reservado para situações selecionadas, não substitui nem duplica o morfológico do 2º trimestre.',
+    passo:{tipo:'checklist', itens:[
+      'Confirmar se há uma indicação específica antes de solicitar (pré-natal tardio, malformação em acompanhamento, achado a ser reavaliado).',
+      'Se não houver indicação específica, não solicitar por rotina.',
+      'Registrar claramente, no pedido do exame, qual é a pergunta que o morfológico do 3º trimestre precisa responder.',
+    ]},
+    vocesabia:['Indicações típicas: pré-natal iniciado tardiamente, necessidade de complementar avaliação anatômica, acompanhamento de malformações já conhecidas, ou suspeita de alterações que podem se manifestar (ou ser melhor avaliadas) mais tarde na gestação.'],
+    aula:{titulo:'Morfológico do 3º trimestre: quando (e por que) pedir', pendente:true},
+    referencias:[
+      'Indicações e momento do morfológico do 3º trimestre — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:[],
+  },
+  {
+    id:'usg-doppler',
+    titulo:'Doppler obstétrico: quando pedir',
+    modulo:'exames',
+    tags:['doppler obstétrico','diabetes gestacional','ciur','pig','anemia fetal','mapa de exames da gestação'],
+    essencial:'O Doppler entra quando precisamos entender como estão funcionando as circulações materna, placentária e fetal. Deveria ser pedido de rotina para gestantes diabéticas e diante de suspeita de restrição de crescimento fetal (CIUR) ou feto PIG.',
+    erro:'Pedir o Doppler só depois que já há um sinal de alerta claro. Nas gestantes diabéticas e nos fetos PIG/com suspeita de CIUR, o Doppler deveria ser rotina, não uma resposta tardia a um achado preocupante.',
+    passo:{tipo:'checklist', itens:[
+      'Solicitar Doppler obstétrico de rotina em gestantes diabéticas e diante de suspeita de CIUR ou feto PIG.',
+      'Avaliar os vasos em conjunto (uterinas, umbilical, ACM, RCP, ducto venoso) — nunca isoladamente.',
+      'Para interpretar o resultado, ver o tema "Entendendo o Doppler fetal".',
+    ]},
+    vocesabia:['Pode avaliar artérias uterinas, artéria umbilical, artéria cerebral média, relação cérebro-placentária e ducto venoso — e, quando há risco de anemia fetal, o PSV da ACM.'],
+    aula:{titulo:'Doppler obstétrico: quando pedir e o que cada vaso avalia', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: use of Doppler ultrasonography in obstetrics — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:['doppler-introducao'],
   },
   {
     id:'sem-embriao',
@@ -630,7 +742,7 @@ const TEMAS = [
       'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2022.',
       'Achado isolado de artéria umbilical única e risco de PIG/RCF e cardiopatia congênita — referência específica pendente de indicação da autora.',
     ],
-    vejaTambem:['percentil8','vasa-previa'],
+    vejaTambem:['percentil8','vasa-previa','usg-ecocardiografia'],
   },
   {
     id:'dilatacao-pelves-renais',
@@ -737,7 +849,7 @@ const TEMAS = [
       'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan — marcadores leves de aneuploidia. Ultrasound Obstet Gynecol, 2022.',
       'Foco ecogênico intracardíaco isolado e risco de aneuploidia — referência específica pendente de indicação da autora.',
     ],
-    vejaTambem:['intestino-hiperecogenico'],
+    vejaTambem:['intestino-hiperecogenico','usg-ecocardiografia'],
   },
   {
     id:'intestino-hiperecogenico',
@@ -789,7 +901,7 @@ const TEMAS = [
       'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2023.',
       'ASPRE trial — aspirin for evidence-based preeclampsia prevention — referência específica pendente de indicação da autora.',
     ],
-    vejaTambem:['datacao-gestacao','principais-ultrassons-gestacao'],
+    vejaTambem:['datacao-gestacao','usg-tn','usg-morfologico-1tri'],
   },
   {
     id:'doppler-introducao',
@@ -866,7 +978,7 @@ const TEMAS = [
       'Nicolaides KH / Fetal Medicine Foundation (FMF) — fisiopatologia da centralização fetal e Doppler — referência específica pendente de indicação da autora.',
       'ISUOG Practice Guidelines: use of Doppler ultrasonography in obstetrics. Ultrasound Obstet Gynecol.',
     ],
-    vejaTambem:[],
+    vejaTambem:['usg-doppler'],
   },
   {
     id:'grau-placenta',
@@ -1065,6 +1177,11 @@ function renderTemaScreen(id){
 <div class="block b-confianca" id="blk-confianca"><div class="block-head"><div class="chip">🤝</div><div class="eyebrow">Fortalece confiança</div></div>
 <div class="block-body">${t.confianca}</div></div>` : '';
 
+  const aprendiHTML = t.aprendi ? `
+<div class="block b-aprendi"><div class="block-head"><div class="chip">💜</div><div class="eyebrow">Com o tempo, aprendi que…</div></div>
+<div class="block-body">"${t.aprendi}"</div>
+<div class="aprendi-assinatura">— Dra. Morgana Kummer</div></div>` : '';
+
   const historiaHTML = t.historia ? `
 <div class="block b-historia"><div class="block-head"><div class="chip">📖</div><div class="eyebrow">${t.historia.titulo}</div></div>
 <div class="block-body">${t.historia.texto}</div></div>` : '';
@@ -1103,10 +1220,14 @@ function renderTemaScreen(id){
 ${t.vejaTambem.map(vid=>`<div class="veja-item" data-goto="${vid}" style="cursor:pointer">${temaById(vid).titulo} <span>›</span></div>`).join('')}
 </div>` : '';
 
-  const siblings = TEMAS.filter(x=>x.modulo===t.modulo && x.id!==t.id);
+  const modTemas = TEMAS.filter(x=>x.modulo===t.modulo);
+  const modIdx = modTemas.findIndex(x=>x.id===t.id);
+  const temaAnterior = modIdx > 0 ? modTemas[modIdx-1] : null;
+  const temaProximo = modIdx < modTemas.length-1 ? modTemas[modIdx+1] : null;
   const footerHTML = `
 <div class="art-footer">
-${siblings.length ? `<div class="nav-btn" data-goto="${siblings[0].id}" style="cursor:pointer"><span>◀ Tema anterior<br><small>${siblings[0].titulo}</small></span></div>` : ''}
+${temaAnterior ? `<div class="nav-btn" data-goto="${temaAnterior.id}" style="cursor:pointer"><span>◀ Tema anterior<br><small>${temaAnterior.titulo}</small></span></div>` : ''}
+${temaProximo ? `<div class="nav-btn" data-goto="${temaProximo.id}" style="cursor:pointer"><span>Próximo tema ▶<br><small>${temaProximo.titulo}</small></span></div>` : ''}
 <div class="nav-btn" id="btn-voltar-indice" style="cursor:pointer"><span>Voltar ao índice</span></div>
 </div>`;
 
@@ -1139,9 +1260,7 @@ ${encaminharHTML}
 
 ${confiancaHTML}
 
-<div class="block b-aprendi"><div class="block-head"><div class="chip">💜</div><div class="eyebrow">Com o tempo, aprendi que…</div></div>
-<div class="block-body">"${t.aprendi}"</div>
-<div class="aprendi-assinatura">— Dra. Morgana Kummer</div></div>
+${aprendiHTML}
 
 <div class="block b-aula" id="blk-aula"><div class="block-head"><div class="chip">🎥</div><div class="eyebrow">Aula Express</div></div>
 <div class="block-body">${t.aula.titulo}</div>
