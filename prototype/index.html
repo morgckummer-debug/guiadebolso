@@ -831,7 +831,7 @@ const TEMAS = [
       'Nicolaides KH / Fetal Medicine Foundation (FMF) — fisiopatologia da centralização fetal e Doppler — referência específica pendente de indicação da autora.',
       'ISUOG Practice Guidelines: use of Doppler ultrasonography in obstetrics. Ultrasound Obstet Gynecol.',
     ],
-    vejaTambem:[],
+    vejaTambem:['psv-acm'],
   },
   {
     id:'grau-placenta',
@@ -934,6 +934,33 @@ const TEMAS = [
       'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan (datação gestacional). Ultrasound Obstet Gynecol, 2023.',
     ],
     vejaTambem:['morfologico-1trimestre','percentil8'],
+  },
+  {
+    id:'psv-acm',
+    titulo:'PSV da ACM',
+    modulo:'doppler',
+    tags:['psv da acm','pico de velocidade sistólica','artéria cerebral média','acm','anemia fetal','aloimunização','isoimunização rh','parvovírus b19','mom','transfusão intrauterina'],
+    essencial:'A PSV da artéria cerebral média é o principal parâmetro Doppler usado no rastreamento não invasivo da anemia fetal. PSV ≥ 1,5 MoM indica alto risco de anemia fetal grave e deve motivar encaminhamento para Medicina Fetal.',
+    erro:'Confundir os dois parâmetros avaliados na artéria cerebral média — <strong>IP da ACM</strong> avalia redistribuição fetal/hipóxia; <strong>PSV da ACM</strong> rastreia anemia fetal. Não usar o IP da ACM para avaliar anemia.',
+    passo:{tipo:'checklist', itens:[
+      'PSV < 1,5 MoM: siga o acompanhamento conforme a indicação clínica e o risco de anemia.',
+      'PSV ≥ 1,5 MoM: encaminhe para Medicina Fetal para avaliação especializada.',
+      'A decisão sobre transfusão fetal não deve ser tomada apenas pelo valor da PSV — depende da idade gestacional, da causa da anemia e da avaliação especializada.',
+    ]},
+    explicar:'"Esse exame mede a velocidade do sangue em uma artéria do cérebro do bebê. Quando existe anemia, o sangue circula mais rapidamente. Esse aumento da velocidade pode nos alertar antes que o bebê apresente sinais mais graves."',
+    pensando:'Meu bebê está com anemia? Ele vai precisar receber sangue ainda dentro da barriga?',
+    confianca:'"Encontramos uma alteração que pode indicar anemia, mas isso não significa que o bebê esteja em perigo imediato. O importante é investigar rapidamente e, se necessário, tratar no momento adequado."',
+    aprendi:'Quando comecei a interpretar Doppler, parecia que cada índice contava uma história diferente. Na ACM, basta lembrar de uma coisa: IP fala de hipóxia; PSV fala de anemia.',
+    vocesabia:[
+      'Na anemia fetal, a menor viscosidade do sangue e o aumento do débito cardíaco fazem o sangue circular mais rapidamente. Por isso, a PSV da ACM aumenta.',
+    ],
+    encaminhar:'Encaminhar para Medicina Fetal quando a PSV da ACM atingir ≥ 1,5 MoM, principalmente quando existe uma condição conhecida com risco de anemia fetal, como aloimunização materna, infecção por parvovírus B19 ou outras causas de anemia fetal.',
+    aula:{titulo:'PSV da ACM: como rastrear anemia fetal pelo Doppler', pendente:true},
+    referencias:[
+      'Mari G et al. "Noninvasive diagnosis by Doppler ultrasonography of fetal anemia due to maternal red-cell alloimmunization." N Engl J Med, 2000.',
+      'ISUOG Practice Guidelines: use of Doppler ultrasonography in obstetrics — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:['doppler-introducao'],
   },
 ];
 
