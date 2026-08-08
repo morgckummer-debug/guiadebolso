@@ -7,6 +7,13 @@ pedidos no briefing, mesmo com propósitos diferentes.
 
 ## Componente global — `RaciocinioFAB` (elemento central da identidade)
 
+> **Revisado em 2026-08-08:** a anatomia abaixo descreve a versão anterior
+> do FAB (fluxograma fixo, visível só durante a leitura de um Tema,
+> separado da busca). A decisão mudou — o FAB passa a absorver a busca do
+> app inteiro; ver `04-cinco-perguntas-acesso.md`, seção "Revisão —
+> 2026-08-08". Anatomia nova (pulso, campo de busca, fallback de backlog)
+> ainda não especificada; texto abaixo não foi reescrito.
+
 Diferente de todo o resto da biblioteca, este componente **não pertence a
 uma tela** — ele vive acima da experiência de leitura inteira, como uma
 ferramenta sempre à mão. É o componente com maior peso estratégico do

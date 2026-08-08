@@ -73,3 +73,44 @@ Mantém-se a proposta já especificada (`RaciocinioFAB`, Opção A). Nenhuma
 mudança de arquitetura é necessária — este documento formaliza a
 comparação que sustenta a decisão já registrada em
 `01-arquitetura-informacao.md §3.1`.
+
+## Revisão — 2026-08-08: o FAB absorve a busca do app
+
+**Gatilho da revisão:** ao comparar dois percursos de usuária iniciante —
+achado "golf ball" (foco ecogênico intracardíaco, sem urgência) × achado
+"megabexiga" — ficou claro que o fluxograma fixo do FAB ("📄 Recebi um
+laudo → ...") é redundante quando o Tema já tem o bloco contextual 🧭 *E
+agora?* bem escrito: no caso do golf ball, o bloco ✅ *Próximo passo*
+sozinho já fecha a dúvida, o FAB nunca chega a ser aberto. A lacuna real
+do FAB não é "ajudar a decidir dentro de um Tema que já se está lendo" —
+é ajudar **quem ainda não sabe qual Tema procurar**.
+
+**Nova decisão:**
+- O FAB substitui o ícone de busca do cabeçalho — passa a ser o **único
+  ponto de busca do app**, não mais uma ferramenta paralela a ela.
+- Fica visível em **toda tela** (Início, Índice, Favoritos, Tema), não
+  mais só durante a leitura de um Tema — pré-requisito para virar a
+  busca do app inteiro.
+- Chamada visual: **pulso único** ao aparecer (não animação em loop),
+  com rótulo "tá com dúvida?" — evita repetição chamativa demais para uso
+  em consulta real.
+- Ao abrir, oferece busca por texto (tolerante a erro de digitação e
+  sinônimo, ex. "golf ball" ou "foco intracardíaco" acham o mesmo Tema) ou
+  um caminho guiado — ambos **fechados no conteúdo dos Temas já escritos**.
+  Sem IA generativa aberta: a resposta continua sendo sempre a palavra da
+  autora, nunca uma resposta inventada (ver também discussão que gerou
+  esta revisão).
+- Dúvida sem Tema correspondente não gera resposta — cai no fluxo do
+  backlog (`07-backlog-temas.md`), sinalizando honestamente a lacuna e
+  registrando a busca como candidata a virar Tema.
+
+**O que isto revoga da comparação acima:** a Opção A continua vencendo,
+mas o escopo do componente muda — de "ferramenta de raciocínio só de
+dentro de um Tema" para "busca única do app + raciocínio". Os detalhes de
+implementação (anatomia do pulso, campo de busca, tela de fallback do
+backlog) ainda **não foram especificados** — `01-arquitetura-informacao.md
+§3` e `§3.1`, e a anatomia de `RaciocinioFAB` em
+`03-biblioteca-componentes.md`, continuam descrevendo a versão anterior
+(Tema-only, sem busca embutida) até uma próxima rodada de design. O
+protótipo (`prototype/index.html`) também não foi alterado por esta
+revisão.

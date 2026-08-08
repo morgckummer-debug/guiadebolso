@@ -97,6 +97,12 @@ polegar-friendly, não some com o teclado). Busca não é uma aba: é um ícone 
 cabeçalho que abre um overlay full-screen (modelo cmd-K/Spotlight), porque busca
 é uma ação transitória, não um destino.
 
+> **Revisado em 2026-08-08:** o mapa abaixo e o §3.1 descrevem a versão
+> anterior do FAB (ferramenta de raciocínio só durante a leitura de um
+> Tema, separada do ícone de Busca do cabeçalho). Essa decisão mudou — ver
+> `04-cinco-perguntas-acesso.md`, seção "Revisão — 2026-08-08". Detalhe de
+> implementação ainda pendente; texto abaixo não foi reescrito.
+
 ### 3.1 Camada acima da navegação: raciocínio sempre à mão
 
 Existe uma terceira camada, além das telas e da navegação entre elas: um
