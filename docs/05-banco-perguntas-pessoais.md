@@ -11,6 +11,31 @@ destas (adaptada ao tema específico), coletar a resposta literal e usar
 como `aprendi:` no objeto do Tema em `prototype/index.html` — sem reescrever
 a voz dela, só ajustar pontuação/clareza se necessário.
 
+## Convenção — mensagem começando com "Pensamento:"
+
+Quando a autora manda uma mensagem começando com `Pensamento:`, é uma fala
+espontânea dela (fora do fluxo de perguntas-gatilho acima) destinada ao
+banco abaixo — **não** aplicar direto num Tema, mesmo que o assunto pareça
+óbvio. Guardar a frase literalmente (sem reescrever) na lista "Banco de
+frases pendentes", com uma nota de qual(is) Tema(s) parecem candidatos. Só
+editar o `aprendi:` de um Tema com uma dessas frases depois de confirmar
+com a autora qual fala vai em qual Tema — mesmo quando o Tema já tem um
+`aprendi:` preenchido (a frase nova pode ser para substituir, virar pérola,
+ou ser sobre um Tema ainda não escrito).
+
+### Banco de frases pendentes (ainda não aplicadas a nenhum Tema)
+
+- [ ] "…jamais devemos datar a gestação pelo diâmetro médio do saco
+      gestacional, prática comum que vejo principalmente quando a gestante
+      faz ultrassom por conta própria antes de 7 semanas." — candidatos:
+      "Datação da gestação" (`datacao-gestacao`) ou "Ausência de embrião"
+      (`sem-embriao`).
+- [ ] "A certeza do número de embriões só pode ser confirmada com idade
+      gestacional superior a 8 semanas. Antes disso, pode haver surpresas
+      😜." — sem Tema correspondente ainda; possível novo achado para
+      `07-backlog-temas.md` (gestação múltipla / número de embriões no 1º
+      trimestre).
+
 ## Perguntas-gatilho (usar 1 por tema, variar)
 
 1. Pensando numa paciente real que você atendeu com essa situação, qual foi
