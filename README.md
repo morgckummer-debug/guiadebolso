@@ -55,7 +55,7 @@ públicas (ISUOG, ACOG) com falas e decisões clínicas escritas diretamente
 pela autora nos blocos pessoais (💜 Aprendi que…, 🤝 Fortalece confiança,
 entre outros) — pendente de revisão e validação médica completa antes de
 qualquer uso real em consulta. Ver `prototype/index.html` (aba
-Tema/Índice/Busca) para o protótipo funcional, e o final desta seção para
+Tema/Índice) para o protótipo funcional, e o final desta seção para
 as sugestões de arquitetura identificadas durante a implementação.
 
 1. **Arquitetura da informação** → [`docs/01-arquitetura-informacao.md`](docs/01-arquitetura-informacao.md)
@@ -107,21 +107,26 @@ as sugestões de arquitetura identificadas durante a implementação.
 
 9. **Protótipo interativo (estático, sem build)** → [`prototype/index.html`](prototype/index.html)
    Abra o arquivo direto no navegador. Contém: showcase dos tokens do design
-   system, showcase dos componentes, e as 3 telas principais do app, dentro
+   system, showcase dos componentes, e as 2 telas principais do app, dentro
    de uma moldura de iPhone:
    - **Tema** — template de página adotado (trilho de âncoras que pula
      direto para qualquer bloco sem rolar a página — referência Stripe
-     Docs), agora renderizado a partir de dados reais (3 temas piloto).
+     Docs), renderizado a partir de dados reais (18 temas).
    - **Índice** — mesmo componente de trilho, filtrando por Módulo real;
      toque num tema navega de verdade para a tela de Tema.
-   - **Busca** — campo funcional, filtra por título e tags dos 3 temas
-     (com normalização de acento), chips de busca recente clicáveis.
+
+   Busca não é mais uma tela própria — desde a revisão de 2026-08-08/09
+   (`docs/03-biblioteca-componentes.md`), o `RaciocinioFAB` (botão flutuante,
+   presente em Tema e Índice) é o único ponto de busca do app, com pulso
+   único "tá com dúvida?" por tela e busca embutida no sheet (filtra por
+   título e tags, com normalização de acento, chips de busca recente,
+   fallback "Ainda não escrevemos sobre isso").
 
    O trilho de âncoras (`TrilhoDeAncoras`, ver `docs/03-biblioteca-componentes.md`)
-   é um único componente reaproveitado nas 3 telas — mesmo visual, mesma
-   mecânica de toque, propósito diferente em cada contexto. "Veja também" e
-   o rodapé de navegação sequencial também navegam de verdade entre os 3
-   temas piloto.
+   é um único componente reaproveitado — mesmo visual, mesma mecânica de
+   toque, propósito diferente em cada contexto (Tema, Índice, sheet do FAB).
+   "Veja também" e o rodapé de navegação sequencial também navegam de
+   verdade entre os temas.
 
 ## Sugestões de arquitetura identificadas no Sprint Zero (não aplicadas automaticamente)
 

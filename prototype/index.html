@@ -320,7 +320,6 @@ button,input{font-family:inherit;}
     <button class="demo-tab" data-target="panel-comp">Componentes</button>
     <button class="demo-tab" data-target="panel-tema">Tema</button>
     <button class="demo-tab" data-target="panel-indice">Índice</button>
-    <button class="demo-tab" data-target="panel-busca">Busca</button>
   </div>
 
   <!-- ============ DESIGN SYSTEM ============ -->
@@ -421,16 +420,6 @@ button,input{font-family:inherit;}
     </div>
   </section>
 
-  <!-- ============ BUSCA ============ -->
-  <section id="panel-busca" class="demo-panel">
-    <div class="phone-row">
-      <div class="phone-col">
-        <h3>Busca rápida — trilho vira chips de busca recente</h3>
-        <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><div class="phone-scroll" id="scroll-busca"></div>
-        </div></div>
-      </div>
-    </div>
-  </section>
 </div>
 
 <script>
@@ -1503,7 +1492,9 @@ function renderIndice(){
 }
 renderIndice();
 
-/* ================= BUSCA ================= */
+/* ================= Busca ================= (absorvida pelo RaciocinioFAB —
+   ver docs/03-biblioteca-componentes.md, "Nota — BuscaRapida retirado".
+   BUSCAS_RECENTES e highlightMatch seguem usados pelo sheet do FAB.) */
 const BUSCAS_RECENTES = ['percentil baixo', 'placenta prévia', 'sem embrião'];
 
 function highlightMatch(text, query){
@@ -1512,67 +1503,6 @@ function highlightMatch(text, query){
   if(idx === -1) return text;
   return text.slice(0,idx) + '<mark>' + text.slice(idx, idx+query.length) + '</mark>' + text.slice(idx+query.length);
 }
-
-function searchResultsHTML(query){
-  const q = query.trim();
-  if(q.length < 2){
-    return `
-    <div class="search-label">Buscas recentes</div>
-    <div class="anchor-rail" style="border-bottom:none;padding-bottom:2px">
-      ${BUSCAS_RECENTES.map(term=>`<button class="anchor-chip" data-recent="${term}">${term}</button>`).join('')}
-    </div>`;
-  }
-  const nq = norm(q);
-  const matches = TEMAS.filter(t => norm(t.titulo).includes(nq) || t.tags.some(tag=>norm(tag).includes(nq)));
-  if(!matches.length){
-    return `<div class="search-label">Resultados</div><div class="result-row"><span class="q" style="color:var(--ink-500);font-weight:500">Nada encontrado para "${q}" — tente outro termo.</span></div>`;
-  }
-  return `
-  <div class="search-label">Resultados (${matches.length})</div>
-  ${matches.map(t=>`
-    <div class="result-row" data-goto="${t.id}" style="cursor:pointer">
-      <span class="tag">${moduloById(t.modulo).nome}</span>
-      <span class="q">${highlightMatch(t.titulo, q)}</span>
-    </div>
-  `).join('')}
-  `;
-}
-
-function renderBusca(query){
-  const box = document.getElementById('scroll-busca');
-  box.innerHTML = `
-  <div class="search-box"><span>⌕</span><input id="busca-input" placeholder="Buscar dúvida, tema ou módulo" value="${query||''}"><span class="search-cancel" id="busca-cancel">Cancelar</span></div>
-  <div id="busca-results">${searchResultsHTML(query||'')}</div>
-  `;
-  const input = document.getElementById('busca-input');
-  input.addEventListener('input', ()=>{
-    document.getElementById('busca-results').innerHTML = searchResultsHTML(input.value);
-    bindBuscaResultInteractions();
-  });
-  document.getElementById('busca-cancel').addEventListener('click', ()=>{
-    input.value = '';
-    document.getElementById('busca-results').innerHTML = searchResultsHTML('');
-    bindBuscaResultInteractions();
-    input.focus();
-  });
-  bindBuscaResultInteractions();
-}
-
-function bindBuscaResultInteractions(){
-  document.querySelectorAll('#busca-results [data-goto]').forEach(row=>{
-    row.addEventListener('click', ()=> goToTema(row.dataset.goto));
-  });
-  document.querySelectorAll('#busca-results [data-recent]').forEach(chip=>{
-    chip.addEventListener('click', ()=>{
-      const term = chip.dataset.recent;
-      document.getElementById('busca-input').value = term;
-      document.getElementById('busca-results').innerHTML = searchResultsHTML(term);
-      bindBuscaResultInteractions();
-    });
-  });
-}
-
-renderBusca('');
 
 /* ================= componentes showcase ================= */
 function wrapDoc(icon,label,cls,text){
@@ -1590,8 +1520,8 @@ ${wrapDoc('📚','Referências','b-ref','Colapsado por padrão — não compete 
 ${wrapDoc('➜','Veja também','b-veja','Lista neutra de temas relacionados ao final da página.')}
 <div class="block b-alerta" style="max-width:520px"><div class="block-head"><div class="chip">🚩</div><div class="eyebrow">Quando encaminhar</div></div><div class="block-body">Contextual — só aparece quando há critério objetivo de encaminhamento. Borda 2px, maior peso visual.</div></div>
 <div style="max-width:520px"><div class="chip-fact"><span class="chip-fact-icon">💡</span><div class="chip-fact-text">Contextual — aparece dentro do fluxo, não em posição fixa.</div></div></div>
-<div class="block" style="max-width:520px;box-shadow:none;border:1px dashed var(--ink-300);background:transparent"><div class="block-head"><div class="chip" style="background:var(--lav-100);color:var(--lav-700)">⌕</div><div class="eyebrow" style="color:var(--ink-500)">Trilho de âncoras</div></div><div class="block-body">Componente de navegação por chips, reaproveitado em 3 telas: pular bloco no Tema, filtrar módulo no Índice, chip de busca recente na Busca.</div></div>
-<div class="block" style="max-width:520px;border:1.5px solid var(--lav-300)"><div class="block-head"><div class="chip" style="background:var(--lav-500);color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9.5 2a3.5 3.5 0 0 0-3.5 3.5c0 .3 0 .6.1.9A3 3 0 0 0 4 9.3 3 3 0 0 0 3 11.5 3 3 0 0 0 4.5 14c-.3.5-.5 1.1-.5 1.8A3.2 3.2 0 0 0 7 19a3 3 0 0 0 2.5 2 3 3 0 0 0 3-2.2V5.5A3.5 3.5 0 0 0 9.5 2Z"/><path d="M14.5 2a3.5 3.5 0 0 1 3.5 3.5c0 .3 0 .6-.1.9A3 3 0 0 1 20 9.3a3 3 0 0 1 1 2.2 3 3 0 0 1-1.5 2.5c.3.5.5 1.1.5 1.8A3.2 3.2 0 0 1 17 19a3 3 0 0 1-2.5 2 3 3 0 0 1-3-2.2V5.5A3.5 3.5 0 0 1 14.5 2Z"/></svg></div><div class="eyebrow" style="color:var(--lav-700)">RaciocinioFAB · global</div></div><div class="block-body">Botão flutuante sempre visível durante a leitura. Abre o método de raciocínio do Guia — "Qual é o próximo passo?" — sem depender de memória. Elemento central da identidade do produto, não apenas navegação.</div></div>
+<div class="block" style="max-width:520px;box-shadow:none;border:1px dashed var(--ink-300);background:transparent"><div class="block-head"><div class="chip" style="background:var(--lav-100);color:var(--lav-700)">⌕</div><div class="eyebrow" style="color:var(--ink-500)">Trilho de âncoras</div></div><div class="block-body">Componente de navegação por chips, reaproveitado em 3 lugares: pular bloco no Tema, filtrar módulo no Índice, chip de busca recente no sheet do RaciocinioFAB.</div></div>
+<div class="block" style="max-width:520px;border:1.5px solid var(--lav-300)"><div class="block-head"><div class="chip" style="background:var(--lav-500);color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9.5 2a3.5 3.5 0 0 0-3.5 3.5c0 .3 0 .6.1.9A3 3 0 0 0 4 9.3 3 3 0 0 0 3 11.5 3 3 0 0 0 4.5 14c-.3.5-.5 1.1-.5 1.8A3.2 3.2 0 0 0 7 19a3 3 0 0 0 2.5 2 3 3 0 0 0 3-2.2V5.5A3.5 3.5 0 0 0 9.5 2Z"/><path d="M14.5 2a3.5 3.5 0 0 1 3.5 3.5c0 .3 0 .6-.1.9A3 3 0 0 1 20 9.3a3 3 0 0 1 1 2.2 3 3 0 0 1-1.5 2.5c.3.5.5 1.1.5 1.8A3.2 3.2 0 0 1 17 19a3 3 0 0 1-2.5 2 3 3 0 0 1-3-2.2V5.5A3.5 3.5 0 0 1 14.5 2Z"/></svg></div><div class="eyebrow" style="color:var(--lav-700)">RaciocinioFAB · global</div></div><div class="block-body">Botão flutuante sempre visível, em toda tela. Único ponto de busca do app + método de raciocínio do Guia — "tá com dúvida?" abre busca por texto ou o fluxograma "Qual é o próximo passo?", sem depender de memória. Elemento central da identidade do produto, não apenas navegação.</div></div>
 `;
 </script>
 </body>
