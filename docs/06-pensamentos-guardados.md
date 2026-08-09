@@ -11,6 +11,13 @@ original.
 Formato de cada entrada: data, texto literal, status (`novo` / `usado em:
 <tema>`).
 
+**Convenção a partir de 2026-08-08:** a autora passa a escrever cada
+`Pensamento:` já começando com "…", para continuar direto a frase do
+rótulo do bloco 💜 "Com o tempo, aprendi que…". Ou seja, o texto do
+pensamento é a continuação literal dessa frase, não uma frase nova. Ao
+promover para o campo `aprendi:` de um Tema, o "…" inicial é mantido —
+não remover nem reescrever como frase independente.
+
 ## Entradas
 
 - **2026-08-07** — "Em algum momento na configuração do app, vou querer
@@ -20,3 +27,24 @@ Formato de cada entrada: data, texto literal, status (`novo` / `usado em:
   específico — é sobre incluir imagens de ultrassom anotadas/exemplo em
   algum ponto do app, possivelmente ligado à Aula Express, pra ensinar o
   médico a olhar o laudo com mais atenção).
+
+- **2026-08-08** — "Os vasos estudados no Doppler NUNCA devem ser
+  analisados isoladamente. Um bebê com desenvolvimento e peso normal com
+  uma ACM de baixa resistência não significa sofrimento fetal. Se o
+  médico repetisse o exame em 15 minutos, estaria dentro do normal." —
+  status: `usado em: doppler-introducao` — mesclado ao `aprendi:` já
+  existente do tema "Entendendo o Doppler fetal" (mantido o texto
+  original, sem apagar).
+
+- **2026-08-08** — "Saber qual serviço de ultrassonografia indicar,
+  também faz parte de um bom pré-natal. Exames muito rápidos não mostram
+  percentil confiável 🫣." — status: `usado em: percentil8` — mesclado ao
+  `aprendi:` já existente do tema "Feto PIG" (mantido o texto original,
+  sem apagar). A ideia mais ampla de orientar sobre como escolher um bom
+  serviço de ultrassonografia (fora do formato de Tema) segue em aberto,
+  não promovida.
+
+- **2026-08-08** — "Um IP normal da ACM pode indicar anemia grave e não
+  ser descrito no laudo, o que mudaria completamente a conduta médica."
+  — status: `usado em: psv-acm` — mesclado ao `aprendi:` já existente do
+  tema "Anemia fetal" (mantido o texto original, sem apagar).

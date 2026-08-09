@@ -520,7 +520,7 @@ const TEMAS = [
   },
   {
     id:'percentil8',
-    titulo:'Percentil de peso baixo',
+    titulo:'Feto PIG',
     modulo:'crescimento',
     tags:['percentil','peso fetal estimado','restrição de crescimento','pig','rcf','doppler','pequeno para idade gestacional'],
     essencial:'Percentil 8 isolado, sem alteração de Doppler ou desaceleração de crescimento, é "pequeno para idade gestacional" — não é sinônimo de restrição de crescimento. Confirme a idade gestacional e avalie o Doppler antes de rotular.',
@@ -529,15 +529,15 @@ const TEMAS = [
       'Confirme a idade gestacional — a datação de 1º trimestre é a mais confiável disponível.',
       'Avalie Doppler de artéria umbilical e cerebral média (relação cérebro-placentária).',
       'Se Doppler normal e sem outros achados: reavalie em 2 semanas, não antes disso — e sempre repita o Doppler nessa reavaliação, não só a medida de peso.',
-      'Se Doppler alterado, percentil <3, ou queda ≥30 percentis entre dois ultrassons (sinal prático de alerta — o critério formal do consenso Delphi é cruzamento de 2 quartis): encaminhe para acompanhamento de alto risco.',
+      'Se houver algum critério de alerta (ver "Quando encaminhar" abaixo): encaminhe para acompanhamento de alto risco.',
     ]},
     explicar:'"O peso está um pouco abaixo da média, mas isso sozinho não quer dizer que há um problema. Vamos olhar o fluxo de sangue do bebê pelo Doppler e repetir a medida em algumas semanas para ver como ele está crescendo."',
     pensando:'Meu bebê está desnutrido? Isso é culpa minha, da minha alimentação? — associar "peso baixo" à culpa materna é uma reação comum, e quase sempre não é o caso.',
     confianca:'Deixar claro que "percentil" é uma comparação estatística, não uma nota — e que o próximo exame (Doppler) é o que realmente diferencia um bebê pequeno saudável de um que precisa de mais atenção.',
-    aprendi:'Um feto PIG (entre os percentis 3 e 10) não necessariamente é um feto doente. Os bebês pequenos constitucionais, filhos de pais de baixa estatura, impreterivelmente serão pequenos também. O mais importante não é analisar o ultrassom como um ponto fixo, e sim a trajetória de crescimento desse bebê.',
+    aprendi:'Um feto PIG (entre os percentis 3 e 10) não necessariamente é um feto doente. Os bebês pequenos constitucionais, filhos de pais de baixa estatura, impreterivelmente serão pequenos também. O mais importante não é analisar o ultrassom como um ponto fixo, e sim a trajetória de crescimento desse bebê. E outra coisa: saber qual serviço de ultrassonografia indicar também faz parte de um bom pré-natal — exames muito rápidos não mostram percentil confiável 🫣.',
     vocesabia:[
       '"PIG" (pequeno para idade gestacional) e "RCF" (restrição de crescimento fetal) não são sinônimos — todo RCF é PIG, mas nem todo PIG é RCF.',
-      'Queda de 30 percentis ou mais entre dois ultrassons já é sinal prático de alerta — ex.: percentil 60 no morfológico, 45 em 28 semanas, 20 em 30 semanas. A queda entre o morfológico e a última medida (60→20) já é relevante, mesmo abaixo do critério formal do Delphi (cruzamento de 2 quartis).',
+      'Exemplo prático de queda de 30 percentis: percentil 60 no morfológico, 45 em 28 semanas, 20 em 30 semanas — a queda entre o morfológico e a última medida (60→20) já é relevante mesmo sem cruzar 2 quartis inteiros (critério formal do consenso Delphi).',
     ],
     encaminhar:'Percentil <3 em qualquer idade gestacional; Doppler de artéria umbilical ou relação cérebro-placentária alterados; queda ≥30 percentis entre dois exames; oligoidrâmnio associado — encaminhar para pré-natal de alto risco / medicina fetal.',
     aula:{titulo:'Como interpretar percentil de peso fetal e quando pedir Doppler', pendente:true},
@@ -545,7 +545,7 @@ const TEMAS = [
       'ISUOG Practice Guidelines: diagnosis and management of small-for-gestational-age fetus and fetal growth restriction. Ultrasound Obstet Gynecol, 2020.',
       'Gordijn SJ et al. "Consensus definition of fetal growth restriction: a Delphi procedure." Ultrasound Obstet Gynecol, 2016.',
     ],
-    vejaTambem:['placenta-baixa','datacao-gestacao','circunferencia-abdominal-p90','pig-x-rcf'],
+    vejaTambem:['placenta-baixa','datacao-gestacao','circunferencia-abdominal-p90','pig-x-rcf','rcf-precoce-tardia'],
   },
   {
     id:'placenta-baixa',
@@ -771,9 +771,8 @@ const TEMAS = [
       'Se o ducto venoso estiver alterado, isso já é sinal de acidose — estágio mais avançado, decisão mais urgente.',
       'Sempre correlacione o achado com a idade gestacional antes de decidir a conduta.',
     ]},
-    aprendi:'Aprendi com o tempo que nunca é demais pedir o estudo Doppler, principalmente a partir do 2º trimestre. Vejo muitos bebês PIG e mães com diabetes gestacional sendo acompanhados sem o Doppler. Para o ultrassonografista, é o mesmo que fazer o exame com uma venda nos olhos 🫣',
+    aprendi:'Aprendi com o tempo que nunca é demais pedir o estudo Doppler, principalmente a partir do 2º trimestre. Vejo muitos bebês PIG e mães com diabetes gestacional sendo acompanhados sem o Doppler. Para o ultrassonografista, é o mesmo que fazer o exame com uma venda nos olhos 🫣 Outra coisa que aprendi: os vasos estudados no Doppler nunca devem ser analisados isoladamente. Um bebê com desenvolvimento e peso normais, com uma ACM de baixa resistência, não significa sofrimento fetal — se o médico repetisse o exame em 15 minutos, estaria dentro do normal.',
     vocesabia:[
-      'Reserva funcional da placenta — comprometimento estimado da circulação placentária:<ul><li>Artéria umbilical normal: até ~50%</li><li>IP acima do percentil 95: ~75%</li><li>Diástole zero: ~80%</li><li>Diástole reversa: ~90%</li></ul>',
       'O seguimento seriado da artéria umbilical reduz aproximadamente 30% das complicações perinatais.',
       'O feto tem baixo teor de oxigênio no sangue mesmo em condições normais — por isso suas hemácias são nucleadas, uma adaptação para sua sobrevivência.',
     ],
@@ -808,11 +807,11 @@ const TEMAS = [
 </div>`},
       {titulo:'Artéria umbilical: gravidade conforme o padrão', html:`
 <div class="flow">
-  <div class="flow-step tone-warn"><div class="flow-icon">🩸</div><div class="flow-text"><div class="flow-label">IP &gt; P95</div><div class="flow-desc">Hipóxia.</div></div></div>
+  <div class="flow-step tone-warn"><div class="flow-icon">🩸</div><div class="flow-text"><div class="flow-label">IP &gt; P95</div><div class="flow-desc">Hipóxia. Comprometimento estimado da circulação placentária: ~75%.</div></div></div>
   <div class="flow-arrow">↓</div>
-  <div class="flow-step tone-danger"><div class="flow-icon">🩸</div><div class="flow-text"><div class="flow-label">Diástole zero</div><div class="flow-desc">Acidose.</div></div></div>
+  <div class="flow-step tone-danger"><div class="flow-icon">🩸</div><div class="flow-text"><div class="flow-label">Diástole zero</div><div class="flow-desc">Acidose. Comprometimento estimado: ~80%.</div></div></div>
   <div class="flow-arrow">↓</div>
-  <div class="flow-step tone-danger"><div class="flow-icon">🚨</div><div class="flow-text"><div class="flow-label">Diástole reversa</div><div class="flow-desc">Morte iminente.</div></div></div>
+  <div class="flow-step tone-danger"><div class="flow-icon">🚨</div><div class="flow-text"><div class="flow-label">Diástole reversa</div><div class="flow-desc">Morte iminente. Comprometimento estimado: ~90%.</div></div></div>
 </div>`},
       {titulo:'Por que a ACM cai na hipóxia (redistribuição de fluxo)', html:`
 <div class="redist-grid">
@@ -832,7 +831,7 @@ const TEMAS = [
       'Nicolaides KH / Fetal Medicine Foundation (FMF) — fisiopatologia da centralização fetal e Doppler — referência específica pendente de indicação da autora.',
       'ISUOG Practice Guidelines: use of Doppler ultrasonography in obstetrics. Ultrasound Obstet Gynecol.',
     ],
-    vejaTambem:['pig-x-rcf'],
+    vejaTambem:['pig-x-rcf','psv-acm','rcf-precoce-tardia'],
   },
   {
     id:'grau-placenta',
@@ -851,7 +850,6 @@ const TEMAS = [
     pensando:'Minha placenta está velha? Meu bebê parou de receber alimento?',
     confianca:'"Hoje conseguimos avaliar diretamente a função da placenta, e não apenas sua aparência. Isso nos permite tomar decisões muito mais seguras para você e seu bebê."',
     aprendi:'Durante muito tempo, aprendemos a olhar para a calcificação da placenta. Hoje olhamos primeiro para o bebê. Se ele cresce bem e o Doppler está normal, a aparência da placenta perde grande parte da sua importância, mesmo se estiver muito calcificada (grau III).',
-    vocesabia:['A classificação de Grannum foi criada em 1979, quando o Doppler obstétrico ainda não fazia parte da prática clínica. Na época, acreditava-se que uma placenta muito calcificada poderia indicar insuficiência placentária.'],
     historia:{
       titulo:'Antes do Doppler…',
       texto:'Na década de 1980, o obstetra tinha poucas ferramentas para avaliar a função placentária. O grau placentário, o líquido amniótico e o crescimento fetal eram as principais formas de estimar se a placenta estava envelhecendo. Com o desenvolvimento do Doppler da artéria umbilical, tornou-se possível avaliar a resistência da circulação placentária em tempo real, mudando completamente a forma de acompanhar as gestações de risco.',
@@ -929,8 +927,6 @@ const TEMAS = [
     ],
     perolas:[
       'A maioria dos erros de crescimento fetal começa com uma datação incorreta.',
-      'Um erro de apenas 5 a 7 dias na datação pode levar a diagnósticos equivocados de restrição de crescimento, macrossomia ou pós-datismo.',
-      'O ultrassom do segundo ou terceiro trimestre é excelente para avaliar crescimento, mas muito menos preciso para datar a gestação.',
     ],
     aula:{titulo:'Quando devo corrigir a idade gestacional?', pendente:true},
     referencias:[
@@ -1016,6 +1012,69 @@ const TEMAS = [
     referencias:[
       'Gordijn SJ et al. "Consensus definition of fetal growth restriction: a Delphi procedure." Ultrasound Obstet Gynecol, 2016.',
       'ISUOG Practice Guidelines: diagnosis and management of small-for-gestational-age fetus and fetal growth restriction. Ultrasound Obstet Gynecol, 2020.',
+    ],
+    vejaTambem:['percentil8','doppler-introducao'],
+  },
+  {
+    id:'psv-acm',
+    titulo:'Anemia fetal',
+    modulo:'doppler',
+    tags:['psv da acm','pico de velocidade sistólica','artéria cerebral média','acm','anemia fetal','aloimunização','isoimunização rh','parvovírus b19','mom','transfusão intrauterina'],
+    essencial:'A PSV da artéria cerebral média é o principal parâmetro Doppler usado no rastreamento não invasivo da anemia fetal. PSV ≥ 1,5 MoM indica alto risco de anemia fetal grave e deve motivar encaminhamento para Medicina Fetal.',
+    erro:'Confundir os dois parâmetros avaliados na artéria cerebral média — <strong>IP da ACM</strong> avalia redistribuição fetal/hipóxia; <strong>PSV da ACM</strong> rastreia anemia fetal. Não usar o IP da ACM para avaliar anemia.',
+    passo:{tipo:'checklist', itens:[
+      'PSV < 1,5 MoM: siga o acompanhamento conforme a indicação clínica e o risco de anemia.',
+      'PSV ≥ 1,5 MoM: encaminhe para Medicina Fetal para avaliação especializada.',
+      'A decisão sobre transfusão fetal não deve ser tomada apenas pelo valor da PSV — depende da idade gestacional, da causa da anemia e da avaliação especializada.',
+    ]},
+    explicar:'"Esse exame mede a velocidade do sangue em uma artéria do cérebro do bebê. Quando existe anemia, o sangue circula mais rapidamente. Esse aumento da velocidade pode nos alertar antes que o bebê apresente sinais mais graves."',
+    pensando:'Meu bebê está com anemia? Ele vai precisar receber sangue ainda dentro da barriga?',
+    confianca:'"Encontramos uma alteração que pode indicar anemia, mas isso não significa que o bebê esteja em perigo imediato. O importante é investigar rapidamente e, se necessário, tratar no momento adequado."',
+    aprendi:'Quando comecei a interpretar Doppler, parecia que cada índice contava uma história diferente. Na ACM, basta lembrar de uma coisa: IP fala de hipóxia; PSV fala de anemia. E um detalhe que faz diferença: um IP normal da ACM pode conviver com anemia grave, e a PSV pode nem estar descrita no laudo se não for pedida especificamente — isso mudaria completamente a conduta.',
+    vocesabia:[
+      'Na anemia fetal, a menor viscosidade do sangue e o aumento do débito cardíaco fazem o sangue circular mais rapidamente. Por isso, a PSV da ACM aumenta.',
+    ],
+    encaminhar:'Encaminhar para Medicina Fetal quando a PSV da ACM atingir ≥ 1,5 MoM, principalmente quando existe uma condição conhecida com risco de anemia fetal, como aloimunização materna, infecção por parvovírus B19 ou outras causas de anemia fetal.',
+    aula:{titulo:'PSV da ACM: como rastrear anemia fetal pelo Doppler', pendente:true},
+    referencias:[
+      'Mari G, Deter RL, Carpenter RL, et al. "Noninvasive diagnosis by Doppler ultrasonography of fetal anemia due to maternal red-cell alloimmunization." N Engl J Med, 2000;342(1):9-14.',
+      'American College of Obstetricians and Gynecologists (ACOG). Practice Bulletin No. 192: Management of Alloimmunization During Pregnancy. Obstet Gynecol, 2018;131(3):e82-e90.',
+      'Society for Maternal-Fetal Medicine (SMFM). Clinical Guideline #8: The Fetus at Risk for Anemia — Diagnosis and Management. Am J Obstet Gynecol, 2015;212(6):697-710.',
+    ],
+    vejaTambem:['doppler-introducao'],
+  },
+  {
+    id:'rcf-precoce-tardia',
+    titulo:'RCF precoce × RCF tardia',
+    modulo:'crescimento',
+    tags:['rcf precoce','rcf tardia','restrição de crescimento fetal','insuficiência placentária','doppler das artérias uterinas','relação cérebro-placentária','rcp','ducto venoso','hipóxia fetal','placentação'],
+    essencial:'RCF precoce (antes de 32 semanas) e RCF tardia (a partir de 32 semanas) não são a mesma doença: fisiopatologia, Doppler e tolerância à hipóxia diferentes. A tardia é mais frequente (~70%) e pode ser mais silenciosa e perigosa mesmo com Doppler pouco alterado.',
+    erro:'Interpretar a gravidade do Doppler como "quanto mais alterado, mais perto da morte", sem considerar o tipo de RCF. Na RCF precoce, Doppler bastante alterado pode conviver com feto ainda compensado; na tardia, Doppler umbilical normal pode conviver com feto de menor tolerância à hipóxia. Doppler das artérias uterinas normal não exclui RCF tardia.',
+    passo:{tipo:'checklist', itens:[
+      'Classifique pelo ponto de corte de 32 semanas: RCF precoce (antes) × RCF tardia (a partir de).',
+      'Na RCF precoce: acompanhe Doppler das artérias uterinas (mais informativo entre 20 e 24 semanas), artéria umbilical, redistribuição fetal (ACM/RCP) e ducto venoso em casos graves — a sequência costuma ser progressiva.',
+      'Na RCF tardia: não espere a artéria umbilical alterar — avalie principalmente a ACM e a relação cérebro-placentária (RCP), já que o Doppler umbilical e o das uterinas costumam permanecer normais.',
+      'Não classifique a gravidade só pelo grau de alteração do Doppler — considere primeiro qual tipo de RCF está sendo acompanhado.',
+    ]},
+    aprendi:'Na RCF precoce, a placenta costuma falar alto. Na RCF tardia, ela pode sussurrar — e o feto pode ter menos tempo para avisar que está sofrendo. Por isso não devemos esperar que a artéria umbilical fique alterada para reconhecer uma RCF tardia.',
+    vocesabia:[
+      'A RCF tardia é bem mais frequente que a precoce — cerca de 70% dos casos contra 30%.',
+      'O Doppler das artérias uterinas não é um bom teste isolado para rastrear toda RCF, mas melhora a identificação dos casos de RCF precoce, especialmente quando avaliado entre 20 e 24 semanas.',
+    ],
+    perolas:[
+      'Doppler uterino normal não exclui RCF tardia — e é justamente por isso que ela costuma ser mais difícil de reconhecer.',
+    ],
+    eAgora:[
+      'RCF precoce + Doppler bastante alterado + feto ainda compensado → não indica necessariamente proximidade de sofrimento grave — fetos com RCF precoce toleram mais tempo compensados.',
+      'RCF tardia + Doppler umbilical normal + RCP reduzida → sinal de alerta mesmo com o Doppler "normal" — a RCF tardia tem menor tolerância à hipóxia.',
+      'Doppler das artérias uterinas normal, isoladamente, não descarta RCF tardia — reavalie ACM e RCP antes de tranquilizar.',
+    ],
+    encaminhar:'Encaminhar para pré-natal de alto risco diante de qualquer RCF confirmada — a estratégia de vigilância muda conforme o tipo (precoce × tardia), e a evolução (sobretudo alteração do ducto venoso na RCF precoce, ou RCP reduzida mesmo com umbilical normal na RCF tardia) deve ser acompanhada por quem tem experiência nesse seguimento.',
+    aula:{titulo:'RCF precoce × RCF tardia: por que a conduta é diferente', pendente:true},
+    referencias:[
+      'Figueras F, Gratacós E. "Update on the Diagnosis and Classification of Fetal Growth Restriction and Proposal of a Stage-Based Management Protocol." Fetal Diagn Ther, 2014;36(2):86-98.',
+      'Gordijn SJ, Beune IM, Thilaganathan B, et al. "Consensus definition of fetal growth restriction: a Delphi procedure." Ultrasound Obstet Gynecol, 2016;48(3):333-339.',
+      'Lees CC, Stampalija T, Baschat A, et al. "ISUOG Practice Guidelines: diagnosis and management of small-for-gestational-age fetus and fetal growth restriction." Ultrasound Obstet Gynecol, 2020;56(2):298-312.',
     ],
     vejaTambem:['percentil8','doppler-introducao'],
   },

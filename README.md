@@ -10,10 +10,13 @@ segundos.
 Versionamento: cada versão validada pela autora, Dra. Morgana Kummer, vira
 uma branch congelada (`v1.0`, `v1.1`, `v1.2`, ...) que nunca mais é
 alterada — todo desenvolvimento novo acontece na branch `develop` até a
-próxima validação. `v1.0` foi o Sprint Zero (plataforma validada com
+próxima validação. **`main` espelha a última versão congelada (hoje,
+`v1.2`) — qualquer branch de trabalho nova (sessão, feature, PR) deve
+nascer a partir de `develop`, nunca de `main`, para não perder edições já
+feitas lá.** `v1.0` foi o Sprint Zero (plataforma validada com
 conteúdo real: leitura, busca, índice, links internos, Aula Express,
 navegação entre temas). `v1.1` adicionou um 4º tema. `v1.2` expande para
-16 temas — incluindo um novo módulo (Doppler fetal) — e três blocos de
+18 temas — incluindo um novo módulo (Doppler fetal) — e três blocos de
 conteúdo novos: 🔑 Pérola clínica, 📖 Contexto histórico e 🧭 E agora?.
 Sem autenticação implementada ainda.
 
@@ -24,9 +27,9 @@ autora — mas o pacote ainda não passou por revisão clínica formal completa
 pendentes de indicação específica dela) antes de qualquer uso real em
 consulta.
 
-**16 temas completos e navegáveis de verdade** (não é mock estático):
+**18 temas completos e navegáveis de verdade** (não é mock estático):
 1. Ausência de embrião — módulo 1º trimestre
-2. Percentil de peso baixo — módulo Crescimento fetal
+2. Feto PIG — módulo Crescimento fetal
 3. Placenta baixa — módulo Placenta e anexos
 4. Artéria umbilical única — módulo Marcadores leves de aneuploidia
 5. Dilatação das pelves renais — módulo Trato urinário fetal
@@ -41,6 +44,8 @@ consulta.
 14. Datação da gestação — módulo 1º trimestre
 15. Circunferência abdominal > P90 — módulo Crescimento fetal
 16. PIG × RCF — módulo Crescimento fetal
+17. Anemia fetal — módulo Doppler fetal
+18. RCF precoce × RCF tardia — módulo Crescimento fetal
 
 Convenção de título: nome direto do achado, sem frase/pergunta em volta
 (ex. "Placenta baixa", não "A placenta veio baixa. O que muda agora?").

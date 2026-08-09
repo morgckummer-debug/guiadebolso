@@ -48,8 +48,10 @@ marcar como concluído aqui.
 ## Crescimento
 - [x] PIG × RCF — escrito como tema dedicado à diferenciação (módulo
       Crescimento fetal, id `pig-x-rcf`), com critérios de Delphi para
-      RCF precoce/tardia e ligação bidirecional com "Percentil de peso
-      baixo".
+      RCF precoce/tardia e ligação bidirecional com "Feto PIG".
+- [x] RCF precoce × RCF tardia — tema separado "RCF precoce × RCF tardia"
+      (módulo Crescimento fetal) — diferenciação distinta de "PIG × RCF",
+      não se sobrepõem (confirmado pela autora).
 - [ ] Macrossomia
 - [ ] Peso fetal no P10
 - [ ] Circunferência abdominal isoladamente baixa
