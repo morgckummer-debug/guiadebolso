@@ -80,7 +80,6 @@ nunca mostra um card vazio.
 ```
 ┌─ Início (últimos acessados + destaques do dia)
 ├─ Índice (Módulo > Tema, com busca embutida)
-├─ Busca rápida (overlay full-screen, atalho global)
 ├─ Favoritos (Temas marcados pelo usuário)
 ├─ Tema (template único — ver §4)
 │   ├─ Anterior / Próximo (navegação sequencial dentro do Módulo)
@@ -93,20 +92,29 @@ nunca mostra um card vazio.
 ```
 
 Navegação primária: **tab bar inferior fixa** (padrão iOS nativo — reconhecível,
-polegar-friendly, não some com o teclado). Busca não é uma aba: é um ícone no
-cabeçalho que abre um overlay full-screen (modelo cmd-K/Spotlight), porque busca
-é uma ação transitória, não um destino.
+polegar-friendly, não some com o teclado). Busca não é uma aba nem um destino
+próprio: é a sheet do `RaciocinioFAB` (§3.1) — não existe mais ícone de busca
+no cabeçalho nem overlay full-screen separado (revisão registrada em
+`04-cinco-perguntas-acesso.md`, "Revisão — 2026-08-08").
 
-### 3.1 Camada acima da navegação: raciocínio sempre à mão
+### 3.1 Camada acima da navegação: busca e raciocínio sempre à mão
 
 Existe uma terceira camada, além das telas e da navegação entre elas: um
-botão flutuante (FAB) fixo durante toda a leitura de um Tema, que abre o
-método de raciocínio do Guia — a pergunta **"Qual é o próximo passo?"**,
-como um fluxograma linear de leitura (recebi um laudo → exame no momento
-certo? → muda a conduta? → como explicar? → compartilhar o cuidado? →
-voltar ao Próximo passo da página) — sem exigir que o médico navegue
-para outro lugar ou lembre do método de cor. Ver `RaciocinioFAB` em
-`03-biblioteca-componentes.md`. Esta camada não é navegação nem conteúdo de
+botão flutuante (FAB) fixo em **toda tela do app** — não só durante a
+leitura de um Tema — que é ao mesmo tempo o único ponto de busca do
+produto e o método de raciocínio do Guia. Abre uma sheet com um campo de
+busca fechada no conteúdo dos Temas (tolerante a erro de digitação e
+sinônimo, via `tags` — §2.1) e, quando não há nada digitado, o fluxograma
+de leitura **"Qual é o próximo passo?"** (recebi um laudo → exame no
+momento certo? → muda a conduta? → como explicar? → compartilhar o
+cuidado? → voltar ao Próximo passo da página, ou focar a busca se aberto
+fora de um Tema) — sem exigir que o médico navegue para outro lugar ou
+lembre do método de cor. Quando a busca não encontra Tema correspondente,
+comunica isso com honestidade em vez de gerar resposta (nunca IA
+generativa aberta — o valor do produto é a palavra da própria autora) e
+guarda a pergunta para revisão editorial. Ver `RaciocinioFAB` em
+`03-biblioteca-componentes.md` e a revisão registrada em
+`04-cinco-perguntas-acesso.md`. Esta camada não é navegação nem conteúdo de
 Tema: é a "voz" do produto, sempre acessível no momento da dúvida.
 
 ## 4. Template de página (regra fixa)
