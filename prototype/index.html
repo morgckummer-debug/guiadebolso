@@ -952,13 +952,13 @@ const TEMAS = [
     modulo:'crescimento',
     tags:['pig','rcf','ciur','restrição de crescimento fetal','pequeno para idade gestacional','percentil de peso','doppler','delphi','crescimento fetal'],
     essencial:'PIG (pequeno para idade gestacional) é uma classificação estatística — peso ou percentil abaixo do esperado. RCF (restrição de crescimento fetal) é um subconjunto de PIG: o feto não atingiu seu potencial de crescimento genético, mais comumente por insuficiência placentária, mas também por síndromes genéticas/cromossômicas ou infecções congênitas — sempre com maior risco perinatal. Todo RCF é PIG, mas nem todo PIG é RCF — Doppler e trajetória de crescimento são o que diferenciam os dois.',
-    erro:'Tratar percentil baixo como sinônimo de restrição de crescimento e já intensificar a vigilância (ou cogitar antecipação de parto) só pelo número do percentil, sem checar Doppler e sem comparar com o(s) ultrassom(s) anterior(es) — a maioria dos fetos PIG entre percentil 3 e 10 é pequena constitucional, não patológica.',
+    erro:'Aplicar o mesmo protocolo pra todo PFE &lt;P10 — por exemplo, "PFE &lt;P10 → repetir ultrassom em 4 semanas" para qualquer caso, sem diferenciar pelo Doppler. Isso é simplificar demais: um feto pequeno com Doppler normal e um feto pequeno com artéria umbilical alterada não podem receber o mesmo acompanhamento.',
     passo:{tipo:'checklist', itens:[
-      'Confirme a idade gestacional pela datação mais confiável disponível.',
-      'Avalie o Doppler — artéria umbilical, ACM e relação cérebro-placentária — antes de rotular o feto.',
-      'Compare com o(s) ultrassom(s) anterior(es): trajetória de crescimento pesa mais que um percentil isolado num único exame.',
-      'Aplique os critérios de Delphi (abaixo) para diferenciar PIG constitucional de RCF precoce/tardia — Doppler alterado ou percentil <3 já muda a conduta.',
-      'PIG constitucional com Doppler normal: reavalie em 2 semanas, sem intensificar a vigilância além disso.',
+      '<strong>Confirme o diagnóstico.</strong><ul><li>Qual o peso fetal estimado (PFE) e o percentil?</li><li>A circunferência abdominal (CA) está &lt;P10?</li><li>A idade gestacional está bem datada?</li><li>É uma queda real da curva ou sempre foi um feto pequeno?</li></ul>',
+      '<strong>Procure sinais de insuficiência placentária</strong> — solicite/avalie:<ul><li>Doppler da artéria umbilical</li><li>Artéria cerebral média (ACM)</li><li>Relação cérebro-placentária (RCP), quando indicada</li><li>Ducto venoso, nos casos de maior gravidade</li></ul>',
+      '<strong>Procure a causa</strong> — pergunte:<ul><li>Hipertensão ou pré-eclâmpsia?</li><li>Tabagismo/uso de drogas?</li><li>Doença materna?</li><li>Gestação múltipla?</li><li>Malformações?</li><li>Marcadores de aneuploidia?</li><li>Infecção congênita, quando houver indicação clínica/ultrassonográfica?</li></ul>',
+      '<strong>Defina se é provavelmente constitucional ou patológico.</strong> Um PFE &lt;P10 não é automaticamente RCF grave — é a combinação de tamanho + Doppler + evolução da curva + contexto materno/fetal que define o risco. Use os critérios de Delphi (abaixo) para diferenciar PIG constitucional de RCF precoce/tardia.',
+      '<strong>Defina o acompanhamento</strong>, conforme idade gestacional e achados:<ul><li>Intervalo dos ultrassons</li><li>Doppler seriado</li><li>Vigilância fetal</li><li>Avaliação materna para hipertensão/pré-eclâmpsia</li><li>Planejamento do momento do parto</li></ul>',
       'RCF confirmada por critério de Delphi: encaminhe para pré-natal de alto risco / medicina fetal.',
     ]},
     criterios:[
@@ -980,6 +980,9 @@ const TEMAS = [
     vocesabia:[
       '"PIG" e "RCF" não são sinônimos — todo RCF é PIG, mas nem todo PIG é RCF. A maioria dos fetos PIG (percentil 3–10) é pequena constitucional: sem risco aumentado, sem necessidade de Doppler seriado além do habitual.',
       'A restrição de crescimento fetal (RCF) recebeu, em 2016, uma definição de consenso internacional (Delphi) justamente para reduzir a variabilidade entre serviços na hora de rotular um feto como PIG ou RCF.',
+    ],
+    perolas:[
+      'PFE &lt;P10 é um achado. RCF é um diagnóstico. Depois de identificar um feto pequeno, o próximo passo é avaliar placenta, Doppler, evolução do crescimento e contexto clínico — não repetir o ultrassom em 4 semanas e seguir em frente.',
     ],
     encaminhar:'RCF confirmada por critério de Delphi (precoce ou tardia); percentil &lt;3 em qualquer idade gestacional; Doppler de artéria umbilical, ACM ou relação cérebro-placentária alterados; queda de trajetória de crescimento cruzando ≥2 quartis entre exames — encaminhar para pré-natal de alto risco / medicina fetal.',
     aula:{titulo:'PIG × RCF: como usar o Doppler para diferenciar', pendente:true},
