@@ -218,6 +218,19 @@ button,input{font-family:inherit;}
 /* ---------- RaciocinioFAB: componente global, acima da leitura ---------- */
 .raciocinio-fab{position:absolute;right:16px;bottom:106px;width:56px;height:56px;border-radius:50%;background:var(--lav-500);border:none;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-3);cursor:pointer;z-index:4;transition:transform .15s var(--ease),box-shadow .15s var(--ease);}
 .raciocinio-fab:active{transform:scale(.94);box-shadow:var(--shadow-2);}
+.raciocinio-fab.pulsing{animation:fab-pulse-scale .4s var(--ease);}
+@keyframes fab-pulse-scale{0%{transform:scale(1);}50%{transform:scale(1.06);}100%{transform:scale(1);}}
+
+/* ---------- pulso "tá com dúvida?" — convite único por tela, nunca loop ---------- */
+.fab-pulse-pill{position:absolute;right:68px;bottom:120px;background:var(--bg-base);color:var(--ink-900);font-size:13.5px;font-weight:500;line-height:20px;padding:8px 14px;border-radius:var(--radius-md);box-shadow:var(--shadow-1);white-space:nowrap;z-index:4;opacity:0;transform:translateX(6px);pointer-events:none;transition:opacity .28s var(--ease),transform .28s var(--ease);}
+.fab-pulse-pill.show{opacity:1;transform:translateX(0);}
+
+/* ---------- sheet: campo de busca + estados (vazio/digitando/fallback) ---------- */
+.sheet-search{margin-top:4px;}
+.sheet-fallback{margin-top:24px;background:var(--bg-subtle);border-radius:var(--radius-lg);padding:20px;text-align:center;}
+.sheet-fallback-icon{width:40px;height:40px;border-radius:50%;background:var(--bg-sunken);color:var(--ink-500);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:18px;}
+.sheet-fallback-title{font-size:17px;line-height:24px;font-weight:600;color:var(--ink-900);}
+.sheet-fallback-sub{font-size:14px;line-height:20px;color:var(--ink-500);margin-top:6px;}
 
 .sheet-backdrop{position:absolute;inset:0;background:rgba(28,27,31,.32);opacity:0;pointer-events:none;transition:opacity .28s var(--ease);z-index:5;}
 .sheet-backdrop.open{opacity:1;pointer-events:auto;}
@@ -254,7 +267,6 @@ button,input{font-family:inherit;}
 /* ---------- índice ---------- */
 .idx-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;}
 .idx-title{font-size:21px;font-weight:700;}
-.idx-search-btn{width:34px;height:34px;border-radius:11px;background:var(--bg-sunken);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--ink-700);flex-shrink:0;}
 
 .mod-section{margin-top:36px;}
 .mod-section:first-child{margin-top:18px;}
@@ -386,35 +398,7 @@ button,input{font-family:inherit;}
         <h3 id="tema-heading">Tema — trilho de âncoras + FAB de raciocínio rápido</h3>
         <div class="phone"><div class="phone-screen" id="tema-screen"><div class="phone-notch"></div><div class="phone-scroll" id="scroll-tema"></div>
 
-          <button class="raciocinio-fab" id="raciocinio-fab" aria-label="Abrir método de raciocínio rápido">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
-              <path d="M9.5 2a3.5 3.5 0 0 0-3.5 3.5c0 .3 0 .6.1.9A3 3 0 0 0 4 9.3 3 3 0 0 0 3 11.5 3 3 0 0 0 4.5 14c-.3.5-.5 1.1-.5 1.8A3.2 3.2 0 0 0 7 19a3 3 0 0 0 2.5 2 3 3 0 0 0 3-2.2V5.5A3.5 3.5 0 0 0 9.5 2Z"/>
-              <path d="M14.5 2a3.5 3.5 0 0 1 3.5 3.5c0 .3 0 .6-.1.9A3 3 0 0 1 20 9.3a3 3 0 0 1 1 2.2 3 3 0 0 1-1.5 2.5c.3.5.5 1.1.5 1.8A3.2 3.2 0 0 1 17 19a3 3 0 0 1-2.5 2 3 3 0 0 1-3-2.2V5.5A3.5 3.5 0 0 1 14.5 2Z"/>
-            </svg>
-          </button>
-
-          <div class="sheet-backdrop" id="sheet-backdrop"></div>
-          <div class="raciocinio-sheet" id="raciocinio-sheet">
-            <div class="sheet-grabber" id="sheet-grabber"></div>
-            <div class="sheet-content">
-              <h2 class="sheet-title">Qual é o próximo passo?</h2>
-              <p class="sheet-subtitle">Siga o fluxo abaixo antes de decidir qualquer conduta.</p>
-              <div class="flow" id="raciocinio-flow">
-                <div class="flow-node flow-start">📄 Recebi um laudo</div>
-                <div class="flow-arrow"></div>
-                <div class="flow-node">📅 O exame foi realizado no momento certo?</div>
-                <div class="flow-arrow"></div>
-                <div class="flow-node">⚠️ Isso muda minha conduta?</div>
-                <div class="flow-arrow"></div>
-                <div class="flow-node">💬 Como vou explicar isso para a paciente?</div>
-                <div class="flow-arrow"></div>
-                <div class="flow-node">🤝 Preciso compartilhar o cuidado?</div>
-                <div class="flow-arrow"></div>
-                <button class="flow-cta" id="flow-cta">✅ Voltar ao "Próximo passo" desta página</button>
-              </div>
-              <button class="sheet-close-btn" id="sheet-close-btn">Fechar e voltar ao tema</button>
-            </div>
-          </div>
+          <div id="fab-slot-tema"></div>
 
           <div class="tabbar"><div class="tabbar-item active"><span class="tabbar-icon">⌂</span>Início</div><div class="tabbar-item"><span class="tabbar-icon">☰</span>Índice</div><div class="tabbar-item"><span class="tabbar-icon">☆</span>Favoritos</div><div class="tabbar-item"><span class="tabbar-icon">◐</span>Perfil</div></div>
         </div></div>
@@ -428,6 +412,9 @@ button,input{font-family:inherit;}
       <div class="phone-col">
         <h3>Índice — mesmo trilho, agora filtrando módulos</h3>
         <div class="phone"><div class="phone-screen"><div class="phone-notch"></div><div class="phone-scroll" id="scroll-indice"></div>
+
+          <div id="fab-slot-indice"></div>
+
           <div class="tabbar"><div class="tabbar-item"><span class="tabbar-icon">⌂</span>Início</div><div class="tabbar-item active"><span class="tabbar-icon">☰</span>Índice</div><div class="tabbar-item"><span class="tabbar-icon">☆</span>Favoritos</div><div class="tabbar-item"><span class="tabbar-icon">◐</span>Perfil</div></div>
         </div></div>
       </div>
@@ -448,12 +435,7 @@ button,input{font-family:inherit;}
 
 <script>
 document.querySelectorAll('.demo-tab').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.demo-tab').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.demo-panel').forEach(p=>p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.target).classList.add('active');
-  });
+  btn.addEventListener('click',()=> activateTab(btn.dataset.target));
 });
 
 /* ================= DADOS: 3 temas piloto (Sprint Zero) =================
@@ -1274,20 +1256,148 @@ function goToTema(id){
 function activateTab(panelId){
   document.querySelectorAll('.demo-tab').forEach(b=>b.classList.toggle('active', b.dataset.target===panelId));
   document.querySelectorAll('.demo-panel').forEach(p=>p.classList.toggle('active', p.id===panelId));
+  triggerFabPulseForPanel(panelId);
 }
 
 renderTemaScreen(currentTemaId);
 
-/* ================= RaciocinioFAB (FAB + Bottom Sheet) ================= */
-(function(){
-  const fab = document.getElementById('raciocinio-fab');
-  const sheet = document.getElementById('raciocinio-sheet');
-  const backdrop = document.getElementById('sheet-backdrop');
-  const grabber = document.getElementById('sheet-grabber');
-  const closeBtn = document.getElementById('sheet-close-btn');
+/* ================= RaciocinioFAB (FAB + Bottom Sheet) =================
+   Revisão 2026-08-08/09 (docs/03-biblioteca-componentes.md): o FAB deixa
+   de ser exclusivo da leitura de um Tema e passa a ser o único ponto de
+   busca do app — substitui o ícone de busca do cabeçalho do Índice e o
+   overlay BuscaRapida. Visível em cada tela real do protótipo (Tema,
+   Índice), com pulso único "tá com dúvida?" por tela. */
+const FAB_ICON_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+  <path d="M9.5 2a3.5 3.5 0 0 0-3.5 3.5c0 .3 0 .6.1.9A3 3 0 0 0 4 9.3 3 3 0 0 0 3 11.5 3 3 0 0 0 4.5 14c-.3.5-.5 1.1-.5 1.8A3.2 3.2 0 0 0 7 19a3 3 0 0 0 2.5 2 3 3 0 0 0 3-2.2V5.5A3.5 3.5 0 0 0 9.5 2Z"/>
+  <path d="M14.5 2a3.5 3.5 0 0 1 3.5 3.5c0 .3 0 .6-.1.9A3 3 0 0 1 20 9.3a3 3 0 0 1 1 2.2 3 3 0 0 1-1.5 2.5c.3.5.5 1.1.5 1.8A3.2 3.2 0 0 1 17 19a3 3 0 0 1-2.5 2 3 3 0 0 1-3-2.2V5.5A3.5 3.5 0 0 1 14.5 2Z"/>
+</svg>`;
+
+const RACIOCINIO_FLOW = [
+  ['📄','Recebi um laudo'],
+  ['📅','O exame foi realizado no momento certo?'],
+  ['⚠️','Isso muda minha conduta?'],
+  ['💬','Como vou explicar isso para a paciente?'],
+  ['🤝','Preciso compartilhar o cuidado?'],
+];
+
+function fabSlotHTML(suffix){
+  return `
+  <div class="fab-pulse-pill" id="fab-pulse${suffix}">tá com dúvida?</div>
+  <button class="raciocinio-fab" id="raciocinio-fab${suffix}" aria-label="Abrir busca e raciocínio rápido">${FAB_ICON_SVG}</button>
+  <div class="sheet-backdrop" id="sheet-backdrop${suffix}"></div>
+  <div class="raciocinio-sheet" id="raciocinio-sheet${suffix}">
+    <div class="sheet-grabber" id="sheet-grabber${suffix}"></div>
+    <div class="sheet-content">
+      <div class="search-box sheet-search"><span>⌕</span><input id="fab-input${suffix}" placeholder="Buscar dúvida, tema ou módulo"></div>
+      <div id="fab-body${suffix}"></div>
+      <button class="sheet-close-btn" id="sheet-close${suffix}"></button>
+    </div>
+  </div>`;
+}
+
+function fabEmptyStateHTML(){
+  return `
+  <div class="search-label">Buscas recentes</div>
+  <div class="anchor-rail" style="border-bottom:none;padding-bottom:2px">
+    ${BUSCAS_RECENTES.map(term=>`<button class="anchor-chip" data-recent="${term}">${term}</button>`).join('')}
+  </div>
+  <div class="flow">
+    ${RACIOCINIO_FLOW.map(([icon,text],i)=>`${i>0?'<div class="flow-arrow"></div>':''}<div class="flow-node${i===0?' flow-start':''}">${icon} ${text}</div>`).join('')}
+    <div class="flow-arrow"></div>
+    <button class="flow-cta"></button>
+  </div>`;
+}
+
+function fabResultsHTML(query){
+  const nq = norm(query.trim());
+  const matches = TEMAS.filter(t => norm(t.titulo).includes(nq) || t.tags.some(tag=>norm(tag).includes(nq)));
+  if(!matches.length){
+    return `
+    <div class="sheet-fallback">
+      <div class="sheet-fallback-icon">⌕</div>
+      <div class="sheet-fallback-title">Ainda não escrevemos sobre isso</div>
+      <div class="sheet-fallback-sub">Sua pergunta foi guardada — pode virar o próximo Tema do Guia.</div>
+    </div>`;
+  }
+  return `
+  <div class="search-label">Resultados (${matches.length})</div>
+  ${matches.map(t=>`
+    <div class="result-row" data-goto="${t.id}" style="cursor:pointer">
+      <span class="tag">${moduloById(t.modulo).nome}</span>
+      <span class="q">${highlightMatch(t.titulo, query)}</span>
+    </div>
+  `).join('')}
+  `;
+}
+
+const pulsedFabScreens = new Set();
+
+function initFabScreen(cfg){
+  const { suffix, insideTema } = cfg;
+  document.getElementById('fab-slot'+suffix).innerHTML = fabSlotHTML(suffix);
+
+  const fab = document.getElementById('raciocinio-fab'+suffix);
+  const pulsePill = document.getElementById('fab-pulse'+suffix);
+  const sheet = document.getElementById('raciocinio-sheet'+suffix);
+  const backdrop = document.getElementById('sheet-backdrop'+suffix);
+  const grabber = document.getElementById('sheet-grabber'+suffix);
+  const closeBtn = document.getElementById('sheet-close'+suffix);
+  const input = document.getElementById('fab-input'+suffix);
+  const body = document.getElementById('fab-body'+suffix);
   const sheetHeight = () => sheet.getBoundingClientRect().height;
 
+  closeBtn.textContent = insideTema ? 'Fechar e voltar ao tema' : 'Fechar';
+
+  function bindBodyInteractions(){
+    body.querySelectorAll('[data-goto]').forEach(row=>{
+      row.addEventListener('click', ()=>{
+        closeSheet();
+        goToTema(row.dataset.goto);
+      });
+    });
+    body.querySelectorAll('[data-recent]').forEach(chip=>{
+      chip.addEventListener('click', ()=>{
+        input.value = chip.dataset.recent;
+        renderBody(input.value);
+        input.focus();
+      });
+    });
+    const flowCta = body.querySelector('.flow-cta');
+    if(flowCta){
+      if(insideTema){
+        flowCta.textContent = '✅ Voltar ao "Próximo passo" desta página';
+        flowCta.addEventListener('click', ()=>{
+          closeSheet();
+          const target = document.getElementById('blk-passo');
+          if(target){
+            setTimeout(()=>{
+              target.scrollIntoView({behavior:'smooth', block:'start'});
+              target.classList.add('flow-target-pulse');
+              setTimeout(()=> target.classList.remove('flow-target-pulse'), 2300);
+            }, 280);
+          }
+        });
+      } else {
+        flowCta.textContent = '🔎 Buscar o achado acima';
+        flowCta.addEventListener('click', ()=> input.focus());
+      }
+    }
+  }
+
+  // Estado vazio (buscas recentes + fluxograma) ou digitando (≥2 caracteres,
+  // resultados agrupados) — ver docs/03, anatomia do RaciocinioFAB.
+  function renderBody(query){
+    body.innerHTML = (query && query.trim().length >= 2) ? fabResultsHTML(query) : fabEmptyStateHTML();
+    bindBodyInteractions();
+  }
+
+  function cancelPulse(){
+    pulsePill.classList.remove('show');
+    fab.classList.remove('pulsing');
+  }
   function openSheet(){
+    cancelPulse();
+    renderBody(input.value);
     sheet.classList.add('open');
     backdrop.classList.add('open');
   }
@@ -1300,6 +1410,7 @@ renderTemaScreen(currentTemaId);
   fab.addEventListener('click', openSheet);
   backdrop.addEventListener('click', closeSheet);
   closeBtn.addEventListener('click', closeSheet);
+  input.addEventListener('input', ()=> renderBody(input.value));
 
   // arrastar para fechar, a partir do grabber
   let dragStartY = null;
@@ -1327,22 +1438,31 @@ renderTemaScreen(currentTemaId);
   grabber.addEventListener('pointerup', endDrag);
   grabber.addEventListener('pointercancel', endDrag);
 
-  // CTA final do fluxo: fecha o sheet e leva de volta ao bloco
-  // ✅ Próximo passo do próprio Tema — fecha o ciclo entre "raciocinar"
-  // e "agir", sem repetir a resposta dentro do sheet.
-  const flowCta = document.getElementById('flow-cta');
-  flowCta.addEventListener('click', ()=>{
-    closeSheet();
-    const target = document.getElementById('blk-passo');
-    if(target){
-      setTimeout(()=>{
-        target.scrollIntoView({behavior:'smooth', block:'start'});
-        target.classList.add('flow-target-pulse');
-        setTimeout(()=> target.classList.remove('flow-target-pulse'), 2300);
-      }, 280);
-    }
-  });
-})();
+  // Pulso único "tá com dúvida?" — uma vez por tela, ~600ms após montar,
+  // some sozinho em ~2,2s. Nunca loop, cancelado na hora por qualquer toque.
+  cfg.triggerPulse = function(){
+    if(pulsedFabScreens.has(suffix)) return;
+    pulsedFabScreens.add(suffix);
+    setTimeout(()=>{
+      if(sheet.classList.contains('open')) return;
+      fab.classList.add('pulsing');
+      pulsePill.classList.add('show');
+      setTimeout(()=> fab.classList.remove('pulsing'), 400);
+      setTimeout(()=> pulsePill.classList.remove('show'), 2200);
+    }, 600);
+  };
+}
+
+const FAB_SCREENS = [
+  {suffix:'-tema', panel:'panel-tema', insideTema:true},
+  {suffix:'-indice', panel:'panel-indice', insideTema:false},
+];
+FAB_SCREENS.forEach(initFabScreen);
+
+function triggerFabPulseForPanel(panelId){
+  const cfg = FAB_SCREENS.find(c=>c.panel===panelId);
+  if(cfg) cfg.triggerPulse();
+}
 
 /* ================= ÍNDICE ================= */
 function renderIndice(){
@@ -1351,7 +1471,7 @@ function renderIndice(){
     ${MODULOS.map(m=>`<button class="anchor-chip" data-target="mod-${m.id}">${m.nome}</button>`).join('')}
   </div>`;
   document.getElementById('scroll-indice').innerHTML = `
-  <div class="idx-header"><div class="idx-title">Índice</div><div class="idx-search-btn" id="idx-search-btn">⌕</div></div>
+  <div class="idx-header"><div class="idx-title">Índice</div></div>
   ${idxRailHTML}
   <div id="mod-todos"></div>
   ${MODULOS.map(m=>{
@@ -1380,7 +1500,6 @@ function renderIndice(){
   idxScroll.querySelectorAll('[data-goto]').forEach(row=>{
     row.addEventListener('click', ()=> goToTema(row.dataset.goto));
   });
-  document.getElementById('idx-search-btn').addEventListener('click', ()=> activateTab('panel-busca'));
 }
 renderIndice();
 
