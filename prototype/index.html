@@ -244,19 +244,29 @@ button,input{font-family:inherit;}
 .sheet-title{font-size:22px;line-height:28px;font-weight:700;margin-top:8px;}
 .sheet-subtitle{font-size:14px;line-height:20px;color:var(--ink-500);margin-top:6px;}
 /* ---------- fluxograma de raciocínio (dentro do RaciocinioSheet) ----------
-   Linear, sem ramificação e sem marcação de check — é uma sequência de
-   raciocínio a ler, não uma lista de tarefas a cumprir. */
+   Cada card é uma porta de entrada para uma ação: "Recebi um laudo" abre o
+   seletor de achados; dentro de um Tema, os demais saltam direto para o
+   bloco correspondente da leitura (ver FLOW_BLOCK_TARGETS). */
 .flow{margin-top:20px;display:flex;flex-direction:column;align-items:center;}
-.flow-node{width:100%;max-width:280px;background:var(--bg-subtle);border:1px solid var(--ink-100);border-radius:var(--radius-md);padding:14px 16px;font-size:14.5px;line-height:20px;font-weight:600;color:var(--ink-900);text-align:left;box-shadow:var(--shadow-1);}
+.flow-node{width:100%;max-width:280px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--bg-subtle);border:1px solid var(--ink-100);border-radius:var(--radius-md);padding:14px 16px;font:inherit;font-size:14.5px;line-height:20px;font-weight:600;color:var(--ink-900);text-align:left;box-shadow:var(--shadow-1);cursor:default;}
+.flow-node-text{flex:1;}
+.flow-node-chevron{color:var(--ink-300);font-size:17px;flex-shrink:0;}
+.flow-node-clickable{cursor:pointer;transition:transform .15s var(--ease);}
+.flow-node-clickable:active{transform:scale(.97);}
 .flow-start{color:var(--ink-500);font-weight:600;}
 .flow-arrow{width:2px;height:18px;background:var(--ink-100);position:relative;flex-shrink:0;}
 .flow-arrow:after{content:"";position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--ink-300);}
 
-.flow-cta{width:100%;max-width:280px;background:var(--lav-500);color:#fff;border:none;border-radius:var(--radius-md);padding:14px 18px;font-size:14px;font-weight:700;text-align:center;box-shadow:var(--shadow-2);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:transform .15s var(--ease);}
-.flow-cta:active{transform:scale(.97);}
-
 .flow-target-pulse{animation:flow-pulse 1.1s var(--ease) 2;}
 @keyframes flow-pulse{0%,100%{box-shadow:var(--shadow-2);}50%{box-shadow:0 0 0 4px var(--lav-300),var(--shadow-2);}}
+
+/* ---------- seletor de achados (2º nível do card "Recebi um laudo") ---------- */
+.sheet-back-btn{display:block;background:none;border:none;color:var(--lav-500);font-size:13px;font-weight:600;padding:2px 0 10px;cursor:pointer;}
+.achados-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px;}
+.achado-card{display:flex;flex-direction:column;align-items:flex-start;gap:8px;background:var(--bg-subtle);border:1px solid var(--ink-100);border-radius:var(--radius-md);padding:14px;font:inherit;font-size:13px;font-weight:600;color:var(--ink-900);text-align:left;box-shadow:var(--shadow-1);cursor:pointer;transition:transform .15s var(--ease);}
+.achado-card:active{transform:scale(.96);}
+.achado-icon{font-size:20px;}
+.sheet-fallback-link{display:block;margin:6px auto 0;background:none;border:none;color:var(--ink-500);font-size:12.5px;font-weight:600;text-decoration:underline;cursor:pointer;}
 
 .sheet-close-btn{margin-top:20px;width:100%;background:transparent;border:none;color:var(--ink-500);font-size:14px;font-weight:600;padding:12px;text-align:center;border-top:1px solid var(--ink-100);cursor:pointer;}
 .sheet-close-btn:active{color:var(--ink-700);}
@@ -1270,6 +1280,26 @@ const RACIOCINIO_FLOW = [
   ['🤝','Preciso compartilhar o cuidado?'],
 ];
 
+// Dentro de um Tema, cada card do RACIOCINIO_FLOW (a partir do índice 1) salta
+// direto para o bloco correspondente da leitura atual. O índice 0 ("Recebi um
+// laudo") não tem bloco fixo — abre o seletor de achados (LAUDO_ACHADOS).
+const FLOW_BLOCK_TARGETS = [null, 'blk-essencial', 'blk-passo', 'blk-explicar', 'blk-encaminhar'];
+
+// "Recebi um laudo" → "o que você encontrou?" — cada achado leva direto para
+// o Tema certo, já rolado até "Qual é o próximo passo?" (blk-passo).
+const LAUDO_ACHADOS = [
+  {icon:'📈', label:'Percentil baixo', goto:'pig-x-rcf'},
+  {icon:'🟣', label:'Placenta baixa', goto:'placenta-baixa'},
+  {icon:'📡', label:'Doppler alterado', goto:'doppler-introducao'},
+  {icon:'🔐', label:'Colo curto', goto:'colo-curto'},
+  {icon:'💧', label:'Dilatação renal', goto:'dilatacao-pelves-renais'},
+  {icon:'✨', label:'Marcador de aneuploidia', sub:[
+    {icon:'✨', label:'Foco ecogênico intracardíaco', goto:'foco-ecogenico-intracardiaco'},
+    {icon:'✨', label:'Intestino hiperecogênico', goto:'intestino-hiperecogenico'},
+    {icon:'➕', label:'Artéria umbilical única', goto:'arteria-umbilical-unica'},
+  ]},
+];
+
 function fabSlotHTML(suffix){
   return `
   <div class="fab-pulse-pill" id="fab-pulse${suffix}">tá com dúvida?</div>
@@ -1285,17 +1315,31 @@ function fabSlotHTML(suffix){
   </div>`;
 }
 
-function fabEmptyStateHTML(){
+function fabEmptyStateHTML(insideTema){
   return `
   <div class="search-label">Buscas recentes</div>
   <div class="anchor-rail" style="border-bottom:none;padding-bottom:2px">
     ${BUSCAS_RECENTES.map(term=>`<button class="anchor-chip" data-recent="${term}">${term}</button>`).join('')}
   </div>
   <div class="flow">
-    ${RACIOCINIO_FLOW.map(([icon,text],i)=>`${i>0?'<div class="flow-arrow"></div>':''}<div class="flow-node${i===0?' flow-start':''}">${icon} ${text}</div>`).join('')}
-    <div class="flow-arrow"></div>
-    <button class="flow-cta"></button>
+    ${RACIOCINIO_FLOW.map(([icon,text],i)=>{
+      const clickable = i===0 || insideTema;
+      const cls = `flow-node${i===0?' flow-start':''}${clickable?' flow-node-clickable':''}`;
+      const arrow = i>0 ? '<div class="flow-arrow"></div>' : '';
+      const chevron = clickable ? '<span class="flow-node-chevron">›</span>' : '';
+      return `${arrow}<button type="button" class="${cls}" data-flow-idx="${i}"><span class="flow-node-text">${icon} ${text}</span>${chevron}</button>`;
+    }).join('')}
   </div>`;
+}
+
+function achadosPickerHTML(list, title){
+  return `
+  <button type="button" class="sheet-back-btn" id="achados-back">‹ Voltar</button>
+  <div class="search-label">${title}</div>
+  <div class="achados-grid">
+    ${list.map((a,i)=>`<button type="button" class="achado-card" data-achado-idx="${i}"><span class="achado-icon">${a.icon}</span><span>${a.label}</span></button>`).join('')}
+  </div>
+  <button type="button" class="sheet-fallback-link" id="achados-search-fallback">Não encontrou? Buscar manualmente</button>`;
 }
 
 function fabResultsHTML(query){
@@ -1338,6 +1382,29 @@ function initFabScreen(cfg){
 
   closeBtn.textContent = insideTema ? 'Fechar e voltar ao tema' : 'Fechar';
 
+  // Pilha do seletor de achados ("Recebi um laudo" → achado → sub-achado).
+  // Vazia = mostra o fluxograma; com itens = mostra a lista no topo da pilha.
+  let achadosStack = [];
+
+  function scrollToBlockAfterClose(blockId){
+    const target = document.getElementById(blockId);
+    if(!target) return;
+    setTimeout(()=>{
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+      target.classList.add('flow-target-pulse');
+      setTimeout(()=> target.classList.remove('flow-target-pulse'), 2300);
+    }, 320);
+  }
+
+  function openAchados(list, title){
+    achadosStack.push({list, title});
+    renderBody(input.value);
+  }
+  function achadosBack(){
+    achadosStack.pop();
+    renderBody(input.value);
+  }
+
   function bindBodyInteractions(){
     body.querySelectorAll('[data-goto]').forEach(row=>{
       row.addEventListener('click', ()=>{
@@ -1352,32 +1419,63 @@ function initFabScreen(cfg){
         input.focus();
       });
     });
-    const flowCta = body.querySelector('.flow-cta');
-    if(flowCta){
-      if(insideTema){
-        flowCta.textContent = '✅ Voltar ao "Próximo passo" desta página';
-        flowCta.addEventListener('click', ()=>{
+
+    // Card "Recebi um laudo" abre o seletor de achados; dentro de um Tema,
+    // os demais cards saltam direto para o bloco correspondente da leitura.
+    body.querySelectorAll('[data-flow-idx]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const idx = Number(btn.dataset.flowIdx);
+        if(idx===0){
+          openAchados(LAUDO_ACHADOS, 'O que você encontrou?');
+          return;
+        }
+        const blockId = FLOW_BLOCK_TARGETS[idx];
+        if(!blockId || !insideTema) return;
+        closeSheet();
+        scrollToBlockAfterClose(blockId);
+      });
+    });
+
+    // Cards do seletor de achados: sub-lista (marcadores) ou vai direto para
+    // o Tema, já rolado até "Qual é o próximo passo?".
+    body.querySelectorAll('[data-achado-idx]').forEach(card=>{
+      card.addEventListener('click', ()=>{
+        const list = achadosStack[achadosStack.length-1].list;
+        const item = list[Number(card.dataset.achadoIdx)];
+        if(item.sub){
+          openAchados(item.sub, item.label);
+        } else {
           closeSheet();
-          const target = document.getElementById('blk-passo');
-          if(target){
-            setTimeout(()=>{
-              target.scrollIntoView({behavior:'smooth', block:'start'});
-              target.classList.add('flow-target-pulse');
-              setTimeout(()=> target.classList.remove('flow-target-pulse'), 2300);
-            }, 280);
-          }
-        });
-      } else {
-        flowCta.textContent = '🔎 Buscar o achado acima';
-        flowCta.addEventListener('click', ()=> input.focus());
-      }
+          goToTema(item.goto);
+          scrollToBlockAfterClose('blk-passo');
+        }
+      });
+    });
+    const achadosBackBtn = body.querySelector('#achados-back');
+    if(achadosBackBtn) achadosBackBtn.addEventListener('click', achadosBack);
+
+    const achadosFallback = body.querySelector('#achados-search-fallback');
+    if(achadosFallback){
+      achadosFallback.addEventListener('click', ()=>{
+        achadosStack = [];
+        renderBody(input.value);
+        input.focus();
+      });
     }
   }
 
-  // Estado vazio (buscas recentes + fluxograma) ou digitando (≥2 caracteres,
-  // resultados agrupados) — ver docs/03, anatomia do RaciocinioFAB.
+  // Estado vazio (buscas recentes + fluxograma), seletor de achados (2º nível
+  // do card "Recebi um laudo") ou digitando (≥2 caracteres, resultados
+  // agrupados) — ver docs/03, anatomia do RaciocinioFAB.
   function renderBody(query){
-    body.innerHTML = (query && query.trim().length >= 2) ? fabResultsHTML(query) : fabEmptyStateHTML();
+    if(query && query.trim().length >= 2){
+      body.innerHTML = fabResultsHTML(query);
+    } else if(achadosStack.length){
+      const top = achadosStack[achadosStack.length-1];
+      body.innerHTML = achadosPickerHTML(top.list, top.title);
+    } else {
+      body.innerHTML = fabEmptyStateHTML(insideTema);
+    }
     bindBodyInteractions();
   }
 
@@ -1395,6 +1493,7 @@ function initFabScreen(cfg){
     sheet.classList.remove('open');
     backdrop.classList.remove('open');
     sheet.style.transform = '';
+    achadosStack = [];
   }
 
   fab.addEventListener('click', openSheet);

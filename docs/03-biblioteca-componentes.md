@@ -104,51 +104,72 @@ buscar um termo.
   - Tecnicamente, o termo buscado vai para uma **fila de revisão
     separada** — nunca escreve direto em `07-backlog-temas.md`, que
     continua 100% curado pela fala literal da Dra. Morgana Kummer.
-- **Fluxograma de raciocínio** (não é lista/checklist nem árvore de decisão
-  com ramos — decisão de UX revisada duas vezes: primeiro trocamos o
-  checklist plano por um fluxograma com ramificação SIM/NÃO, depois
-  simplificamos para uma sequência linear só de leitura, porque quadrados
-  de marcação e botões de ramo comunicavam "lista de tarefas a cumprir", e
-  o objetivo aqui é comunicar raciocínio clínico, não um checklist disfarçado):
+- **Fluxograma de raciocínio** (revisão 2026-08-09: deixou de ser uma
+  sequência só de leitura e passou a ser **clicável, cada nó uma porta de
+  entrada para uma ação** — motivada por feedback direto da autora: "os
+  cards não são clicáveis, o usuário fica sem saber o que fazer depois...
+  na prática, ele só serve como uma espécie de busca recente". Ainda não é
+  checklist nem árvore de decisão com ramos — não há caixa de marcação,
+  não há estado de "concluído", o médico não preenche nada — mas cada nó
+  agora leva a um lugar real):
   ```
-  📄 Recebi um laudo
+  📄 Recebi um laudo               → abre o seletor de achados (abaixo)
         ↓
-  📅 O exame foi realizado no momento certo?
+  📅 O exame foi realizado no momento certo?   → rola até 🎯 O Essencial
         ↓
-  ⚠️ Isso muda minha conduta?
+  ⚠️ Isso muda minha conduta?                  → rola até ✅ Qual é o próximo passo?
         ↓
-  💬 Como vou explicar isso para a paciente?
+  💬 Como vou explicar isso para a paciente?   → rola até 💬 Como explicar
         ↓
-  🤝 Preciso compartilhar o cuidado?
-        ↓
-  ✅ Voltar ao "Próximo passo" desta página
+  🤝 Preciso compartilhar o cuidado?           → rola até 🚩 Quando encaminhar
   ```
   - A pergunta sobre o **momento do exame** vem logo após o laudo,
     propositalmente antes de qualquer pergunta que já pressuponha
     interpretar o achado — não faz sentido decidir se algo "muda a
     conduta" antes de validar se o exame em si foi feito na hora certa.
-  - Cada nó é apenas texto com um emoji de identidade (sem cor de fundo
-    diferenciada, sem borda de ênfase) — nenhum nó é mais ou menos
-    "importante" visualmente que outro, todos têm o mesmo peso porque
-    fazem parte da mesma linha de raciocínio. Os emojis aqui são
-    legítimos apesar da regra de interface = ícone outline (§8 do design
-    system): cada um referencia a identidade de um bloco de conteúdo do
-    Tema, não é decoração de interface.
-  - **Nenhum nó é marcável.** Não há caixa de seleção, não há estado de
-    "concluído" — o médico lê a sequência, não a preenche.
-  - **Nó final é acionável e depende de onde o FAB foi aberto:**
-    - Dentro da leitura de um Tema: `✅ Voltar ao "Próximo passo" desta
-      página` — botão cheio (`--lav-500`). Ao tocar, fecha a sheet e rola
-      a página até o bloco ✅ Qual é o próximo passo? (com pulso breve de
-      destaque no bloco), reutilizando o mesmo emoji ✅ do bloco de
-      destino de propósito, para o olho associar o CTA ao lugar para onde
-      ele leva antes mesmo de ler o texto.
-    - Fora de um Tema (Início, Índice, Favoritos, Perfil — não existe
-      página nem bloco ✅ pra rolar até): o botão vira `🔎 Buscar o achado
-      acima`, fecha o fluxograma e devolve o foco (teclado) ao campo de
-      busca no topo da sheet, em vez de fechar a sheet inteira — o
-      raciocínio termina convidando a digitar, já que não há Tema aberto
-      pra voltar.
+  - Cada nó é um botão com um chevron `›` à direita quando ativo — o
+    emoji de identidade permanece o mesmo texto de sempre (legítimo apesar
+    da regra de interface = ícone outline do §8, porque referencia a
+    identidade de um bloco de conteúdo do Tema, não decoração de
+    interface), mas o card ganha affordance de toque (`scale(.97)` ao
+    tocar) em vez de ser só texto.
+  - **Nó 1 (`📄 Recebi um laudo`) é sempre clicável, em qualquer tela** —
+    é a porta de entrada para conteúdo, funciona igual dentro ou fora de
+    um Tema. Ver "Seletor de achados" abaixo.
+  - **Nós 2 a 5 só são clicáveis dentro da leitura de um Tema** — cada um
+    rola a página até o bloco correspondente (com o mesmo pulso breve de
+    destaque que já existia no antigo botão final), fechando a sheet
+    antes. Fora de um Tema (Início, Índice, Favoritos, Perfil) esses
+    blocos não existem para rolar até, então os nós ficam visíveis (o
+    raciocínio continua legível como sequência) mas sem toque — sem
+    chevron, cursor padrão.
+  - Não existe mais um botão de CTA ao final do fluxograma — cada nó já é
+    o próprio CTA, o que elimina a distinção antiga entre "ler a sequência"
+    e "agir a partir dela".
+- **Seletor de achados** (2º nível, aberto pelo nó `📄 Recebi um laudo`) —
+  a resposta direta ao pedido da autora por um "atalho para o raciocínio
+  clínico": em vez de a pessoa sair da sheet sem saber o que fazer, ela
+  escolhe o achado do laudo e cai direto no Tema certo.
+  - Grade de 2 colunas com cartões (`AchadoCard`: emoji + rótulo curto —
+    ex. `📈 Percentil baixo`, `🟣 Placenta baixa`, `📡 Doppler alterado`,
+    `🔐 Colo curto`, `💧 Dilatação renal`, `✨ Marcador de aneuploidia`).
+  - Toque num cartão fecha a sheet, abre o Tema correspondente e já rola
+    até o bloco `✅ Qual é o próximo passo?` (mesmo pulso de destaque) —
+    o achado vira diretamente a lista de conduta, sem passo intermediário.
+  - `✨ Marcador de aneuploidia` não aponta para um Tema único — abre uma
+    sub-lista (Foco ecogênico intracardíaco / Intestino hiperecogênico /
+    Artéria umbilical única) antes de cair no Tema, porque o Módulo tem
+    mais de um marcador leve e nenhum é "o" representante dos demais.
+  - Cabeçalho com botão "‹ Voltar" (volta um nível da pilha: sub-lista →
+    lista principal → fluxograma) e, ao final, um link discreto "Não
+    encontrou? Buscar manualmente" que abandona o seletor e devolve o
+    foco ao campo de busca — mesma função de escape que o antigo `🔎
+    Buscar o achado acima` cumpria, só que agora dentro do seletor em vez
+    de ser o encerramento obrigatório do fluxograma.
+  - Cada `goto` do seletor aponta para um Tema existente da biblioteca —
+    ao escrever um novo Tema que caiba num destes achados (ou criar um
+    achado novo), atualizar `LAUDO_ACHADOS` em `prototype/index.html`
+    junto.
 - Rodapé: botão discreto (texto, sem preenchimento) **"Fechar e voltar ao
   tema"** (ou **"Fechar"**, fora de Tema) — deliberadamente não é um botão
   de ação primária (sem `--lav-500` de fundo): fechar o sheet é sempre a
