@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Guia Digital do Obstetra — Sprint Zero (3 temas piloto)</title>
-<meta name="description" content="Protótipo estático: design system, biblioteca de componentes e 3 temas clínicos completos para validar leitura, busca, índice e navegação antes de congelar a arquitetura. Conteúdo clínico é rascunho, pendente de revisão médica." />
+<title>Guia Digital do Obstetra — v1.2 (15 temas)</title>
+<meta name="description" content="Protótipo estático: design system, biblioteca de componentes e 15 temas clínicos completos para validar leitura, busca, índice e navegação. Conteúdo clínico é rascunho, pendente de revisão médica." />
 <style>
 :root{
   --bg-base:#FFFFFF; --bg-subtle:#FAFAFA; --bg-sunken:#F5F5F7;
@@ -545,7 +545,7 @@ const TEMAS = [
       'ISUOG Practice Guidelines: diagnosis and management of small-for-gestational-age fetus and fetal growth restriction. Ultrasound Obstet Gynecol, 2020.',
       'Gordijn SJ et al. "Consensus definition of fetal growth restriction: a Delphi procedure." Ultrasound Obstet Gynecol, 2016.',
     ],
-    vejaTambem:['placenta-baixa','datacao-gestacao','pig-x-rcf'],
+    vejaTambem:['placenta-baixa','datacao-gestacao','circunferencia-abdominal-p90','pig-x-rcf'],
   },
   {
     id:'placenta-baixa',
@@ -911,8 +911,8 @@ const TEMAS = [
     titulo:'Datação da gestação',
     modulo:'trimestre1',
     tags:['datação da gestação','idade gestacional','dpp','ccn','usg datador','dum','correção da idade gestacional','biometria fetal','acog','isuog'],
-    essencial:'Ensinar como definir corretamente a idade gestacional e a DPP, qual exame utilizar em cada fase da gestação e quando a idade gestacional deve (ou não) ser corrigida.',
-    erro:'<ul><li>Corrigir a idade gestacional toda vez que um novo ultrassom mostra uma diferença de alguns dias.</li><li>Usar sempre 7 dias como critério de discrepância — o limiar é 5 dias até 8+6 semanas, e só passa a ser 7 dias de 9+0 a 13+6 semanas.</li><li>Valorizar a DUM quando ela é incerta ou incompatível com um ultrassom precoce confiável.</li><li>Utilizar biometria do terceiro trimestre para redefinir a DPP.</li></ul>',
+    essencial:'Definir corretamente a idade gestacional e a DPP é crucial para o seguimento de todo o pré-natal. Saber quando redatar, também.',
+    erro:'<ul><li>Datar a gestação pelo diâmetro do saco gestacional, num ultrassom tão precoce que o embrião ainda não é visível — esse ultrassom nunca deve ser a base da datação. O "primeiro ultrassom" para datar é o primeiro em que aparece embrião com batimentos cardíacos.</li><li>Corrigir a idade gestacional toda vez que um novo ultrassom mostra uma diferença de alguns dias.</li><li>Usar sempre 7 dias como critério de discrepância — o limiar é 5 dias até 8+6 semanas, e só passa a ser 7 dias de 9+0 a 13+6 semanas.</li><li>Valorizar a DUM quando ela é incerta ou incompatível com um ultrassom precoce confiável.</li><li>Utilizar biometria do terceiro trimestre para redefinir a DPP.</li></ul>',
     passo:{tipo:'checklist', itens:[
       'Confirme a idade gestacional pelo USG mais precoce e de maior acurácia — idealmente entre 8 e 13 semanas + 6 dias (CCN).',
       'Se a DUM for confiável e compatível com o USG precoce, mantenha a idade gestacional pela DUM.',
@@ -932,19 +932,46 @@ const TEMAS = [
       'Um erro de apenas 5 a 7 dias na datação pode levar a diagnósticos equivocados de restrição de crescimento, macrossomia ou pós-datismo.',
       'O ultrassom do segundo ou terceiro trimestre é excelente para avaliar crescimento, mas muito menos preciso para datar a gestação.',
     ],
-    eAgora:[
-      'DUM confiável + USG precoce compatível → mantenha a IG.',
-      'IG pela DUM até 8+6 semanas + diferença DUM×USG ≥5 dias → redate pelo USG.',
-      'IG pela DUM entre 9+0 e 13+6 semanas + diferença DUM×USG ≥7 dias → redate pelo USG.',
-      'Diferenças em ultrassons tardios → não altere a DPP apenas pelo crescimento fetal.',
-      'Se houver dúvida sobre qual data manter, consulte os critérios da ACOG/ISUOG para redatação.',
-    ],
     aula:{titulo:'Quando devo corrigir a idade gestacional?', pendente:true},
     referencias:[
       'ACOG Committee Opinion No. 700 — Methods for Estimating the Due Date. Obstet Gynecol, 2017 (reafirmado) — referência específica pendente de indicação da autora.',
       'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan (datação gestacional). Ultrasound Obstet Gynecol, 2023.',
     ],
     vejaTambem:['morfologico-1trimestre','percentil8'],
+  },
+  {
+    id:'circunferencia-abdominal-p90',
+    titulo:'Circunferência abdominal > P90',
+    modulo:'crescimento',
+    tags:['circunferência abdominal','ca >p90','diabetes gestacional','macrossomia','crescimento fetal excessivo','biometria fetal','hiperinsulinemia fetal','glicemia pós-prandial'],
+    essencial:'Uma CA fetal >P90 indica crescimento abdominal acima do esperado. Em gestantes com diabetes, pode ser um sinal de maior exposição fetal à glicose e maior risco de crescimento excessivo, mesmo quando o peso fetal estimado ainda não está acima do P90.',
+    erro:'Ver CA >P90 e concluir automaticamente "é macrossomia". Não é. A CA é apenas uma das medidas biométricas e deve ser interpretada junto com o peso fetal estimado, a idade gestacional e o contexto materno — não isoladamente.',
+    passo:{tipo:'checklist', itens:[
+      'Revise o controle glicêmico, principalmente as glicemias pós-prandiais.',
+      'Correlacione a CA com o peso fetal estimado e as demais medidas biométricas.',
+      'Avalie a evolução do crescimento nos exames seguintes, quando indicado.',
+      'Se houver crescimento fetal excessivo ou diabetes mal controlado, ajuste o acompanhamento obstétrico.',
+    ]},
+    explicar:'"A barriguinha do bebê está maior do que a média para essa idade gestacional. Isso pode acontecer por vários motivos. Como você tem diabetes, vamos conferir se a glicose está bem controlada e acompanhar o crescimento com atenção."',
+    pensando:'Meu bebê está ficando grande porque minha glicose está alta? Fiz alguma coisa errada?',
+    confianca:'"Uma medida maior da barriga não significa, sozinha, que exista um problema. Vamos olhar o crescimento como um todo e, se houver diabetes, conferir se a glicose está realmente bem controlada."',
+    aprendi:'Aprendi a não olhar apenas para o peso fetal. Às vezes, a distribuição do crescimento conta uma história que o peso sozinho não consegue mostrar.',
+    vocesabia:[
+      'A CA pode se alterar antes do peso fetal estimado. Em fetos de mães com diabetes, o excesso de glicose pode levar à hiperinsulinemia fetal e maior depósito de gordura, especialmente no abdome. Estudos mostram que CA ≥P90 é útil na previsão de macrossomia.',
+      'A HbA1c pode ajudar na avaliação do controle glicêmico, mas não substitui as glicemias capilares/monitorização da glicose — os picos pós-prandiais têm relação importante com o crescimento excessivo e podem não ser bem representados pela HbA1c. Há estudos mostrando associação entre glicemia pós-prandial e macrossomia mesmo quando outros marcadores glicêmicos não diferiam.',
+    ],
+    perolas:[
+      'CA >P90 ≠ macrossomia. Em uma gestante com diabetes, porém, CA aumentada deve fazer você olhar com atenção para o controle glicêmico.',
+      'Ler a biometria como um padrão de crescimento, não ficar refém de um único número — a ISUOG considera CA e peso estimado parâmetros centrais para avaliação do tamanho fetal.',
+    ],
+    encaminhar:'CA >P90 isoladamente não é indicação de encaminhamento para Medicina Fetal. Considerar avaliação especializada quando houver, por exemplo:<ul><li>Crescimento fetal excessivo importante</li><li>Suspeita de macrossomia</li><li>Diabetes de difícil controle</li><li>Discrepância biométrica importante</li><li>Outras alterações fetais ou obstétricas associadas</li></ul>',
+    aula:{titulo:'Circunferência abdominal aumentada: o que muda na gestante com diabetes', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan — biometria fetal e circunferência abdominal. Ultrasound Obstet Gynecol, 2022.',
+      'Associação entre CA fetal ≥P90, hiperinsulinemia fetal e predição de macrossomia em gestantes com diabetes — referência específica pendente de indicação da autora.',
+      'Associação entre glicemia pós-prandial e macrossomia fetal, independente de outros marcadores glicêmicos — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:['percentil8'],
   },
   {
     id:'pig-x-rcf',

@@ -22,7 +22,7 @@ marcar como concluído aqui.
 ## Cordão
 - [ ] Inserção marginal
 - [ ] Inserção velamentosa
-- [ ] Vasa prévia
+- [x] Vasa prévia — tema "Vasa prévia" (módulo Placenta e anexos)
 - [ ] Cisto de cordão
 - [ ] Nó verdadeiro × falso nó
 
