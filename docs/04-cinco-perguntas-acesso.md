@@ -73,3 +73,32 @@ Mantém-se a proposta já especificada (`RaciocinioFAB`, Opção A). Nenhuma
 mudança de arquitetura é necessária — este documento formaliza a
 comparação que sustenta a decisão já registrada em
 `01-arquitetura-informacao.md §3.1`.
+
+## Revisão — 2026-08-08
+
+O escopo do `RaciocinioFAB` muda. Ele deixa de ser só a ferramenta de
+raciocínio "recebi um laudo" disponível durante a leitura de um Tema, e
+passa a ser **o único ponto de busca do app**, substituindo o ícone de
+busca do cabeçalho (`BuscaRapida`, ver `03-biblioteca-componentes.md` —
+retirado como overlay próprio, absorvido pela sheet do FAB). Por
+consequência, o FAB fica visível em **toda tela**, não só em Tema.
+
+**O que isso reverte:** a comparação acima recomendou A citando como
+ressalva explícita "manter o FAB ausente nas telas de lista (Índice,
+Busca, Perfil)" como forma de conter a poluição visual. Essa ressalva é
+revertida conscientemente aqui — não porque o risco deixou de existir,
+mas porque escondê-lo em qualquer tela removeria a busca de lá também,
+já que não sobra outro ponto de entrada. A mitigação da poluição visual
+passa a ser outra: o pulso único "tá com dúvida?" (ver anatomia em
+`03-biblioteca-componentes.md`) ensina a nova capacidade sem manter
+nenhum elemento chamativo em estado permanente — o FAB em repouso continua
+do mesmo tamanho (56px) e sem badge/glow contínuo.
+
+**O que não muda:** a busca continua fechada no conteúdo dos Temas
+(tolerante a erro de digitação e sinônimo, via `tags` do modelo de dados —
+`01-arquitetura-informacao.md §2.1`), nunca IA generativa aberta. O valor
+do produto é a palavra da própria autora (Dra. Morgana Kummer), não
+resposta genérica — se não existe Tema pra uma dúvida, o produto diz isso
+com honestidade (ver estado de fallback na anatomia) em vez de inventar
+resposta, e a pergunta é guardada numa fila de revisão separada do
+`07-backlog-temas.md`, que continua curado só por fala literal da autora.

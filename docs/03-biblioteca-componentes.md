@@ -8,11 +8,15 @@ pedidos no briefing, mesmo com propósitos diferentes.
 ## Componente global — `RaciocinioFAB` (elemento central da identidade)
 
 Diferente de todo o resto da biblioteca, este componente **não pertence a
-uma tela** — ele vive acima da experiência de leitura inteira, como uma
-ferramenta sempre à mão. É o componente com maior peso estratégico do
-produto: não é navegação, é o método de raciocínio do próprio Guia,
-disponível no momento exato da dúvida, sem o médico precisar lembrar dele
-de memória.
+uma tela** — ele vive acima da experiência inteira do app, em qualquer
+tela, como ferramenta sempre à mão. É o componente com maior peso
+estratégico do produto: desde a revisão de 2026-08-08
+(`04-cinco-perguntas-acesso.md`), é ao mesmo tempo **o único ponto de
+busca do app** (substitui o antigo ícone de busca do cabeçalho e o overlay
+`BuscaRapida`, retirado — ver nota no fim desta seção) e o método de
+raciocínio do próprio Guia, disponível no momento exato da dúvida, sem o
+médico precisar lembrar dele de memória nem trocar de ferramenta pra
+buscar um termo.
 
 ### Anatomia
 
@@ -25,23 +29,81 @@ de memória.
   system), `shadow-3` para parecer "pousado" acima do conteúdo.
 - Ícone: cérebro em linha (estilo Lucide/SF Symbols, `stroke-width` 2,
   pontas arredondadas) — não usar o emoji 🧠, que destoaria do restante da
-  iconografia de interface do produto.
+  iconografia de interface do produto. Mantido mesmo agora que a função
+  primária de entrada é busca: o ícone carrega a identidade do produto
+  ("voz" do Guia, não busca genérica) — quem ensina a nova capacidade de
+  busca é o pulso descrito abaixo, não uma troca para lupa.
 - Estado de toque: `scale(.94)` + sombra reduzida para `shadow-2`.
-- Visível durante a leitura de qualquer Tema. Não aparece sobre telas de
-  lista (Índice, Busca, Perfil) — lá a ferramenta de raciocínio não é o
-  problema que o usuário está resolvendo naquele momento.
+- **Visível em toda tela do app** — Início, Índice, Favoritos, Perfil e
+  Tema. Não há mais exceção de telas de lista: a ressalva original
+  (`docs/04`, "manter o FAB ausente em Índice/Busca/Perfil") foi revertida
+  conscientemente nesta revisão, porque escondê-lo em qualquer tela
+  removeria a busca de lá também — não sobra outro ponto de entrada.
+
+**Chamada visual — pulso único "tá com dúvida?"**
+- Dispara **uma vez por tela** (flag local por tela — Início, Índice,
+  Favoritos, Perfil, Tema — cada uma ensina a pessoa na primeira vez que o
+  FAB aparece ali, mesmo que ela já tenha visto em outra tela), ~600ms
+  depois do FAB montar — nunca imediato, pra não competir com a transição
+  de entrada da tela.
+- Um rótulo pill ("tá com dúvida?", Callout 15/20·500, `--ink-900` sobre
+  `--bg-base`, `shadow-1`, `--radius-md`) desliza/aparece à esquerda do
+  botão, enquanto o FAB faz um único `scale(1 → 1.06 → 1)` em ~400ms
+  (mais lento que o `scale(.94)` de toque, para não ser lido como feedback
+  de clique) — ambos com `--ease-standard`.
+- Fica visível por ~2,2s (tempo de leitura confortável do texto), depois
+  some sozinho: fade + leve deslize de volta em `--dur-base`.
+- **Nunca loop, nunca badge, nunca brilho contínuo** — é um convite único,
+  não uma notificação não lida. Repetir a cada abertura de app criaria
+  fadiga e contradiz o tom "quiet premium" do design system.
+- Qualquer toque no FAB durante a animação cancela o pulso na hora e abre
+  a sheet normalmente — o hint nunca atrasa a ação real.
 
 **Bottom Sheet**
-- Altura de 50–60% da tela, cantos superiores em `--radius-xl` (28px),
-  fundo `--bg-base`, `shadow-3` intensificado, backdrop escurecido
+- Altura de 50–60% da tela (cresce até ~80% quando a lista de resultados
+  de busca é longa), cantos superiores em `--radius-xl` (28px), fundo
+  `--bg-base`, `shadow-3` intensificado, backdrop escurecido
   (`rgba(28,27,31,.32)`) atrás.
 - *Grabber* (pequena barra horizontal, 36×4, `--ink-100`) centralizado no
   topo — sinaliza arrastável mesmo sem instrução textual.
-- Título: **"Qual é o próximo passo?"** (Título 22/28·700). Esta é a
-  pergunta-âncora do produto inteiro, não um rótulo de tela — por isso o
-  título do sheet é sempre este, nunca contextualizado por Tema.
-- Subtítulo: "Siga o fluxo abaixo antes de decidir qualquer conduta." (Body,
-  `--ink-500`).
+- **Campo de busca**, primeiro elemento interativo da sheet, logo abaixo do
+  grabber — mesmo padrão de input do antigo `BuscaRapida` (placeholder
+  "Buscar dúvida, tema ou módulo"). **Sem foco automático ao abrir** —
+  diferente do modelo cmd-K/Spotlight puro, de propósito: se o teclado
+  subisse na hora, o fluxograma abaixo ficaria escondido antes de a pessoa
+  ver que ele existe, quebrando a convivência dos dois estados. O teclado
+  só sobe quando a pessoa toca o campo ou começa a digitar. Busca é
+  fechada no conteúdo dos Temas — nunca IA generativa aberta — e tolerante
+  a erro de digitação e sinônimo: o motor casa contra título + `tags` do
+  Tema (`01-arquitetura-informacao.md §2.1`, já previsto para busca)
+  usando distância de edição, não substring exata.
+- **Estado vazio (0 caractere digitado):**
+  - Se houver buscas recentes: uma linha de chips (`TrilhoDeAncoras`,
+    mesmo padrão reaproveitado no Tema e no Índice) logo abaixo do campo.
+  - Abaixo disso, o **fluxograma de raciocínio** preenche o resto da
+    sheet (ver bloco abaixo) — é o conteúdo padrão do estado vazio tanto
+    no primeiro uso (sem recentes) quanto depois.
+- **Estado digitando (≥2 caracteres):** chips de recentes e fluxograma
+  somem, substituídos pela lista de **resultados agrupados por Módulo**
+  (tag lavanda com o nome do Módulo acima de cada resultado, termo
+  buscado destacado em negrito) — comportamento herdado do antigo
+  `BuscaRapida`. Toque num resultado fecha a sheet e abre o Tema
+  correspondente, com a transição padrão entre Temas (`02-design-system.md
+  §5`).
+- **Estado de fallback (busca sem Tema correspondente):** em vez de
+  "Nada encontrado — tente outro termo" (framing antigo, que coloca o erro
+  no usuário), o card mostra:
+  - Título: "Ainda não escrevemos sobre isso" (Headline 17/24·600).
+  - Subtítulo: "Sua pergunta foi guardada — pode virar o próximo Tema do
+    Guia." (Body, `--ink-500`) — transforma a ausência de conteúdo em
+    sinal de valor, não em beco sem saída.
+  - Tom neutro: fundo `--bg-subtle`, nunca o tint de urgência/erro
+    (`02-design-system.md §1.4`) — não é alerta clínico, é um estado
+    informativo comum. Ícone outline (nunca emoji — é mensagem de
+    sistema, não conteúdo de bloco).
+  - Tecnicamente, o termo buscado vai para uma **fila de revisão
+    separada** — nunca escreve direto em `07-backlog-temas.md`, que
+    continua 100% curado pela fala literal da Dra. Morgana Kummer.
 - **Fluxograma de raciocínio** (não é lista/checklist nem árvore de decisão
   com ramos — decisão de UX revisada duas vezes: primeiro trocamos o
   checklist plano por um fluxograma com ramificação SIM/NÃO, depois
@@ -68,42 +130,62 @@ de memória.
   - Cada nó é apenas texto com um emoji de identidade (sem cor de fundo
     diferenciada, sem borda de ênfase) — nenhum nó é mais ou menos
     "importante" visualmente que outro, todos têm o mesmo peso porque
-    fazem parte da mesma linha de raciocínio.
+    fazem parte da mesma linha de raciocínio. Os emojis aqui são
+    legítimos apesar da regra de interface = ícone outline (§8 do design
+    system): cada um referencia a identidade de um bloco de conteúdo do
+    Tema, não é decoração de interface.
   - **Nenhum nó é marcável.** Não há caixa de seleção, não há estado de
     "concluído" — o médico lê a sequência, não a preenche.
-  - **Nó final** (`✅ Voltar ao "Próximo passo" desta página`) é o único
-    elemento acionável do fluxo: um botão cheio (`--lav-500`), não um
-    texto. Ao tocar, fecha o sheet e rola a página do Tema até o bloco
-    ✅ Qual é o próximo passo? (com um pulso breve de destaque no bloco) —
-    o fluxo não responde a pergunta por dentro do sheet, ele devolve o
-    médico para a resposta que já existe no conteúdo do Tema. Reutiliza o
-    mesmo emoji ✅ do bloco de destino, de propósito, para o olho associar
-    o CTA ao lugar para onde ele leva antes mesmo de ler o texto.
+  - **Nó final é acionável e depende de onde o FAB foi aberto:**
+    - Dentro da leitura de um Tema: `✅ Voltar ao "Próximo passo" desta
+      página` — botão cheio (`--lav-500`). Ao tocar, fecha a sheet e rola
+      a página até o bloco ✅ Qual é o próximo passo? (com pulso breve de
+      destaque no bloco), reutilizando o mesmo emoji ✅ do bloco de
+      destino de propósito, para o olho associar o CTA ao lugar para onde
+      ele leva antes mesmo de ler o texto.
+    - Fora de um Tema (Início, Índice, Favoritos, Perfil — não existe
+      página nem bloco ✅ pra rolar até): o botão vira `🔎 Buscar o achado
+      acima`, fecha o fluxograma e devolve o foco (teclado) ao campo de
+      busca no topo da sheet, em vez de fechar a sheet inteira — o
+      raciocínio termina convidando a digitar, já que não há Tema aberto
+      pra voltar.
 - Rodapé: botão discreto (texto, sem preenchimento) **"Fechar e voltar ao
-  tema"** — deliberadamente não é um botão de ação primária (sem `--lav-500`
-  de fundo): fechar o sheet é sempre a saída natural, nunca uma decisão que
-  precise de destaque.
+  tema"** (ou **"Fechar"**, fora de Tema) — deliberadamente não é um botão
+  de ação primária (sem `--lav-500` de fundo): fechar o sheet é sempre a
+  saída natural, nunca uma decisão que precise de destaque.
 
 ### Interação (deve parecer nativa do iPhone)
 
 - Abrir: sheet sobe de baixo com spring leve (`--ease-standard`,
-  ~`--dur-slow`), backdrop cresce em opacidade junto.
-- Fechar por: (a) toque no backdrop, (b) toque em "Fechar e voltar ao
-  tema", (c) arrastar o sheet para baixo a partir do grabber ou do próprio
-  conteúdo — abaixo de um limiar de distância/velocidade o sheet volta à
-  posição original (rubber-band), acima do limiar ele fecha seguindo o
-  gesto.
-- Nunca bloqueia com um modal de tela cheia — o Tema por trás continua
+  ~`--dur-slow`), backdrop cresce em opacidade junto. Campo de busca
+  visível mas sem foco — teclado só sobe ao toque (ver anatomia acima).
+- Fechar por: (a) toque no backdrop, (b) toque em "Fechar" / "Fechar e
+  voltar ao tema", (c) arrastar o sheet para baixo a partir do grabber ou
+  do próprio conteúdo — abaixo de um limiar de distância/velocidade o
+  sheet volta à posição original (rubber-band), acima do limiar ele fecha
+  seguindo o gesto.
+- Nunca bloqueia com um modal de tela cheia — a tela por trás continua
   parcialmente visível (dimmed), reforçando que o usuário está "saindo por
-  um instante para pensar", não trocando de contexto.
+  um instante para pensar ou buscar", não trocando de contexto.
 
 ### Por que este componente é diferente de todos os outros
 
 Todo o resto da biblioteca existe para apresentar conteúdo de um Tema
-específico. O `RaciocinioFAB` existe para o momento em que o conteúdo do
-Tema **não é suficiente sozinho** — quando o médico precisa reorganizar o
-próprio raciocínio antes de agir. Por isso ele é global e não fica dentro
-do template de página: a dúvida não respeita a estrutura de um Tema.
+específico. O `RaciocinioFAB` existe para o momento em que o médico ainda
+não chegou ao conteúdo certo — seja porque precisa **encontrá-lo** (busca)
+ou porque o conteúdo de um Tema aberto **não é suficiente sozinho**
+(raciocínio) — quando ele precisa reorganizar o próprio raciocínio antes
+de agir. Por isso ele é global e não fica dentro do template de página: a
+dúvida não respeita a estrutura de uma tela.
+
+### Nota — `BuscaRapida` retirado
+
+O overlay full-screen `BuscaRapida`, antes ativado por um ícone de busca no
+cabeçalho, foi retirado como componente próprio nesta revisão — sua
+anatomia (campo de busca, resultados por Módulo, chips de recentes no
+estado vazio) foi absorvida integralmente pela sheet do `RaciocinioFAB`
+acima. Não existe mais ícone de busca no cabeçalho: o FAB é o único ponto
+de entrada.
 
 ## Anatomia base — `InfoBlock`
 
@@ -299,7 +381,7 @@ reconhecível em qualquer tela do app:
 |---|---|---|
 | `GuiaArticleTemplate` (Tema) | Cada bloco pulável da página (Essencial, Erro comum, Próximo passo…) | Toque rola até o bloco; o chip do bloco visível no topo fica destacado (`scroll-spy`) |
 | `IndiceModulo` (Índice) | Cada Módulo | Toque rola até a seção do Módulo na lista |
-| `BuscaRapida` (Busca) | Buscas recentes / sugeridas | Toque preenche o campo de busca com aquele termo |
+| `RaciocinioFAB` (sheet, estado vazio) | Buscas recentes / sugeridas | Toque preenche o campo de busca com aquele termo |
 
 Regra visual única: chip inativo em `--bg-sunken` com texto `--ink-500`; chip
 ativo/atual em `--lav-500` com texto branco. Nunca mais de ~7 chips visíveis
@@ -316,15 +398,8 @@ certa, e renderizar rodapé de navegação.
 Lista de Módulos expansíveis → Temas, com o `TrilhoDeAncoras` no topo
 filtrando/pulando para o Módulo desejado. Cada linha de Tema mostra: título
 (pergunta), ícone de favorito (preenchido a dourado quando favoritado), seta
-de navegação. Busca acessível pelo ícone no cabeçalho, não como aba própria.
-
-### `BuscaRapida` (overlay)
-Full-screen, ativado por ícone no cabeçalho. Input grande no topo, resultados
-agrupados por Módulo (tag lavanda com o nome do Módulo acima de cada
-resultado, termo buscado destacado em negrito), aparecem a partir de 2
-caracteres digitados. Estado vazio mostra o `TrilhoDeAncoras` com buscas
-recentes como chips. Pensado para responder à meta de 10 segundos mesmo
-quando o usuário não sabe em qual Módulo o Tema está.
+de navegação. Busca acessível pelo `RaciocinioFAB` (global, ver acima) —
+não há mais ícone de busca no cabeçalho nem aba própria de busca.
 
 ### `NavegacaoSequencial`
 Rodapé fixo ao fim do Tema: "◀ Tema anterior" / "Voltar ao índice" / "Próximo
