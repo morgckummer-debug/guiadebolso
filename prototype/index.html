@@ -545,7 +545,7 @@ const TEMAS = [
       'ISUOG Practice Guidelines: diagnosis and management of small-for-gestational-age fetus and fetal growth restriction. Ultrasound Obstet Gynecol, 2020.',
       'Gordijn SJ et al. "Consensus definition of fetal growth restriction: a Delphi procedure." Ultrasound Obstet Gynecol, 2016.',
     ],
-    vejaTambem:['placenta-baixa','datacao-gestacao'],
+    vejaTambem:['placenta-baixa','datacao-gestacao','pig-x-rcf'],
   },
   {
     id:'placenta-baixa',
@@ -832,7 +832,7 @@ const TEMAS = [
       'Nicolaides KH / Fetal Medicine Foundation (FMF) — fisiopatologia da centralização fetal e Doppler — referência específica pendente de indicação da autora.',
       'ISUOG Practice Guidelines: use of Doppler ultrasonography in obstetrics. Ultrasound Obstet Gynecol.',
     ],
-    vejaTambem:[],
+    vejaTambem:['pig-x-rcf'],
   },
   {
     id:'grau-placenta',
@@ -945,6 +945,49 @@ const TEMAS = [
       'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan (datação gestacional). Ultrasound Obstet Gynecol, 2023.',
     ],
     vejaTambem:['morfologico-1trimestre','percentil8'],
+  },
+  {
+    id:'pig-x-rcf',
+    titulo:'PIG × RCF',
+    modulo:'crescimento',
+    tags:['pig','rcf','ciur','restrição de crescimento fetal','pequeno para idade gestacional','percentil de peso','doppler','delphi','crescimento fetal'],
+    essencial:'PIG (pequeno para idade gestacional) é uma classificação estatística — peso ou percentil abaixo do esperado. RCF (restrição de crescimento fetal) é um subconjunto de PIG: o feto não atingiu seu potencial de crescimento genético por insuficiência placentária, com maior risco perinatal. Todo RCF é PIG, mas nem todo PIG é RCF — Doppler e trajetória de crescimento são o que diferenciam os dois.',
+    erro:'Tratar percentil baixo como sinônimo de restrição de crescimento e já intensificar a vigilância (ou cogitar antecipação de parto) só pelo número do percentil, sem checar Doppler e sem comparar com o(s) ultrassom(s) anterior(es) — a maioria dos fetos PIG entre percentil 3 e 10 é pequena constitucional, não patológica.',
+    passo:{tipo:'checklist', itens:[
+      'Confirme a idade gestacional pela datação mais confiável disponível.',
+      'Avalie o Doppler — artéria umbilical, ACM e relação cérebro-placentária — antes de rotular o feto.',
+      'Compare com o(s) ultrassom(s) anterior(es): trajetória de crescimento pesa mais que um percentil isolado num único exame.',
+      'Aplique os critérios de Delphi (abaixo) para diferenciar PIG constitucional de RCF precoce/tardia — Doppler alterado ou percentil <3 já muda a conduta.',
+      'PIG constitucional com Doppler normal: reavalie em 2 semanas, sem intensificar a vigilância além disso.',
+      'RCF confirmada por critério de Delphi: encaminhe para pré-natal de alto risco / medicina fetal.',
+    ]},
+    criterios:[
+      {titulo:'PIG × RCF — a diferença em uma frase', html:`
+<div class="def-row"><div class="def-term">PIG</div><div class="def-desc">Peso ou percentil abaixo do esperado (geralmente &lt;P10). Descreve um tamanho — a maioria é pequena constitucional, sem risco aumentado.</div></div>
+<div class="def-row"><div class="def-term">RCF</div><div class="def-desc">Feto que não atingiu seu potencial de crescimento genético por insuficiência placentária. Descreve uma causa — subconjunto de PIG, com maior risco perinatal.</div></div>
+<div class="def-row"><div class="def-term">Regra</div><div class="def-desc">Todo RCF é PIG, mas nem todo PIG é RCF.</div></div>`},
+      {titulo:'Critérios de Delphi — RCF precoce (antes de 32 semanas)', html:`
+<div class="def-row"><div class="def-term">Isolado</div><div class="def-desc">CA ou peso fetal estimado &lt; percentil 3, OU diástole zero/reversa na artéria umbilical.</div></div>
+<div class="def-row"><div class="def-term">Associados (2 de 3)</div><div class="def-desc">CA ou peso fetal estimado &lt; percentil 10 + IP da artéria uterina &gt; percentil 95 + IP da artéria umbilical &gt; percentil 95.</div></div>`},
+      {titulo:'Critérios de Delphi — RCF tardia (a partir de 32 semanas)', html:`
+<div class="def-row"><div class="def-term">Isolado</div><div class="def-desc">CA ou peso fetal estimado &lt; percentil 3.</div></div>
+<div class="def-row"><div class="def-term">Associados (2 de 3)</div><div class="def-desc">CA ou peso fetal estimado &lt; percentil 10 + queda de trajetória de crescimento cruzando &gt;2 quartis + relação cérebro-placentária (RCP) &lt; percentil 5 ou IP da artéria umbilical &gt; percentil 95.</div></div>`},
+    ],
+    explicar:'"Nem todo bebê pequeno tem um problema na placenta. Existem bebês naturalmente menores, do mesmo jeito que existem adultos mais baixos. O que diferencia isso é o fluxo de sangue pelo Doppler e como o crescimento evolui ao longo dos exames — é isso que vamos acompanhar."',
+    pensando:'Meu bebê é só pequeno ou tem restrição de crescimento? Isso é grave? Vou ter que antecipar o parto?',
+    confianca:'Explicar que "PIG" descreve um tamanho e "RCF" descreve uma causa — e que é o Doppler, não o percentil isolado, que decide qual dos dois é o caso — transforma um número assustador numa investigação com critério claro.',
+    aprendi:'O Doppler fetal é crucial para diferenciar PIG de CIUR — por isso deve sempre ser pedido pelo médico auxiliar diante da suspeita de feto pequeno. Sem o Doppler, o ultrassonografista fica de mãos atadas 🫣.',
+    vocesabia:[
+      '"PIG" e "RCF" não são sinônimos — todo RCF é PIG, mas nem todo PIG é RCF. A maioria dos fetos PIG (percentil 3–10) é pequena constitucional: sem risco aumentado, sem necessidade de Doppler seriado além do habitual.',
+      'A restrição de crescimento fetal (RCF) recebeu, em 2016, uma definição de consenso internacional (Delphi) justamente para reduzir a variabilidade entre serviços na hora de rotular um feto como PIG ou RCF.',
+    ],
+    encaminhar:'RCF confirmada por critério de Delphi (precoce ou tardia); percentil &lt;3 em qualquer idade gestacional; Doppler de artéria umbilical, ACM ou relação cérebro-placentária alterados; queda de trajetória de crescimento cruzando ≥2 quartis entre exames — encaminhar para pré-natal de alto risco / medicina fetal.',
+    aula:{titulo:'PIG × RCF: como usar o Doppler para diferenciar', pendente:true},
+    referencias:[
+      'Gordijn SJ et al. "Consensus definition of fetal growth restriction: a Delphi procedure." Ultrasound Obstet Gynecol, 2016.',
+      'ISUOG Practice Guidelines: diagnosis and management of small-for-gestational-age fetus and fetal growth restriction. Ultrasound Obstet Gynecol, 2020.',
+    ],
+    vejaTambem:['percentil8','doppler-introducao'],
   },
 ];
 

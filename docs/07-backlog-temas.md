@@ -46,9 +46,10 @@ marcar como concluído aqui.
 - [ ] Cisto de plexo coroide
 
 ## Crescimento
-- [ ] PIG × RCF — *confusão que a autora considera enorme; já existe o
-      tema "Percentil de peso baixo" tocando nisso (módulo Crescimento
-      fetal), mas pode valer um tema dedicado só à diferenciação PIG × RCF.*
+- [x] PIG × RCF — escrito como tema dedicado à diferenciação (módulo
+      Crescimento fetal, id `pig-x-rcf`), com critérios de Delphi para
+      RCF precoce/tardia e ligação bidirecional com "Percentil de peso
+      baixo".
 - [ ] Macrossomia
 - [ ] Peso fetal no P10
 - [ ] Circunferência abdominal isoladamente baixa

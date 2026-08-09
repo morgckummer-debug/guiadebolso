@@ -40,3 +40,5 @@ a voz dela, só ajustar pontuação/clareza se necessário.
 - ✅ Peso fetal no percentil 8: preenchido com resposta literal da autora.
 - ✅ Placenta baixa: autora confirmou manter o rascunho existente como
   fala própria.
+- ✅ PIG × RCF: preenchido com resposta literal da autora (pergunta-gatilho
+  nº 1 do banco acima).
