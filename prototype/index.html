@@ -281,18 +281,6 @@ button,input{font-family:inherit;}
 .result-row .q{font-size:13.5px;font-weight:600;}
 .result-row mark{background:none;color:var(--lav-700);font-weight:700;}
 
-.section-label{font-size:11px;font-weight:700;color:var(--ink-300);text-transform:uppercase;letter-spacing:.06em;margin:28px 0 10px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;}
-.swatch{border-radius:14px;padding:14px;height:84px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:var(--shadow-1);font-size:11px;font-weight:700;}
-.swatch span{display:block;font-weight:500;opacity:.75;font-size:10px;}
-.card-doc{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-2);padding:24px;margin-bottom:20px;}
-.type-row{display:flex;align-items:baseline;gap:16px;padding:12px 0;border-bottom:1px solid var(--ink-100);}
-.type-row:last-child{border-bottom:none;}
-.type-row .lbl{width:110px;flex-shrink:0;font-size:11px;color:var(--ink-500);font-weight:600;}
-.space-row{display:flex;align-items:center;gap:12px;padding:8px 0;}
-.space-bar{background:var(--lav-500);height:14px;border-radius:4px;}
-.space-row span{font-size:12px;color:var(--ink-500);width:40px;}
-.comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;}
 </style>
 </head>
 <body>
@@ -304,82 +292,11 @@ button,input{font-family:inherit;}
   </div>
 
   <div class="demo-tabs" role="tablist">
-    <button class="demo-tab active" data-target="panel-ds">Design System</button>
-    <button class="demo-tab" data-target="panel-comp">Componentes</button>
-    <button class="demo-tab" data-target="panel-tema">Tema</button>
-    <button class="demo-tab" data-target="panel-indice">Índice</button>
+    <button class="demo-tab active" data-target="panel-indice">Índice</button>
     <button class="demo-tab" data-target="panel-busca">Busca</button>
   </div>
 
-  <!-- ============ DESIGN SYSTEM ============ -->
-  <section id="panel-ds" class="demo-panel active">
-    <div class="card-doc">
-      <div class="section-label" style="margin-top:0">Cor — base</div>
-      <div class="grid">
-        <div class="swatch" style="background:#fff;color:#1C1B1F;border:1px solid #E7E6EA">bg-base<span>#FFFFFF</span></div>
-        <div class="swatch" style="background:#FAFAFA;color:#1C1B1F;border:1px solid #E7E6EA">bg-subtle<span>#FAFAFA</span></div>
-        <div class="swatch" style="background:#1C1B1F;color:#fff">ink-900<span>#1C1B1F</span></div>
-        <div class="swatch" style="background:#6F6E76;color:#fff">ink-500<span>#6F6E76</span></div>
-      </div>
-      <div class="section-label">Cor — lavanda (acento primário)</div>
-      <div class="grid">
-        <div class="swatch" style="background:#F1EEFC;color:#5B4BB8">lav-100</div>
-        <div class="swatch" style="background:#C9C0F2;color:#fff">lav-300</div>
-        <div class="swatch" style="background:#8B7AE0;color:#fff">lav-500</div>
-        <div class="swatch" style="background:#5B4BB8;color:#fff">lav-700</div>
-      </div>
-      <div class="section-label">Cor — dourado (prestígio, uso escasso)</div>
-      <div class="grid">
-        <div class="swatch" style="background:#FBF4E6;color:#9C7C3E">gold-100</div>
-        <div class="swatch" style="background:#E8D9B5;color:#7a5f2f">gold-300</div>
-        <div class="swatch" style="background:#C6A15B;color:#fff">gold-500</div>
-        <div class="swatch" style="background:#9C7C3E;color:#fff">gold-700</div>
-      </div>
-      <div class="section-label">Cor — semânticas (desaturadas)</div>
-      <div class="grid">
-        <div class="swatch" style="background:#EAF3EE;color:#5E8A72">sucesso</div>
-        <div class="swatch" style="background:#FBF1E6;color:#C98A46">atenção</div>
-        <div class="swatch" style="background:#F7EAEB;color:#B98B90">empatia</div>
-        <div class="swatch" style="background:#FBEAE8;color:#B85C52">urgência</div>
-      </div>
-    </div>
-
-    <div class="card-doc">
-      <div class="section-label" style="margin-top:0">Tipografia</div>
-      <div class="type-row"><div class="lbl">Título 22/28 · 700</div><div style="font-size:22px;font-weight:700">Como aproveitar este Guia?</div></div>
-      <div class="type-row"><div class="lbl">Headline 17/24 · 600</div><div style="font-size:17px;font-weight:600">O Essencial</div></div>
-      <div class="type-row"><div class="lbl">Body 16/24 · 400</div><div style="font-size:16px">Texto corrido de leitura confortável em consulta.</div></div>
-      <div class="type-row"><div class="lbl">Caption / eyebrow</div><div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#5B4BB8">O ESSENCIAL</div></div>
-      <div class="type-row"><div class="lbl">Footnote</div><div style="font-size:12px;color:#6F6E76">Metodologia de organização, v1.0</div></div>
-    </div>
-
-    <div class="card-doc">
-      <div class="section-label" style="margin-top:0">Espaçamento (múltiplos de 4)</div>
-      <div class="space-row"><span>4</span><div class="space-bar" style="width:4px"></div></div>
-      <div class="space-row"><span>8</span><div class="space-bar" style="width:8px"></div></div>
-      <div class="space-row"><span>16</span><div class="space-bar" style="width:16px"></div></div>
-      <div class="space-row"><span>24</span><div class="space-bar" style="width:24px"></div></div>
-      <div class="space-row"><span>32</span><div class="space-bar" style="width:32px"></div></div>
-      <div class="space-row"><span>56</span><div class="space-bar" style="width:56px"></div></div>
-    </div>
-
-    <div class="card-doc">
-      <div class="section-label" style="margin-top:0">Elevação e raio</div>
-      <div class="grid">
-        <div class="swatch" style="background:#fff;box-shadow:0 1px 2px rgba(28,27,31,.04),0 1px 1px rgba(28,27,31,.03);border-radius:12px;color:#1C1B1F">shadow-1</div>
-        <div class="swatch" style="background:#fff;box-shadow:0 6px 16px rgba(28,27,31,.07),0 2px 4px rgba(28,27,31,.04);border-radius:16px;color:#1C1B1F">shadow-2</div>
-        <div class="swatch" style="background:#fff;box-shadow:0 16px 40px rgba(28,27,31,.12),0 4px 10px rgba(28,27,31,.05);border-radius:20px;color:#1C1B1F">shadow-3</div>
-        <div class="swatch" style="background:#fff;box-shadow:0 6px 16px rgba(28,27,31,.07);border-radius:28px;color:#1C1B1F">radius-xl</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ COMPONENTES ============ -->
-  <section id="panel-comp" class="demo-panel">
-    <div class="comp-grid" id="comp-grid"></div>
-  </section>
-
-  <!-- ============ TEMA (padrão adotado, ex-"Layout C") ============ -->
+  <!-- ============ TEMA (padrão adotado, ex-"Layout C") — acessível a partir do Índice/Busca, sem aba própria ============ -->
   <section id="panel-tema" class="demo-panel">
     <div class="phone-row">
       <div class="phone-col">
@@ -423,7 +340,7 @@ button,input{font-family:inherit;}
   </section>
 
   <!-- ============ ÍNDICE ============ -->
-  <section id="panel-indice" class="demo-panel">
+  <section id="panel-indice" class="demo-panel active">
     <div class="phone-row">
       <div class="phone-col">
         <h3>Índice — mesmo trilho, agora filtrando módulos</h3>
@@ -1322,26 +1239,6 @@ function bindBuscaResultInteractions(){
 }
 
 renderBusca('');
-
-/* ================= componentes showcase ================= */
-function wrapDoc(icon,label,cls,text){
-  return `<div class="block ${cls}" style="max-width:520px"><div class="block-head"><div class="chip">${icon}</div><div class="eyebrow">${label}</div></div><div class="block-body">${text}</div></div>`;
-}
-document.getElementById('comp-grid').innerHTML = `
-${wrapDoc('🎯','O Essencial','b-essencial','Resposta em um parágrafo curto. Único bloco visível sem rolar a tela.')}
-${wrapDoc('⚠️','Erro comum','b-erro','O engano mais frequente relacionado ao tema.')}
-${wrapDoc('❤️','Paciente pensando','b-pensando','Antecipa a preocupação não verbalizada da gestante.')}
-${wrapDoc('💬','Como explicar','b-explicar','Frase pronta, em itálico, para usar quase palavra por palavra.')}
-${wrapDoc('✅','Próximo passo','b-passo','Pode virar checklist numerada quando a ação tem mais de um passo. Vem depois de acolher e explicar.')}
-${wrapDoc('🤝','Fortalece confiança','b-confianca','Único uso de dourado fora da Aula Express — sinaliza "valor".')}
-${wrapDoc('💜','Aprendi que…','b-aprendi','Aspas decorativas e itálico — tom de mentoria, não protocolo. Assinado "— Dra. Morgana Kummer" em itálico menor, alinhado à direita.')}
-${wrapDoc('📚','Referências','b-ref','Colapsado por padrão — não compete com a resposta rápida.')}
-${wrapDoc('➜','Veja também','b-veja','Lista neutra de temas relacionados ao final da página.')}
-<div class="block b-alerta" style="max-width:520px"><div class="block-head"><div class="chip">🚩</div><div class="eyebrow">Quando encaminhar</div></div><div class="block-body">Contextual — só aparece quando há critério objetivo de encaminhamento. Borda 2px, maior peso visual.</div></div>
-<div style="max-width:520px"><div class="chip-fact"><span class="chip-fact-icon">💡</span><div class="chip-fact-text">Contextual — aparece dentro do fluxo, não em posição fixa.</div></div></div>
-<div class="block" style="max-width:520px;box-shadow:none;border:1px dashed var(--ink-300);background:transparent"><div class="block-head"><div class="chip" style="background:var(--lav-100);color:var(--lav-700)">⌕</div><div class="eyebrow" style="color:var(--ink-500)">Trilho de âncoras</div></div><div class="block-body">Componente de navegação por chips, reaproveitado em 3 telas: pular bloco no Tema, filtrar módulo no Índice, chip de busca recente na Busca.</div></div>
-<div class="block" style="max-width:520px;border:1.5px solid var(--lav-300)"><div class="block-head"><div class="chip" style="background:var(--lav-500);color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9.5 2a3.5 3.5 0 0 0-3.5 3.5c0 .3 0 .6.1.9A3 3 0 0 0 4 9.3 3 3 0 0 0 3 11.5 3 3 0 0 0 4.5 14c-.3.5-.5 1.1-.5 1.8A3.2 3.2 0 0 0 7 19a3 3 0 0 0 2.5 2 3 3 0 0 0 3-2.2V5.5A3.5 3.5 0 0 0 9.5 2Z"/><path d="M14.5 2a3.5 3.5 0 0 1 3.5 3.5c0 .3 0 .6-.1.9A3 3 0 0 1 20 9.3a3 3 0 0 1 1 2.2 3 3 0 0 1-1.5 2.5c.3.5.5 1.1.5 1.8A3.2 3.2 0 0 1 17 19a3 3 0 0 1-2.5 2 3 3 0 0 1-3-2.2V5.5A3.5 3.5 0 0 1 14.5 2Z"/></svg></div><div class="eyebrow" style="color:var(--lav-700)">RaciocinioFAB · global</div></div><div class="block-body">Botão flutuante sempre visível durante a leitura. Abre o método de raciocínio do Guia — "Qual é o próximo passo?" — sem depender de memória. Elemento central da identidade do produto, não apenas navegação.</div></div>
-`;
 </script>
 </body>
 </html>
