@@ -6,10 +6,11 @@ import { createAdminClient } from '@/lib/supabase/admin';
 //
 // IMPORTANTE: os nomes de campo abaixo (email, status) são os mais comuns
 // na documentação pública do Kiwify, mas o formato exato pode variar por
-// tipo de produto/versão da API. Antes de ativar de verdade: configure a
-// URL deste endpoint no painel do Kiwify, use o botão "Enviar teste" dele,
-// e confira nos logs da Vercel (Deployments → Functions → Logs) o payload
-// real recebido — ajustamos os nomes de campo abaixo se for preciso.
+// tipo de produto/versão da API. Por isso todo POST recebido é logado por
+// inteiro (headers + corpo) ANTES de qualquer verificação — assim dá pra
+// conferir nos logs da Vercel (aba "Logs" do projeto) o payload real do
+// botão "Testar Webhook" e ajustar os nomes de campo abaixo se preciso,
+// sem precisar de uma venda de verdade para descobrir o formato.
 const STATUS_ATIVA = new Set(['paid', 'approved', 'completed']);
 const STATUS_REVOGADA = new Set(['refunded', 'chargedback', 'chargeback', 'canceled', 'cancelled']);
 
@@ -33,13 +34,24 @@ function extrairOrderId(payload: any): string | null {
 }
 
 export async function POST(request: NextRequest) {
-  const secretEsperado = process.env.KIWIFY_WEBHOOK_SECRET;
+  const rawBody = await request.text();
+  const headers = Object.fromEntries(request.headers.entries());
   const secretRecebido = request.nextUrl.searchParams.get('secret');
+
+  // Log de diagnóstico — sempre roda, mesmo se a verificação abaixo falhar.
+  console.log('[kiwify webhook] chamada recebida', {
+    query: Object.fromEntries(request.nextUrl.searchParams.entries()),
+    headers,
+    body: rawBody,
+  });
+
+  const secretEsperado = process.env.KIWIFY_WEBHOOK_SECRET;
   if (!secretEsperado || secretRecebido !== secretEsperado) {
+    console.warn('[kiwify webhook] secret não confere — request acima foi só logada, não processada');
     return NextResponse.json({ error: 'não autorizado' }, { status: 401 });
   }
 
-  const payload = await request.json().catch(() => null);
+  const payload = rawBody ? JSON.parse(rawBody) : null;
   if (!payload) {
     return NextResponse.json({ error: 'payload inválido' }, { status: 400 });
   }
