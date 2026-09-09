@@ -1,0 +1,137 @@
+:root {
+  --bg-subtle: #FAFAFA;
+  --bg-sunken: #F5F5F7;
+  --ink-900: #1C1B1F;
+  --ink-700: #45444B;
+  --ink-500: #6F6E76;
+  --ink-100: #E7E6EA;
+  --lav-100: #F1EEFC;
+  --lav-500: #8B7AE0;
+  --lav-700: #5B4BB8;
+  --danger-bg: #FBEAE8;
+  --danger-fg: #B85C52;
+  --radius-lg: 20px;
+  --radius-md: 16px;
+  --shadow-2: 0 6px 16px rgba(28,27,31,.07), 0 2px 4px rgba(28,27,31,.04);
+}
+
+.login-shell {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-subtle);
+  padding: 24px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2);
+  padding: 32px 28px;
+}
+
+.login-title {
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--ink-900);
+  margin: 0 0 6px;
+}
+
+.login-subtitle {
+  font-size: 13.5px;
+  color: var(--ink-500);
+  margin: 0 0 24px;
+  line-height: 19px;
+}
+
+.login-tabs {
+  display: flex;
+  gap: 6px;
+  background: var(--bg-sunken);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+}
+
+.login-tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 9px 0;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-500);
+  cursor: pointer;
+}
+
+.login-tab.active {
+  background: var(--lav-500);
+  color: #fff;
+}
+
+.login-field {
+  margin-bottom: 14px;
+}
+
+.login-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-700);
+  margin-bottom: 6px;
+}
+
+.login-field input {
+  width: 100%;
+  border: 1px solid var(--ink-100);
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-size: 14px;
+  color: var(--ink-900);
+  outline: none;
+  font-family: inherit;
+}
+
+.login-field input:focus {
+  border-color: var(--lav-500);
+}
+
+.login-submit {
+  width: 100%;
+  border: none;
+  background: var(--lav-500);
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.login-submit:disabled {
+  opacity: .6;
+  cursor: default;
+}
+
+.login-message {
+  font-size: 12.5px;
+  line-height: 18px;
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+}
+
+.login-message.error {
+  background: var(--danger-bg);
+  color: var(--danger-fg);
+}
+
+.login-message.info {
+  background: var(--lav-100);
+  color: var(--lav-700);
+}
