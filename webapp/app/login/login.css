@@ -135,3 +135,31 @@
   background: var(--lav-100);
   color: var(--lav-700);
 }
+
+.login-buy {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ink-100);
+  text-align: center;
+  font-size: 13px;
+}
+
+.login-buy span {
+  display: block;
+  color: var(--ink-500);
+  margin-bottom: 8px;
+}
+
+.login-buy a {
+  display: inline-block;
+  color: var(--lav-700);
+  font-weight: 700;
+  text-decoration: none;
+  border: 1.5px solid var(--lav-500);
+  border-radius: 12px;
+  padding: 9px 18px;
+}
+
+.login-buy a:hover {
+  background: var(--lav-100);
+}

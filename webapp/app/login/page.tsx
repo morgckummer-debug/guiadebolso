@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
+import { KIWIFY_CHECKOUT_URL } from '@/lib/kiwifyCheckoutUrl';
 import './login.css';
 
 export default function LoginPage() {
@@ -99,6 +100,13 @@ export default function LoginPage() {
             {loading ? 'Aguarde…' : mode === 'entrar' ? 'Entrar' : 'Criar conta'}
           </button>
         </form>
+
+        <div className="login-buy">
+          <span>Ainda não tem acesso?</span>
+          <a href={KIWIFY_CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
+            Garantir meu acesso
+          </a>
+        </div>
       </div>
     </div>
   );
