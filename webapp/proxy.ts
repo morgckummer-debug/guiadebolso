@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 
 // Renova o token de sessão do Supabase a cada requisição e redireciona para
 // /login quem tentar acessar /app sem estar autenticado.
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   let response = NextResponse.next({ request });
 
   const supabase = createServerClient(
