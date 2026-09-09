@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
+import { KIWIFY_CHECKOUT_URL } from '@/lib/kiwifyCheckoutUrl';
 import { SHELL_HTML } from './shellMarkup';
 import './app.css';
 
@@ -78,12 +79,22 @@ export default function AppPage() {
           usou o mesmo e-mail no checkout e no cadastro aqui — o acesso é liberado automaticamente
           em poucos minutos após a compra.
         </p>
-        <button
-          onClick={handleLogout}
-          style={{ border: 'none', background: '#8B7AE0', color: '#fff', borderRadius: 12, padding: '10px 20px', fontWeight: 700, cursor: 'pointer' }}
+        <a
+          href={KIWIFY_CHECKOUT_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ display: 'inline-block', border: 'none', background: '#8B7AE0', color: '#fff', borderRadius: 12, padding: '10px 20px', fontWeight: 700, textDecoration: 'none', marginBottom: 12 }}
         >
-          Sair
-        </button>
+          Garantir meu acesso
+        </a>
+        <div>
+          <button
+            onClick={handleLogout}
+            style={{ border: 'none', background: 'transparent', color: '#6F6E76', fontSize: 12, fontWeight: 600, cursor: 'pointer' }}
+          >
+            Sair
+          </button>
+        </div>
       </div>
     );
   }
