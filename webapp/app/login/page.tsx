@@ -10,6 +10,7 @@ function LoginForm() {
   const [mode, setMode] = useState<'entrar' | 'criar'>('entrar');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
@@ -48,6 +49,11 @@ function LoginForm() {
       router.push('/app');
       router.refresh();
     } else {
+      if (!acceptedPrivacy) {
+        setError('É preciso aceitar a Política de Privacidade para criar a conta.');
+        setLoading(false);
+        return;
+      }
       const { error } = await supabase.auth.signUp({ email, password });
       setLoading(false);
       if (error) {
@@ -124,7 +130,28 @@ function LoginForm() {
               autoComplete={mode === 'entrar' ? 'current-password' : 'new-password'}
             />
           </div>
-          <button className="login-submit" type="submit" disabled={loading}>
+          {mode === 'criar' && (
+            <label className="login-consent">
+              <input
+                type="checkbox"
+                required
+                checked={acceptedPrivacy}
+                onChange={(e) => setAcceptedPrivacy(e.target.checked)}
+              />
+              <span>
+                Li e aceito a{' '}
+                <a href="/privacidade" target="_blank" rel="noopener noreferrer">
+                  Política de Privacidade
+                </a>
+              </span>
+            </label>
+          )}
+
+          <button
+            className="login-submit"
+            type="submit"
+            disabled={loading || (mode === 'criar' && !acceptedPrivacy)}
+          >
             {loading ? 'Aguarde…' : mode === 'entrar' ? 'Entrar' : 'Criar conta'}
           </button>
         </form>
