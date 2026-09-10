@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { Suspense, useEffect, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { KIWIFY_CHECKOUT_URL } from '@/lib/kiwifyCheckoutUrl';
 import './login.css';
 
-export default function LoginPage() {
+function LoginForm() {
   const [mode, setMode] = useState<'entrar' | 'criar'>('entrar');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,6 +14,12 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const authError = searchParams.get('auth_error');
+    if (authError) setError(`Login com Google falhou: ${authError}`);
+  }, [searchParams]);
 
   async function handleGoogleLogin() {
     setError(null);
@@ -131,5 +137,13 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginForm />
+    </Suspense>
   );
 }

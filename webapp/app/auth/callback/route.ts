@@ -6,6 +6,12 @@ import { createClient } from '@/lib/supabase/server';
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get('code');
+  const googleError = searchParams.get('error_description') ?? searchParams.get('error');
+
+  if (googleError) {
+    console.error('[auth/callback] erro retornado pelo provedor:', googleError);
+    return NextResponse.redirect(`${origin}/login?auth_error=${encodeURIComponent(googleError)}`);
+  }
 
   if (code) {
     const supabase = await createClient();
@@ -13,7 +19,9 @@ export async function GET(request: Request) {
     if (!error) {
       return NextResponse.redirect(`${origin}/app`);
     }
+    console.error('[auth/callback] falha ao trocar code por sessão:', error.message);
+    return NextResponse.redirect(`${origin}/login?auth_error=${encodeURIComponent(error.message)}`);
   }
 
-  return NextResponse.redirect(`${origin}/login`);
+  return NextResponse.redirect(`${origin}/login?auth_error=${encodeURIComponent('código ausente no retorno')}`);
 }
