@@ -73,7 +73,7 @@ export default function PrivacidadePage() {
         <p>
           Você pode pedir a qualquer momento para acessar, corrigir ou excluir seus dados, ou
           tirar dúvidas sobre este texto, escrevendo para{' '}
-          <strong>[e-mail de contato a definir]</strong>.
+          <a href="mailto:kummermorg@gmail.com">kummermorg@gmail.com</a>.
         </p>
       </div>
     </div>
