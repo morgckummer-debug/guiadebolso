@@ -12,6 +12,7 @@ type LoadState = 'loading' | 'sem-licenca' | 'pronto' | 'erro';
 export default function AppPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const initedRef = useRef(false);
+  const dataRef = useRef<{ modulos: unknown; temas: unknown } | null>(null);
   const [state, setState] = useState<LoadState>('loading');
   const router = useRouter();
 
@@ -35,22 +36,24 @@ export default function AppPage() {
         return;
       }
 
-      const { modulos, temas } = await res.json();
+      dataRef.current = await res.json();
       setState('pronto');
-
-      // aguarda o innerHTML (setado no render abaixo) existir no DOM antes
-      // de inicializar a lógica de navegação/renderização portada.
-      queueMicrotask(async () => {
-        if (initedRef.current || !containerRef.current) return;
-        initedRef.current = true;
-        const { initApp } = await import('./appLogic.js');
-        initApp(modulos, temas);
-      });
     }
 
     load();
     return () => { cancelled = true; };
   }, [router]);
+
+  // Roda depois que o React realmente confirma o innerHTML do shell no DOM
+  // (garantido pelo efeito disparar após o commit de `state`) — diferente de
+  // um `queueMicrotask` logo após o setState, que não garante essa ordem e
+  // podia deixar containerRef.current nulo, resultando no app em branco.
+  useEffect(() => {
+    if (state !== 'pronto' || initedRef.current || !containerRef.current || !dataRef.current) return;
+    initedRef.current = true;
+    const { modulos, temas } = dataRef.current;
+    import('./appLogic.js').then(({ initApp }) => initApp(modulos, temas));
+  }, [state]);
 
   async function handleLogout() {
     const supabase = createClient();
