@@ -9,12 +9,26 @@ import './app.css';
 
 type LoadState = 'loading' | 'sem-licenca' | 'pronto' | 'erro';
 
+// Opção 1 em teste: tela de abertura com a marca, por um tempo mínimo, antes
+// de mostrar qualquer conteúdo (mesmo que os dados já tenham carregado).
+// Trocar pra false pra comparar com a opção 2 (cabeçalho de marca no Índice,
+// sem nenhum atraso).
+const SHOW_SPLASH = true;
+const SPLASH_MIN_MS = 900;
+
 export default function AppPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const initedRef = useRef(false);
   const dataRef = useRef<{ modulos: unknown; temas: unknown } | null>(null);
   const [state, setState] = useState<LoadState>('loading');
+  const [splashDone, setSplashDone] = useState(!SHOW_SPLASH);
   const router = useRouter();
+
+  useEffect(() => {
+    if (!SHOW_SPLASH) return;
+    const t = setTimeout(() => setSplashDone(true), SPLASH_MIN_MS);
+    return () => clearTimeout(t);
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -59,6 +73,25 @@ export default function AppPage() {
     const supabase = createClient();
     await supabase.auth.signOut();
     router.push('/login');
+  }
+
+  if (!splashDone) {
+    return (
+      <div
+        style={{
+          height: '100dvh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 14,
+          background: 'linear-gradient(180deg, #9585E8, #5B4BB8)',
+        }}
+      >
+        <img src="/apple-icon.png" alt="" width={84} height={84} style={{ borderRadius: 20 }} />
+        <div style={{ color: '#fff', fontSize: 16, fontWeight: 700 }}>Guia Digital do Obstetra</div>
+      </div>
+    );
   }
 
   if (state === 'loading') {
