@@ -103,8 +103,8 @@ export default function AppPage() {
   }
 
   return (
-    <div>
-      <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '10px 20px' }}>
+    <div style={{ height: '100dvh', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '8px 16px', flexShrink: 0 }}>
         <button
           onClick={handleLogout}
           style={{ border: 'none', background: 'transparent', color: '#6F6E76', fontSize: 12, fontWeight: 600, cursor: 'pointer' }}
@@ -112,7 +112,7 @@ export default function AppPage() {
           Sair
         </button>
       </div>
-      <div ref={containerRef} dangerouslySetInnerHTML={{ __html: SHELL_HTML }} />
+      <div ref={containerRef} style={{ flex: 1, minHeight: 0 }} dangerouslySetInnerHTML={{ __html: SHELL_HTML }} />
     </div>
   );
 }
