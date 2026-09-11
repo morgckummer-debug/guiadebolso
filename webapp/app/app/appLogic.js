@@ -3,13 +3,8 @@
 // buscados de /api/temas após confirmar login + licença ativa.
 
 export function initApp(MODULOS, TEMAS) {
-document.querySelectorAll('.demo-tab').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.demo-tab').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.demo-panel').forEach(p=>p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.target).classList.add('active');
-  });
+document.querySelectorAll('.tabbar-item[data-target]').forEach(btn=>{
+  btn.addEventListener('click', ()=> activateTab(btn.dataset.target));
 });
 
 function temaById(id){ return TEMAS.find(t=>t.id===id); }
@@ -113,7 +108,7 @@ ${siblings.length ? `<div class="nav-btn" data-goto="${siblings[0].id}" style="c
 <div class="nav-btn" id="btn-voltar-indice" style="cursor:pointer"><span>Voltar ao índice</span></div>
 </div>`;
 
-  document.getElementById('scroll-tema').innerHTML = `
+  document.getElementById('panel-tema').innerHTML = `
 <div class="art-header">
   <div class="art-back">‹</div>
   <div><div class="art-crumb">${modulo.icon} ${modulo.nome}</div><div class="progress"><i id="progress-fill"></i></div></div>
@@ -162,7 +157,7 @@ ${footerHTML}
 }
 
 function bindTemaScreenInteractions(){
-  const temaScroll = document.getElementById('scroll-tema');
+  const temaScroll = document.getElementById('panel-tema');
 
   temaScroll.querySelectorAll('.anchor-chip').forEach(chip=>{
     chip.addEventListener('click',()=>{
@@ -204,8 +199,10 @@ function goToTema(id){
 }
 
 function activateTab(panelId){
-  document.querySelectorAll('.demo-tab').forEach(b=>b.classList.toggle('active', b.dataset.target===panelId));
-  document.querySelectorAll('.demo-panel').forEach(p=>p.classList.toggle('active', p.id===panelId));
+  document.querySelectorAll('.tabbar-item[data-target]').forEach(b=>b.classList.toggle('active', b.dataset.target===panelId));
+  document.querySelectorAll('.app-panel').forEach(p=>p.classList.toggle('active', p.id===panelId));
+  const fab = document.getElementById('raciocinio-fab');
+  if(fab) fab.style.display = panelId==='panel-tema' ? 'flex' : 'none';
 }
 
 renderTemaScreen(currentTemaId);
@@ -282,7 +279,7 @@ function renderIndice(){
     <button class="anchor-chip current" data-target="mod-todos">Todos</button>
     ${MODULOS.map(m=>`<button class="anchor-chip" data-target="mod-${m.id}">${m.nome}</button>`).join('')}
   </div>`;
-  document.getElementById('scroll-indice').innerHTML = `
+  document.getElementById('panel-indice').innerHTML = `
   <div class="idx-header"><div class="idx-title">Índice</div><div class="idx-search-btn" id="idx-search-btn">⌕</div></div>
   ${idxRailHTML}
   <div id="mod-todos"></div>
@@ -301,7 +298,7 @@ function renderIndice(){
     </div>
   `;}).join('')}
   `;
-  const idxScroll = document.getElementById('scroll-indice');
+  const idxScroll = document.getElementById('panel-indice');
   idxScroll.querySelectorAll('.anchor-chip').forEach(chip=>{
     chip.addEventListener('click',()=>{
       idxScroll.querySelectorAll('.anchor-chip').forEach(c=>c.classList.remove('current'));
@@ -352,7 +349,7 @@ function searchResultsHTML(query){
 }
 
 function renderBusca(query){
-  const box = document.getElementById('scroll-busca');
+  const box = document.getElementById('panel-busca');
   box.innerHTML = `
   <div class="search-box"><span>⌕</span><input id="busca-input" placeholder="Buscar dúvida, tema ou módulo" value="${query||''}"><span class="search-cancel" id="busca-cancel">Cancelar</span></div>
   <div id="busca-results">${searchResultsHTML(query||'')}</div>
@@ -386,4 +383,6 @@ function bindBuscaResultInteractions(){
 }
 
 renderBusca('');
+
+activateTab('panel-indice');
 }
