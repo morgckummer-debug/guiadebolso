@@ -280,6 +280,13 @@ function renderIndice(){
     ${MODULOS.map(m=>`<button class="anchor-chip" data-target="mod-${m.id}">${m.nome}</button>`).join('')}
   </div>`;
   document.getElementById('panel-indice').innerHTML = `
+  <div class="brand-header">
+    <img src="/apple-icon.png" alt="" width="36" height="36"/>
+    <div>
+      <div class="brand-name">Guia Digital do Obstetra</div>
+      <div class="brand-tag">Sua referência rápida na consulta</div>
+    </div>
+  </div>
   <div class="idx-header"><div class="idx-title">Índice</div><div class="idx-search-btn" id="idx-search-btn">⌕</div></div>
   ${idxRailHTML}
   <div id="mod-todos"></div>
