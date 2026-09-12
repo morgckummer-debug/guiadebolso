@@ -75,8 +75,18 @@ export default function AppPage() {
   // é sempre necessário aqui — um chunk carregado à parte é só mais uma
   // requisição de rede que pode falhar silenciosamente (sem `.catch`) no
   // modo standalone do iOS, deixando a tela em branco sem nenhum erro visível.
+  //
+  // Também precisa depender de `splashDone`: o container só existe no DOM
+  // quando splashDone && state === 'pronto'. Se os dados chegam antes do
+  // splash terminar (comum em conexão rápida), `state` vira 'pronto'
+  // enquanto o splash ainda está na tela — esse efeito dispara, acha
+  // containerRef.current nulo (o container real nem montou ainda) e sai sem
+  // marcar erro. Sem `splashDone` nas deps, quando o splash finalmente some
+  // e o container monta, esse efeito não roda de novo (só reagia a `state`,
+  // que não mudou outra vez) — initApp() nunca é chamado e o app fica com o
+  // shell vazio pra sempre: exatamente a tela branca depois do splash.
   useEffect(() => {
-    if (state !== 'pronto' || initedRef.current || !containerRef.current || !dataRef.current) return;
+    if (!splashDone || state !== 'pronto' || initedRef.current || !containerRef.current || !dataRef.current) return;
     initedRef.current = true;
     const { modulos, temas } = dataRef.current;
     try {
@@ -85,7 +95,7 @@ export default function AppPage() {
       console.error('[app] initApp falhou:', err);
       queueMicrotask(() => setState('erro'));
     }
-  }, [state]);
+  }, [state, splashDone]);
 
   async function handleLogout() {
     const supabase = createClient();
