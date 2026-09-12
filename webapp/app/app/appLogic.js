@@ -99,7 +99,10 @@ function renderTemaScreen(id){
     ? `<div class="aula-meta">Gravação pendente</div><button class="aula-btn" disabled style="opacity:.5;cursor:default">Em breve</button>`
     : `<div class="aula-meta">${t.aula.duracao} · protegido por login</div><button class="aula-btn">Assistir</button>`;
 
-  const refsHTML = t.referencias.map((r,i)=>`${i+1}. ${r}`).join('<br>');
+  const refsHTML = t.referencias.map((r,i)=>{
+    const [texto, url] = Array.isArray(r) ? r : [r, null];
+    return url ? `${i+1}. <a href="${url}" target="_blank" rel="noopener noreferrer">${texto}</a>` : `${i+1}. ${texto}`;
+  }).join('<br>');
 
   const eAgoraHTML = (t.eAgora && t.eAgora.length) ? `
 <div class="block b-eagora" id="blk-eagora"><div class="block-head"><div class="chip">🧭</div><div class="eyebrow">E agora?</div></div>

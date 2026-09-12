@@ -55,7 +55,7 @@ const TEMAS = [
     encaminhar:'Encaminhar para avaliação de urgência, sem aguardar reavaliação eletiva, quando houver:<ul><li>Sangramento importante associado</li><li>Dor pélvica intensa</li><li>Suspeita de gestação ectópica (saco não visualizado na cavidade com beta-hCG acima da zona discriminatória)</li><li>Paciente hemodinamicamente instável</li></ul>',
     aula:{titulo:'Critérios ultrassonográficos de viabilidade gestacional precoce', pendente:true},
     referencias:[
-      'Doubilet PM et al. "Diagnostic criteria for nonviable pregnancy early in the first trimester." N Engl J Med, 2013.',
+      ['Doubilet PM et al. "Diagnostic criteria for nonviable pregnancy early in the first trimester." N Engl J Med, 2013.', 'https://pubmed.ncbi.nlm.nih.gov/24106937/'],
       'ISUOG Practice Guidelines: ultrasound in early pregnancy. Ultrasound Obstet Gynecol, 2019.',
     ],
     vejaTambem:[],
@@ -84,8 +84,8 @@ const TEMAS = [
     encaminhar:'Encaminhar para pré-natal de alto risco / medicina fetal quando houver:<ul><li>Percentil &lt;3 em qualquer idade gestacional</li><li>Doppler de artéria umbilical ou relação cérebro-placentária alterados</li><li>Queda ≥30 percentis entre dois exames</li><li>Oligoidrâmnio associado</li></ul>',
     aula:{titulo:'Como interpretar percentil de peso fetal e quando pedir Doppler', pendente:true},
     referencias:[
-      'ISUOG Practice Guidelines: diagnosis and management of small-for-gestational-age fetus and fetal growth restriction. Ultrasound Obstet Gynecol, 2020.',
-      'Gordijn SJ et al. "Consensus definition of fetal growth restriction: a Delphi procedure." Ultrasound Obstet Gynecol, 2016.',
+      ['ISUOG Practice Guidelines: diagnosis and management of small-for-gestational-age fetus and fetal growth restriction. Ultrasound Obstet Gynecol, 2020.', 'https://obgyn.onlinelibrary.wiley.com/doi/10.1002/uog.22134'],
+      ['Gordijn SJ et al. "Consensus definition of fetal growth restriction: a Delphi procedure." Ultrasound Obstet Gynecol, 2016.', 'https://obgyn.onlinelibrary.wiley.com/doi/10.1002/uog.15884'],
     ],
     vejaTambem:['placenta-baixa','datacao-gestacao'],
   },
@@ -135,7 +135,7 @@ const TEMAS = [
     vocesabia:['Em cerca de 70–80% dos casos, a AUU é um achado isolado. Quando não há outras malformações no ultrassom, o prognóstico costuma ser excelente.'],
     aula:{titulo:'Artéria umbilical única: quando investigar e como acompanhar', pendente:true},
     referencias:[
-      'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2022.',
+      ['ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan. Ultrasound Obstet Gynecol, 2022.', 'https://obgyn.onlinelibrary.wiley.com/doi/10.1002/uog.24888'],
       'Achado isolado de artéria umbilical única e risco de PIG/RCF e cardiopatia congênita — referência específica pendente de indicação da autora.',
     ],
     vejaTambem:['percentil8','vasa-previa'],
@@ -162,7 +162,7 @@ const TEMAS = [
     encaminhar:'Encaminhar para avaliação de alto risco / medicina fetal quando houver:<ul><li>Dilatação identificada precocemente, no 1º trimestre</li><li>Mega bexiga associada</li><li>Dilatação de ureteres associada</li></ul>Nesses casos, pode ser necessária intervenção cirúrgica.',
     aula:{titulo:'Dilatação das pelves renais: quando é normal e quando encaminhar', pendente:true},
     referencias:[
-      'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan — avaliação do trato urinário fetal. Ultrasound Obstet Gynecol, 2022.',
+      ['ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan — avaliação do trato urinário fetal. Ultrasound Obstet Gynecol, 2022.', 'https://obgyn.onlinelibrary.wiley.com/doi/10.1002/uog.24888'],
       'Classificação e seguimento da dilatação das pelves renais / dilatação do trato urinário fetal — referência específica pendente de indicação da autora.',
     ],
     vejaTambem:['megabexiga-fetal'],
@@ -188,7 +188,7 @@ const TEMAS = [
     encaminhar:'Encaminhe para Medicina Fetal quando houver:<ul><li>Megabexiga no 1º trimestre (≥7 mm)</li><li>Megabexiga persistente ou progressiva</li><li>Oligodrâmnio</li><li>Dilatação das pelves renais ou ureteres</li><li>Outras malformações ou marcadores de aneuploidia</li><li>Suspeita de obstrução urinária baixa</li></ul>',
     aula:{titulo:'Megabexiga fetal: quando é obstrução e quando investigar aneuploidia', pendente:true},
     referencias:[
-      'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan — avaliação do trato urinário fetal e marcadores de aneuploidia. Ultrasound Obstet Gynecol, 2022.',
+      ['ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan — avaliação do trato urinário fetal e marcadores de aneuploidia. Ultrasound Obstet Gynecol, 2022.', 'https://obgyn.onlinelibrary.wiley.com/doi/10.1002/uog.24888'],
       'Megabexiga fetal no 1º trimestre: prognóstico, investigação genética e conduta — referência específica pendente de indicação da autora.',
     ],
     vejaTambem:['dilatacao-pelves-renais'],
@@ -214,7 +214,7 @@ const TEMAS = [
     encaminhar:'Encaminhar para pré-natal de alto risco / medicina fetal quando houver:<ul><li>Colo &lt;25 mm antes de 24 semanas</li><li>Suspeita de insuficiência istmocervical</li><li>Abertura do orifício interno ao ultrassom</li><li>História de perda fetal tardia ou parto prematuro espontâneo</li><li>Dúvida sobre indicação de cerclagem</li></ul>',
     aula:{titulo:'Colo curto: quando indicar progesterona e quando pensar em cerclagem', pendente:true},
     referencias:[
-      'ISUOG Practice Guidelines: role of ultrasound in the prediction of spontaneous preterm birth. Ultrasound Obstet Gynecol, 2022.',
+      ['ISUOG Practice Guidelines: role of ultrasound in the prediction of spontaneous preterm birth. Ultrasound Obstet Gynecol, 2022.', 'https://obgyn.onlinelibrary.wiley.com/doi/full/10.1002/uog.26020'],
       'ACOG Practice Bulletin — Cervical Insufficiency — referência específica pendente de indicação da autora.',
     ],
     vejaTambem:[],
@@ -242,7 +242,7 @@ const TEMAS = [
     encaminhar:'Encaminhar para pré-natal de alto risco / medicina fetal quando houver:<ul><li>Golf Ball associado a outros marcadores ultrassonográficos</li><li>Malformações estruturais associadas</li><li>Rastreamento positivo para aneuploidias</li><li>Dúvida na interpretação do exame</li></ul>',
     aula:{titulo:'Foco ecogênico intracardíaco: por que não é uma cardiopatia', pendente:true},
     referencias:[
-      'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan — marcadores leves de aneuploidia. Ultrasound Obstet Gynecol, 2022.',
+      ['ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan — marcadores leves de aneuploidia. Ultrasound Obstet Gynecol, 2022.', 'https://obgyn.onlinelibrary.wiley.com/doi/10.1002/uog.24888'],
       'Foco ecogênico intracardíaco isolado e risco de aneuploidia — referência específica pendente de indicação da autora.',
     ],
     vejaTambem:['intestino-hiperecogenico','ventriculomegalia-leve','prega-nucal-espessada'],
@@ -269,7 +269,7 @@ const TEMAS = [
     encaminhar:'Encaminhar para pré-natal de alto risco / medicina fetal quando houver:<ul><li>Intestino hiperecogênico persistente</li><li>Restrição de crescimento fetal</li><li>Outros marcadores ou malformações</li><li>Suspeita de infecção congênita</li><li>Risco aumentado para aneuploidias</li></ul>',
     aula:{titulo:'Intestino hiperecogênico: quando investigar e quando tranquilizar', pendente:true},
     referencias:[
-      'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan — marcadores leves de aneuploidia. Ultrasound Obstet Gynecol, 2022.',
+      ['ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan — marcadores leves de aneuploidia. Ultrasound Obstet Gynecol, 2022.', 'https://obgyn.onlinelibrary.wiley.com/doi/10.1002/uog.24888'],
       'Intestino hiperecogênico fetal: associações clínicas e conduta — referência específica pendente de indicação da autora.',
     ],
     vejaTambem:['foco-ecogenico-intracardiaco','ventriculomegalia-leve','prega-nucal-espessada'],
@@ -300,7 +300,7 @@ const TEMAS = [
     encaminhar:'Encaminhar para pré-natal de alto risco / medicina fetal quando houver:<ul><li>Ventriculomegalia moderada ou grave (≥12mm)</li><li>Progressão da medida em exames seriados</li><li>Córtex &lt;10mm ou DBP aumentado</li><li>Malformações do sistema nervoso central associadas</li><li>Outros marcadores ou malformações estruturais</li><li>Investigação positiva para infecção congênita</li></ul>',
     aula:{titulo:'Ventriculomegalia: como medir, classificar e quando encaminhar', pendente:true},
     referencias:[
-      'ISUOG Practice Guidelines (updated): sonographic examination of the fetal central nervous system. Ultrasound Obstet Gynecol, 2020.',
+      ['ISUOG Practice Guidelines (updated): sonographic examination of the fetal central nervous system. Ultrasound Obstet Gynecol, 2020.', 'https://obgyn.onlinelibrary.wiley.com/doi/10.1002/uog.22145'],
       'Classificação e conduta na ventriculomegalia fetal leve — referência específica pendente de indicação da autora.',
     ],
     vejaTambem:['intestino-hiperecogenico','foco-ecogenico-intracardiaco','prega-nucal-espessada'],
@@ -331,7 +331,7 @@ const TEMAS = [
     encaminhar:'Encaminhar para pré-natal de alto risco / medicina fetal quando houver:<ul><li>Prega nucal ≥6mm associada a outros marcadores ou malformações</li><li>Cardiopatia identificada ou dúvida na avaliação do coração fetal</li><li>Necessidade de Doppler de artéria cerebral média para rastreio de anemia fetal, quando não houver treinamento para essa avaliação</li><li>Rastreamento de aneuploidias de risco aumentado</li></ul>',
     aula:{titulo:'Prega nucal espessada: o que investigar além do risco de aneuploidia', pendente:true},
     referencias:[
-      'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan — marcadores leves de aneuploidia. Ultrasound Obstet Gynecol, 2022.',
+      ['ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan — marcadores leves de aneuploidia. Ultrasound Obstet Gynecol, 2022.', 'https://obgyn.onlinelibrary.wiley.com/doi/10.1002/uog.24888'],
       'Prega nucal espessada isolada, avaliação cardíaca e rastreio de anemia fetal — referência específica pendente de indicação da autora.',
     ],
     vejaTambem:['ventriculomegalia-leve','foco-ecogenico-intracardiaco','intestino-hiperecogenico'],
@@ -475,7 +475,7 @@ const TEMAS = [
     ],
     aula:{titulo:'Grau da placenta: por que ele perdeu protagonismo para o Doppler', pendente:true},
     referencias:[
-      'Grannum PA, Berkowitz RL, Hobbins JC. "The ultrasonic changes in the maturing placenta and their relation to fetal pulmonic maturity." Am J Obstet Gynecol, 1979.',
+      ['Grannum PA, Berkowitz RL, Hobbins JC. "The ultrasonic changes in the maturing placenta and their relation to fetal pulmonic maturity." Am J Obstet Gynecol, 1979.', 'https://pubmed.ncbi.nlm.nih.gov/434036/'],
       'Síndrome antifosfolípide e maturação placentária precoce — referência específica pendente de indicação da autora.',
     ],
     vejaTambem:['placenta-baixa'],
@@ -545,7 +545,7 @@ const TEMAS = [
     ],
     aula:{titulo:'Quando devo corrigir a idade gestacional?', pendente:true},
     referencias:[
-      'ACOG Committee Opinion No. 700 — Methods for Estimating the Due Date. Obstet Gynecol, 2017 (reafirmado) — referência específica pendente de indicação da autora.',
+      ['ACOG Committee Opinion No. 700 — Methods for Estimating the Due Date. Obstet Gynecol, 2017 (reafirmado).', 'https://pubmed.ncbi.nlm.nih.gov/28426621/'],
       'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan (datação gestacional). Ultrasound Obstet Gynecol, 2023.',
     ],
     vejaTambem:['morfologico-1trimestre','percentil8'],
