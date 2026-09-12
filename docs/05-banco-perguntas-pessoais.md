@@ -42,3 +42,6 @@ a voz dela, só ajustar pontuação/clareza se necessário.
   fala própria.
 - ✅ Ventriculomegalia leve: rascunho da pergunta-gatilho 1 escrito por
   Claude, autora confirmou manter como fala própria.
+- ✅ Prega nucal espessada: conteúdo clínico ditado pela autora (não
+  sinônimo de Síndrome de Down, avaliação cardíaca e Doppler de ACM),
+  adaptado por Claude para o bloco "Aprendi que…" e ajustado pela autora.
