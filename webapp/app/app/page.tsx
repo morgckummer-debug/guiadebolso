@@ -9,12 +9,10 @@ import './app.css';
 
 type LoadState = 'loading' | 'sem-licenca' | 'pronto' | 'erro';
 
-// Opção 1 em teste: tela de abertura com a marca, por um tempo mínimo, antes
-// de mostrar qualquer conteúdo (mesmo que os dados já tenham carregado).
-// Trocar pra false pra comparar com a opção 2 (cabeçalho de marca no Índice,
-// sem nenhum atraso).
+// Tela de abertura com a marca, por um tempo mínimo, antes de mostrar
+// qualquer conteúdo (mesmo que os dados já tenham carregado).
 const SHOW_SPLASH = true;
-const SPLASH_MIN_MS = 900;
+const SPLASH_MIN_MS = 2000;
 
 export default function AppPage() {
   const containerRef = useRef<HTMLDivElement>(null);
