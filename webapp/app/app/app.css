@@ -192,6 +192,14 @@ button,input{font-family:inherit;}
 .nav-btn{display:flex;justify-content:space-between;align-items:center;background:var(--bg-base);border:1px solid var(--ink-100);border-radius:var(--radius-md);padding:12px 14px;font-size:13px;font-weight:600;color:var(--ink-700);}
 .nav-btn small{display:block;color:var(--ink-300);font-weight:500;font-size:11px;}
 
+/* ---------- prévia bloqueada (trial/gratuito) ---------- */
+.premium-lock{display:flex;flex-direction:column;align-items:center;text-align:center;padding:32px 8px 8px;}
+.premium-lock-icon{width:52px;height:52px;border-radius:50%;background:var(--gold-100);color:var(--gold-700);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;}
+.premium-lock .art-title{margin-top:0;}
+.premium-lock-text{font-size:14px;line-height:20px;color:var(--ink-500);margin-bottom:20px;}
+.premium-lock-cta{display:inline-block;background:var(--lav-500);color:#fff;border-radius:var(--radius-md);padding:13px 22px;font-size:14px;font-weight:700;text-decoration:none;width:100%;box-sizing:border-box;}
+.premium-lock .nav-btn{width:100%;justify-content:center;}
+
 .tabbar{position:absolute;bottom:0;left:0;right:0;height:74px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-top:1px solid var(--ink-100);display:flex;padding-bottom:max(16px, env(safe-area-inset-bottom));z-index:3;}
 
 /* ---------- RaciocinioFAB: componente global, acima da leitura ---------- */
@@ -239,6 +247,9 @@ button,input{font-family:inherit;}
 .idx-title{font-size:21px;font-weight:700;}
 .idx-search-btn{width:34px;height:34px;border-radius:11px;background:var(--bg-sunken);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--ink-700);flex-shrink:0;}
 
+.acesso-banner{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--gold-100);color:var(--gold-700);border-radius:var(--radius-md);padding:12px 14px;margin-bottom:18px;font-size:12.5px;font-weight:700;text-decoration:none;flex-wrap:wrap;}
+.acesso-banner-cta{color:var(--lav-700);white-space:nowrap;}
+
 .mod-section{margin-top:36px;}
 .mod-section:first-child{margin-top:18px;}
 .mod-head{display:flex;align-items:flex-end;gap:10px;padding-bottom:12px;margin-bottom:12px;border-bottom:2px solid var(--lav-100);}
@@ -251,6 +262,8 @@ button,input{font-family:inherit;}
 .tema-row .q{flex:1;font-size:13.5px;font-weight:600;line-height:18px;}
 .tema-star{font-size:14px;color:var(--ink-300);}
 .tema-star.fav{color:var(--gold-500);}
+.tema-row-bloqueado{background:var(--bg-sunken);box-shadow:none;}
+.tema-row-bloqueado .q{color:var(--ink-500);}
 .tema-chev{color:var(--ink-300);font-size:13px;}
 
 /* ---------- busca ---------- */
