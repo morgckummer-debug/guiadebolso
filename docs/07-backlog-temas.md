@@ -57,7 +57,10 @@ marcar como concluído aqui.
 ## Doppler
 - [ ] IR alto da uterina
 - [ ] Incisura bilateral
-- [ ] ACM baixa
-- [ ] CPR reduzida
+- [x] ACM baixa — *tema escrito como "ACM de baixa resistência" (junto com CPR
+      reduzida), módulo "Doppler fetal". Foco no erro de tratar como hipóxia
+      em feto AIG, sem checar peso nem técnica do exame (pressão do
+      transdutor, compressão de cordão).*
+- [x] CPR reduzida — *ver "ACM baixa" acima, mesmo tema.*
 - [ ] Diástole zero
 - [ ] Diástole reversa
