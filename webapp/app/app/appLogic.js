@@ -1,8 +1,14 @@
 // Lógica de renderização/navegação do app — portada quase verbatim de
 // prototype/index.html. Os dados (MODULOS/TEMAS) chegam como parâmetros,
-// buscados de /api/temas após confirmar login + licença ativa.
+// buscados de /api/temas após confirmar login. Quem não tem trial válido
+// nem compra ativa recebe o índice inteiro, mas os temas fora da amostra
+// gratuita vêm redigidos pela API (só id/título/módulo/tags + `bloqueado:
+// true`, sem o conteúdo clínico) — este arquivo só decide como mostrar
+// isso: ícone de cadeado no lugar da estrela e uma tela de prévia com CTA
+// de compra, em vez do conteúdo completo.
+import { KIWIFY_CHECKOUT_URL } from '@/lib/kiwifyCheckoutUrl';
 
-export function initApp(MODULOS, TEMAS) {
+export function initApp(MODULOS, TEMAS, ACESSO) {
 document.querySelectorAll('.tabbar-item[data-target]').forEach(btn=>{
   btn.addEventListener('click', ()=> activateTab(btn.dataset.target));
 });
@@ -12,7 +18,10 @@ function moduloById(id){ return MODULOS.find(m=>m.id===id); }
 function stripAccents(s){ return s.normalize('NFD').replace(/[̀-ͯ]/g,''); }
 function norm(s){ return stripAccents(s.toLowerCase()); }
 
-let currentTemaId = TEMAS[0].id;
+// Primeiro tema não-bloqueado — evita abrir o painel oculto de tema (que
+// fica pronto por trás do índice, pra troca instantânea) num tema sem
+// conteúdo clínico carregado.
+let currentTemaId = (TEMAS.find(t=>!t.bloqueado) || TEMAS[0]).id;
 let currentTemaAnchors = null;
 
 const TEMA_ANCHORS = [
@@ -193,9 +202,39 @@ function bindTemaScreenInteractions(){
   temaScroll.onscroll();
 }
 
+function renderBloqueadoScreen(t){
+  const modulo = moduloById(t.modulo);
+  currentTemaId = t.id;
+  currentTemaAnchors = null;
+
+  document.getElementById('panel-tema').innerHTML = `
+<div class="art-header">
+  <div class="art-back" id="premium-back">‹</div>
+  <div><div class="art-crumb">${modulo.icon} ${modulo.nome}</div></div>
+</div>
+<div class="premium-lock">
+  <div class="premium-lock-icon">🔒</div>
+  <h1 class="art-title">${t.titulo}</h1>
+  <p class="premium-lock-text">Esse tema faz parte do conteúdo completo do Guia Digital do Obstetra. Garanta seu acesso pra desbloquear esse e todos os outros temas clínicos.</p>
+  <a class="premium-lock-cta" href="${KIWIFY_CHECKOUT_URL}" target="_blank" rel="noopener noreferrer">Desbloquear conteúdo completo</a>
+  <div class="nav-btn" id="premium-voltar-indice" style="cursor:pointer;margin-top:10px"><span>Voltar ao índice</span></div>
+</div>`;
+
+  document.getElementById('premium-back').addEventListener('click', ()=> activateTab('panel-indice'));
+  document.getElementById('premium-voltar-indice').addEventListener('click', ()=> activateTab('panel-indice'));
+}
+
 function goToTema(id){
-  renderTemaScreen(id);
+  const t = temaById(id);
   activateTab('panel-tema');
+  if(t && t.bloqueado){
+    renderBloqueadoScreen(t);
+    // sem "Próximo passo" nessa tela pra rolar até — o FAB de raciocínio não se aplica aqui.
+    const fab = document.getElementById('raciocinio-fab');
+    if(fab) fab.style.display = 'none';
+  } else {
+    renderTemaScreen(id);
+  }
 }
 
 function activateTab(panelId){
@@ -205,7 +244,7 @@ function activateTab(panelId){
   if(fab) fab.style.display = panelId==='panel-tema' ? 'flex' : 'none';
 }
 
-renderTemaScreen(currentTemaId);
+renderTemaScreen(currentTemaId); // currentTemaId nunca é bloqueado, ver acima
 
 /* ================= RaciocinioFAB (FAB + Bottom Sheet) ================= */
 (function(){
@@ -274,6 +313,22 @@ renderTemaScreen(currentTemaId);
 })();
 
 /* ================= ÍNDICE ================= */
+function acessoBannerHTML(){
+  if(!ACESSO || ACESSO.nivel === 'completo') return '';
+  if(ACESSO.nivel === 'trial'){
+    const dias = Math.max(0, Math.ceil((new Date(ACESSO.trialTerminaEm) - Date.now()) / 86400000));
+    const plural = dias === 1 ? 'dia' : 'dias';
+    return `<a class="acesso-banner" href="${KIWIFY_CHECKOUT_URL}" target="_blank" rel="noopener noreferrer">
+      <span>🎁 Seu teste grátis termina em ${dias} ${plural}</span>
+      <span class="acesso-banner-cta">Garantir acesso completo ›</span>
+    </a>`;
+  }
+  return `<a class="acesso-banner" href="${KIWIFY_CHECKOUT_URL}" target="_blank" rel="noopener noreferrer">
+    <span>🔒 Você está no plano gratuito</span>
+    <span class="acesso-banner-cta">Desbloquear todos os temas ›</span>
+  </a>`;
+}
+
 function renderIndice(){
   const idxRailHTML = `<div class="anchor-rail">
     <button class="anchor-chip current" data-target="mod-todos">Todos</button>
@@ -287,6 +342,7 @@ function renderIndice(){
       <div class="brand-tag">Sua mentoria digital em ultrassom fetal</div>
     </div>
   </div>
+  ${acessoBannerHTML()}
   <div class="idx-header"><div class="idx-title">Índice</div><div class="idx-search-btn" id="idx-search-btn">⌕</div></div>
   ${idxRailHTML}
   <div id="mod-todos"></div>
@@ -300,7 +356,7 @@ function renderIndice(){
         <div class="mod-count">${temasDoModulo.length}</div>
       </div>
       <div class="mod-temas">
-      ${temasDoModulo.map(t=>`<div class="tema-row" data-goto="${t.id}"><span class="tema-star">☆</span><span class="q">${t.titulo}</span><span class="tema-chev">›</span></div>`).join('')}
+      ${temasDoModulo.map(t=>`<div class="tema-row${t.bloqueado?' tema-row-bloqueado':''}" data-goto="${t.id}"><span class="tema-star">${t.bloqueado?'🔒':'☆'}</span><span class="q">${t.titulo}</span><span class="tema-chev">›</span></div>`).join('')}
       </div>
     </div>
   `;}).join('')}
@@ -349,7 +405,7 @@ function searchResultsHTML(query){
   ${matches.map(t=>`
     <div class="result-row" data-goto="${t.id}" style="cursor:pointer">
       <span class="tag">${moduloById(t.modulo).nome}</span>
-      <span class="q">${highlightMatch(t.titulo, q)}</span>
+      <span class="q">${t.bloqueado ? '🔒 ' : ''}${highlightMatch(t.titulo, q)}</span>
     </div>
   `).join('')}
   `;
