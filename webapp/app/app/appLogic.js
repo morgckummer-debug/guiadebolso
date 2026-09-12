@@ -284,7 +284,7 @@ function renderIndice(){
     <img src="/apple-icon.png" alt="" width="36" height="36"/>
     <div>
       <div class="brand-name">Guia Digital do Obstetra</div>
-      <div class="brand-tag">Sua referência rápida na consulta</div>
+      <div class="brand-tag">Sua mentoria digital em ultrassom fetal</div>
     </div>
   </div>
   <div class="idx-header"><div class="idx-title">Índice</div><div class="idx-search-btn" id="idx-search-btn">⌕</div></div>
