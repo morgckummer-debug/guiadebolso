@@ -968,7 +968,7 @@ ${siblings.length ? `<div class="nav-btn" data-goto="${siblings[0].id}" style="c
 
   document.getElementById('scroll-tema').innerHTML = `
 <div class="art-header">
-  <div class="art-back">‹</div>
+  <div class="art-back" id="tema-back" style="cursor:pointer">‹</div>
   <div><div class="art-crumb">${modulo.icon} ${modulo.nome}</div><div class="progress"><i id="progress-fill"></i></div></div>
 </div>
 ${anchorRailHTML}
@@ -1030,6 +1030,9 @@ function bindTemaScreenInteractions(){
 
   const backBtn = document.getElementById('btn-voltar-indice');
   if(backBtn) backBtn.addEventListener('click', ()=> activateTab('panel-indice'));
+
+  const backArrow = document.getElementById('tema-back');
+  if(backArrow) backArrow.addEventListener('click', ()=> activateTab('panel-indice'));
 
   // scroll-spy + progresso de leitura
   temaScroll.onscroll = ()=>{
