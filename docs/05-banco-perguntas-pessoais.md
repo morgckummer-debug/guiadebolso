@@ -34,9 +34,11 @@ a voz dela, só ajustar pontuação/clareza se necessário.
 10. Se pudesse deixar só uma frase de conselho sobre esse tema pra outro
     obstetra, qual seria?
 
-## Status de preenchimento (3 temas piloto)
+## Status de preenchimento
 
 - ✅ 1º trimestre — não apareceu embrião: preenchido com resposta literal da autora.
 - ✅ Peso fetal no percentil 8: preenchido com resposta literal da autora.
 - ✅ Placenta baixa: autora confirmou manter o rascunho existente como
   fala própria.
+- ✅ Ventriculomegalia leve: rascunho da pergunta-gatilho 1 escrito por
+  Claude, autora confirmou manter como fala própria.
