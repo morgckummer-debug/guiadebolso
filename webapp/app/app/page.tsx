@@ -88,7 +88,7 @@ export default function AppPage() {
           background: 'linear-gradient(180deg, #9585E8, #5B4BB8)',
         }}
       >
-        <img src="/apple-icon.png" alt="" width={84} height={84} style={{ borderRadius: 20, marginBottom: 8 }} />
+        <img src="/icon-hero.png" alt="" style={{ width: 260, height: 'auto', marginBottom: 8 }} />
         <div style={{ color: '#fff', fontSize: 16, fontWeight: 700 }}>Guia Digital do Obstetra</div>
         <div style={{ color: 'rgba(255,255,255,.85)', fontSize: 13 }}>Sua mentoria digital em ultrassom fetal</div>
       </div>
