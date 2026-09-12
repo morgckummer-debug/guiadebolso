@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { KIWIFY_CHECKOUT_URL } from '@/lib/kiwifyCheckoutUrl';
 import { SHELL_HTML } from './shellMarkup';
+import { initApp } from './appLogic.js';
 import './app.css';
 
 type LoadState = 'loading' | 'sem-licenca' | 'pronto' | 'erro';
@@ -70,11 +71,20 @@ export default function AppPage() {
   // (garantido pelo efeito disparar após o commit de `state`) — diferente de
   // um `queueMicrotask` logo após o setState, que não garante essa ordem e
   // podia deixar containerRef.current nulo, resultando no app em branco.
+  // `initApp` é importado normalmente (não com `import()` dinâmico) porque
+  // é sempre necessário aqui — um chunk carregado à parte é só mais uma
+  // requisição de rede que pode falhar silenciosamente (sem `.catch`) no
+  // modo standalone do iOS, deixando a tela em branco sem nenhum erro visível.
   useEffect(() => {
     if (state !== 'pronto' || initedRef.current || !containerRef.current || !dataRef.current) return;
     initedRef.current = true;
     const { modulos, temas } = dataRef.current;
-    import('./appLogic.js').then(({ initApp }) => initApp(modulos, temas));
+    try {
+      initApp(modulos, temas);
+    } catch (err) {
+      console.error('[app] initApp falhou:', err);
+      queueMicrotask(() => setState('erro'));
+    }
   }, [state]);
 
   async function handleLogout() {
