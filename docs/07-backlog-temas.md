@@ -36,7 +36,7 @@ marcar como concluído aqui.
 - [x] Ventriculomegalia leve — *tema escrito, módulo "Marcadores leves de aneuploidia".*
 - [ ] Cisterna magna aumentada
 - [ ] Mega cisterna magna
-- [ ] Prega nucal espessada
+- [x] Prega nucal espessada — *tema escrito, módulo "Marcadores leves de aneuploidia".*
 - [ ] Húmero curto
 - [ ] Fêmur curto
 - [ ] Braquicefalia
