@@ -106,6 +106,7 @@ button,input{font-family:inherit;}
 .ref-toggle{display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
 .ref-list{display:none;margin-top:10px;font-size:13px;color:var(--ink-500);padding-left:16px;}
 .ref-list.open{display:block;}
+.ref-list a{color:var(--lav-700);text-decoration:underline;}
 
 /* ---------- critérios completos (referência compacta, colapsada) ----------
    Mesmo padrão de toque do bloco Referências — usado quando um Próximo
