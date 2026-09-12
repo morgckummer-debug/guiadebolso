@@ -33,7 +33,7 @@ marcar como concluído aqui.
 
 ## Achados fetais
 - [ ] Plexo coroide
-- [ ] Ventriculomegalia leve
+- [x] Ventriculomegalia leve — *tema escrito, módulo "Marcadores leves de aneuploidia".*
 - [ ] Cisterna magna aumentada
 - [ ] Mega cisterna magna
 - [ ] Prega nucal espessada
