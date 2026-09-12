@@ -45,3 +45,7 @@ a voz dela, só ajustar pontuação/clareza se necessário.
 - ✅ Prega nucal espessada: conteúdo clínico ditado pela autora (não
   sinônimo de Síndrome de Down, avaliação cardíaca e Doppler de ACM),
   adaptado por Claude para o bloco "Aprendi que…" e ajustado pela autora.
+- ✅ ACM de baixa resistência: conteúdo clínico completo ditado pela
+  autora (regra PIG/CIUR × AIG, reflexo vagal por compressão de cordão
+  ou pressão do transdutor, partos por iatrogenia), adaptado por Claude
+  para o bloco "Aprendi que…" e confirmado pela autora.
