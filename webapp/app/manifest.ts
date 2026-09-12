@@ -5,7 +5,10 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'Guia Digital do Obstetra',
     short_name: 'Guia do Obstetra',
     description: 'Guia digital interativo para obstetras — Dra. Morgana Kummer.',
-    start_url: '/app',
+    // '/' (não '/app') porque decide server-side, pelo cookie de sessão, pra
+    // onde mandar quem abre pelo ícone fixado na tela — mais confiável do
+    // que entrar direto numa rota protegida sem ainda saber se há sessão.
+    start_url: '/',
     display: 'standalone',
     background_color: '#FAFAFA',
     theme_color: '#5B4BB8',

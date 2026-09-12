@@ -20,7 +20,17 @@ export default function AppPage() {
   const dataRef = useRef<{ modulos: unknown; temas: unknown } | null>(null);
   const [state, setState] = useState<LoadState>('loading');
   const [splashDone, setSplashDone] = useState(!SHOW_SPLASH);
+  const [demorando, setDemorando] = useState(false);
   const router = useRouter();
+
+  // Se o carregamento travar (ex.: no modo standalone do iOS, ao abrir pelo
+  // ícone fixado na tela, a primeira requisição pode não responder), mostra
+  // uma saída em vez de deixar a tela parecendo travada/em branco.
+  useEffect(() => {
+    if (state !== 'loading') return;
+    const t = setTimeout(() => setDemorando(true), 8000);
+    return () => clearTimeout(t);
+  }, [state]);
 
   useEffect(() => {
     if (!SHOW_SPLASH) return;
@@ -96,7 +106,42 @@ export default function AppPage() {
   }
 
   if (state === 'loading') {
-    return <div style={{ padding: 40, textAlign: 'center', color: '#6F6E76' }}>Carregando…</div>;
+    return (
+      <div
+        style={{
+          height: '100dvh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 14,
+          padding: '0 32px',
+          textAlign: 'center',
+          background: 'linear-gradient(180deg, #9585E8, #5B4BB8)',
+        }}
+      >
+        <div style={{ color: '#fff', fontSize: 14, fontWeight: 600 }}>Carregando…</div>
+        {demorando && (
+          <>
+            <div style={{ color: 'rgba(255,255,255,.85)', fontSize: 13, lineHeight: '19px' }}>
+              Isso está demorando mais que o esperado.
+            </div>
+            <button
+              onClick={() => window.location.reload()}
+              style={{ border: 'none', background: '#fff', color: '#5B4BB8', borderRadius: 12, padding: '10px 20px', fontWeight: 700, fontSize: 13, cursor: 'pointer' }}
+            >
+              Tentar novamente
+            </button>
+            <button
+              onClick={() => router.push('/login')}
+              style={{ border: 'none', background: 'transparent', color: 'rgba(255,255,255,.85)', fontSize: 12, fontWeight: 600, cursor: 'pointer', textDecoration: 'underline' }}
+            >
+              Ir para o login
+            </button>
+          </>
+        )}
+      </div>
+    );
   }
 
   if (state === 'erro') {
