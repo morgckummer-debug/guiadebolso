@@ -38,7 +38,9 @@ marcar como concluído aqui.
 - [ ] Mega cisterna magna
 - [x] Prega nucal espessada — *tema escrito, módulo "Marcadores leves de aneuploidia".*
 - [ ] Húmero curto
-- [ ] Fêmur curto
+- [x] Fêmur curto — *tema escrito, módulo "Marcadores leves de aneuploidia". Destaque
+      para o viés das curvas de crescimento (Hadlock/população americana) na
+      população brasileira, ponto trazido pela autora.*
 - [ ] Braquicefalia
 - [ ] Dolicocefalia
 - [ ] Cisto ovariano fetal

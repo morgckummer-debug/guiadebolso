@@ -52,3 +52,8 @@ a voz dela, só ajustar pontuação/clareza se necessário.
 - ✅ Onfalocele × gastrosquise: rascunho de conteúdo clínico e da
   pergunta-gatilho 3 escrito por Claude (a partir de diretriz/literatura,
   sem ditado prévio da autora), confirmado pela autora antes de publicar.
+- ✅ Fêmur curto: rascunho clínico inicial escrito por Claude, corrigido
+  pela autora com um ponto central que ela considerou essencial (viés das
+  curvas de crescimento americanas — Hadlock — na população brasileira,
+  gerando falso "fêmur curto"). Bloco "Aprendi que…" reescrito por Claude
+  incorporando esse ponto e confirmado pela autora.
