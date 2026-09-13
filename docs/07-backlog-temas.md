@@ -91,13 +91,19 @@ Decisão de arquitetura (2026-09-13, ver `docs/01-arquitetura-informacao.md`
 embrião) com rotina/protocolo (Morfológico do 1º trimestre, Datação da
 gestação). Separado em duas trilhas — achados por sistema (sem trimestre) e
 "Condução do pré-natal" por trimestre. O módulo `conducao-1tri` já existe em
-`webapp/data/temas.ts` com os 2 temas de rotina que já existiam. Faltam
-`conducao-2tri` e `conducao-3tri` — não criados ainda em `temas.ts` (módulo
-vazio no índice fica estranho); criar quando houver pelo menos 2-3 temas de
-rotina prontos para cada um. Ideias de temas de rotina para esses módulos,
-a validar com a autora:
-- [ ] 2º trimestre: o que o morfológico do 2º trimestre responde (22–24
-      semanas) — rastreio de pré-eclâmpsia tardio, colo, anatomia completa
+`webapp/data/temas.ts` com os 2 temas de rotina que já existiam. `conducao-2tri`
+foi criado em `temas.ts` (2026-09-13) com o primeiro tema de rotina. Falta
+`conducao-3tri` — não criado ainda (módulo vazio no índice fica estranho);
+criar quando houver pelo menos 2-3 temas de rotina prontos. Ideias de temas de
+rotina para 3º trimestre, a validar com a autora:
+- [x] 2º trimestre: o que o morfológico do 2º trimestre responde (22–24
+      semanas, aceito até 26 sem) — tema escrito como "Morfológico do 2º
+      trimestre", módulo `conducao-2tri`. Conteúdo ditado pela autora:
+      correção da janela (22–24, não 20–24), distinção entre rastreio de
+      pré-eclâmpsia (1º tri, indica AAS) × Doppler de uterinas no 2º tri
+      (prediz pré-eclâmpsia tardia, não indica AAS), e pérola sobre medida
+      do colo uterino ter que constar explicitamente no pedido médico, em
+      toda gestante — inclusive primigestas sem histórico de parto prematuro.
 - [ ] 2º trimestre: quando pedir TOTG e por quê
 - [ ] 3º trimestre: USG de crescimento seriado — quando começar e com que
       intervalo

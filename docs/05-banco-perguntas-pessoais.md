@@ -57,3 +57,14 @@ a voz dela, só ajustar pontuação/clareza se necessário.
   curvas de crescimento americanas — Hadlock — na população brasileira,
   gerando falso "fêmur curto"). Bloco "Aprendi que…" reescrito por Claude
   incorporando esse ponto e confirmado pela autora.
+- ✅ Morfológico do 2º trimestre: rascunho inicial escrito por Claude a
+  partir de diretriz (ISUOG), corrigido pela autora em dois pontos
+  centrais — janela correta (22–24 sem, aceito até 26) e a distinção entre
+  rastreio de pré-eclâmpsia do 1º tri (indica AAS) × Doppler de uterinas
+  no 2º tri (prediz pré-eclâmpsia tardia, não indica AAS) — e por um
+  ajuste de audiência: o "Próximo passo" foi reescrito de "o que o
+  ultrassonografista faz durante o exame" para "o que o ginecologista/
+  obstetra que solicita e interpreta o exame faz" — lição a aplicar em
+  todos os temas de condução daqui em diante. Bloco "Aprendi que…"
+  preenchido com a fala literal da autora sobre rastreio de prematuridade
+  mesmo em primigestas.

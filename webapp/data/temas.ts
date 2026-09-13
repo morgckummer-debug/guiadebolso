@@ -17,6 +17,7 @@ const MODULOS = [
   {id:'doppler', nome:'Doppler fetal', icon:'📡', trilha:'achados'},
   {id:'malformacoes', nome:'Malformações fetais', icon:'🩻', trilha:'achados'},
   {id:'conducao-1tri', nome:'1º trimestre', icon:'🗓️', trilha:'conducao'},
+  {id:'conducao-2tri', nome:'2º trimestre', icon:'🗓️', trilha:'conducao'},
 ];
 
 const TEMAS = [
@@ -649,6 +650,30 @@ const TEMAS = [
       ['European Reference Network for Rare Inherited Congenital Anomalies (ERNICA) evidence-based guideline on the management of gastroschisis. Orphanet J Rare Dis, 2024.', 'https://doi.org/10.1186/s13023-024-03062-8'],
     ],
     vejaTambem:[],
+  },
+  {
+    id:'morfologico-2trimestre',
+    titulo:'Morfológico do 2º trimestre',
+    modulo:'conducao-2tri',
+    tags:['morfológico do 2º trimestre','anatomia fetal','22 semanas','24 semanas','colo uterino','prevenção de prematuridade','doppler artérias uterinas','pré-eclâmpsia tardia','fetal medicine foundation'],
+    essencial:'O morfológico do 2º trimestre, idealmente entre 22 e 24 semanas (sem prejuízo técnico até 26 semanas), é o exame de anatomia fetal completa — soma avaliação de todos os órgãos e sistemas à medida do colo uterino, indispensável para prevenção de prematuridade.',
+    erro:'Achar que o Doppler das artérias uterinas no 2º trimestre é "rastreio de pré-eclâmpsia". Rastreio de verdade é feito no 1º trimestre, quando se identifica o grupo de risco para iniciar AAS. No 2º trimestre, se não foi feito antes, o Doppler das uterinas serve para predizer pré-eclâmpsia tardia (após 37 semanas) — não abre nova janela para prevenção com aspirina.',
+    passo:{tipo:'checklist', itens:[
+      'Solicitar o morfológico do 2º trimestre entre 22 e 24 semanas (aceito até 26 sem, sem prejuízo técnico) — escrevendo explicitamente no pedido "com medida do colo uterino via transvaginal", em toda gestante, sem exceção.',
+      'Se a paciente não fez o rastreio de pré-eclâmpsia no 1º trimestre, incluir no pedido também o Doppler das artérias uterinas — sabendo que aqui ele serve para predizer pré-eclâmpsia tardia (pós-37 semanas), não para indicar AAS agora (essa janela já passou).',
+      'Ao receber o laudo, conferir se o colo foi de fato medido. Se não veio, não deixar passar — pedir a medida num retorno ou reforçar no próximo pedido.',
+      'Usar a biometria deste exame como primeira referência de crescimento para comparar no 3º trimestre.',
+    ]},
+    aprendi:'A janela do morfológico do 2º trimestre pode salvar a vida de muitos bebês se o rastreamento de prematuridade fosse realizado mesmo nas primigestas, ou em mulheres que nunca tiveram parto prematuro antes.',
+    perolas:[
+      'A medida do colo uterino é indispensável para prevenção de parto prematuro — e só acontece na prática se estiver escrita no pedido médico. Não deixe a critério do serviço de imagem: peça explicitamente "com medida do colo uterino via transvaginal", em toda gestante, inclusive primigestas e mulheres sem parto prematuro prévio.',
+    ],
+    aula:{titulo:'Morfológico do 2º trimestre: por que o colo entra no pedido', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan.',
+      'Fetal Medicine Foundation — predição de pré-eclâmpsia tardia por Doppler das artérias uterinas (referência específica pendente de indicação da autora).',
+    ],
+    vejaTambem:['colo-curto','morfologico-1trimestre','datacao-gestacao'],
   },
 ];
 
