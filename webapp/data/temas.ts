@@ -734,6 +734,150 @@ const TEMAS = [
     ],
     vejaTambem:['doppler-introducao','acm-baixa-resistencia','percentil8'],
   },
+  {
+    id:'circunferencia-abdominal-p90',
+    titulo:'Circunferência abdominal > P90',
+    modulo:'crescimento',
+    tags:['circunferência abdominal','ca >p90','diabetes gestacional','macrossomia','crescimento fetal excessivo','biometria fetal','hiperinsulinemia fetal','glicemia pós-prandial'],
+    essencial:'Uma CA fetal >P90 indica crescimento abdominal acima do esperado. Em gestantes com diabetes, pode ser um sinal de maior exposição fetal à glicose e maior risco de crescimento excessivo, mesmo quando o peso fetal estimado ainda não está acima do P90.',
+    erro:'Ver CA >P90 e concluir automaticamente "é macrossomia". Não é. A CA é apenas uma das medidas biométricas e deve ser interpretada junto com o peso fetal estimado, a idade gestacional e o contexto materno — não isoladamente.',
+    passo:{tipo:'checklist', itens:[
+      'Revise o controle glicêmico, principalmente as glicemias pós-prandiais.',
+      'Correlacione a CA com o peso fetal estimado e as demais medidas biométricas.',
+      'Avalie a evolução do crescimento nos exames seguintes, quando indicado.',
+      'Se houver crescimento fetal excessivo ou diabetes mal controlado, ajuste o acompanhamento obstétrico.',
+    ]},
+    explicar:'"A barriguinha do bebê está maior do que a média para essa idade gestacional. Isso pode acontecer por vários motivos. Como você tem diabetes, vamos conferir se a glicose está bem controlada e acompanhar o crescimento com atenção."',
+    pensando:'Meu bebê está ficando grande porque minha glicose está alta? Fiz alguma coisa errada?',
+    confianca:'"Uma medida maior da barriga não significa, sozinha, que exista um problema. Vamos olhar o crescimento como um todo e, se houver diabetes, conferir se a glicose está realmente bem controlada."',
+    aprendi:'Aprendi a não olhar apenas para o peso fetal. Às vezes, a distribuição do crescimento conta uma história que o peso sozinho não consegue mostrar.',
+    vocesabia:[
+      'A CA pode se alterar antes do peso fetal estimado. Em fetos de mães com diabetes, o excesso de glicose pode levar à hiperinsulinemia fetal e maior depósito de gordura, especialmente no abdome. Estudos mostram que CA ≥P90 é útil na previsão de macrossomia.',
+      'A HbA1c pode ajudar na avaliação do controle glicêmico, mas não substitui as glicemias capilares/monitorização da glicose — os picos pós-prandiais têm relação importante com o crescimento excessivo e podem não ser bem representados pela HbA1c. Há estudos mostrando associação entre glicemia pós-prandial e macrossomia mesmo quando outros marcadores glicêmicos não diferiam.',
+    ],
+    perolas:[
+      'CA >P90 ≠ macrossomia. Em uma gestante com diabetes, porém, CA aumentada deve fazer você olhar com atenção para o controle glicêmico.',
+      'Ler a biometria como um padrão de crescimento, não ficar refém de um único número — a ISUOG considera CA e peso estimado parâmetros centrais para avaliação do tamanho fetal.',
+    ],
+    encaminhar:'CA >P90 isoladamente não é indicação de encaminhamento para Medicina Fetal. Considerar avaliação especializada quando houver, por exemplo:<ul><li>Crescimento fetal excessivo importante</li><li>Suspeita de macrossomia</li><li>Diabetes de difícil controle</li><li>Discrepância biométrica importante</li><li>Outras alterações fetais ou obstétricas associadas</li></ul>',
+    aula:{titulo:'Circunferência abdominal aumentada: o que muda na gestante com diabetes', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: performance of the routine mid-trimester fetal ultrasound scan — biometria fetal e circunferência abdominal. Ultrasound Obstet Gynecol, 2022.',
+      'Associação entre CA fetal ≥P90, hiperinsulinemia fetal e predição de macrossomia em gestantes com diabetes — referência específica pendente de indicação da autora.',
+      'Associação entre glicemia pós-prandial e macrossomia fetal, independente de outros marcadores glicêmicos — referência específica pendente de indicação da autora.',
+    ],
+    vejaTambem:['percentil8'],
+  },
+  {
+    id:'pig-x-rcf',
+    titulo:'PIG × RCF',
+    modulo:'crescimento',
+    tags:['pig','rcf','ciur','restrição de crescimento fetal','pequeno para idade gestacional','percentil de peso','doppler','delphi','crescimento fetal'],
+    essencial:'PIG (pequeno para idade gestacional) é uma classificação estatística — peso ou percentil abaixo do esperado. RCF (restrição de crescimento fetal) é um subconjunto de PIG: o feto não atingiu seu potencial de crescimento genético, mais comumente por insuficiência placentária, mas também por síndromes genéticas/cromossômicas ou infecções congênitas — sempre com maior risco perinatal. Todo RCF é PIG, mas nem todo PIG é RCF — Doppler e trajetória de crescimento são o que diferenciam os dois. E o inverso também existe: peso fetal estimado ≥P10 não descarta RCF — se houver alteração do Doppler ou CA isolada &lt;P3, o diagnóstico se mantém mesmo com o peso "normal".',
+    erro:'<ul><li>Aplicar o mesmo protocolo pra todo PFE &lt;P10 — por exemplo, "PFE &lt;P10 → repetir ultrassom em 4 semanas" para qualquer caso, sem diferenciar pelo Doppler. Isso é simplificar demais: um feto pequeno com Doppler normal e um feto pequeno com artéria umbilical alterada não podem receber o mesmo acompanhamento.</li><li>Descartar RCF só porque o peso fetal estimado está ≥P10 — CA isolada &lt;P3 ou Doppler alterado fecham o diagnóstico mesmo com o peso dentro da faixa "normal".</li></ul>',
+    passo:{tipo:'checklist', itens:[
+      '<strong>Confirme o diagnóstico.</strong><ul><li>Qual o peso fetal estimado (PFE) e o percentil?</li><li>A circunferência abdominal (CA) está &lt;P10?</li><li>A idade gestacional está bem datada?</li><li>É uma queda real da curva ou sempre foi um feto pequeno?</li></ul>',
+      '<strong>Procure sinais de insuficiência placentária</strong> — solicite/avalie:<ul><li>Doppler da artéria umbilical</li><li>Artéria cerebral média (ACM)</li><li>Relação cérebro-placentária (RCP), quando indicada</li><li>Ducto venoso, nos casos de maior gravidade</li></ul>',
+      '<strong>Procure a causa</strong> — pergunte:<ul><li>Hipertensão ou pré-eclâmpsia?</li><li>Tabagismo/uso de drogas?</li><li>Doença materna?</li><li>Gestação múltipla?</li><li>Malformações?</li><li>Marcadores de aneuploidia?</li><li>Infecção congênita, quando houver indicação clínica/ultrassonográfica?</li></ul>',
+      '<strong>Defina se é provavelmente constitucional ou patológico.</strong> Um PFE &lt;P10 não é automaticamente RCF grave — é a combinação de tamanho + Doppler + evolução da curva + contexto materno/fetal que define o risco. Use os critérios de Delphi (abaixo) para diferenciar PIG constitucional de RCF precoce/tardia.',
+      '<strong>Defina o acompanhamento</strong>, conforme idade gestacional e achados:<ul><li>Intervalo dos ultrassons</li><li>Doppler seriado</li><li>Vigilância fetal</li><li>Avaliação materna para hipertensão/pré-eclâmpsia</li><li>Planejamento do momento do parto</li></ul>',
+      'RCF confirmada por critério de Delphi: encaminhe para pré-natal de alto risco / medicina fetal.',
+    ]},
+    criterios:[
+      {titulo:'PIG × RCF — a diferença em uma frase', html:`
+<div class="def-row"><div class="def-term">PIG</div><div class="def-desc">Peso ou percentil abaixo do esperado (geralmente &lt;P10). Descreve um tamanho — a maioria é pequena constitucional, sem risco aumentado.</div></div>
+<div class="def-row"><div class="def-term">RCF</div><div class="def-desc">Feto que não atingiu seu potencial de crescimento genético — mais comumente por insuficiência placentária, mas também por síndromes genéticas/cromossômicas ou infecções congênitas. Descreve uma causa — subconjunto de PIG, com maior risco perinatal.</div></div>
+<div class="def-row"><div class="def-term">Regra</div><div class="def-desc">Todo RCF é PIG, mas nem todo PIG é RCF.</div></div>
+<div class="def-row"><div class="def-term">Exceção</div><div class="def-desc">PFE ≥P10 não descarta RCF — se houver CA isolada &lt;P3 ou alteração do Doppler, o diagnóstico se mantém mesmo com o peso "normal".</div></div>`},
+      {titulo:'Critérios de Delphi — RCF precoce (antes de 32 semanas)', html:`
+<div class="def-row"><div class="def-term">Isolado</div><div class="def-desc">CA ou peso fetal estimado &lt; percentil 3, OU diástole zero/reversa na artéria umbilical.</div></div>
+<div class="def-row"><div class="def-term">Associados (2 de 3)</div><div class="def-desc">CA ou peso fetal estimado &lt; percentil 10 + IP da artéria uterina &gt; percentil 95 + IP da artéria umbilical &gt; percentil 95.</div></div>`},
+      {titulo:'Critérios de Delphi — RCF tardia (a partir de 32 semanas)', html:`
+<div class="def-row"><div class="def-term">Isolado</div><div class="def-desc">CA ou peso fetal estimado &lt; percentil 3.</div></div>
+<div class="def-row"><div class="def-term">Associados (2 de 3)</div><div class="def-desc">CA ou peso fetal estimado &lt; percentil 10 + queda de trajetória de crescimento cruzando &gt;2 quartis + relação cérebro-placentária (RCP) &lt; percentil 5 ou IP da artéria umbilical &gt; percentil 95.</div></div>`},
+    ],
+    explicar:'"Nem todo bebê pequeno tem um problema na placenta. Existem bebês naturalmente menores, do mesmo jeito que existem adultos mais baixos. O que diferencia isso é o fluxo de sangue pelo Doppler e como o crescimento evolui ao longo dos exames — é isso que vamos acompanhar."',
+    pensando:'Meu bebê é só pequeno ou tem restrição de crescimento? Isso é grave? Vou ter que antecipar o parto?',
+    confianca:'Explicar que "PIG" descreve um tamanho e "RCF" descreve uma causa — e que é o Doppler, não o percentil isolado, que decide qual dos dois é o caso — transforma um número assustador numa investigação com critério claro.',
+    aprendi:'O Doppler fetal é crucial para diferenciar PIG de CIUR — por isso deve sempre ser pedido pelo médico auxiliar diante da suspeita de feto pequeno. Sem o Doppler, o ultrassonografista fica de mãos atadas 🫣.',
+    vocesabia:[
+      '"PIG" e "RCF" não são sinônimos — todo RCF é PIG, mas nem todo PIG é RCF. A maioria dos fetos PIG (percentil 3–10) é pequena constitucional: sem risco aumentado, sem necessidade de Doppler seriado além do habitual.',
+      'A restrição de crescimento fetal (RCF) recebeu, em 2016, uma definição de consenso internacional (Delphi) justamente para reduzir a variabilidade entre serviços na hora de rotular um feto como PIG ou RCF.',
+    ],
+    perolas:[
+      'PFE &lt;P10 é um achado. RCF é um diagnóstico. Depois de identificar um feto pequeno, o próximo passo é avaliar placenta, Doppler, evolução do crescimento e contexto clínico — não repetir o ultrassom em 4 semanas e seguir em frente.',
+    ],
+    encaminhar:'RCF confirmada por critério de Delphi (precoce ou tardia); percentil &lt;3 em qualquer idade gestacional; Doppler de artéria umbilical, ACM ou relação cérebro-placentária alterados; queda de trajetória de crescimento cruzando ≥2 quartis entre exames — encaminhar para pré-natal de alto risco / medicina fetal.',
+    aula:{titulo:'PIG × RCF: como usar o Doppler para diferenciar', pendente:true},
+    referencias:[
+      'Gordijn SJ et al. "Consensus definition of fetal growth restriction: a Delphi procedure." Ultrasound Obstet Gynecol, 2016.',
+      'ISUOG Practice Guidelines: diagnosis and management of small-for-gestational-age fetus and fetal growth restriction. Ultrasound Obstet Gynecol, 2020.',
+    ],
+    vejaTambem:['percentil8','doppler-introducao','rcf-precoce-tardia'],
+  },
+  {
+    id:'psv-acm',
+    titulo:'Anemia fetal',
+    modulo:'doppler',
+    tags:['psv da acm','pico de velocidade sistólica','artéria cerebral média','acm','anemia fetal','aloimunização','isoimunização rh','parvovírus b19','mom','transfusão intrauterina'],
+    essencial:'A PSV da artéria cerebral média é o principal parâmetro Doppler usado no rastreamento não invasivo da anemia fetal. PSV ≥ 1,5 MoM indica alto risco de anemia fetal grave e deve motivar encaminhamento para Medicina Fetal.',
+    erro:'Confundir os dois parâmetros avaliados na artéria cerebral média — <strong>IP da ACM</strong> avalia redistribuição fetal/hipóxia; <strong>PSV da ACM</strong> rastreia anemia fetal. Não usar o IP da ACM para avaliar anemia.',
+    passo:{tipo:'checklist', itens:[
+      'PSV < 1,5 MoM: siga o acompanhamento conforme a indicação clínica e o risco de anemia.',
+      'PSV ≥ 1,5 MoM: encaminhe para Medicina Fetal para avaliação especializada.',
+      'A decisão sobre transfusão fetal não deve ser tomada apenas pelo valor da PSV — depende da idade gestacional, da causa da anemia e da avaliação especializada.',
+    ]},
+    explicar:'"Esse exame mede a velocidade do sangue em uma artéria do cérebro do bebê. Quando existe anemia, o sangue circula mais rapidamente. Esse aumento da velocidade pode nos alertar antes que o bebê apresente sinais mais graves."',
+    pensando:'Meu bebê está com anemia? Ele vai precisar receber sangue ainda dentro da barriga?',
+    confianca:'"Encontramos uma alteração que pode indicar anemia, mas isso não significa que o bebê esteja em perigo imediato. O importante é investigar rapidamente e, se necessário, tratar no momento adequado."',
+    aprendi:'Quando comecei a interpretar Doppler, parecia que cada índice contava uma história diferente. Na ACM, basta lembrar de uma coisa: IP fala de hipóxia; PSV fala de anemia. E um detalhe que faz diferença: um IP normal da ACM pode conviver com anemia grave, e a PSV pode nem estar descrita no laudo se não for pedida especificamente — isso mudaria completamente a conduta.',
+    vocesabia:[
+      'Na anemia fetal, a menor viscosidade do sangue e o aumento do débito cardíaco fazem o sangue circular mais rapidamente. Por isso, a PSV da ACM aumenta.',
+    ],
+    encaminhar:'Encaminhar para Medicina Fetal quando a PSV da ACM atingir ≥ 1,5 MoM, principalmente quando existe uma condição conhecida com risco de anemia fetal, como aloimunização materna, infecção por parvovírus B19 ou outras causas de anemia fetal.',
+    aula:{titulo:'PSV da ACM: como rastrear anemia fetal pelo Doppler', pendente:true},
+    referencias:[
+      'Mari G, Deter RL, Carpenter RL, et al. "Noninvasive diagnosis by Doppler ultrasonography of fetal anemia due to maternal red-cell alloimmunization." N Engl J Med, 2000;342(1):9-14.',
+      'American College of Obstetricians and Gynecologists (ACOG). Practice Bulletin No. 192: Management of Alloimmunization During Pregnancy. Obstet Gynecol, 2018;131(3):e82-e90.',
+      'Society for Maternal-Fetal Medicine (SMFM). Clinical Guideline #8: The Fetus at Risk for Anemia — Diagnosis and Management. Am J Obstet Gynecol, 2015;212(6):697-710.',
+    ],
+    vejaTambem:['doppler-introducao','acm-baixa-resistencia'],
+  },
+  {
+    id:'rcf-precoce-tardia',
+    titulo:'RCF precoce × RCF tardia',
+    modulo:'crescimento',
+    tags:['rcf precoce','rcf tardia','restrição de crescimento fetal','insuficiência placentária','doppler das artérias uterinas','relação cérebro-placentária','rcp','ducto venoso','hipóxia fetal','placentação'],
+    essencial:'RCF precoce (antes de 32 semanas) e RCF tardia (a partir de 32 semanas) não são a mesma doença: fisiopatologia, Doppler e tolerância à hipóxia diferentes. A tardia é mais frequente (~70%) e pode ser mais silenciosa e perigosa mesmo com Doppler pouco alterado.',
+    erro:'Interpretar a gravidade do Doppler como "quanto mais alterado, mais perto da morte", sem considerar o tipo de RCF. Na RCF precoce, Doppler bastante alterado pode conviver com feto ainda compensado; na tardia, Doppler umbilical normal pode conviver com feto de menor tolerância à hipóxia. Doppler das artérias uterinas normal não exclui RCF tardia.',
+    passo:{tipo:'checklist', itens:[
+      'Classifique pelo ponto de corte de 32 semanas: RCF precoce (antes) × RCF tardia (a partir de).',
+      'Na RCF precoce: acompanhe Doppler das artérias uterinas (mais informativo entre 20 e 24 semanas), artéria umbilical, redistribuição fetal (ACM/RCP) e ducto venoso em casos graves — a sequência costuma ser progressiva.',
+      'Na RCF tardia: não espere a artéria umbilical alterar — avalie principalmente a ACM e a relação cérebro-placentária (RCP), já que o Doppler umbilical e o das uterinas costumam permanecer normais.',
+      'Não classifique a gravidade só pelo grau de alteração do Doppler — considere primeiro qual tipo de RCF está sendo acompanhado.',
+    ]},
+    aprendi:'Na RCF precoce, a placenta costuma falar alto. Na RCF tardia, ela pode sussurrar — e o feto pode ter menos tempo para avisar que está sofrendo. Por isso não devemos esperar que a artéria umbilical fique alterada para reconhecer uma RCF tardia.',
+    vocesabia:[
+      'A RCF tardia é bem mais frequente que a precoce — cerca de 70% dos casos contra 30%.',
+      'O Doppler das artérias uterinas não é um bom teste isolado para rastrear toda RCF, mas melhora a identificação dos casos de RCF precoce, especialmente quando avaliado entre 20 e 24 semanas.',
+    ],
+    perolas:[
+      'Doppler uterino normal não exclui RCF tardia — e é justamente por isso que ela costuma ser mais difícil de reconhecer.',
+    ],
+    eAgora:[
+      'RCF precoce + Doppler bastante alterado + feto ainda compensado → não indica necessariamente proximidade de sofrimento grave — fetos com RCF precoce toleram mais tempo compensados.',
+      'RCF tardia + Doppler umbilical normal + RCP reduzida → sinal de alerta mesmo com o Doppler "normal" — a RCF tardia tem menor tolerância à hipóxia.',
+      'Doppler das artérias uterinas normal, isoladamente, não descarta RCF tardia — reavalie ACM e RCP antes de tranquilizar.',
+    ],
+    encaminhar:'Encaminhar para pré-natal de alto risco diante de qualquer RCF confirmada — a estratégia de vigilância muda conforme o tipo (precoce × tardia), e a evolução (sobretudo alteração do ducto venoso na RCF precoce, ou RCP reduzida mesmo com umbilical normal na RCF tardia) deve ser acompanhada por quem tem experiência nesse seguimento.',
+    aula:{titulo:'RCF precoce × RCF tardia: por que a conduta é diferente', pendente:true},
+    referencias:[
+      'Figueras F, Gratacós E. "Update on the Diagnosis and Classification of Fetal Growth Restriction and Proposal of a Stage-Based Management Protocol." Fetal Diagn Ther, 2014;36(2):86-98.',
+      'Gordijn SJ, Beune IM, Thilaganathan B, et al. "Consensus definition of fetal growth restriction: a Delphi procedure." Ultrasound Obstet Gynecol, 2016;48(3):333-339.',
+      'Lees CC, Stampalija T, Baschat A, et al. "ISUOG Practice Guidelines: diagnosis and management of small-for-gestational-age fetus and fetal growth restriction." Ultrasound Obstet Gynecol, 2020;56(2):298-312.',
+    ],
+    vejaTambem:['percentil8','doppler-introducao','pig-x-rcf','insuficiencia-placentaria-precoce'],
+  },
 ];
 
 

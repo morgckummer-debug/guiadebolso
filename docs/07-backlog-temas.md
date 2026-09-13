@@ -50,9 +50,17 @@ marcar como concluído aqui.
 - [ ] Cisto de plexo coroide
 
 ## Crescimento
-- [ ] PIG × RCF — *confusão que a autora considera enorme; já existe o
-      tema "Percentil de peso baixo" tocando nisso (módulo Crescimento
-      fetal), mas pode valer um tema dedicado só à diferenciação PIG × RCF.*
+- [x] PIG × RCF — *tema escrito como "PIG × RCF" (módulo Crescimento fetal),
+      com critérios de Delphi para RCF precoce/tardia. Escrito originalmente
+      numa branch antiga (`develop`, formato `prototype/index.html`) e
+      portado para `webapp/data/temas.ts` em 2026-09-13, junto com mais 3
+      temas que só existiam lá (ver itens abaixo e no módulo Doppler).*
+- [x] Circunferência abdominal > P90 — *não estava nesta lista original;
+      tema trazido do `develop` junto com "PIG × RCF" (mesma leva de
+      2026-09-13). CA aumentada em gestante diabética ≠ macrossomia.*
+- [x] RCF precoce × RCF tardia — *idem, tema separado de "PIG × RCF"
+      (diferenciação distinta, não se sobrepõem): ponto de corte 32 semanas,
+      fisiopatologia e vaso de referência diferentes entre os dois.*
 - [ ] Macrossomia
 - [ ] Peso fetal no P10
 - [ ] Circunferência abdominal isoladamente baixa
@@ -78,6 +86,11 @@ marcar como concluído aqui.
 - [x] Diástole reversa — *ver "Insuficiência placentária no 2º trimestre"
       acima. Conduta ditada pela autora: indicação de parto por si só,
       independente da IG — não há tempo para corticoide.*
+- [x] Anemia fetal (PSV da ACM) — *não estava nesta lista original; tema
+      trazido do `develop` na mesma leva de 2026-09-13 (junto com "PIG × RCF",
+      "Circunferência abdominal > P90" e "RCF precoce × RCF tardia"). Foco no
+      erro de confundir IP da ACM (hipóxia) com PSV da ACM (anemia) — são
+      parâmetros diferentes na mesma artéria.*
 
 ## Parede abdominal
 Item trazido pela autora fora desta lista original (2026-09-13). Motivou a

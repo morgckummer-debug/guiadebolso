@@ -86,3 +86,10 @@ a voz dela, só ajustar pontuação/clareza se necessário.
   referência muda a cada estágio). Bloco "Aprendi que…" preenchido com a
   fala literal da autora sobre a gravidade e o peso emocional do
   diagnóstico abaixo de 28 semanas.
+- ✅ PIG × RCF, Circunferência abdominal > P90, RCF precoce × RCF tardia,
+  Anemia fetal (PSV da ACM): não escritos nesta sessão — já existiam,
+  com fala/conteúdo da autora já coletado e confirmado, numa branch antiga
+  (`develop`) que nunca chegou a ser migrada pro webapp. Portados para
+  `webapp/data/temas.ts` em 2026-09-13 sem reescrever nenhum bloco (só
+  ajustei "Veja também" para cruzar com os temas que já existiam no
+  `main`, incluindo os novos desta sessão).
