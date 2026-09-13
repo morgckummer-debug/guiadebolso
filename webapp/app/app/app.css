@@ -252,7 +252,7 @@ button,input{font-family:inherit;}
 .acesso-banner-cta{color:var(--lav-700);white-space:nowrap;}
 
 .trilha-heading{margin-top:32px;padding-top:20px;border-top:1px solid var(--ink-100);}
-.trilha-heading:first-of-type{margin-top:22px;padding-top:0;border-top:none;}
+.trilha-heading-primeira{margin-top:22px;padding-top:0;border-top:none;}
 .trilha-titulo{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-500);}
 .trilha-subtitulo{font-size:12px;color:var(--ink-300);margin-top:2px;}
 

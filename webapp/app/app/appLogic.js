@@ -373,14 +373,19 @@ function renderIndice(){
   <div class="idx-header"><div class="idx-title">Índice</div><div class="idx-search-btn" id="idx-search-btn">⌕</div></div>
   ${idxRailHTML}
   <div id="mod-todos"></div>
-  ${TRILHAS.map(trilha=>{
-    const modulosDaTrilha = MODULOS.filter(m=>m.trilha===trilha.id);
-    if(!modulosDaTrilha.length) return '';
-    return `
-    <div class="trilha-heading"><div class="trilha-titulo">${trilha.titulo}</div><div class="trilha-subtitulo">${trilha.subtitulo}</div></div>
-    ${modulosDaTrilha.map(moduloSectionHTML).join('')}
-    `;
-  }).join('')}
+  ${(()=>{
+    let trilhasRenderizadas = 0;
+    return TRILHAS.map(trilha=>{
+      const modulosDaTrilha = MODULOS.filter(m=>m.trilha===trilha.id);
+      if(!modulosDaTrilha.length) return '';
+      const primeira = trilhasRenderizadas === 0;
+      trilhasRenderizadas++;
+      return `
+      <div class="trilha-heading${primeira?' trilha-heading-primeira':''}"><div class="trilha-titulo">${trilha.titulo}</div><div class="trilha-subtitulo">${trilha.subtitulo}</div></div>
+      ${modulosDaTrilha.map(moduloSectionHTML).join('')}
+      `;
+    }).join('');
+  })()}
   `;
   const idxScroll = document.getElementById('panel-indice');
   idxScroll.querySelectorAll('.anchor-chip').forEach(chip=>{
