@@ -26,7 +26,7 @@ consulta.
 
 **14 temas completos e navegáveis de verdade** (não é mock estático):
 1. Ausência de embrião — módulo Gestação inicial
-2. Percentil de peso baixo — módulo Crescimento fetal
+2. Feto PIG — módulo Crescimento fetal
 3. Placenta baixa — módulo Placenta e anexos
 4. Artéria umbilical única — módulo Marcadores leves de aneuploidia
 5. Dilatação das pelves renais — módulo Trato urinário fetal

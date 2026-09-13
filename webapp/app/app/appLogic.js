@@ -243,25 +243,226 @@ function goToTema(id){
   }
 }
 
+let currentPanel = 'panel-indice';
+
 function activateTab(panelId){
   document.querySelectorAll('.tabbar-item[data-target]').forEach(b=>b.classList.toggle('active', b.dataset.target===panelId));
   document.querySelectorAll('.app-panel').forEach(p=>p.classList.toggle('active', p.id===panelId));
+  currentPanel = panelId;
   const fab = document.getElementById('raciocinio-fab');
-  if(fab) fab.style.display = panelId==='panel-tema' ? 'flex' : 'none';
+  if(fab) fab.style.display = 'flex';
+  triggerFabPulse(panelId);
 }
 
 renderTemaScreen(currentTemaId); // currentTemaId nunca é bloqueado, ver acima
 
-/* ================= RaciocinioFAB (FAB + Bottom Sheet) ================= */
+/* ================= RaciocinioFAB (FAB + busca + raciocínio) =================
+   Único ponto de busca do app (substitui o antigo ícone de busca do
+   cabeçalho e a aba Busca — ver docs/01 §3.1 e docs/03) e o método de
+   raciocínio do Guia. Nó 1 do fluxo ("Recebi um laudo") sempre abre o
+   seletor de achados; os demais só são clicáveis dentro de um Tema. */
+const RACIOCINIO_FLOW = [
+  ['📄','Recebi um laudo'],
+  ['📅','O exame foi realizado no momento certo?'],
+  ['⚠️','Isso muda minha conduta?'],
+  ['💬','Como vou explicar isso para a paciente?'],
+  ['🤝','Preciso compartilhar o cuidado?'],
+];
+// Índice 0 ("Recebi um laudo") não tem bloco fixo — abre o seletor de achados.
+const FLOW_BLOCK_TARGETS = [null, 'blk-essencial', 'blk-passo', 'blk-explicar', 'blk-encaminhar'];
+
+// "Recebi um laudo" → "o que você encontrou?" — cada achado leva direto para
+// o Tema certo, já rolado até "Qual é o próximo passo?" (blk-passo).
+const LAUDO_ACHADOS = [
+  {icon:'📈', label:'Percentil baixo', goto:'pig-x-rcf'},
+  {icon:'🟣', label:'Placenta baixa', goto:'placenta-baixa'},
+  {icon:'📡', label:'Doppler alterado', goto:'doppler-introducao'},
+  {icon:'🔐', label:'Colo curto', goto:'colo-curto'},
+  {icon:'💧', label:'Dilatação renal', goto:'dilatacao-pelves-renais'},
+  {icon:'✨', label:'Marcador de aneuploidia', sub:[
+    {icon:'✨', label:'Foco ecogênico intracardíaco', goto:'foco-ecogenico-intracardiaco'},
+    {icon:'✨', label:'Intestino hiperecogênico', goto:'intestino-hiperecogenico'},
+    {icon:'➕', label:'Artéria umbilical única', goto:'arteria-umbilical-unica'},
+  ]},
+];
+
+const BUSCAS_RECENTES = ['percentil baixo', 'placenta prévia', 'sem embrião'];
+
+function highlightMatch(text, query){
+  if(!query) return text;
+  const idx = norm(text).indexOf(norm(query));
+  if(idx === -1) return text;
+  return text.slice(0,idx) + '<mark>' + text.slice(idx, idx+query.length) + '</mark>' + text.slice(idx+query.length);
+}
+
+function fabEmptyStateHTML(insideTema){
+  return `
+  <div class="search-label">Buscas recentes</div>
+  <div class="anchor-rail" style="border-bottom:none;padding-bottom:2px">
+    ${BUSCAS_RECENTES.map(term=>`<button class="anchor-chip" data-recent="${term}">${term}</button>`).join('')}
+  </div>
+  <div class="flow">
+    ${RACIOCINIO_FLOW.map(([icon,text],i)=>{
+      const clickable = i===0 || insideTema;
+      const cls = `flow-node${i===0?' flow-start':''}${clickable?' flow-node-clickable':''}`;
+      const arrow = i>0 ? '<div class="flow-arrow"></div>' : '';
+      const chevron = clickable ? '<span class="flow-node-chevron">›</span>' : '';
+      return `${arrow}<button type="button" class="${cls}" data-flow-idx="${i}"><span class="flow-node-text">${icon} ${text}</span>${chevron}</button>`;
+    }).join('')}
+  </div>`;
+}
+
+function achadosPickerHTML(list, title){
+  return `
+  <button type="button" class="sheet-back-btn" id="achados-back">‹ Voltar</button>
+  <div class="search-label">${title}</div>
+  <div class="achados-grid">
+    ${list.map((a,i)=>`<button type="button" class="achado-card" data-achado-idx="${i}"><span class="achado-icon">${a.icon}</span><span>${a.label}</span></button>`).join('')}
+  </div>
+  <button type="button" class="sheet-fallback-link" id="achados-search-fallback">Não encontrou? Buscar manualmente</button>`;
+}
+
+function fabResultsHTML(query){
+  const nq = norm(query.trim());
+  const matches = TEMAS.filter(t => norm(t.titulo).includes(nq) || t.tags.some(tag=>norm(tag).includes(nq)));
+  if(!matches.length){
+    return `
+    <div class="sheet-fallback">
+      <div class="sheet-fallback-icon">⌕</div>
+      <div class="sheet-fallback-title">Ainda não escrevemos sobre isso</div>
+      <div class="sheet-fallback-sub">Sua pergunta foi guardada — pode virar o próximo Tema do Guia.</div>
+    </div>`;
+  }
+  return `
+  <div class="search-label">Resultados (${matches.length})</div>
+  ${matches.map(t=>`
+    <div class="result-row" data-goto="${t.id}" style="cursor:pointer">
+      <span class="tag">${moduloById(t.modulo).nome}</span>
+      <span class="q">${t.bloqueado ? '🔒 ' : ''}${highlightMatch(t.titulo, query)}</span>
+    </div>
+  `).join('')}
+  `;
+}
+
+const pulsedPanels = new Set();
+let triggerFabPulse = function(){}; // substituída depois que o FAB é montado
+
 (function(){
   const fab = document.getElementById('raciocinio-fab');
+  const pulsePill = document.getElementById('fab-pulse-pill');
   const sheet = document.getElementById('raciocinio-sheet');
   const backdrop = document.getElementById('sheet-backdrop');
   const grabber = document.getElementById('sheet-grabber');
   const closeBtn = document.getElementById('sheet-close-btn');
+  const input = document.getElementById('fab-input');
+  const body = document.getElementById('fab-body');
   const sheetHeight = () => sheet.getBoundingClientRect().height;
 
+  // Pilha do seletor de achados ("Recebi um laudo" → achado → sub-achado).
+  // Vazia = mostra o fluxograma; com itens = mostra a lista no topo da pilha.
+  let achadosStack = [];
+
+  function scrollToBlockAfterClose(blockId){
+    const target = document.getElementById(blockId);
+    if(!target) return;
+    setTimeout(()=>{
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+      target.classList.add('flow-target-pulse');
+      setTimeout(()=> target.classList.remove('flow-target-pulse'), 2300);
+    }, 320);
+  }
+
+  function openAchados(list, title){
+    achadosStack.push({list, title});
+    renderBody(input.value);
+  }
+  function achadosBack(){
+    achadosStack.pop();
+    renderBody(input.value);
+  }
+
+  function bindBodyInteractions(){
+    body.querySelectorAll('[data-goto]').forEach(row=>{
+      row.addEventListener('click', ()=>{
+        closeSheet();
+        goToTema(row.dataset.goto);
+      });
+    });
+    body.querySelectorAll('[data-recent]').forEach(chip=>{
+      chip.addEventListener('click', ()=>{
+        input.value = chip.dataset.recent;
+        renderBody(input.value);
+        input.focus();
+      });
+    });
+
+    // Card "Recebi um laudo" abre o seletor de achados; dentro de um Tema,
+    // os demais cards saltam direto para o bloco correspondente da leitura.
+    body.querySelectorAll('[data-flow-idx]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const idx = Number(btn.dataset.flowIdx);
+        if(idx===0){
+          openAchados(LAUDO_ACHADOS, 'O que você encontrou?');
+          return;
+        }
+        const blockId = FLOW_BLOCK_TARGETS[idx];
+        if(!blockId || currentPanel!=='panel-tema') return;
+        closeSheet();
+        scrollToBlockAfterClose(blockId);
+      });
+    });
+
+    // Cards do seletor de achados: sub-lista (marcadores) ou vai direto para
+    // o Tema, já rolado até "Qual é o próximo passo?".
+    body.querySelectorAll('[data-achado-idx]').forEach(card=>{
+      card.addEventListener('click', ()=>{
+        const list = achadosStack[achadosStack.length-1].list;
+        const item = list[Number(card.dataset.achadoIdx)];
+        if(item.sub){
+          openAchados(item.sub, item.label);
+        } else {
+          closeSheet();
+          goToTema(item.goto);
+          scrollToBlockAfterClose('blk-passo');
+        }
+      });
+    });
+    const achadosBackBtn = body.querySelector('#achados-back');
+    if(achadosBackBtn) achadosBackBtn.addEventListener('click', achadosBack);
+
+    const achadosFallback = body.querySelector('#achados-search-fallback');
+    if(achadosFallback){
+      achadosFallback.addEventListener('click', ()=>{
+        achadosStack = [];
+        renderBody(input.value);
+        input.focus();
+      });
+    }
+  }
+
+  // Estado vazio (buscas recentes + fluxograma), seletor de achados (2º nível
+  // do card "Recebi um laudo") ou digitando (≥2 caracteres, resultados
+  // agrupados) — ver docs/03, anatomia do RaciocinioFAB.
+  function renderBody(query){
+    if(query && query.trim().length >= 2){
+      body.innerHTML = fabResultsHTML(query);
+    } else if(achadosStack.length){
+      const top = achadosStack[achadosStack.length-1];
+      body.innerHTML = achadosPickerHTML(top.list, top.title);
+    } else {
+      body.innerHTML = fabEmptyStateHTML(currentPanel==='panel-tema');
+    }
+    bindBodyInteractions();
+  }
+
+  function cancelPulse(){
+    pulsePill.classList.remove('show');
+    fab.classList.remove('pulsing');
+  }
   function openSheet(){
+    cancelPulse();
+    closeBtn.textContent = currentPanel==='panel-tema' ? 'Fechar e voltar ao tema' : 'Fechar';
+    renderBody(input.value);
     sheet.classList.add('open');
     backdrop.classList.add('open');
   }
@@ -269,11 +470,13 @@ renderTemaScreen(currentTemaId); // currentTemaId nunca é bloqueado, ver acima
     sheet.classList.remove('open');
     backdrop.classList.remove('open');
     sheet.style.transform = '';
+    achadosStack = [];
   }
 
+  closeBtn.addEventListener('click', closeSheet);
   fab.addEventListener('click', openSheet);
   backdrop.addEventListener('click', closeSheet);
-  closeBtn.addEventListener('click', closeSheet);
+  input.addEventListener('input', ()=> renderBody(input.value));
 
   // arrastar para fechar, a partir do grabber
   let dragStartY = null;
@@ -301,21 +504,21 @@ renderTemaScreen(currentTemaId); // currentTemaId nunca é bloqueado, ver acima
   grabber.addEventListener('pointerup', endDrag);
   grabber.addEventListener('pointercancel', endDrag);
 
-  // CTA final do fluxo: fecha o sheet e leva de volta ao bloco
-  // ✅ Próximo passo do próprio Tema — fecha o ciclo entre "raciocinar"
-  // e "agir", sem repetir a resposta dentro do sheet.
-  const flowCta = document.getElementById('flow-cta');
-  flowCta.addEventListener('click', ()=>{
-    closeSheet();
-    const target = document.getElementById('blk-passo');
-    if(target){
-      setTimeout(()=>{
-        target.scrollIntoView({behavior:'smooth', block:'start'});
-        target.classList.add('flow-target-pulse');
-        setTimeout(()=> target.classList.remove('flow-target-pulse'), 2300);
-      }, 280);
-    }
-  });
+  // Pulso único "tá com dúvida?" — uma vez por tela (Índice/Tema), ~600ms
+  // após a tela ativar, some sozinho em ~2,2s. Nunca loop, cancelado na
+  // hora por qualquer toque no FAB.
+  triggerFabPulse = function(panelId){
+    if(panelId!=='panel-indice' && panelId!=='panel-tema') return;
+    if(pulsedPanels.has(panelId)) return;
+    pulsedPanels.add(panelId);
+    setTimeout(()=>{
+      if(sheet.classList.contains('open')) return;
+      fab.classList.add('pulsing');
+      pulsePill.classList.add('show');
+      setTimeout(()=> fab.classList.remove('pulsing'), 400);
+      setTimeout(()=> pulsePill.classList.remove('show'), 2200);
+    }, 600);
+  };
 })();
 
 /* ================= ÍNDICE ================= */
@@ -370,7 +573,7 @@ function renderIndice(){
     </div>
   </div>
   ${acessoBannerHTML()}
-  <div class="idx-header"><div class="idx-title">Índice</div><div class="idx-search-btn" id="idx-search-btn">⌕</div></div>
+  <div class="idx-header"><div class="idx-title">Índice</div></div>
   ${idxRailHTML}
   <div id="mod-todos"></div>
   ${(()=>{
@@ -398,80 +601,8 @@ function renderIndice(){
   idxScroll.querySelectorAll('[data-goto]').forEach(row=>{
     row.addEventListener('click', ()=> goToTema(row.dataset.goto));
   });
-  document.getElementById('idx-search-btn').addEventListener('click', ()=> activateTab('panel-busca'));
 }
 renderIndice();
-
-/* ================= BUSCA ================= */
-const BUSCAS_RECENTES = ['percentil baixo', 'placenta prévia', 'sem embrião'];
-
-function highlightMatch(text, query){
-  if(!query) return text;
-  const idx = norm(text).indexOf(norm(query));
-  if(idx === -1) return text;
-  return text.slice(0,idx) + '<mark>' + text.slice(idx, idx+query.length) + '</mark>' + text.slice(idx+query.length);
-}
-
-function searchResultsHTML(query){
-  const q = query.trim();
-  if(q.length < 2){
-    return `
-    <div class="search-label">Buscas recentes</div>
-    <div class="anchor-rail" style="border-bottom:none;padding-bottom:2px">
-      ${BUSCAS_RECENTES.map(term=>`<button class="anchor-chip" data-recent="${term}">${term}</button>`).join('')}
-    </div>`;
-  }
-  const nq = norm(q);
-  const matches = TEMAS.filter(t => norm(t.titulo).includes(nq) || t.tags.some(tag=>norm(tag).includes(nq)));
-  if(!matches.length){
-    return `<div class="search-label">Resultados</div><div class="result-row"><span class="q" style="color:var(--ink-500);font-weight:500">Nada encontrado para "${q}" — tente outro termo.</span></div>`;
-  }
-  return `
-  <div class="search-label">Resultados (${matches.length})</div>
-  ${matches.map(t=>`
-    <div class="result-row" data-goto="${t.id}" style="cursor:pointer">
-      <span class="tag">${moduloById(t.modulo).nome}</span>
-      <span class="q">${t.bloqueado ? '🔒 ' : ''}${highlightMatch(t.titulo, q)}</span>
-    </div>
-  `).join('')}
-  `;
-}
-
-function renderBusca(query){
-  const box = document.getElementById('panel-busca');
-  box.innerHTML = `
-  <div class="search-box"><span>⌕</span><input id="busca-input" placeholder="Buscar dúvida, tema ou módulo" value="${query||''}"><span class="search-cancel" id="busca-cancel">Cancelar</span></div>
-  <div id="busca-results">${searchResultsHTML(query||'')}</div>
-  `;
-  const input = document.getElementById('busca-input');
-  input.addEventListener('input', ()=>{
-    document.getElementById('busca-results').innerHTML = searchResultsHTML(input.value);
-    bindBuscaResultInteractions();
-  });
-  document.getElementById('busca-cancel').addEventListener('click', ()=>{
-    input.value = '';
-    document.getElementById('busca-results').innerHTML = searchResultsHTML('');
-    bindBuscaResultInteractions();
-    input.focus();
-  });
-  bindBuscaResultInteractions();
-}
-
-function bindBuscaResultInteractions(){
-  document.querySelectorAll('#busca-results [data-goto]').forEach(row=>{
-    row.addEventListener('click', ()=> goToTema(row.dataset.goto));
-  });
-  document.querySelectorAll('#busca-results [data-recent]').forEach(chip=>{
-    chip.addEventListener('click', ()=>{
-      const term = chip.dataset.recent;
-      document.getElementById('busca-input').value = term;
-      document.getElementById('busca-results').innerHTML = searchResultsHTML(term);
-      bindBuscaResultInteractions();
-    });
-  });
-}
-
-renderBusca('');
 
 activateTab('panel-indice');
 }
