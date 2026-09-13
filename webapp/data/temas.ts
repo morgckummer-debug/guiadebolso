@@ -10,6 +10,7 @@ const MODULOS = [
   {id:'colo', nome:'Colo uterino', icon:'🔒'},
   {id:'marcadores', nome:'Marcadores leves de aneuploidia', icon:'✨'},
   {id:'doppler', nome:'Doppler fetal', icon:'📡'},
+  {id:'malformacoes', nome:'Malformações fetais', icon:'🩻'},
 ];
 
 const TEMAS = [
@@ -580,6 +581,37 @@ const TEMAS = [
       'ISUOG Practice Guidelines: performance of first-trimester fetal ultrasound scan (datação gestacional). Ultrasound Obstet Gynecol, 2023.',
     ],
     vejaTambem:['morfologico-1trimestre','percentil8'],
+  },
+  {
+    id:'onfalocele-gastrosquise',
+    titulo:'Onfalocele × gastrosquise',
+    modulo:'malformacoes',
+    tags:['onfalocele','gastrosquise','defeito de parede abdominal','alfafetoproteína','trissomia 13','trissomia 18','beckwith-wiedemann','cariótipo fetal','ecocardiograma fetal'],
+    essencial:'Os dois são defeitos da parede abdominal com AFP materna elevada, mas têm prognóstico e conduta muito diferentes. O que diferencia: <strong>onfalocele</strong> — defeito na própria inserção do cordão, conteúdo (alças, muitas vezes fígado) coberto por uma membrana (saco); <strong>gastrosquise</strong> — defeito ao lado do cordão (geralmente à direita), sem membrana, alças flutuando livres no líquido amniótico.',
+    erro:'Tratar as duas condições com a mesma conduta. Onfalocele tem associação forte com aneuploidias (trissomias 13 e 18) e síndromes (Beckwith-Wiedemann) — pede cariótipo e ecocardiograma fetal. Gastrosquise, na grande maioria das vezes, é um achado isolado, sem aumento relevante de risco de aneuploidia — oferecer investigação genética extensa sem motivo aumenta a ansiedade da gestante à toa.',
+    passo:{tipo:'checklist', itens:[
+      'Confirme o achado central: existe uma membrana cobrindo o conteúdo herniado (onfalocele) ou as alças estão livres no líquido amniótico, sem cobertura (gastrosquise)?',
+      'Verifique a posição do cordão: insere no próprio defeito/ápice do saco (onfalocele) ou está normalmente inserido, com o defeito ao lado — geralmente à direita (gastrosquise)?',
+      'Onfalocele: reforce a anatomia fetal completa, peça ecocardiograma fetal e ofereça cariótipo/microarray — associação relevante com trissomias 13 e 18 e com Beckwith-Wiedemann.',
+      'Gastrosquise: geralmente é achado isolado — acompanhe o crescimento fetal (associação com PIG/RCF) e o aspecto das alças (espessamento, dilatação) com ultrassons seriados.',
+      'Programe o parto em centro terciário com cirurgia pediátrica disponível — nos dois casos, mas principalmente na gastrosquise, pelo risco de complicações intestinais (atresia, vólvulo) e de óbito fetal tardio.',
+    ]},
+    explicar:'"O ultrassom mostrou que uma parte do intestino do bebê está se formando fora da barriga. Isso tem um nome e uma explicação técnica, e o mais importante agora é entender exatamente qual tipo é esse, porque isso muda os próximos exames e o acompanhamento."',
+    pensando:'Meu bebê vai precisar de cirurgia assim que nascer? Isso é grave? Foi algo que eu fiz errado na gravidez?',
+    confianca:'Explicar que os dois defeitos têm nomes diferentes por causa da aparência ao ultrassom (com ou sem membrana cobrindo), e que essa diferença é exatamente o que muda a investigação e o prognóstico, ajuda a paciente a entender por que o próximo passo não é igual para todo mundo com "um problema na barriga do bebê".',
+    aprendi:'Gastrosquise e onfalocele assustam igual na hora que a paciente ouve o nome, mas pedem conversas bem diferentes. Aprendi que a primeira coisa a explicar não é o defeito em si, e sim se tem "capinha" cobrindo ou não — porque é isso que muda toda a investigação depois, e evita que uma mãe com gastrosquise isolada saia da consulta com o mesmo medo de síndrome genética que uma com onfalocele.',
+    vocesabia:[
+      'Os dois elevam a alfafetoproteína (AFP) materna — não adianta usar a AFP sozinha pra diferenciar; o ultrassom (membrana + posição do cordão) é quem faz o diagnóstico.',
+      'A gastrosquise costuma ser mais associada a mães mais jovens, diferente da onfalocele, que não tem esse padrão etário.',
+      'Onfalocele "gigante" (com fígado herniado) tem, paradoxalmente, menor risco de aneuploidia do que onfalocele pequena com só alças intestinais — vale considerar o tamanho do defeito na hora de conversar sobre risco.',
+    ],
+    encaminhar:'Encaminhar para pré-natal de alto risco / medicina fetal em todos os casos, e programar o parto em centro terciário com cirurgia pediátrica disponível. Priorize a avaliação com urgência quando houver:<ul><li>Onfalocele com suspeita de cardiopatia ou outra malformação associada</li><li>Gastrosquise com alças muito dilatadas, espessadas ou sinais de sofrimento intestinal</li><li>Restrição de crescimento fetal associada</li><li>Oligoidrâmnio ou outros sinais de complicação</li></ul>',
+    aula:{titulo:'Onfalocele × gastrosquise: como diferenciar e o que muda na conduta', pendente:true},
+    referencias:[
+      ['Khalil A et al. "Outcome of fetal exomphalos diagnosed at 11–14 weeks of gestation." Ultrasound Obstet Gynecol, 2012.', 'https://obgyn.onlinelibrary.wiley.com/doi/full/10.1002/uog.10048'],
+      ['European Reference Network for Rare Inherited Congenital Anomalies (ERNICA) evidence-based guideline on the management of gastroschisis. Orphanet J Rare Dis, 2024.', 'https://doi.org/10.1186/s13023-024-03062-8'],
+    ],
+    vejaTambem:[],
   },
 ];
 

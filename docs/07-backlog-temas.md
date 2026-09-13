@@ -64,3 +64,13 @@ marcar como concluído aqui.
 - [x] CPR reduzida — *ver "ACM baixa" acima, mesmo tema.*
 - [ ] Diástole zero
 - [ ] Diástole reversa
+
+## Parede abdominal
+Item trazido pela autora fora desta lista original (2026-09-13). Motivou a
+criação do módulo **"Malformações fetais"** — pensado para abrigar as
+principais malformações estruturais por sistema (SNC, TGU, TGI, óssea…).
+Por enquanto é um módulo único, sem subdivisão por sistema: os achados de
+SNC que já são marcadores leves (ventriculomegalia, por ex.) continuam em
+"Marcadores leves de aneuploidia". Revisar a divisão por sistema quando
+houver mais temas aqui dentro (a partir de uns 3-4 por subgrupo).
+- [x] Onfalocele × gastrosquise — *tema escrito, módulo "Malformações fetais".*
