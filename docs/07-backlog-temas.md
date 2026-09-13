@@ -33,14 +33,16 @@ marcar como concluído aqui.
 
 ## Achados fetais
 - [ ] Plexo coroide
-- [x] Ventriculomegalia leve — *tema escrito, módulo "Marcadores leves de aneuploidia".*
+- [x] Ventriculomegalia leve — *tema escrito, módulo "Marcadores menores de aneuploidias".*
 - [ ] Cisterna magna aumentada
 - [ ] Mega cisterna magna
-- [x] Prega nucal espessada — *tema escrito, módulo "Marcadores leves de aneuploidia".*
+- [x] Prega nucal espessada — *tema escrito, módulo "Marcadores menores de aneuploidias".*
 - [ ] Húmero curto
-- [x] Fêmur curto — *tema escrito, módulo "Marcadores leves de aneuploidia". Destaque
-      para o viés das curvas de crescimento (Hadlock/população americana) na
-      população brasileira, ponto trazido pela autora.*
+- [x] Fêmur curto — *tema escrito, módulo "Marcadores menores de aneuploidias". O viés das
+      curvas de crescimento (Hadlock/população americana) na população
+      brasileira, ponto trazido pela autora, vive só no bloco "Aprendi que…"
+      — os demais cards focam no raciocínio padrão (datação, proporção,
+      estatura familiar).*
 - [ ] Braquicefalia
 - [ ] Dolicocefalia
 - [ ] Cisto ovariano fetal
@@ -72,7 +74,13 @@ Item trazido pela autora fora desta lista original (2026-09-13). Motivou a
 criação do módulo **"Malformações fetais"** — pensado para abrigar as
 principais malformações estruturais por sistema (SNC, TGU, TGI, óssea…).
 Por enquanto é um módulo único, sem subdivisão por sistema: os achados de
-SNC que já são marcadores leves (ventriculomegalia, por ex.) continuam em
-"Marcadores leves de aneuploidia". Revisar a divisão por sistema quando
+SNC que já são marcadores menores (ventriculomegalia, por ex.) continuam em
+"Marcadores menores de aneuploidias". Revisar a divisão por sistema quando
 houver mais temas aqui dentro (a partir de uns 3-4 por subgrupo).
 - [x] Onfalocele × gastrosquise — *tema escrito, módulo "Malformações fetais".*
+
+## Marcadores maiores de aneuploidias
+Módulo planejado pela autora (2026-09-13) como contraponto ao já existente
+"Marcadores menores de aneuploidias" — ainda sem temas escritos nem lista
+de achados definida. Aguardando a autora trazer os achados específicos
+quando for a hora de escrever esse capítulo.
