@@ -104,7 +104,15 @@ rotina para 3º trimestre, a validar com a autora:
       (prediz pré-eclâmpsia tardia, não indica AAS), e pérola sobre medida
       do colo uterino ter que constar explicitamente no pedido médico, em
       toda gestante — inclusive primigestas sem histórico de parto prematuro.
-- [ ] 2º trimestre: quando pedir TOTG e por quê
+- [x] 2º trimestre: quando pedir TOTG e por quê — tema escrito como "Quando
+      pedir TOTG e por quê", módulo `conducao-2tri`. Conteúdo ditado pela
+      autora a partir de um texto-base (diretriz de diabetes gestacional):
+      rastreio universal por glicemia de jejum na 1ª consulta, critérios
+      diagnósticos do TOTG 75g, exceção do bypass gástrico em Y de Roux
+      (TOTG contraindicado na prática — perfil glicêmico domiciliar em vez
+      disso), e marcadores ecográficos específicos do DMG mal controlado
+      (tecido subcutâneo fetal >5mm, septo interventricular >4,5mm).
+      `conducao-2tri` agora tem 2 temas de rotina.
 - [ ] 3º trimestre: USG de crescimento seriado — quando começar e com que
       intervalo
 - [ ] 3º trimestre: o que a curva de crescimento acrescenta ao pré-natal

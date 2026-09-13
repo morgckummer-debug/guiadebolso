@@ -68,3 +68,10 @@ a voz dela, só ajustar pontuação/clareza se necessário.
   todos os temas de condução daqui em diante. Bloco "Aprendi que…"
   preenchido com a fala literal da autora sobre rastreio de prematuridade
   mesmo em primigestas.
+- ✅ Quando pedir TOTG e por quê: conteúdo clínico integralmente ditado
+  pela autora (texto-base de diretriz de diabetes gestacional, resumido e
+  adaptado por Claude para os blocos, sem o bloco de técnica do exame —
+  autora considerou irrelevante para quem pede/interpreta). Bloco "Aprendi
+  que…" preenchido com a fala literal da autora sobre os dois marcadores
+  ecográficos que predizem controle glicêmico ruim (tecido subcutâneo
+  fetal >5mm, septo interventricular >4,5mm).

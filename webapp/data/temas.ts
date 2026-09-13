@@ -675,6 +675,36 @@ const TEMAS = [
     ],
     vejaTambem:['colo-curto','morfologico-1trimestre','datacao-gestacao'],
   },
+  {
+    id:'totg-quando-pedir',
+    titulo:'Quando pedir TOTG e por quê',
+    modulo:'conducao-2tri',
+    tags:['totg','teste oral de tolerância à glicose','diabetes gestacional','glicemia de jejum','rastreio universal','bypass gástrico','y de roux','cirurgia bariátrica','hapo','iadpsg','cardiomiopatia hipertrófica fetal'],
+    essencial:'Toda gestante sem diagnóstico prévio de diabetes faz glicemia de jejum na 1ª consulta. Se <92 mg/dL, solicitar TOTG 75g entre 24–28 semanas — independente de fator de risco. Basta 1 valor alterado (jejum ≥92, 1h ≥180, 2h ≥153 mg/dL) para fechar diabetes gestacional.',
+    erro:'Pedir o TOTG só para quem "parece" ter risco (obesidade, história familiar) — o rastreio é universal, não dirigido. Outro erro: solicitar o TOTG de rotina em gestante com bypass gástrico em Y de Roux — pode causar dumping/hipoglicemia reativa e gerar diagnóstico falso.',
+    passo:{tipo:'checklist', itens:[
+      'Solicitar glicemia de jejum já na 1ª consulta, para toda gestante sem diagnóstico prévio de diabetes.',
+      'Se jejum <92 mg/dL, solicitar TOTG 75g entre 24 e 28 semanas — sem esperar fator de risco para pedir.',
+      'Se jejum 92–125 mg/dL, o diagnóstico de diabetes gestacional já está fechado — não precisa de TOTG.',
+      'Se jejum ≥126 mg/dL, ou TOTG 2h ≥200 mg/dL, tratar como diabetes manifesto (overt) — encaminhar para acompanhamento especializado.',
+      'Pré-natal iniciado tarde: solicitar o rastreio o quanto antes, sem esperar a janela de 24–28 semanas.',
+      'Bypass gástrico em Y de Roux (RYGB): não solicitar TOTG 75g — pedir perfil glicêmico domiciliar por cerca de 1 semana, entre 24 e 28 semanas.',
+    ]},
+    aprendi:'Um bom olhar clínico ultrassonográfico já prediz se a gestante está fazendo a dieta direitinho, ou se a glicemia está sem controle apesar da insulina: tecido subcutâneo fetal maior que 5mm é comum nos macrossômicos, e septo interventricular espessado (>4,5mm) é preditivo de cardiopatia hipertrófica e risco de morte intrauterina.',
+    perolas:[
+      'Em gestante com bypass gástrico em Y de Roux, o TOTG 75g é contraindicado na prática — desencadeia dumping/hipoglicemia reativa (náusea, sudorese, taquicardia, tontura, dor abdominal, diarreia, hipoglicemia tardia) e resultado pouco confiável. Peça perfil glicêmico domiciliar por cerca de 1 semana, entre 24 e 28 semanas, em vez do TOTG.',
+    ],
+    vocesabia:[
+      'Os cortes diagnósticos (jejum ≥92, 1h ≥180, 2h ≥153 mg/dL) vêm do estudo HAPO — relação contínua entre glicemia materna e desfecho perinatal adverso — adotados pelo IADPSG.',
+      'No diabetes gestacional mal controlado, além de crescimento acelerado, CA acima do esperado, macrossomia e polidrâmnio, dois marcadores ecográficos merecem atenção: tecido subcutâneo fetal >5mm (comum nos macrossômicos) e septo interventricular >4,5mm (preditivo de cardiomiopatia hipertrófica e risco de morte intrauterina).',
+    ],
+    aula:{titulo:'TOTG: rastreio universal e a exceção do bypass gástrico', pendente:true},
+    referencias:[
+      'Diretriz Diabetes (Sociedade Brasileira de Diabetes) — critérios diagnósticos de diabetes gestacional (referência específica pendente de indicação da autora).',
+      'HAPO Study Cooperative Research Group / IADPSG — critérios diagnósticos derivados do estudo HAPO (referência específica pendente de indicação da autora).',
+    ],
+    vejaTambem:['morfologico-2trimestre'],
+  },
 ];
 
 
