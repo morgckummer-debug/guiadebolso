@@ -59,11 +59,30 @@ Tema {
 }
 ```
 
-### 2.2 Agrupamento: **Módulo**
+### 2.2 Agrupamento: **Módulo**, em duas trilhas
 
-Módulos agrupam Temas por área clínica (ex.: "1º trimestre", "Intercorrências
-hipertensivas"). É o nível do índice — não da leitura. Um Módulo tem: título,
-ícone, cor de destaque (dentro da paleta do design system), lista ordenada de Temas.
+Módulos agrupam Temas por área clínica. É o nível do índice — não da
+leitura. Um Módulo tem: título, ícone, cor de destaque (dentro da paleta do
+design system), lista ordenada de Temas, e pertence a uma de duas trilhas:
+
+- **Achados no exame** (`trilha: 'achados'`) — Temas organizados por
+  sistema/estrutura anatômica (Placenta, Cordão, Doppler, Colo uterino,
+  Marcadores de aneuploidia, Malformações fetais…), **nunca por trimestre**.
+  Um achado como "placenta baixa" atravessa vários trimestres — encaixá-lo
+  num módulo de tempo obrigaria a paciente clínica a "escolher" um momento
+  arbitrário. Esta trilha responde à pergunta "o que esse achado do laudo
+  significa e o que eu faço com ele?".
+- **Condução do pré-natal** (`trilha: 'conducao'`) — Temas de rotina/protocolo
+  (o que pedir, quando pedir, o que cada exame de rastreio responde),
+  organizados por trimestre (1º, 2º, 3º) porque aqui o tempo *é* o critério
+  clínico relevante. Responde à pergunta "o que eu deveria estar fazendo
+  agora nessa consulta?" — o uso típico de quem está começando a carreira e
+  ainda não tem o roteiro do pré-natal internalizado, não só de quem já tem
+  um achado específico em mãos.
+
+As duas trilhas aparecem como seções separadas no Índice (ver §3), cada uma
+com um subtítulo curto explicando o critério de organização — a distinção
+tem que ficar óbvia sem exigir leitura de documentação.
 
 ### 2.3 Por que separar "bloco fixo" de "bloco contextual"
 
@@ -79,7 +98,7 @@ nunca mostra um card vazio.
 
 ```
 ┌─ Início (últimos acessados + destaques do dia)
-├─ Índice (Módulo > Tema, com busca embutida)
+├─ Índice (Trilha > Módulo > Tema, com busca embutida — ver §2.2)
 ├─ Busca rápida (overlay full-screen, atalho global)
 ├─ Favoritos (Temas marcados pelo usuário)
 ├─ Tema (template único — ver §4)

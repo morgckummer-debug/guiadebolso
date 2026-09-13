@@ -335,6 +335,27 @@ function acessoBannerHTML(){
   </a>`;
 }
 
+const TRILHAS = [
+  {id:'achados', titulo:'Achados no exame', subtitulo:'O que esse achado significa e o que fazer com ele'},
+  {id:'conducao', titulo:'Condução do pré-natal', subtitulo:'O que pedir e por que, em cada fase da gestação'},
+];
+
+function moduloSectionHTML(m){
+  const temasDoModulo = TEMAS.filter(t=>t.modulo===m.id);
+  return `
+    <div class="mod-section" id="mod-${m.id}">
+      <div class="mod-head">
+        <div class="mod-icon">${m.icon}</div>
+        <div class="mod-headtext"><div class="mod-eyebrow">Módulo</div><div class="mod-name">${m.nome}</div></div>
+        <div class="mod-count">${temasDoModulo.length}</div>
+      </div>
+      <div class="mod-temas">
+      ${temasDoModulo.map(t=>`<div class="tema-row${t.bloqueado?' tema-row-bloqueado':''}" data-goto="${t.id}"><span class="tema-star">${t.bloqueado?'🔒':'☆'}</span><span class="q">${t.titulo}</span><span class="tema-chev">›</span></div>`).join('')}
+      </div>
+    </div>
+  `;
+}
+
 function renderIndice(){
   const idxRailHTML = `<div class="anchor-rail">
     <button class="anchor-chip current" data-target="mod-todos">Todos</button>
@@ -352,20 +373,14 @@ function renderIndice(){
   <div class="idx-header"><div class="idx-title">Índice</div><div class="idx-search-btn" id="idx-search-btn">⌕</div></div>
   ${idxRailHTML}
   <div id="mod-todos"></div>
-  ${MODULOS.map(m=>{
-    const temasDoModulo = TEMAS.filter(t=>t.modulo===m.id);
+  ${TRILHAS.map(trilha=>{
+    const modulosDaTrilha = MODULOS.filter(m=>m.trilha===trilha.id);
+    if(!modulosDaTrilha.length) return '';
     return `
-    <div class="mod-section" id="mod-${m.id}">
-      <div class="mod-head">
-        <div class="mod-icon">${m.icon}</div>
-        <div class="mod-headtext"><div class="mod-eyebrow">Módulo</div><div class="mod-name">${m.nome}</div></div>
-        <div class="mod-count">${temasDoModulo.length}</div>
-      </div>
-      <div class="mod-temas">
-      ${temasDoModulo.map(t=>`<div class="tema-row${t.bloqueado?' tema-row-bloqueado':''}" data-goto="${t.id}"><span class="tema-star">${t.bloqueado?'🔒':'☆'}</span><span class="q">${t.titulo}</span><span class="tema-chev">›</span></div>`).join('')}
-      </div>
-    </div>
-  `;}).join('')}
+    <div class="trilha-heading"><div class="trilha-titulo">${trilha.titulo}</div><div class="trilha-subtitulo">${trilha.subtitulo}</div></div>
+    ${modulosDaTrilha.map(moduloSectionHTML).join('')}
+    `;
+  }).join('')}
   `;
   const idxScroll = document.getElementById('panel-indice');
   idxScroll.querySelectorAll('.anchor-chip').forEach(chip=>{

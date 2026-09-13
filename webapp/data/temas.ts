@@ -2,22 +2,28 @@
 // Conteúdo clínico é rascunho, pendente de revisão médica formal da autora.
 // Este módulo só é importado por código server-side (API routes) — nunca enviado ao bundle do cliente.
 
+// Duas trilhas de navegação (ver docs/01-arquitetura-informacao.md §2.2):
+// "achados" — achados de exame, organizados por sistema/estrutura, nunca por
+// trimestre, porque um achado como "placenta baixa" atravessa vários
+// trimestres. "conducao" — roteiro/rotina do pré-natal (o que pedir e por
+// quê em cada fase), esse sim organizado por trimestre.
 const MODULOS = [
-  {id:'trimestre1', nome:'1º trimestre', icon:'🌱'},
-  {id:'crescimento', nome:'Crescimento fetal', icon:'📏'},
-  {id:'placenta', nome:'Placenta e anexos', icon:'🔵'},
-  {id:'urinario', nome:'Trato urinário fetal', icon:'💧'},
-  {id:'colo', nome:'Colo uterino', icon:'🔒'},
-  {id:'marcadores', nome:'Marcadores menores de aneuploidias', icon:'✨'},
-  {id:'doppler', nome:'Doppler fetal', icon:'📡'},
-  {id:'malformacoes', nome:'Malformações fetais', icon:'🩻'},
+  {id:'gestacao-inicial', nome:'Gestação inicial', icon:'🌱', trilha:'achados'},
+  {id:'crescimento', nome:'Crescimento fetal', icon:'📏', trilha:'achados'},
+  {id:'placenta', nome:'Placenta e anexos', icon:'🔵', trilha:'achados'},
+  {id:'urinario', nome:'Trato urinário fetal', icon:'💧', trilha:'achados'},
+  {id:'colo', nome:'Colo uterino', icon:'🔒', trilha:'achados'},
+  {id:'marcadores', nome:'Marcadores menores de aneuploidias', icon:'✨', trilha:'achados'},
+  {id:'doppler', nome:'Doppler fetal', icon:'📡', trilha:'achados'},
+  {id:'malformacoes', nome:'Malformações fetais', icon:'🩻', trilha:'achados'},
+  {id:'conducao-1tri', nome:'1º trimestre', icon:'🗓️', trilha:'conducao'},
 ];
 
 const TEMAS = [
   {
     id:'sem-embriao',
     titulo:'Ausência de embrião',
-    modulo:'trimestre1',
+    modulo:'gestacao-inicial',
     tags:['gestação inicial','saco gestacional','embrião','prognóstico indeterminado','usg transvaginal','gestação anembrionada','viabilidade incerta'],
     essencial:'No início da gestação, é normal o ultrassom mostrar o saco gestacional antes do embrião ficar visível — a ausência de embrião só vira motivo de preocupação a partir de certos critérios de tamanho. Não ver embrião não fecha diagnóstico sozinho. Perda confirmada quando:<ul><li>SG >25mm sem embrião</li><li>SG >20mm sem vesícula vitelínica</li><li>Embrião >7mm sem BCF</li></ul>Fora isso, é "gravidez de prognóstico indeterminado" — repita o USG antes de definir conduta.',
     erro:'Fechar diagnóstico de perda gestacional precoce (ou gestação anembrionada) numa única ultrassonografia, sem checar se algum critério objetivo foi atingido — risco de indicar conduta numa gravidez de prognóstico ainda indeterminado.',
@@ -371,7 +377,7 @@ const TEMAS = [
   {
     id:'morfologico-1trimestre',
     titulo:'Morfológico do 1º trimestre',
-    modulo:'trimestre1',
+    modulo:'conducao-1tri',
     tags:['morfológico do 1º trimestre','translucência nucal','tn simples','ducto venoso','doppler tricúspide','rastreamento de pré-eclâmpsia','aspirina','doppler artérias uterinas'],
     essencial:'O morfológico do 1º trimestre é um ultrassom completo feito entre 11 semanas e 13 semanas e 6 dias. Vai muito além da translucência nucal: soma avaliação de ducto venoso, Doppler da tricúspide, anatomia fetal completa e rastreamento de pré-eclâmpsia — que define quem se beneficia da aspirina preventiva.',
     erro:'Dizer que o morfológico do 1º trimestre é apenas uma "translucência nucal mais cara". Na realidade, ele responde perguntas completamente diferentes e pode identificar gestantes que se beneficiam da prevenção da pré-eclâmpsia.',
@@ -576,7 +582,7 @@ const TEMAS = [
   {
     id:'datacao-gestacao',
     titulo:'Datação da gestação',
-    modulo:'trimestre1',
+    modulo:'conducao-1tri',
     tags:['datação da gestação','idade gestacional','dpp','ccn','usg datador','dum','correção da idade gestacional','biometria fetal','acog','isuog'],
     essencial:'A idade gestacional (IG) mais confiável é definida pelo ultrassom do 1º trimestre (CCN, entre 8 e 13 semanas e 6 dias) — mais precisa que a data da última menstruação (DUM) na maioria das pacientes. Uma vez estabelecida, a IG não deve ser corrigida por ultrassons de 2º/3º trimestre, que servem para avaliar crescimento, não para redatar a gestação.',
     erro:'<ul><li>Corrigir a idade gestacional toda vez que um novo ultrassom mostra uma diferença de alguns dias.</li><li>Usar sempre 7 dias como critério de discrepância — o limiar é 5 dias até 8+6 semanas, e só passa a ser 7 dias de 9+0 a 13+6 semanas.</li><li>Valorizar a DUM quando ela é incerta ou incompatível com um ultrassom precoce confiável.</li><li>Utilizar biometria do terceiro trimestre para redefinir a DPP.</li></ul>',
@@ -647,7 +653,7 @@ const TEMAS = [
 ];
 
 
-export type Modulo = { id: string; nome: string; icon: string };
+export type Modulo = { id: string; nome: string; icon: string; trilha: 'achados' | 'conducao' };
 export type Tema = typeof TEMAS[number];
 
 export { MODULOS, TEMAS };

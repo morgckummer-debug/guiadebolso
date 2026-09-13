@@ -84,3 +84,22 @@ Módulo planejado pela autora (2026-09-13) como contraponto ao já existente
 "Marcadores menores de aneuploidias" — ainda sem temas escritos nem lista
 de achados definida. Aguardando a autora trazer os achados específicos
 quando for a hora de escrever esse capítulo.
+
+## Condução do pré-natal — 2º e 3º trimestre
+Decisão de arquitetura (2026-09-13, ver `docs/01-arquitetura-informacao.md`
+§2.2): o antigo módulo único "1º trimestre" misturava achado (Ausência de
+embrião) com rotina/protocolo (Morfológico do 1º trimestre, Datação da
+gestação). Separado em duas trilhas — achados por sistema (sem trimestre) e
+"Condução do pré-natal" por trimestre. O módulo `conducao-1tri` já existe em
+`webapp/data/temas.ts` com os 2 temas de rotina que já existiam. Faltam
+`conducao-2tri` e `conducao-3tri` — não criados ainda em `temas.ts` (módulo
+vazio no índice fica estranho); criar quando houver pelo menos 2-3 temas de
+rotina prontos para cada um. Ideias de temas de rotina para esses módulos,
+a validar com a autora:
+- [ ] 2º trimestre: o que o morfológico do 2º trimestre responde (22–24
+      semanas) — rastreio de pré-eclâmpsia tardio, colo, anatomia completa
+- [ ] 2º trimestre: quando pedir TOTG e por quê
+- [ ] 3º trimestre: USG de crescimento seriado — quando começar e com que
+      intervalo
+- [ ] 3º trimestre: o que a curva de crescimento acrescenta ao pré-natal
+      de baixo risco
