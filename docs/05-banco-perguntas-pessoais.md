@@ -49,3 +49,6 @@ a voz dela, só ajustar pontuação/clareza se necessário.
   autora (regra PIG/CIUR × AIG, reflexo vagal por compressão de cordão
   ou pressão do transdutor, partos por iatrogenia), adaptado por Claude
   para o bloco "Aprendi que…" e confirmado pela autora.
+- ✅ Onfalocele × gastrosquise: rascunho de conteúdo clínico e da
+  pergunta-gatilho 3 escrito por Claude (a partir de diretriz/literatura,
+  sem ditado prévio da autora), confirmado pela autora antes de publicar.
