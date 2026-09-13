@@ -705,6 +705,35 @@ const TEMAS = [
     ],
     vejaTambem:['morfologico-2trimestre'],
   },
+  {
+    id:'insuficiencia-placentaria-precoce',
+    titulo:'Insuficiência placentária no 2º trimestre',
+    modulo:'doppler',
+    tags:['insuficiência placentária','restrição de crescimento fetal precoce','rcf precoce','doppler artéria uterina','doppler artéria umbilical','diástole zero','diástole reversa','ducto venoso','ctg computadorizada','short term variation','corticoide antenatal','pré-eclâmpsia'],
+    essencial:'A insuficiência placentária de instalação precoce já dá sinal no morfológico do 1º trimestre — artérias uterinas acima do esperado. A restrição de crescimento aparece cedo no 2º trimestre, e a gravidade se acompanha pelo Doppler: a cada estágio (IP alto → diástole zero → diástole reversa) muda o vaso que decide a conduta e o risco de hipóxia/acidose.',
+    erro:'Achar que basta reavaliar a artéria umbilical com mais frequência conforme a insuficiência piora. A partir da diástole zero, quem passa a decidir a conduta é o ducto venoso — e a diástole reversa já é, por si só, indicação de parto, independente da idade gestacional.',
+    passo:{tipo:'checklist', itens:[
+      'Se o cálculo de risco de pré-eclâmpsia do 1º trimestre vier alterado (uterinas acima do esperado), orientar início de AAS e encaminhar a paciente para o pré-natal de alto risco.',
+      'Se a umbilical mostrar IP >P95, mas o perfil biofísico fetal vier 8/8, realizar ultrassom semanal até a resolução do parto.',
+      'Se diástole zero, aumentar a frequência para 2–3x por semana (ou diária) — nesse estágio, a paciente costuma ser internada em hospital de referência, com corticoide para maturação pulmonar (se ≤34 semanas) e ultrassom diário acompanhando o ducto venoso, não mais a umbilical.',
+      'Diástole reversa é, por si só, indicação de parto — não há tempo para corticoide.',
+      'Na CTG computadorizada, short term variation <3ms também fecha indicação de parto — o corte exato pode variar conforme o protocolo do hospital de referência.',
+    ]},
+    aprendi:'O diagnóstico de uma insuficiência placentária em fetos abaixo de 28 semanas é grave, com vários riscos inerentes à prematuridade — mas deixar o feto no útero é praticamente 100% de letalidade. É sempre uma situação difícil, desgastante e extremamente angustiante para os pais.',
+    perolas:[
+      'Cascata da umbilical: IP >P95 → hipóxia, ~75% da placenta comprometida. Diástole zero → 50% hipóxia / 50% já é acidose, ~80% comprometida. Diástole reversa → 100% acidose, ~90% comprometida, morte iminente — indicação de parto.',
+    ],
+    vocesabia:[
+      'ACM avalia hipóxia, não indica acidose — quem indica acidose é o ducto venoso.',
+      'Doppler das artérias uterinas no 1º trimestre é rastreio de pré-eclâmpsia <37 semanas; no 2º/3º trimestre, se repetido, passa a ser predição de pré-eclâmpsia >37 semanas — não é a mesma coisa, e não indica AAS nesse momento.',
+    ],
+    aula:{titulo:'Insuficiência placentária precoce: qual vaso decide a conduta em cada estágio', pendente:true},
+    referencias:[
+      'TRUFFLE trial — vigilância por Doppler e ducto venoso, e momento do parto na restrição de crescimento fetal muito precoce (referência específica pendente de indicação da autora).',
+      'ISUOG Practice Guidelines: use of Doppler ultrasonography in obstetrics.',
+    ],
+    vejaTambem:['doppler-introducao','acm-baixa-resistencia','percentil8'],
+  },
 ];
 
 

@@ -59,15 +59,25 @@ marcar como concluído aqui.
 - [ ] Velocidade de crescimento
 
 ## Doppler
-- [ ] IR alto da uterina
+- [ ] IR alto da uterina — *parcialmente coberto pelo tema "Insuficiência
+      placentária no 2º trimestre" (distinção rastreio 1º tri × predição
+      2º/3º tri), mas ainda não existe como achado isolado dedicado (uterina
+      alterada sem RCF já instalada).*
 - [ ] Incisura bilateral
 - [x] ACM baixa — *tema escrito como "ACM de baixa resistência" (junto com CPR
       reduzida), módulo "Doppler fetal". Foco no erro de tratar como hipóxia
       em feto AIG, sem checar peso nem técnica do exame (pressão do
       transdutor, compressão de cordão).*
 - [x] CPR reduzida — *ver "ACM baixa" acima, mesmo tema.*
-- [ ] Diástole zero
-- [ ] Diástole reversa
+- [x] Diástole zero — *coberto pelo tema "Insuficiência placentária no 2º
+      trimestre" (não como tema isolado — a autora preferiu tratar a
+      cascata toda num só tema, já que a conduta muda o vaso de referência
+      a cada estágio). Conduta ditada pela autora: reavaliação 2-3x/semana
+      ou diária, internação em hospital de referência, corticoide se ≤34
+      sem, acompanhamento passa a ser pelo ducto venoso.*
+- [x] Diástole reversa — *ver "Insuficiência placentária no 2º trimestre"
+      acima. Conduta ditada pela autora: indicação de parto por si só,
+      independente da IG — não há tempo para corticoide.*
 
 ## Parede abdominal
 Item trazido pela autora fora desta lista original (2026-09-13). Motivou a

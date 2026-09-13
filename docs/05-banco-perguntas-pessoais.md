@@ -75,3 +75,14 @@ a voz dela, só ajustar pontuação/clareza se necessário.
   que…" preenchido com a fala literal da autora sobre os dois marcadores
   ecográficos que predizem controle glicêmico ruim (tecido subcutâneo
   fetal >5mm, septo interventricular >4,5mm).
+- ✅ Insuficiência placentária no 2º trimestre: conteúdo clínico
+  integralmente ditado pela autora, a partir de slides próprios (cascata
+  uterina/umbilical, percentuais de comprometimento placentário e
+  hipóxia×acidose por estágio) e de perguntas específicas sobre conduta
+  (frequência de reavaliação, internação, corticoide, gatilho de parto por
+  ducto venoso/CTG computadorizada). Módulo "Doppler fetal" — cobre os
+  itens de backlog "Diástole zero" e "Diástole reversa" num único tema
+  (a autora preferiu tratar a cascata inteira junta, já que o vaso de
+  referência muda a cada estágio). Bloco "Aprendi que…" preenchido com a
+  fala literal da autora sobre a gravidade e o peso emocional do
+  diagnóstico abaixo de 28 semanas.
