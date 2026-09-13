@@ -233,15 +233,15 @@ button,input{font-family:inherit;}
 /* ---------- fluxograma de raciocínio (dentro do RaciocinioSheet) ----------
    Não é lista/checklist nem árvore com ramos — é uma sequência de leitura
    onde cada nó também é uma porta de entrada para uma ação (docs/03). */
-.flow{margin-top:20px;display:flex;flex-direction:column;align-items:center;}
+.raciocinio-flow{margin-top:20px;display:flex;flex-direction:column;align-items:center;}
 .flow-node{width:100%;max-width:280px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--bg-subtle);border:1px solid var(--ink-100);border-radius:var(--radius-md);padding:14px 16px;font:inherit;font-size:14.5px;line-height:20px;font-weight:600;color:var(--ink-900);text-align:left;box-shadow:var(--shadow-1);cursor:default;}
 .flow-node-text{flex:1;}
 .flow-node-chevron{color:var(--ink-300);font-size:17px;flex-shrink:0;}
 .flow-node-clickable{cursor:pointer;transition:transform .15s var(--ease);}
 .flow-node-clickable:active{transform:scale(.97);}
 .flow-start{color:var(--ink-500);font-weight:600;}
-.flow-arrow{width:2px;height:18px;background:var(--ink-100);position:relative;flex-shrink:0;}
-.flow-arrow:after{content:"";position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--ink-300);}
+.raciocinio-flow-arrow{width:2px;height:18px;background:var(--ink-100);position:relative;flex-shrink:0;}
+.raciocinio-flow-arrow:after{content:"";position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--ink-300);}
 
 .sheet-back-btn{display:block;background:none;border:none;color:var(--lav-500);font-size:13px;font-weight:600;padding:2px 0 10px;cursor:pointer;}
 .achados-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px;}

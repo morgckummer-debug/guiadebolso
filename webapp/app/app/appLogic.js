@@ -240,6 +240,10 @@ function goToTema(id){
     if(fab) fab.style.display = 'none';
   } else {
     renderTemaScreen(id);
+    // Só "gasta" o pulso do Tema quando ele realmente aparece — numa tela
+    // bloqueada o FAB fica escondido (acima), então o convite ficaria
+    // invisível e nunca mais apareceria para um Tema de verdade depois.
+    triggerFabPulse('panel-tema');
   }
 }
 
@@ -251,7 +255,7 @@ function activateTab(panelId){
   currentPanel = panelId;
   const fab = document.getElementById('raciocinio-fab');
   if(fab) fab.style.display = 'flex';
-  triggerFabPulse(panelId);
+  if(panelId==='panel-indice') triggerFabPulse(panelId);
 }
 
 renderTemaScreen(currentTemaId); // currentTemaId nunca é bloqueado, ver acima
@@ -301,11 +305,11 @@ function fabEmptyStateHTML(insideTema){
   <div class="anchor-rail" style="border-bottom:none;padding-bottom:2px">
     ${BUSCAS_RECENTES.map(term=>`<button class="anchor-chip" data-recent="${term}">${term}</button>`).join('')}
   </div>
-  <div class="flow">
+  <div class="raciocinio-flow">
     ${RACIOCINIO_FLOW.map(([icon,text],i)=>{
       const clickable = i===0 || insideTema;
       const cls = `flow-node${i===0?' flow-start':''}${clickable?' flow-node-clickable':''}`;
-      const arrow = i>0 ? '<div class="flow-arrow"></div>' : '';
+      const arrow = i>0 ? '<div class="raciocinio-flow-arrow"></div>' : '';
       const chevron = clickable ? '<span class="flow-node-chevron">›</span>' : '';
       return `${arrow}<button type="button" class="${cls}" data-flow-idx="${i}"><span class="flow-node-text">${icon} ${text}</span>${chevron}</button>`;
     }).join('')}
