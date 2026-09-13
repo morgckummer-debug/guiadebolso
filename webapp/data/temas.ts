@@ -19,7 +19,7 @@ const TEMAS = [
     titulo:'Ausência de embrião',
     modulo:'trimestre1',
     tags:['gestação inicial','saco gestacional','embrião','prognóstico indeterminado','usg transvaginal','gestação anembrionada','viabilidade incerta'],
-    essencial:'Não ver embrião não fecha diagnóstico sozinho. Perda confirmada quando:<ul><li>SG >25mm sem embrião</li><li>SG >20mm sem vesícula vitelínica</li><li>Embrião >7mm sem BCF</li></ul>Fora isso, é "gravidez de prognóstico indeterminado" — repita o USG antes de definir conduta.',
+    essencial:'No início da gestação, é normal o ultrassom mostrar o saco gestacional antes do embrião ficar visível — a ausência de embrião só vira motivo de preocupação a partir de certos critérios de tamanho. Não ver embrião não fecha diagnóstico sozinho. Perda confirmada quando:<ul><li>SG >25mm sem embrião</li><li>SG >20mm sem vesícula vitelínica</li><li>Embrião >7mm sem BCF</li></ul>Fora isso, é "gravidez de prognóstico indeterminado" — repita o USG antes de definir conduta.',
     erro:'Fechar diagnóstico de perda gestacional precoce (ou gestação anembrionada) numa única ultrassonografia, sem checar se algum critério objetivo foi atingido — risco de indicar conduta numa gravidez de prognóstico ainda indeterminado.',
     passo:{tipo:'checklist', itens:[
       'Verifique se bate algum critério de diagnóstico definitivo (lista completa abaixo) — se sim, pode fechar o diagnóstico nesta consulta.',
@@ -66,7 +66,7 @@ const TEMAS = [
     titulo:'Percentil de peso baixo',
     modulo:'crescimento',
     tags:['percentil','peso fetal estimado','restrição de crescimento','pig','rcf','doppler','pequeno para idade gestacional'],
-    essencial:'Percentil 8 isolado, sem alteração de Doppler ou desaceleração de crescimento, é "pequeno para idade gestacional" — não é sinônimo de restrição de crescimento. Confirme a idade gestacional e avalie o Doppler antes de rotular.',
+    essencial:'O peso fetal estimado é comparado a uma curva de referência para a idade gestacional; abaixo do percentil 10, o feto é classificado como pequeno. Percentil 8 isolado, sem alteração de Doppler ou desaceleração de crescimento, é "pequeno para idade gestacional" — não é sinônimo de restrição de crescimento. Confirme a idade gestacional e avalie o Doppler antes de rotular.',
     erro:'Tratar todo percentil abaixo de 10 como restrição de crescimento fetal e já encaminhar ou antecipar parto — a maioria dos fetos entre percentil 3 e 10, com Doppler normal, é pequena constitucional, não patológica.',
     passo:{tipo:'checklist', itens:[
       'Confirme a idade gestacional — a datação de 1º trimestre é a mais confiável disponível.',
@@ -95,7 +95,7 @@ const TEMAS = [
     titulo:'Placenta baixa',
     modulo:'placenta',
     tags:['placenta baixa','placenta prévia','inserção baixa','via de parto','acretismo','migração placentária'],
-    essencial:'Quase 90% das placentas parecem baixas no 1º trimestre — normal, pelo tamanho do útero. Só 10% seguem baixas no morfológico do 2º trimestre; a maioria já subiu antes disso. Reavalie por via transvaginal no morfológico e, se persistir, após 32 semanas, antes da via de parto.',
+    essencial:'Placenta baixa é quando a borda placentária está próxima ou sobre o orifício interno do colo do útero. Quase 90% das placentas parecem baixas no 1º trimestre — normal, pelo tamanho do útero nessa fase. Só 10% seguem baixas no morfológico do 2º trimestre; a maioria já subiu antes disso. Reavalie por via transvaginal no morfológico e, se persistir, após 32 semanas, antes da via de parto.',
     erro:'Tratar um achado do 2º trimestre como se já fosse diagnóstico definitivo: proibir atividade (inclusive relações sexuais) sem sangramento, ou já comentar cesárea, prematuridade e antecipação de parto — sem esperar a reavaliação perto do termo. Isso já gerou casais extremamente ansiosos por um achado que, na maioria das vezes, se resolve sozinho.',
     passo:{tipo:'checklist', itens:[
       'No morfológico do 2º trimestre (22–24 semanas), reavalie a posição da placenta e meça o colo do útero (predição de parto prematuro) — sempre por via transvaginal.',
@@ -146,7 +146,7 @@ const TEMAS = [
     titulo:'Dilatação das pelves renais',
     modulo:'urinario',
     tags:['dilatação das pelves renais','dilatação do trato urinário','dilatação pielocalicial','trato urinário fetal','mega bexiga','ureter','rim fetal'],
-    essencial:'A dilatação das pelves renais isolada raramente representa risco imediato ao bebê. O principal é acompanhar sua evolução, pois dilatações maiores apresentam maior chance de necessitar tratamento após o nascimento.',
+    essencial:'A pelve renal é o espaço central do rim por onde a urina passa antes de descer pelo ureter; sua dilatação é medida pelo diâmetro anteroposterior no corte transverso do rim fetal. Isolada, raramente representa risco imediato ao bebê — o principal é acompanhar a evolução, pois dilatações maiores têm maior chance de necessitar tratamento após o nascimento.',
     erro:'Assustar a gestante diante de uma dilatação leve das pelves renais. A maioria dos casos resolve espontaneamente. Já as dilatações acima de 10 mm exigem acompanhamento mais cuidadoso.',
     passo:{tipo:'checklist', itens:[
       'Medir corretamente a pelve renal.',
@@ -199,7 +199,7 @@ const TEMAS = [
     titulo:'Colo curto',
     modulo:'colo',
     tags:['colo curto','insuficiência istmocervical','comprimento cervical','cerclagem','progesterona vaginal','parto prematuro','afunilamento cervical'],
-    essencial:'A insuficiência istmocervical pode causar perdas fetais antes do ultrassom morfológico. Ainda não existe um valor de corte bem estabelecido para o colo no 1º trimestre, mas medidas próximas de 30 mm merecem atenção, principalmente quando há afunilamento do orifício interno.',
+    essencial:'O colo do útero é medido por via transvaginal, do orifício interno ao externo; valores baixos (colo curto) aumentam o risco de parto prematuro. A insuficiência istmocervical pode causar perdas fetais antes mesmo do ultrassom morfológico. Ainda não existe um valor de corte bem estabelecido para o colo no 1º trimestre, mas medidas próximas de 30 mm merecem atenção, principalmente quando há afunilamento do orifício interno.',
     erro:'Acreditar que um toque vaginal normal exclui insuficiência istmocervical. O toque avalia principalmente o orifício cervical externo. O orifício interno, onde a doença começa, só pode ser avaliado pelo ultrassom transvaginal. Um toque normal NÃO exclui insuficiência istmocervical.',
     passo:{tipo:'checklist', itens:[
       'Iniciar progesterona vaginal. Em caso de colos muito curtos, encaminhar para o pré-natal de alto risco ou maternidade.',
@@ -225,7 +225,7 @@ const TEMAS = [
     titulo:'Foco ecogênico intracardíaco',
     modulo:'marcadores',
     tags:['foco ecogênico intracardíaco','golf ball','marcador de aneuploidia','marcador menor','coração fetal','eco intracardíaco'],
-    essencial:'O foco ecogênico intracardíaco (Golf Ball) é um marcador ultrassonográfico menor de aneuploidia, e não uma malformação cardíaca. Quando é um achado isolado, praticamente não modifica o risco de aneuploidia.',
+    essencial:'O foco ecogênico intracardíaco (Golf Ball) aparece como um pontinho brilhante dentro do coração fetal, geralmente no ventrículo esquerdo. É um marcador ultrassonográfico menor de aneuploidia, e não uma malformação cardíaca. Quando é um achado isolado, praticamente não modifica o risco de aneuploidia.',
     erro:'Informar à gestante que o bebê "tem um problema no coração". O Golf Ball não é uma cardiopatia e não interfere na função cardíaca.',
     passo:{tipo:'checklist', itens:[
       'Verificar se o Golf Ball é um achado isolado.',
@@ -253,7 +253,7 @@ const TEMAS = [
     titulo:'Intestino hiperecogênico',
     modulo:'marcadores',
     tags:['intestino hiperecogênico','marcador de aneuploidia','marcador menor','fibrose cística','infecção congênita','restrição de crescimento fetal'],
-    essencial:'O intestino hiperecogênico é <strong>normal no 1º trimestre</strong>. No 2º e 3º trimestres, é um marcador ultrassonográfico menor que merece investigação, principalmente por sua associação com aneuploidias, infecções congênitas, fibrose cística e restrição de crescimento fetal.',
+    essencial:'O intestino hiperecogênico é quando uma alça intestinal fetal aparece tão ecogênica (brilhante) quanto o osso ao ultrassom. É <strong>normal no 1º trimestre</strong>. No 2º e 3º trimestres, é um marcador ultrassonográfico menor que merece investigação, principalmente por sua associação com aneuploidias, infecções congênitas, fibrose cística e restrição de crescimento fetal.',
     erro:'Interpretar o intestino hiperecogênico como uma malformação intestinal. Na verdade, ele é um marcador ultrassonográfico e seu significado depende da idade gestacional e da presença de outros achados.',
     passo:{tipo:'checklist', itens:[
       'Confirmar a idade gestacional.',
@@ -280,7 +280,7 @@ const TEMAS = [
     titulo:'Ventriculomegalia leve',
     modulo:'marcadores',
     tags:['ventriculomegalia leve','ventriculomegalia limítrofe','átrio ventricular','marcador menor','citomegalovírus','cariótipo fetal','ressonância fetal'],
-    essencial:'A medida do átrio do ventrículo lateral, no plano transventricular, na altura do glomo do plexo coroide, classifica a ventriculomegalia: normal &lt;9mm, leve 9–11mm, moderada 12–14mm, grave ≥15mm. Na leve, o córtex costuma medir &gt;10mm e o DBP é normal; na grave, o córtex fica &lt;10mm e o DBP aumenta — sinais indiretos de mais líquido comprimindo o parênquima.',
+    essencial:'Ventriculomegalia é a dilatação do ventrículo lateral do cérebro fetal, a cavidade onde fica o líquido cefalorraquidiano. A medida do átrio do ventrículo lateral, no plano transventricular, na altura do glomo do plexo coroide, classifica a ventriculomegalia: normal &lt;9mm, leve 9–11mm, moderada 12–14mm, grave ≥15mm. Na leve, o córtex costuma medir &gt;10mm e o DBP é normal; na grave, o córtex fica &lt;10mm e o DBP aumenta — sinais indiretos de mais líquido comprimindo o parênquima.',
     erro:'Medir o átrio fora do plano correto (oblíquo, sem apoiar os calibradores nas margens internas da parede ventricular) e superestimar o valor — ou, no sentido oposto, tranquilizar a paciente diante de uma medida alterada sem investigar cariótipo, infecção congênita e anatomia cerebral completa.',
     passo:{tipo:'checklist', itens:[
       'Confirme a medida no plano transventricular correto, na altura do glomo do plexo coroide, com os calibradores nas margens internas da parede do ventrículo.',
@@ -311,7 +311,7 @@ const TEMAS = [
     titulo:'Prega nucal espessada',
     modulo:'marcadores',
     tags:['prega nucal espessada','prega nucal aumentada','marcador de aneuploidia','marcador menor do 2º trimestre','translucência nucal','trissomia 21','ecocardiograma fetal','doppler de artéria cerebral média','anemia fetal'],
-    essencial:'A prega nucal é medida no morfológico do 2º trimestre (plano transcerebelar, da tábua óssea occipital externa até a borda externa da pele), e é considerada espessada quando ≥6mm entre 15 e 20 semanas. É um marcador menor de aneuploidia — não é sinônimo de Síndrome de Down — mas também exige avaliação do coração fetal (ecocardiograma) e rastreamento de anemia fetal (Doppler de artéria cerebral média).',
+    essencial:'A prega nucal é a espessura da pele na parte de trás do pescoço do bebê. É medida no morfológico do 2º trimestre (plano transcerebelar, da tábua óssea occipital externa até a borda externa da pele), e é considerada espessada quando ≥6mm entre 15 e 20 semanas. É um marcador menor de aneuploidia — não é sinônimo de Síndrome de Down — mas também exige avaliação do coração fetal (ecocardiograma) e rastreamento de anemia fetal (Doppler de artéria cerebral média).',
     erro:'Tratar a prega nucal aumentada como se fosse diagnóstico de Síndrome de Down, ou confundi-la com a translucência nucal do 1º trimestre — são exames diferentes, em momentos diferentes, com significados diferentes. Também é erro comum não completar a investigação: além do rastreamento de aneuploidias, esse achado pede ecocardiograma fetal e Doppler de artéria cerebral média para pesquisa de anemia fetal.',
     passo:{tipo:'checklist', itens:[
       'Confirme que a medida foi feita no plano correto: transcerebelar, com os calibradores da tábua óssea occipital externa até a borda externa da pele.',
@@ -374,7 +374,7 @@ const TEMAS = [
     titulo:'Morfológico do 1º trimestre',
     modulo:'trimestre1',
     tags:['morfológico do 1º trimestre','translucência nucal','tn simples','ducto venoso','doppler tricúspide','rastreamento de pré-eclâmpsia','aspirina','doppler artérias uterinas'],
-    essencial:'O morfológico do 1º trimestre vai muito além da translucência nucal: soma avaliação de ducto venoso, Doppler da tricúspide, anatomia fetal completa e rastreamento de pré-eclâmpsia — que define quem se beneficia da aspirina preventiva.',
+    essencial:'O morfológico do 1º trimestre é um ultrassom completo feito entre 11 semanas e 13 semanas e 6 dias. Vai muito além da translucência nucal: soma avaliação de ducto venoso, Doppler da tricúspide, anatomia fetal completa e rastreamento de pré-eclâmpsia — que define quem se beneficia da aspirina preventiva.',
     erro:'Dizer que o morfológico do 1º trimestre é apenas uma "translucência nucal mais cara". Na realidade, ele responde perguntas completamente diferentes e pode identificar gestantes que se beneficiam da prevenção da pré-eclâmpsia.',
     passo:{tipo:'checklist', itens:[
       'Explicar a diferença entre TN simples e morfológico do 1º trimestre antes da paciente escolher o exame.',
@@ -399,7 +399,7 @@ const TEMAS = [
     titulo:'Entendendo o Doppler fetal',
     modulo:'doppler',
     tags:['doppler fetal','artéria umbilical','artéria cerebral média','acm','relação cérebro-placentária','rcp','ducto venoso','hipóxia fetal','acidose fetal','centralização fetal','insuficiência placentária'],
-    essencial:'Hipóxia e acidose são processos diferentes: hipóxia é redução de oxigênio (dias/semanas), acidose é falência tardia da compensação fetal. O Doppler normal da artéria umbilical não exclui insuficiência placentária — nenhum vaso deve ser interpretado isoladamente.',
+    essencial:'O Doppler mede a velocidade e a resistência do fluxo sanguíneo nos vasos fetais e placentários. Hipóxia e acidose são processos diferentes: hipóxia é redução de oxigênio (dias/semanas), acidose é falência tardia da compensação fetal. O Doppler normal da artéria umbilical não exclui insuficiência placentária — nenhum vaso deve ser interpretado isoladamente.',
     erro:'Interpretar um vaso do Doppler isoladamente, sem considerar os demais e a idade gestacional. Usar o termo "centralização" como se fosse, por si só, indicação de sofrimento fetal ou de parto — o excesso desse raciocínio já levou a interrupções desnecessárias da gestação.',
     passo:{tipo:'checklist', itens:[
       'Identifique qual vaso está alterado no laudo — nunca conclua a partir de um vaso isolado.',
@@ -476,7 +476,7 @@ const TEMAS = [
     titulo:'ACM de baixa resistência',
     modulo:'doppler',
     tags:['acm de baixa resistência','relação cérebro-placentária','rcp reduzida','doppler de artéria cerebral média','pig','ciur','centralização fetal','placenta anterior','reflexo vagal fetal'],
-    essencial:'Alteração de ACM (baixa resistência) ou de RCP (relação cérebro-placentária) só tem relevância clínica em fetos PIG/CIUR. Em feto com peso adequado (AIG), é muito improvável que represente hipóxia real — na maioria das vezes é um efeito técnico transitório, não um sinal de sofrimento fetal.',
+    essencial:'A ACM (artéria cerebral média) é o vaso mais avaliado no Doppler fetal cerebral; a RCP (relação cérebro-placentária) combina o índice de pulsatilidade da ACM com o da artéria umbilical num único número. Alteração de ACM (baixa resistência) ou de RCP só tem relevância clínica em fetos PIG/CIUR. Em feto com peso adequado (AIG), é muito improvável que represente hipóxia real — na maioria das vezes é um efeito técnico transitório, não um sinal de sofrimento fetal.',
     erro:'Interpretar ACM de baixa resistência ou RCP reduzida em feto com peso normal como sinal de hipóxia e já indicar parto — sem reavaliar a técnica do exame primeiro. Essa "alteração" isolada, num feto AIG, já levou a muitas cesáreas e induções por iatrogenia, principalmente quando o exame é feito rápido, sem tempo para reavaliação (alta demanda de convênio, fila do SUS).',
     passo:{tipo:'checklist', itens:[
       'Confirme o peso fetal estimado antes de reagir a uma ACM/RCP alterada — se o feto é PIG/CIUR, a alteração é clinicamente relevante; se é AIG, é muito improvável que seja hipóxia real.',
@@ -507,7 +507,7 @@ const TEMAS = [
     titulo:'Grau da placenta',
     modulo:'placenta',
     tags:['grau da placenta','classificação de grannum','calcificação placentária','maturação placentária','insuficiência placentária','síndrome antifosfolípide','saf'],
-    essencial:'Antes do Doppler, o grau placentário era um dos poucos métodos para estimar o envelhecimento da placenta. Hoje o Doppler fetal é muito mais preciso para avaliar a função placentária — o grau vira achado de importância limitada quando isolado.',
+    essencial:'O grau placentário (classificação de Grannum, de 0 a III) descreve o padrão de calcificação da placenta ao ultrassom, usado como marcador indireto de maturidade. Antes do Doppler, era um dos poucos métodos para estimar o envelhecimento da placenta. Hoje o Doppler fetal é muito mais preciso para avaliar a função placentária — o grau vira achado de importância limitada quando isolado.',
     erro:'Indicar parto apenas porque o laudo descreve placenta grau III. O grau III não significa, por si só, que a placenta deixou de funcionar.',
     passo:{tipo:'checklist', itens:[
       'Correlacionar o grau placentário com a idade gestacional.',
@@ -549,7 +549,7 @@ const TEMAS = [
     titulo:'Vasa prévia',
     modulo:'placenta',
     tags:['vasa prévia','inserção velamentosa','placenta bilobulada','placenta succenturiada','geleia de wharton','sangramento vaginal','ruptura de membranas','fertilização in vitro'],
-    essencial:'Algumas alterações da placenta e da inserção do cordão aumentam significativamente o risco de vasa prévia. Sempre que uma delas estiver descrita no laudo, considere essa possibilidade e encaminhe a gestante para avaliação especializada.',
+    essencial:'Vasa prévia é quando vasos fetais desprotegidos (sem a geleia de Wharton do cordão nem tecido placentário ao redor) cruzam ou ficam próximos do orifício interno do colo — em trabalho de parto ou ruptura de bolsa, esses vasos podem se romper e causar hemorragia fetal grave. Algumas alterações da placenta e da inserção do cordão aumentam significativamente esse risco. Sempre que uma delas estiver descrita no laudo, considere a possibilidade de vasa prévia e encaminhe a gestante para avaliação especializada.',
     erro:'Valorizar a inserção velamentosa ou uma placenta bilobulada apenas como um achado anatômico e esquecer que elas aumentam o risco de vasa prévia.',
     passo:{tipo:'checklist', itens:[
       'Manter o acompanhamento pré-natal normalmente até a confirmação diagnóstica.',
@@ -579,7 +579,7 @@ const TEMAS = [
     titulo:'Datação da gestação',
     modulo:'trimestre1',
     tags:['datação da gestação','idade gestacional','dpp','ccn','usg datador','dum','correção da idade gestacional','biometria fetal','acog','isuog'],
-    essencial:'Ensinar como definir corretamente a idade gestacional e a DPP, qual exame utilizar em cada fase da gestação e quando a idade gestacional deve (ou não) ser corrigida.',
+    essencial:'A idade gestacional (IG) mais confiável é definida pelo ultrassom do 1º trimestre (CCN, entre 8 e 13 semanas e 6 dias) — mais precisa que a data da última menstruação (DUM) na maioria das pacientes. Uma vez estabelecida, a IG não deve ser corrigida por ultrassons de 2º/3º trimestre, que servem para avaliar crescimento, não para redatar a gestação.',
     erro:'<ul><li>Corrigir a idade gestacional toda vez que um novo ultrassom mostra uma diferença de alguns dias.</li><li>Usar sempre 7 dias como critério de discrepância — o limiar é 5 dias até 8+6 semanas, e só passa a ser 7 dias de 9+0 a 13+6 semanas.</li><li>Valorizar a DUM quando ela é incerta ou incompatível com um ultrassom precoce confiável.</li><li>Utilizar biometria do terceiro trimestre para redefinir a DPP.</li></ul>',
     passo:{tipo:'checklist', itens:[
       'Confirme a idade gestacional pelo USG mais precoce e de maior acurácia — idealmente entre 8 e 13 semanas + 6 dias (CCN).',
