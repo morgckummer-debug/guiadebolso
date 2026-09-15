@@ -19,6 +19,16 @@ marcar como concluído aqui.
       se expande o tema atual.*
 - [ ] Seio marginal
 
+## Tumores fetais e placentários
+Item trazido pela autora fora desta lista original, ao revisar o seletor de
+achados do `RaciocinioFAB` (2026-09-15) — sinalizado como achado que
+mereceria destaque de urgência no seletor, mas ainda sem Tema escrito nem
+lista de achados específicos definida. Aguardando a autora trazer os
+achados (ex. teratoma sacrococcígeo, corioangioma) quando for a hora de
+escrever esse capítulo; entra no seletor (com o destaque) só quando o
+primeiro Tema desta categoria existir.
+- [ ] A definir com a autora
+
 ## Cordão
 - [ ] Inserção marginal
 - [ ] Inserção velamentosa

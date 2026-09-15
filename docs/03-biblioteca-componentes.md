@@ -121,23 +121,44 @@ de ferramenta pra buscar um termo.
 - **Seletor de achados** (2º nível, aberto pelo nó `📄 Recebi um laudo`) —
   em vez de a pessoa sair da sheet sem saber o que fazer, ela escolhe o
   achado do laudo e cai direto no Tema certo.
-  - Grade de 2 colunas com cartões (`AchadoCard`: emoji + rótulo curto —
-    ex. `📈 Percentil baixo`, `🟣 Placenta baixa`, `📡 Doppler alterado`,
-    `🔐 Colo curto`, `💧 Dilatação renal`, `✨ Marcador de aneuploidia`).
-  - Toque num cartão fecha a sheet, abre o Tema correspondente e já rola
-    até o bloco `✅ Qual é o próximo passo?` (mesmo pulso de destaque).
-  - `✨ Marcador de aneuploidia` não aponta para um Tema único — abre uma
-    sub-lista (Foco ecogênico intracardíaco / Intestino hiperecogênico /
-    Artéria umbilical única) antes de cair no Tema, porque o Módulo tem
-    mais de um marcador leve e nenhum é "o" representante dos demais.
+  - Desde a revisão de 2026-09-15, a grade espelha os **Módulos da trilha
+    "achados"** (`MODULOS` em `temas.ts`), em vez de uma lista fixa de
+    "achados mais comuns" escolhida a dedo. Motivo da mudança: a lista
+    fixa antiga (6 cartões) tinha ficado defasada do conteúdo real — 18
+    dos 26 Temas já escritos não apareciam nela, incluindo achados de
+    decisão urgente (insuficiência placentária, anemia fetal, vasa
+    prévia) e 3 dos próprios marcadores menores de aneuploidia
+    (ventriculomegalia, prega nucal, fêmur curto).
+  - Grade de 2 colunas com cartões (`AchadoCard`: emoji + rótulo curto).
+    Um Módulo com **mais de um Tema** vira cartão de categoria que abre
+    uma sub-lista (ex. `✨ Marcador de aneuploidia`, `📡 Doppler alterado`,
+    `🔵 Placenta e anexos`, `📏 Crescimento fetal`, `💧 Trato urinário
+    fetal`). Um Módulo com **um único Tema** vai direto para o Tema, sem
+    sub-lista intermediária (ex. `🔐 Colo curto`, `🌱 Ausência de
+    embrião`, `🩻 Onfalocele × gastrosquise`).
+  - Toque num cartão-folha (o que tem `goto`) fecha a sheet, abre o Tema
+    correspondente e já rola até o bloco `✅ Qual é o próximo passo?`
+    (mesmo pulso de destaque). Toque num cartão de categoria (o que tem
+    `sub`) empilha a sub-lista.
+  - **Destaque de urgência:** cartões-folha com `urgente:true` em
+    `LAUDO_ACHADOS` recebem o mesmo acento visual do bloco `🚩 Quando
+    encaminhar` (`--danger-bg`/`--danger-fg`, borda 2px) — reservado para
+    achados que pedem decisão rápida durante a própria consulta, não para
+    "achado grave" em geral (a gravidade de cada achado já está descrita
+    no bloco "Quando encaminhar" do Tema). Hoje: Colo curto, Vasa prévia,
+    Insuficiência placentária (diástole zero/reversa) e Anemia fetal.
   - Cabeçalho com botão "‹ Voltar" (volta um nível da pilha: sub-lista →
     lista principal → fluxograma) e, ao final, um link discreto "Não
     encontrou? Buscar manualmente" que abandona o seletor e devolve o
     foco ao campo de busca.
-  - Cada `goto` do seletor aponta para um Tema existente da biblioteca —
-    ao escrever um novo Tema que caiba num destes achados (ou criar um
-    achado novo), atualizar `LAUDO_ACHADOS` em `webapp/app/app/appLogic.js`
-    junto.
+  - Cada `goto` do seletor aponta para um Tema existente da biblioteca.
+    Como a grade agora segue os Módulos, um Tema novo só precisa ser
+    adicionado à sub-lista do seu Módulo em `LAUDO_ACHADOS`
+    (`webapp/app/app/appLogic.js`) — não exige mais criar um cartão do
+    zero, só não esquecer de incluí-lo. Exceção deliberada: "Feto PIG"
+    (`percentil8`) fica fora do seletor porque se sobrepõe a "PIG × RCF"
+    (`pig-x-rcf`), que é quem representa esse achado aqui; `percentil8`
+    continua acessível pelo Índice e pela busca.
 - Rodapé: botão discreto (texto, sem preenchimento) **"Fechar e voltar ao
   tema"** (ou **"Fechar"**, fora de Tema) — deliberadamente não é um botão
   de ação primária (sem `--lav-500` de fundo): fechar o sheet é sempre a

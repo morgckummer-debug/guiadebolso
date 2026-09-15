@@ -275,19 +275,48 @@ const RACIOCINIO_FLOW = [
 // Índice 0 ("Recebi um laudo") não tem bloco fixo — abre o seletor de achados.
 const FLOW_BLOCK_TARGETS = [null, 'blk-essencial', 'blk-passo', 'blk-explicar', 'blk-encaminhar'];
 
-// "Recebi um laudo" → "o que você encontrou?" — cada achado leva direto para
-// o Tema certo, já rolado até "Qual é o próximo passo?" (blk-passo).
+// "Recebi um laudo" → "o que você encontrou?" — a grade espelha os Módulos
+// da trilha "achados" (ver MODULOS/TEMAS em temas.ts), não uma lista fixa
+// escolhida a dedo: assim ela não fica defasada conforme novos Temas são
+// escritos (ver docs/03 §RaciocinioFAB, revisão 2026-09-15). Módulo com mais
+// de um Tema vira cartão de categoria (abre sub-lista); com um só Tema, o
+// cartão já é o `goto` direto. `urgente:true` num item-folha aplica o mesmo
+// acento visual do bloco "Quando encaminhar" — reservado para achados que
+// pedem decisão rápida na consulta, não para "achado grave" em geral.
+// "Feto PIG" (percentil8) fica fora de propósito: se sobrepõe a "PIG × RCF"
+// (pig-x-rcf), que é quem representa esse achado aqui.
 const LAUDO_ACHADOS = [
-  {icon:'📈', label:'Percentil baixo', goto:'pig-x-rcf'},
-  {icon:'🟣', label:'Placenta baixa', goto:'placenta-baixa'},
-  {icon:'📡', label:'Doppler alterado', goto:'doppler-introducao'},
-  {icon:'🔐', label:'Colo curto', goto:'colo-curto'},
-  {icon:'💧', label:'Dilatação renal', goto:'dilatacao-pelves-renais'},
+  {icon:'📏', label:'Crescimento fetal', sub:[
+    {icon:'📈', label:'PIG × RCF', goto:'pig-x-rcf'},
+    {icon:'📐', label:'Circunferência abdominal > P90', goto:'circunferencia-abdominal-p90'},
+    {icon:'📉', label:'RCF precoce × RCF tardia', goto:'rcf-precoce-tardia'},
+  ]},
+  {icon:'🔵', label:'Placenta e anexos', sub:[
+    {icon:'🟣', label:'Placenta baixa', goto:'placenta-baixa'},
+    {icon:'🔵', label:'Grau da placenta', goto:'grau-placenta'},
+    {icon:'🚩', label:'Vasa prévia', goto:'vasa-previa', urgente:true},
+  ]},
+  {icon:'📡', label:'Doppler alterado', sub:[
+    {icon:'📡', label:'Entendendo o Doppler fetal', goto:'doppler-introducao'},
+    {icon:'📡', label:'ACM de baixa resistência', goto:'acm-baixa-resistencia'},
+    {icon:'🚩', label:'Insuficiência placentária (diástole zero/reversa)', goto:'insuficiencia-placentaria-precoce', urgente:true},
+    {icon:'🚩', label:'Anemia fetal (PSV da ACM)', goto:'psv-acm', urgente:true},
+  ]},
+  {icon:'🔐', label:'Colo curto', goto:'colo-curto', urgente:true},
+  {icon:'💧', label:'Trato urinário fetal', sub:[
+    {icon:'💧', label:'Dilatação das pelves renais', goto:'dilatacao-pelves-renais'},
+    {icon:'💧', label:'Megabexiga fetal', goto:'megabexiga-fetal'},
+  ]},
   {icon:'✨', label:'Marcador de aneuploidia', sub:[
     {icon:'✨', label:'Foco ecogênico intracardíaco', goto:'foco-ecogenico-intracardiaco'},
     {icon:'✨', label:'Intestino hiperecogênico', goto:'intestino-hiperecogenico'},
+    {icon:'✨', label:'Ventriculomegalia leve', goto:'ventriculomegalia-leve'},
+    {icon:'✨', label:'Prega nucal espessada', goto:'prega-nucal-espessada'},
+    {icon:'✨', label:'Fêmur curto', goto:'femur-curto'},
     {icon:'➕', label:'Artéria umbilical única', goto:'arteria-umbilical-unica'},
   ]},
+  {icon:'🌱', label:'Ausência de embrião', goto:'sem-embriao'},
+  {icon:'🩻', label:'Onfalocele × gastrosquise', goto:'onfalocele-gastrosquise'},
 ];
 
 const BUSCAS_RECENTES = ['percentil baixo', 'placenta prévia', 'sem embrião'];
@@ -321,7 +350,7 @@ function achadosPickerHTML(list, title){
   <button type="button" class="sheet-back-btn" id="achados-back">‹ Voltar</button>
   <div class="search-label">${title}</div>
   <div class="achados-grid">
-    ${list.map((a,i)=>`<button type="button" class="achado-card" data-achado-idx="${i}"><span class="achado-icon">${a.icon}</span><span>${a.label}</span></button>`).join('')}
+    ${list.map((a,i)=>`<button type="button" class="achado-card${a.urgente?' achado-card-urgente':''}" data-achado-idx="${i}"><span class="achado-icon">${a.icon}</span><span>${a.label}</span></button>`).join('')}
   </div>
   <button type="button" class="sheet-fallback-link" id="achados-search-fallback">Não encontrou? Buscar manualmente</button>`;
 }
