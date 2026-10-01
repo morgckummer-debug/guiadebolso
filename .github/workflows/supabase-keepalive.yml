@@ -1,0 +1,27 @@
+name: Supabase keep-alive
+
+# O plano gratuito do Supabase pausa o projeto após ~1 semana sem atividade.
+# Este workflow faz uma consulta leve ao banco a cada 3 dias para evitar isso.
+# A URL e a chave "anon" são públicas por design (já vão no app do navegador);
+# o acesso aos dados continua protegido pelo RLS.
+
+on:
+  schedule:
+    - cron: "17 9 */3 * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_URL: https://yuboozybjysiajrfeays.supabase.co
+      SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl1Ym9venlianlzaWFqcmZlYXlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg5ODU2MzEsImV4cCI6MjEwNDU2MTYzMX0.uo3731Kqcah5eRwbvtI6VgSMaoTubG_r0vmLj5xAaS4
+    steps:
+      - name: Consulta ao banco
+        run: |
+          curl --fail --silent --show-error --retry 3 --retry-delay 10 \
+            "$SUPABASE_URL/rest/v1/licenses?select=id&limit=1" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY"
