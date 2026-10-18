@@ -150,3 +150,19 @@ rotina para 3º trimestre, a validar com a autora:
       intervalo
 - [ ] 3º trimestre: o que a curva de crescimento acrescenta ao pré-natal
       de baixo risco
+
+## Gestação inicial
+Achados do 1º trimestre que ainda não têm tema. O módulo já tem o tema
+"Ausência de embrião", e este item é o par natural dele: os dois tratam de
+quando dá para afirmar que a gestação é viável.
+- [ ] Pseudossaco gestacional × gestação intrauterina precoce — *proposto
+      em 2026-10-18 pela própria autora, como primeiro tema do módulo além de
+      "Ausência de embrião". Confusão frequente na prática: saco sem embrião
+      em útero com pouco tempo de gestação pode ser pseudossaco, gestação
+      intrauterina muito precoce ou ectópica. Pontos a cobrir: características
+      de saco verdadeiro (contorno regular, dupla reação decidual, vesícula
+      vitelínica), o que pesa para pseudossaco, quando reavaliar e em quanto
+      tempo, e como a beta-hCG e o contexto clínico mudam a conduta.*
+- [ ] Hematoma subcoriônico — *alternativa considerada, ainda sem tema.*
+- [ ] Gestação ectópica — *tema amplo, sugerido como tema separado depois do
+      pseudossaco.*
