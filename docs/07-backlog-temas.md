@@ -155,7 +155,7 @@ rotina para 3º trimestre, a validar com a autora:
 Achados do 1º trimestre que ainda não têm tema. O módulo já tem o tema
 "Ausência de embrião", e este item é o par natural dele: os dois tratam de
 quando dá para afirmar que a gestação é viável.
-- [ ] Pseudossaco gestacional × gestação intrauterina precoce — *proposto
+- [x] Pseudossaco gestacional × gestação intrauterina precoce — *proposto
       em 2026-10-18 pela própria autora, como primeiro tema do módulo além de
       "Ausência de embrião". Confusão frequente na prática: saco sem embrião
       em útero com pouco tempo de gestação pode ser pseudossaco, gestação
