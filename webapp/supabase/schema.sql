@@ -53,3 +53,32 @@ from auth.users u
 left join public.licenses l on l.email = lower(u.email)
 where l.email is null and u.email is not null
 on conflict (email) do nothing;
+
+-- Keep-alive do plano gratuito: o Supabase pausa o projeto sem atividade no
+-- banco. Um GET no REST que cai numa tabela com RLS sem policies pode voltar
+-- vazio sem gerar atividade de verdade; esta função escreve uma linha numa
+-- tabela pequena, então toda chamada conta como atividade no Postgres.
+-- Só dá para chamar como `anon`, e ela não expõe nem altera dados de usuários.
+create table if not exists keepalive (
+  id int primary key default 1 check (id = 1),
+  last_ping timestamptz not null default now()
+);
+alter table keepalive enable row level security;
+
+create or replace function public.keepalive()
+returns timestamptz
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  agora timestamptz := now();
+begin
+  insert into public.keepalive (id, last_ping)
+  values (1, agora)
+  on conflict (id) do update set last_ping = excluded.last_ping;
+  return agora;
+end;
+$$;
+
+grant execute on function public.keepalive() to anon;
