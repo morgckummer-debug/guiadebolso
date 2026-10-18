@@ -69,6 +69,48 @@ const TEMAS = [
     vejaTambem:[],
   },
   {
+    id:'pseudossaco',
+    titulo:'Pseudossaco gestacional',
+    modulo:'gestacao-inicial',
+    tags:['gestação inicial','pseudossaco','dupla reação decidual','saco gestacional','gestação ectópica','líquido intracavitário','usg transvaginal'],
+    essencial:'Nem todo líquido dentro do útero é saco gestacional. O pseudossaco é uma coleção de líquido na cavidade endometrial, sem embrião nem vesícula vitelínica, que costuma aparecer em gestações ectópicas. O saco gestacional verdadeiro é arredondado, tem contorno regular e fica envolvido pela dupla reação decidual; o pseudossaco tende a ser irregular, muitas vezes central e sem essa dupla reação. Não basta ver líquido no útero para afirmar gestação intrauterina.',
+    erro:'Confundir pseudossaco com saco gestacional intrauterino e tranquilizar a paciente, sem procurar gestação nos anexos e sem reavaliar o beta-hCG.',
+    passo:{tipo:'checklist', itens:[
+      'Descreva a forma e a posição do saco: arredondado e excêntrico sugere saco verdadeiro; irregular e central sugere pseudossaco.',
+      'Procure a dupla reação decidual ao redor do saco. A ausência dela não confirma pseudossaco, mas reduz a segurança do diagnóstico de gestação intrauterina.',
+      'Procure gestação nos anexos e líquido livre em fundo de saco antes de concluir gestação intrauterina.',
+      'Com pseudossaco ou dúvida, não feche o diagnóstico: reavalie com beta-hCG e novo ultrassom no prazo definido pelo serviço, e trate como gestação de localização indeterminada até esclarecer.',
+    ]},
+    criterios:[
+      {titulo:'Sugere saco gestacional verdadeiro', itens:[
+        ['Forma','arredondada'],
+        ['Contorno','regular'],
+        ['Posição','excêntrica'],
+        ['Dupla reação decidual','presente'],
+      ]},
+      {titulo:'Sugere pseudossaco', itens:[
+        ['Forma','irregular'],
+        ['Contorno','indefinido'],
+        ['Posição','central'],
+        ['Dupla reação decidual','ausente'],
+      ]},
+    ],
+    explicar:'A preencher com a fala da Dra. Morgana Kummer (card "Explicar à paciente").',
+    pensando:'A preencher com a fala da Dra. Morgana Kummer.',
+    confianca:'A preencher com a fala da Dra. Morgana Kummer.',
+    aprendi:'A preencher com a fala da Dra. Morgana Kummer.',
+    vocesabia:[
+      'A dupla reação decidual é um sinal de apoio ao diagnóstico de gestação intrauterina, mas não é critério isolado. Use a imagem junto com o beta-hCG e com a evolução.',
+    ],
+    encaminhar:'Encaminhar para avaliação de urgência, sem aguardar reavaliação eletiva, quando houver:<ul><li>Dor pélvica intensa</li><li>Sangramento importante</li><li>Sinais de instabilidade hemodinâmica</li><li>Suspeita de gestação ectópica em conjunto com o pseudossaco</li></ul>',
+    aula:{titulo:'Pseudossaco × saco gestacional verdadeiro: como diferenciar no ultrassom', pendente:true},
+    referencias:[
+      'ISUOG Practice Guidelines: ultrasound in early pregnancy. Ultrasound Obstet Gynecol. (pendente de indicação específica da autora)',
+      'ESHRE guideline: ectopic pregnancy and pregnancy of unknown location. Human Reproduction Open, 2022. (pendente de conferência)',
+    ],
+    vejaTambem:['sem-embriao','gestacao-ectopica'],
+  },
+  {
     id:'gestacao-ectopica',
     titulo:'Gestação ectópica',
     modulo:'gestacao-inicial',
@@ -106,7 +148,7 @@ const TEMAS = [
       'ESHRE guideline: ectopic pregnancy and pregnancy of unknown location. Human Reproduction Open, 2022. (pendente de conferência)',
       'ISUOG Practice Guidelines: ultrasound in early pregnancy. Ultrasound Obstet Gynecol. (pendente de indicação específica da autora)',
     ],
-    vejaTambem:['sem-embriao'],
+    vejaTambem:['sem-embriao','pseudossaco'],
   },
   {
     id:'percentil8',
