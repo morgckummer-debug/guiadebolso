@@ -164,5 +164,5 @@ quando dá para afirmar que a gestação é viável.
       vitelínica), o que pesa para pseudossaco, quando reavaliar e em quanto
       tempo, e como a beta-hCG e o contexto clínico mudam a conduta.*
 - [ ] Hematoma subcoriônico — *alternativa considerada, ainda sem tema.*
-- [ ] Gestação ectópica — *tema amplo, sugerido como tema separado depois do
-      pseudossaco.*
+- [x] Gestação ectópica — *tema escrito como rascunho (módulo "Gestação inicial"),
+      sem as falas pessoais da autora ainda, que entram pelo banco de perguntas.*

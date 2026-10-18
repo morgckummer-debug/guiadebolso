@@ -69,6 +69,46 @@ const TEMAS = [
     vejaTambem:[],
   },
   {
+    id:'gestacao-ectopica',
+    titulo:'Gestação ectópica',
+    modulo:'gestacao-inicial',
+    tags:['gestação inicial','gestação ectópica','tuba','beta-hCG','zona discriminatória','anel anexial','líquido livre','urgência'],
+    essencial:'Gestação ectópica é a implantação fora da cavidade uterina, mais comumente na tuba. O ultrassom nem sempre a encontra: a suspeita surge quando não há saco gestacional dentro do útero e o beta-hCG já está acima da zona discriminatória. Não ver saco intrauterino nesse cenário não exclui gravidez — o diagnóstico depende de procurar a gestação nos anexos, observar líquido livre em fundo de saco e acompanhar a evolução do beta-hCG.',
+    erro:'Interpretar a ausência de saco intrauterino como perda gestacional, sem considerar gestação ectópica, ou descartar ectópica só porque não se viu saco no útero — e, do outro lado, valorizar líquido livre sem olhar os anexos.',
+    passo:{tipo:'checklist', itens:[
+      'Confira o beta-hCG e a idade gestacional antes de interpretar a ausência de saco no útero.',
+      'Procure saco ou embrião fora do útero, especialmente nos anexos, e avalie líquido livre em fundo de saco.',
+      'Se houver suspeita de ectópica, não feche diagnóstico de perda intrauterina: encaminhe para avaliação de urgência.',
+      'Quando não há sinais de urgência e a conduta for de seguimento, repita o beta-hCG em 48 horas, dentro do serviço de referência.',
+    ]},
+    criterios:[
+      {titulo:'Sinais que sugerem ectópica', itens:[
+        ['Saco gestacional fora do útero','presente'],
+        ['Anel anexial (anel tubário)','presente'],
+        ['Líquido livre em fundo de saco','presente'],
+        ['Beta-hCG acima da zona discriminatória sem saco intrauterino','suspeita'],
+      ]},
+      {titulo:'Zona discriminatória (conferir com o serviço)', itens:[
+        ['beta-hCG com ultrassom transvaginal','~1.500 a 2.000 mUI/mL'],
+        ['beta-hCG com ultrassom transabdominal','~3.500 mUI/mL'],
+      ]},
+    ],
+    explicar:'A preencher com a fala da Dra. Morgana Kummer (card "Explicar à paciente").',
+    pensando:'A preencher com a fala da Dra. Morgana Kummer.',
+    confianca:'A preencher com a fala da Dra. Morgana Kummer.',
+    aprendi:'A preencher com a fala da Dra. Morgana Kummer.',
+    vocesabia:[
+      'Em gestações após reprodução assistida, o risco de ectópica é maior, e também a possibilidade de gestação heterotópica (intrauterina e ectópica ao mesmo tempo). As duas precisam ser consideradas.',
+    ],
+    encaminhar:'Encaminhar para avaliação de urgência, sem aguardar seguimento eletivo, quando houver:<ul><li>Dor pélvica intensa</li><li>Sangramento importante</li><li>Sinais de instabilidade hemodinâmica (tontura, hipotensão, taquicardia)</li><li>Líquido livre em fundo de saco com suspeita de ectópica</li></ul>',
+    aula:{titulo:'Gestação ectópica: diagnóstico por imagem e sinais de alerta', pendente:true},
+    referencias:[
+      'ESHRE guideline: ectopic pregnancy and pregnancy of unknown location. Human Reproduction Open, 2022. (pendente de conferência)',
+      'ISUOG Practice Guidelines: ultrasound in early pregnancy. Ultrasound Obstet Gynecol. (pendente de indicação específica da autora)',
+    ],
+    vejaTambem:['sem-embriao'],
+  },
+  {
     id:'percentil8',
     titulo:'Feto PIG',
     modulo:'crescimento',
