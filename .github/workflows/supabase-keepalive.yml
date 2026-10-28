@@ -17,8 +17,8 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     env:
-      SUPABASE_URL: https://yuboozybjysiajrfeays.supabase.co
-      SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl1Ym9venlianlzaWFqcmZlYXlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg5ODU2MzEsImV4cCI6MjEwNDU2MTYzMX0.uo3731Kqcah5eRwbvtI6VgSMaoTubG_r0vmLj5xAaS4
+      SUPABASE_URL: https://ulcqnqwxguydrpoaplcv.supabase.co
+      SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVsY3FucXd4Z3V5ZHJwb2FwbGN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU0Njk2NjcsImV4cCI6MjEwMTA0NTY2N30.hNrszyJvaBzP08Oild4wivMrTvXnDoGfgL6My1bbtVU
     steps:
       - name: Escrita no banco (conta como atividade)
         run: |
